@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
+use AdminNavigation;
 
 class AdminSectionsServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,9 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
-        //\App\User::class => 'App\Http\Sections\Users',
+        \App\Models\Contact\ContactModel::class => 'App\Http\Controllers\Admin\Contact\Contact',
+        \App\Models\Contact\SocialModel::class => 'App\Http\Controllers\Admin\Contact\Social',
+        \App\Models\Contact\InfoModel::class => 'App\Http\Controllers\Admin\Contact\Info',
     ];
 
     /**
@@ -22,8 +25,41 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     public function boot(\SleepingOwl\Admin\Admin $admin)
     {
-    	//
+        $this->app->call([
+            $this,
+            'registerNavigation'
+        ]);
 
         parent::boot($admin);
+    }
+
+    public function registerNavigation()
+    {
+        AdminNavigation::setFromArray([
+//            [
+//                'title' => 'Настройки',
+//                'id' => 'settings',
+//                'icon' => 'fab fa-dev',
+//                'priority' => 100,
+//            ],
+//            [
+//                'title' => 'Жилые комплексы',
+//                'id' => 'houses',
+//                'icon' => 'fab fa-dev',
+//                'priority' => 200,
+//            ],
+//            [
+//                'title' => 'Файлы',
+//                'id' => 'files',
+//                'icon' => 'fab fa-dev',
+//                'priority' => 300,
+//            ],
+            [
+                'title' => 'Контакты',
+                'id' => 'contact',
+                'icon' => 'fab fa-dev',
+                'priority' => 400,
+            ],
+        ]);
     }
 }
