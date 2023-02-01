@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Admin\Jk\Support;
+use App\Models\Jk\DescriptionItemModel;
+use App\Models\Jk\DescriptionModel;
+use App\Models\Jk\ImageModels;
+use App\Models\Jk\JkModel;
+use App\Models\Jk\SupportModel;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 use AdminNavigation;
 
@@ -12,9 +18,18 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
+        //contact
         \App\Models\Contact\ContactModel::class => 'App\Http\Controllers\Admin\Contact\Contact',
         \App\Models\Contact\SocialModel::class => 'App\Http\Controllers\Admin\Contact\Social',
         \App\Models\Contact\InfoModel::class => 'App\Http\Controllers\Admin\Contact\Info',
+        //supports
+        SupportModel::class => 'App\Http\Controllers\Admin\Jk\Support',
+        \App\Models\BuilderModel::class => 'App\Http\Controllers\Admin\Jk\BuilderModel',
+        //JK
+        JkModel::class => 'App\Http\Controllers\Admin\Jk\Jk',
+        ImageModels::class => 'App\Http\Controllers\Admin\Jk\Image',
+        DescriptionModel::class => 'App\Http\Controllers\Admin\Jk\Description',
+        DescriptionItemModel::class => 'App\Http\Controllers\Admin\Jk\DescriptionItem',
     ];
 
     /**
@@ -42,18 +57,18 @@ class AdminSectionsServiceProvider extends ServiceProvider
 //                'icon' => 'fab fa-dev',
 //                'priority' => 100,
 //            ],
-//            [
-//                'title' => 'Жилые комплексы',
-//                'id' => 'houses',
-//                'icon' => 'fab fa-dev',
-//                'priority' => 200,
-//            ],
-//            [
-//                'title' => 'Файлы',
-//                'id' => 'files',
-//                'icon' => 'fab fa-dev',
-//                'priority' => 300,
-//            ],
+            [
+                'title' => 'Жилые комплексы',
+                'id' => 'houses',
+                'icon' => 'fab fa-dev',
+                'priority' => 200,
+            ],
+            [
+                'title' => 'Общие данные',
+                'id' => 'supports',
+                'icon' => 'fab fa-dev',
+                'priority' => 300,
+            ],
             [
                 'title' => 'Контакты',
                 'id' => 'contact',

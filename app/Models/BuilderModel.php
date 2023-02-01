@@ -11,9 +11,5 @@ class BuilderModel extends Model
 
     protected $fillable = [
         'name',
-        'phone',
-        'telegram',
-        'whatsapp',
-        'viber',
     ];
 }

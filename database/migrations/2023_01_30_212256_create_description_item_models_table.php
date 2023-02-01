@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('description_item_models', function (Blueprint $table) {
             $table->id();
             $table->integer('description_id')->nullable();
-            $table->integer('category')->comment('Категория описания 1.2.3')->nullable();
             $table->string('image')->nullable();
+            $table->string('color')->nullable();
             $table->longText('description')->nullable();
             $table->string('link')->nullable();
             $table->timestamps();

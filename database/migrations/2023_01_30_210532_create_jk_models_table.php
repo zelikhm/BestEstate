@@ -19,9 +19,9 @@ return new class extends Migration
             $table->longText('description');
             $table->string('slug');
             $table->integer('status')->comment('Сдача')->nullable();
-            $table->integer('city')->comment('Город')->nullable();
-            $table->integer('longitude')->comment('Долгота')->nullable();
-            $table->integer('latitude')->comment('Широта')->nullable();
+            $table->integer('city')->comment('Город')->default(0)->nullable();
+            $table->decimal('longitude', 20, 10)->comment('Долгота')->nullable();
+            $table->decimal('latitude', 20, 10)->comment('Широта')->nullable();
             $table->integer('class')->comment('Класс')->nullable();
             $table->integer('floors')->comment('Этажность')->nullable();
             $table->integer('frames')->comment('Корпусов')->nullable();

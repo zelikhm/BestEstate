@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('support_models', function (Blueprint $table) {
             $table->id();
-            $table->integer('jk_id');
             $table->string('name');
             $table->string('status');
             $table->string('phone');

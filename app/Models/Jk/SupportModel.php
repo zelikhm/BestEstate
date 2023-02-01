@@ -10,7 +10,6 @@ class SupportModel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'jk_id',
         'name',
         'status',
         'phone',

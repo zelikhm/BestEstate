@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('jk_id');
             $table->string('title');
+            $table->integer('category')->comment('Категория описания 1.2.3')->nullable();
             $table->timestamps();
         });
     }

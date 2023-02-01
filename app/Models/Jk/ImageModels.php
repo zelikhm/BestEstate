@@ -13,4 +13,8 @@ class ImageModels extends Model
         'jk_id',
         'image',
     ];
+
+    public function jk() {
+        return $this->belongsTo(JkModel::class, 'jk_id', 'id');
+    }
 }

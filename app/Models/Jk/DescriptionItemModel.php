@@ -11,9 +11,14 @@ class DescriptionItemModel extends Model
 
     protected $fillable = [
         'description_id',
-        'category',
         'image',
         'description',
         'link',
+        'color'
     ];
+
+    public function descript()
+    {
+        return $this->belongsTo(DescriptionModel::class, 'description_id', 'id');
+    }
 }
