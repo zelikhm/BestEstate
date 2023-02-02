@@ -16,14 +16,13 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', ['App\Http\Controllers\Page\MainController', 'main'])->name('main');
+Route::get('/contact', ['App\Http\Controllers\Page\MainController', 'contact'])->name('contact');
+Route::get('/catalog', ['App\Http\Controllers\Page\MainController', 'catalog'])->name('catalog');
+Route::get('/about', ['App\Http\Controllers\Page\MainController', 'about'])->name('about');
+Route::get('/service', ['App\Http\Controllers\Page\MainController', 'service'])->name('service');
+Route::get('/news', ['App\Http\Controllers\Page\MainController', 'news'])->name('news');
+Route::get('/news/{slug}', ['App\Http\Controllers\Page\MainController', 'getNew'])->name('getNew');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
