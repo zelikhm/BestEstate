@@ -2,7 +2,6 @@
 
     import Header from '../Components/Component/Header.vue'
     import Footer from  '../Components/Component/Footer.vue'
-
 </script>
 
 <template>
@@ -2350,6 +2349,9 @@
             return {
                 'page': this.page,
             }
+        },
+        created() {
+
         },
         name: "AppMain"
     }

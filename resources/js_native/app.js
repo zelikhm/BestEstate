@@ -376,20 +376,6 @@ $(document).ready(function () {
 		});
 	});
 
-	// ------------------- Choices Select ------------------
-
-	const multiSort = () => {
-		const elements = document.querySelectorAll('.select-sort');
-		elements.forEach(element => {
-			const choices = new Choices(element, {
-				searchEnabled: false,
-				itemSelectText: '',
-				allowHTML: true,
-			});
-		});
-	}
-	multiSort();
-
 	// ----------------- SWIPER ----------------------
 	var swiper = new Swiper(".heroSwiper", {
 		spaceBetween: 5,

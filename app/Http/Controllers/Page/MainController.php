@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\NewModel;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -49,15 +50,26 @@ class MainController extends Controller
 
     public function news() {
 
+        $news = NewModel::orderBy('created_at', 'DESC')->get();
+
         return Inertia::render('AppNews', [
             'page' => 5,
+            'news' => $news,
         ]);
 
     }
 
-    public function getNew($id) {
+    public function getNew($slug) {
 
+        $info = NewModel::where('slug', $slug)->firstOrFail();
 
+        $news = NewModel::where('slug', '!=', $slug)->orderBy('created_at', 'DESC')->limit(2)->get();
+
+        return Inertia::render('AppNew', [
+            'page' => 5,
+            'info' => $info,
+            'news' => $news,
+        ]);
 
     }
 

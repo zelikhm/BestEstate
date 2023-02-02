@@ -13,5 +13,10 @@ class NewModel extends Model
         'title',
         'description',
         'slug',
+        'image'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
     ];
 }

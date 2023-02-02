@@ -8,6 +8,7 @@ use App\Models\Jk\DescriptionModel;
 use App\Models\Jk\ImageModels;
 use App\Models\Jk\JkModel;
 use App\Models\Jk\SupportModel;
+use App\Models\NewModel;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 use AdminNavigation;
 
@@ -30,6 +31,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         ImageModels::class => 'App\Http\Controllers\Admin\Jk\Image',
         DescriptionModel::class => 'App\Http\Controllers\Admin\Jk\Description',
         DescriptionItemModel::class => 'App\Http\Controllers\Admin\Jk\DescriptionItem',
+        NewModel::class => 'App\Http\Controllers\Admin\News',
     ];
 
     /**
@@ -51,12 +53,12 @@ class AdminSectionsServiceProvider extends ServiceProvider
     public function registerNavigation()
     {
         AdminNavigation::setFromArray([
-//            [
-//                'title' => 'Настройки',
-//                'id' => 'settings',
-//                'icon' => 'fab fa-dev',
-//                'priority' => 100,
-//            ],
+            [
+                'title' => 'Настройки',
+                'id' => 'settings',
+                'icon' => 'fab fa-dev',
+                'priority' => 100,
+            ],
             [
                 'title' => 'Жилые комплексы',
                 'id' => 'houses',

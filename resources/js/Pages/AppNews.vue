@@ -2,6 +2,7 @@
 
     import Header from '../components/component/Header.vue';
     import Footer from  '../Components/Component/Footer.vue'
+    import { Link } from '@inertiajs/vue3';
 
 </script>
 
@@ -29,92 +30,53 @@
                         <h1 class="heading-1">Новости агентства <span>Russia Best Real Estate</span></h1>
                     </div>
                     <div class="news__cards">
-                        <div class="news__item">
-                            <div class="news__item-img"><img src="img/news/news-01.jpg" alt=""></div>
-                            <div class="news__item-content">
-                                <div class="news__item-heading">
-                                    <h3 class="heading-2">На сколько подорожала недвижимость в 2022 году?</h3>
-                                    <p class="text-2">
-                                        Консалтинговая компания Knight Frank основана в Лондоне в 1896 году и является
-                                        крупнейшей независимой международной
-                                        консалтинговой компанией, предоставляющей своим клиентам услуги на рынке
-                                        коммерческой и жилой недвижимости
-                                    </p>
-                                </div>
-                                <div class="news__item-nav">
-                                    <a href="article.html" class="btn btn-xl">Читать статью</a>
-                                    <div class="date">24.07.2020</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news__item">
-                            <div class="news__item-img"><img src="img/news/news-02.jpg" alt=""></div>
-                            <div class="news__item-content">
-                                <div class="news__item-heading">
-                                    <h3 class="heading-2">На сколько подорожала недвижимость в 2022 году?</h3>
-                                    <p class="text-2">
-                                        Консалтинговая компания Knight Frank основана в Лондоне в 1896 году и является
-                                        крупнейшей независимой международной
-                                        консалтинговой компанией, предоставляющей своим клиентам услуги на рынке
-                                        коммерческой и жилой недвижимости слуги на рынке коммерческой и жилой
-                                        недвижимости
-                                    </p>
-                                </div>
-                                <div class="news__item-nav">
-                                    <a href="article.html" class="btn btn-xl">Читать статью</a>
-                                    <div class="date">24.07.2020</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news__cards-row">
-                            <div class="news__item">
-                                <div class="news__item-img"><img src="img/news/news-03.jpg" alt=""></div>
+                        <div v-for="(item, index) in news_array">
+                            <div class="news__item" v-if="index !== 2 && index !== 3">
+                                <div class="news__item-img"><img :src="item.image" alt=""></div>
                                 <div class="news__item-content">
                                     <div class="news__item-heading">
-                                        <h3 class="heading-2">На сколько подорожала недвижимость в 2022 году?</h3>
+                                        <h3 class="heading-2">{{ item.title }}</h3>
+                                        <p class="text-2" v-html="item.description"></p>
                                     </div>
                                     <div class="news__item-nav">
-                                        <a href="article.html" class="btn btn-xl">Читать статью</a>
-                                        <div class="date">24.07.2020</div>
+                                        <Link :href="'/news/' + item.slug" class="btn btn-xl">Читать статью</Link>
+                                        <div class="date">{{ item.created_at }}</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="news__item">
-                                <div class="news__item-img"><img src="img/news/news-04.jpg" alt=""></div>
-                                <div class="news__item-content">
-                                    <div class="news__item-heading">
-                                        <h3 class="heading-2">На сколько подорожала недвижимость в 2022 году?</h3>
-                                    </div>
-                                    <div class="news__item-nav">
-                                        <a href="article.html" class="btn btn-xl">Читать статью</a>
-                                        <div class="date">24.07.2020</div>
+                            <div class="news__cards-row" v-if="index === 2 && news_array.length > 3">
+                                <div class="news__item">
+                                    <div class="news__item-img"><img :src="news_array[2].image" alt=""></div>
+                                    <div class="news__item-content">
+                                        <div class="news__item-heading">
+                                            <h3 class="heading-2">{{ news_array[2].title }}</h3>
+                                            <p class="text-2" v-html="news_array[2].description"></p>
+                                        </div>
+                                        <div class="news__item-nav">
+                                            <Link :href="'/news/' + news_array[2].slug" class="btn btn-xl">Читать статью</Link>
+                                            <div class="date">{{ news_array[2].created_at }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="news__item">
-                            <div class="news__item-img"><img src="img/news/news-05.jpg" alt=""></div>
-                            <div class="news__item-content">
-                                <div class="news__item-heading">
-                                    <h3 class="heading-2">На сколько подорожала недвижимость в 2022 году?</h3>
-                                    <p class="text-2">
-                                        Консалтинговая компания Knight Frank основана в Лондоне в 1896 году и является
-                                        крупнейшей независимой
-                                        международной
-                                        консалтинговой компанией, предоставляющей своим клиентам услуги на рынке
-                                        коммерческой и жилой недвижимости слуги
-                                        на рынке коммерческой и жилой недвижимости
-                                    </p>
-                                </div>
-                                <div class="news__item-nav">
-                                    <a href="article.html" class="btn btn-xl">Читать статью</a>
-                                    <div class="date">24.07.2020</div>
+                                <div class="news__item">
+                                    <div class="news__item-img"><img :src="news_array[3].image" alt=""></div>
+                                    <div class="news__item-content">
+                                        <div class="news__item-heading">
+                                            <h3 class="heading-2">{{ news_array[3].title }}</h3>
+                                            <p class="text-2" v-html="news_array[3].description"></p>
+                                        </div>
+                                        <div class="news__item-nav">
+                                            <Link :href="'/news/' + news_array[3].slug" class="btn btn-xl">Читать статью</Link>
+                                            <div class="date">{{ news_array[3].created_at }}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="link-center">
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
+
+                    <div class="link-center" style="cursor: pointer" v-on:click="clickReload()">
+                        <p class="btn-second btn-md">Смотреть все</p>
                     </div>
                 </div>
             </section>
@@ -277,14 +239,26 @@
 
 <script>
     export default {
-        props: ['page'],
+        props: ['page', 'news'],
         provide() {
             return {
                 'page': this.page,
             }
         },
-
-        name: "AppNews"
+        data() {
+            return {
+                news_array: [],
+            }
+        },
+        name: "AppNews",
+        mounted() {
+            this.news_array = JSON.parse(JSON.stringify(this.news)).splice(0, 5);
+        },
+        methods: {
+            clickReload() {
+                this.news_array = JSON.parse(JSON.stringify(this.news));
+            }
+        }
     }
 </script>
 
