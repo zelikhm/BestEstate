@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact\ContactModel;
+use App\Models\Contact\InfoModel;
+use App\Models\Contact\SocialModel;
 use App\Models\NewModel;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -28,8 +31,15 @@ class MainController extends Controller
 
     public function contact() {
 
+        $contact = ContactModel::first();
+        $socials = SocialModel::all();
+        $info = InfoModel::all();
+
         return Inertia::render('AppContact', [
             'page' => 7,
+            'contact' => $contact,
+            'social' => $socials,
+            'info' => $info,
         ]);
 
     }

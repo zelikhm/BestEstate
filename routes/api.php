@@ -18,6 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/get', function () {
-   dd(1);
+Route::prefix('manager')->group(function () {
+   Route::post('/send', ['App\Http\Controllers\Manager\SendController', 'send']);
 });
