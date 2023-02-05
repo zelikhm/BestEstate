@@ -21,6 +21,14 @@ class MainController extends Controller
 
     }
 
+    public function flat() {
+
+        return Inertia::render('AppFlat', [
+            'page' => 3,
+        ]);
+
+    }
+
     public function catalog() {
 
         return Inertia::render('AppCatalog', [
