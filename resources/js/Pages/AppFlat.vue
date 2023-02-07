@@ -2,7 +2,7 @@
 
     import Header from '../Components/Component/Header.vue'
     import Footer from '../Components/Component/Footer.vue'
-
+    import { Link } from '@inertiajs/vue3';
 
 </script>
 
@@ -705,6 +705,12 @@
 
 <script>
     export default {
+        props: ['page'],
+        provide() {
+            return {
+                'page': this.page,
+            }
+        },
         name: "AppFlat"
     }
 </script>

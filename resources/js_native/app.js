@@ -211,46 +211,46 @@ $(document).ready(function () {
 	// });
 
 	// --------------------- Tabs ---------------------------
-	var tab = $('#tabs .tabs-items > div');
-	tab.hide().filter(':first').show();
-	// Клики по вкладкам.
-	$('#tabs .tabs-nav a').click(function () {
-		tab.hide();
-		tab.filter(this.hash).show();
-		$('#tabs .tabs-nav a').removeClass('active');
-		$(this).addClass('active');
-		return false;
-	}).filter(':first').click();
-	// Клики по якорным ссылкам.
-	$('.tabs-target').click(function () {
-		$('#tabs .tabs-nav a[href=' + $(this).attr('href') + ']').click();
-	});
-	// Отрытие вкладки из хеша URL
-	if (window.location.hash) {
-		$('#tabs-nav a[href=' + window.location.hash + ']').click();
-		window.scrollTo(0, $("#".window.location.hash).offset().top);
-	};
+	// var tab = $('#tabs .tabs-items > div');
+	// tab.hide().filter(':first').show();
+	// // Клики по вкладкам.
+	// $('#tabs .tabs-nav a').click(function () {
+	// 	tab.hide();
+	// 	tab.filter(this.hash).show();
+	// 	$('#tabs .tabs-nav a').removeClass('active');
+	// 	$(this).addClass('active');
+	// 	return false;
+	// }).filter(':first').click();
+	// // Клики по якорным ссылкам.
+	// $('.tabs-target').click(function () {
+	// 	$('#tabs .tabs-nav a[href=' + $(this).attr('href') + ']').click();
+	// });
+	// // Отрытие вкладки из хеша URL
+	// if (window.location.hash) {
+	// 	$('#tabs-nav a[href=' + window.location.hash + ']').click();
+	// 	window.scrollTo(0, $("#".window.location.hash).offset().top);
+	// };
 
 	// --------------------- Charact Tabs ---------------------------
-	var tab = $('#charact-tabs .tabs-items > div');
-	tab.hide().filter(':first').show();
-	// Клики по вкладкам.
-	$('#charact-tabs .tabs-nav a').click(function () {
-		tab.hide();
-		tab.filter(this.hash).show();
-		$('#charact-tabs .tabs-nav a').removeClass('active');
-		$(this).addClass('active');
-		return false;
-	}).filter(':first').click();
-	// Клики по якорным ссылкам.
-	$('.tabs-target').click(function () {
-		$('#charact-tabs .tabs-nav a[href=' + $(this).attr('href') + ']').click();
-	});
-	// Отрытие вкладки из хеша URL
-	if (window.location.hash) {
-		$('#charact-tabs-nav a[href=' + window.location.hash + ']').click();
-		window.scrollTo(0, $("#".window.location.hash).offset().top);
-	};
+	// var tab = $('#charact-tabs .tabs-items > div');
+	// tab.hide().filter(':first').show();
+	// // Клики по вкладкам.
+	// $('#charact-tabs .tabs-nav a').click(function () {
+	// 	tab.hide();
+	// 	tab.filter(this.hash).show();
+	// 	$('#charact-tabs .tabs-nav a').removeClass('active');
+	// 	$(this).addClass('active');
+	// 	return false;
+	// }).filter(':first').click();
+	// // Клики по якорным ссылкам.
+	// $('.tabs-target').click(function () {
+	// 	$('#charact-tabs .tabs-nav a[href=' + $(this).attr('href') + ']').click();
+	// });
+	// // Отрытие вкладки из хеша URL
+	// if (window.location.hash) {
+	// 	$('#charact-tabs-nav a[href=' + window.location.hash + ']').click();
+	// 	window.scrollTo(0, $("#".window.location.hash).offset().top);
+	// };
 	// // Отрытие вкладки из хеша URL
 	// if (window.location.hash) {
 	// 	$('#charact-tabs-nav a[href=' + window.location.hash + ']').click();
@@ -259,25 +259,25 @@ $(document).ready(function () {
 
 
 	// --------------------- Filter Tabs ---------------------------
-	var tab = $('#filterTabs .tabs-items > div');
-	tab.hide().filter(':first').show();
-	// Клики по вкладкам.
-	$('#filterTabs .filter-nav a').click(function () {
-		tab.hide();
-		tab.filter(this.hash).show();
-		$('#filterTabs .filter-nav a').removeClass('active');
-		$(this).addClass('active');
-		return false;
-	}).filter(':first').click();
-	// Клики по якорным ссылкам.
-	$('.tabs-target').click(function () {
-		$('#filterTabs .filter-nav a[href=' + $(this).attr('href') + ']').click();
-	});
-	// Отрытие вкладки из хеша URL
-	if (window.location.hash) {
-		$('#tabs-nav a[href=' + window.location.hash + ']').click();
-		window.scrollTo(0, $("#".window.location.hash).offset().top);
-	};
+	// var tab = $('#filterTabs .tabs-items > div');
+	// tab.hide().filter(':first').show();
+	// // Клики по вкладкам.
+	// $('#filterTabs .filter-nav a').click(function () {
+	// 	tab.hide();
+	// 	tab.filter(this.hash).show();
+	// 	$('#filterTabs .filter-nav a').removeClass('active');
+	// 	$(this).addClass('active');
+	// 	return false;
+	// }).filter(':first').click();
+	// // Клики по якорным ссылкам.
+	// $('.tabs-target').click(function () {
+	// 	$('#filterTabs .filter-nav a[href=' + $(this).attr('href') + ']').click();
+	// });
+	// // Отрытие вкладки из хеша URL
+	// if (window.location.hash) {
+	// 	$('#tabs-nav a[href=' + window.location.hash + ']').click();
+	// 	window.scrollTo(0, $("#".window.location.hash).offset().top);
+	// };
 
 	//--------------- fancybox -----------
 
@@ -355,396 +355,396 @@ $(document).ready(function () {
 	});
 
 	// -------------------------modal----------------------
-	$('.to-state').on('click', function (event) {
-		event.preventDefault();
-		$('div').removeClass('active');
-		$('.state').removeClass('active');
-		var state = $(this).attr('data-state');
-		$('.state[data-state=' + state + ']').addClass('active');
-	});
-	$('.icon-close').on('click', function (event) {
-		$(this).parents().removeClass('active');
-	});
-	jQuery(function ($) {
-		$(document).mouseup(function (e) { // событие клика по веб-документу
-			var div = $(".state-box"); // тут указываем ID элемента
-			if (!div.is(e.target) // если клик был не по нашему блоку
-				&& div.has(e.target).length === 0) { // и не по его дочерним элементам
-				div.parents().removeClass('active'); // скрываем его
-				$('body').removeClass('modal-open');
-			}
-		});
-	});
+	// $('.to-state').on('click', function (event) {
+	// 	event.preventDefault();
+	// 	$('div').removeClass('active');
+	// 	$('.state').removeClass('active');
+	// 	var state = $(this).attr('data-state');
+	// 	$('.state[data-state=' + state + ']').addClass('active');
+	// });
+	// $('.icon-close').on('click', function (event) {
+	// 	$(this).parents().removeClass('active');
+	// });
+	// jQuery(function ($) {
+	// 	$(document).mouseup(function (e) { // событие клика по веб-документу
+	// 		var div = $(".state-box"); // тут указываем ID элемента
+	// 		if (!div.is(e.target) // если клик был не по нашему блоку
+	// 			&& div.has(e.target).length === 0) { // и не по его дочерним элементам
+	// 			div.parents().removeClass('active'); // скрываем его
+	// 			$('body').removeClass('modal-open');
+	// 		}
+	// 	});
+	// });
 
 	// ----------------- SWIPER ----------------------
-	var swiper = new Swiper(".heroSwiper", {
-		spaceBetween: 5,
-		loop: true,
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-    },
-    breakpoints: {
-      320: {
-        autoHeight: true,
-      },
-      1025: {
-        autoHeight: false,
-      }
-    }
-	});
-
-	var swiper = new Swiper(".specialSwiper", {
-		slidesPerView: 3,
-		spaceBetween: 20,
-		// grabCursor: true,
-		loop: true,
-		autoplay: {
-			delay: 3500,
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true,
-		},
-		navigation: {
-			nextEl: ".specialSwiper-next",
-			prevEl: ".specialSwiper-prev",
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        autoHeight: true,
-      },
-      769: {
-        slidesPerView: 2,
-        spaceBetween: 10,
-        autoHeight: false,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        autoHeight: false,
-      }
-    }
-	});
-
-	var swiper = new Swiper(".jk-blSwiper", {
-		slidesPerView: 3,
-		spaceBetween: 20,
-		// grabCursor: true,
-		loop: true,
-		autoplay: {
-			delay: 3500,
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true,
-		},
-		navigation: {
-			nextEl: ".jk-blSwiper-next",
-			prevEl: ".jk-blSwiper-prev",
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        autoHeight: true,
-      },
-      769: {
-        slidesPerView: 2,
-        spaceBetween: 10,
-        autoHeight: false,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        autoHeight: false,
-      }
-    }
-	});
-
-	var swiper = new Swiper(".videosSwiper", {
-		centeredSlides: true,
-		loop: true,
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      1025: {
-        slidesPerView: 3,
-        spaceBetween: 0,
-      }
-    }
-	});
-
-	var swiper = new Swiper(".consultSwiper", {
-		slidesPerView: 1,
-    spaceBetween: 20,
-		pagination: true,
-		// loop: true,
-		autoplay: {
-			delay: 30000,
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true,
-		},
-		navigation: {
-			nextEl: ".consultSwiper-next",
-			prevEl: ".consultSwiper-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-	});
-
-	var swiper = new Swiper(".partnersSwiper", {
-		slidesPerView: 4,
-		spaceBetween: 48,
-		// grabCursor: true,
-		loop: true,
-		autoplay: {
-			delay: 3500,
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true,
-		},
-		pagination: {
-			el: ".partnersSwiper-pagination",
-			clickable: true,
-    },
-    navigation: {
-      nextEl: ".partnersSwiper-next",
-      prevEl: ".partnersSwiper-prev",
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      400: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 30,
-      },
-      1025: {
-        spaceBetween: 48,
-        autoplay: {
-          delay: 6000,
-        },
-      }
-    }
-	});
-
-	var swiper = new Swiper(".advantSwiper", {
-		slidesPerView: 1,
-		spaceBetween: 20,
-		// grabCursor: true,
-		loop: true,
-		navigation: {
-			nextEl: ".advantSwiper-next",
-			prevEl: ".advantSwiper-prev",
-		},
-		pagination: {
-			el: ".advantSwiper-pagination",
-			clickable: true,
-		},
-	});
-
-	var swiperKp = new Swiper(".kpSecondSwiper", {
-		spaceBetween: 16,
-		slidesPerView: 4,
-		freeMode: true,
-		watchSlidesProgress: true,
-		breakpoints: {
-			320: {
-				slidesPerView: 4,
-			},
-			576: {
-				slidesPerView: 5,
-			},
-			768: {
-				slidesPerView: 7,
-			},
-			1024: {
-				slidesPerView: 11,
-			}
-		}
-	});
-	var swiper2 = new Swiper(".kpMainSwiper", {
-		spaceBetween: 10,
-		loop: true,
-		navigation: {
-			nextEl: ".swiper-button-next--fluid",
-			prevEl: ".swiper-button-prev--fluid",
-		},
-		thumbs: {
-			swiper: swiperKp,
-		},
-	});
-
-	var swiperJk = new Swiper(".jkSecondSwiper", {
-		spaceBetween: 16,
-		slidesPerView: 4,
-		freeMode: true,
-		watchSlidesProgress: true,
-		breakpoints: {
-			320: {
-				slidesPerView: 4,
-			},
-			576: {
-				slidesPerView: 5,
-			},
-			768: {
-				slidesPerView: 7,
-			},
-			1024: {
-				slidesPerView: 11,
-			}
-		}
-	});
-	var swiper2 = new Swiper(".jkMainSwiper", {
-		spaceBetween: 10,
-		loop: true,
-		navigation: {
-			nextEl: ".swiper-button-next--fluid",
-			prevEl: ".swiper-button-prev--fluid",
-		},
-		thumbs: {
-			swiper: swiperJk,
-		},
-	});
-
-	var swiperApart = new Swiper(".apartSecondSwiper", {
-		spaceBetween: 16,
-		freeMode: true,
-    watchSlidesProgress: true,
-    breakpoints: {
-      320: {
-        spaceBetween: 8,
-        slidesPerView: 5,
-      },
-      1025: {
-        spaceBetween: 16,
-        slidesPerView: 7,
-      },
-    },
-	});
-	var swiper2 = new Swiper(".apartMainSwiper", {
-		spaceBetween: 10,
-		loop: true,
-		navigation: {
-			nextEl: ".swiper-button-next--fluid",
-			prevEl: ".swiper-button-prev--fluid",
-		},
-		pagination: {
-			el: ".swiper-pagination--fluid",
-			clickable: true,
-		},
-		thumbs: {
-			swiper: swiperApart,
-		},
-	});
-
-	var swiperApartPlan = new Swiper(".apartPlanSecondSwiper", {
-		spaceBetween: 16,
-		freeMode: true,
-    watchSlidesProgress: true,
-    breakpoints: {
-      320: {
-        spaceBetween: 8,
-        slidesPerView: 5,
-      },
-      1025: {
-        spaceBetween: 16,
-        slidesPerView: 7,
-      },
-    },
-	});
-	var swiper2 = new Swiper(".apartPlanMainSwiper", {
-		spaceBetween: 10,
-		loop: true,
-		navigation: {
-			nextEl: ".swiper-button-next--fluid",
-			prevEl: ".swiper-button-prev--fluid",
-		},
-		pagination: {
-			el: ".swiper-pagination--fluid",
-			clickable: true,
-		},
-		thumbs: {
-			swiper: swiperApartPlan,
-		},
-	});
-
-	var swiper = new Swiper(".similarSwiper", {
-		// grabCursor: true,
-		loop: true,
-		autoplay: {
-			delay: 3500,
-			disableOnInteraction: false,
-			pauseOnMouseEnter: true,
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true,
-    },
-    breakpoints: {
-      320: {
-        spaceBetween: 10,
-        slidesPerView: 1,
-      },
-      576: {
-        spaceBetween: 14,
-        slidesPerView: 2,
-      },
-      1025: {
-        spaceBetween: 26,
-        slidesPerView: 3,
-      },
-    },
-	});
+	// var swiper = new Swiper(".heroSwiper", {
+	// 	spaceBetween: 5,
+	// 	loop: true,
+	// 	pagination: {
+	// 		el: ".swiper-pagination",
+	// 		clickable: true,
+    // },
+    // breakpoints: {
+    //   320: {
+    //     autoHeight: true,
+    //   },
+    //   1025: {
+    //     autoHeight: false,
+    //   }
+    // }
+	// });
+    //
+	// var swiper = new Swiper(".specialSwiper", {
+	// 	slidesPerView: 3,
+	// 	spaceBetween: 20,
+	// 	// grabCursor: true,
+	// 	loop: true,
+	// 	autoplay: {
+	// 		delay: 3500,
+	// 		disableOnInteraction: false,
+	// 		pauseOnMouseEnter: true,
+	// 	},
+	// 	navigation: {
+	// 		nextEl: ".specialSwiper-next",
+	// 		prevEl: ".specialSwiper-prev",
+	// 	},
+	// 	pagination: {
+	// 		el: ".swiper-pagination",
+	// 		clickable: true,
+    // },
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 1,
+    //     autoHeight: true,
+    //   },
+    //   769: {
+    //     slidesPerView: 2,
+    //     spaceBetween: 10,
+    //     autoHeight: false,
+    //   },
+    //   1024: {
+    //     slidesPerView: 3,
+    //     spaceBetween: 20,
+    //     autoHeight: false,
+    //   }
+    // }
+	// });
+    //
+	// var swiper = new Swiper(".jk-blSwiper", {
+	// 	slidesPerView: 3,
+	// 	spaceBetween: 20,
+	// 	// grabCursor: true,
+	// 	loop: true,
+	// 	autoplay: {
+	// 		delay: 3500,
+	// 		disableOnInteraction: false,
+	// 		pauseOnMouseEnter: true,
+	// 	},
+	// 	navigation: {
+	// 		nextEl: ".jk-blSwiper-next",
+	// 		prevEl: ".jk-blSwiper-prev",
+	// 	},
+	// 	pagination: {
+	// 		el: ".swiper-pagination",
+	// 		clickable: true,
+    // },
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 1,
+    //     autoHeight: true,
+    //   },
+    //   769: {
+    //     slidesPerView: 2,
+    //     spaceBetween: 10,
+    //     autoHeight: false,
+    //   },
+    //   1024: {
+    //     slidesPerView: 3,
+    //     spaceBetween: 20,
+    //     autoHeight: false,
+    //   }
+    // }
+	// });
+    //
+	// var swiper = new Swiper(".videosSwiper", {
+	// 	centeredSlides: true,
+	// 	loop: true,
+	// 	pagination: {
+	// 		el: ".swiper-pagination",
+	// 		clickable: true,
+    // },
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 1,
+    //     spaceBetween: 10,
+    //   },
+    //   1025: {
+    //     slidesPerView: 3,
+    //     spaceBetween: 0,
+    //   }
+    // }
+	// });
+    //
+	// var swiper = new Swiper(".consultSwiper", {
+	// 	slidesPerView: 1,
+    // spaceBetween: 20,
+	// 	pagination: true,
+	// 	// loop: true,
+	// 	autoplay: {
+	// 		delay: 30000,
+	// 		disableOnInteraction: false,
+	// 		pauseOnMouseEnter: true,
+	// 	},
+	// 	navigation: {
+	// 		nextEl: ".consultSwiper-next",
+	// 		prevEl: ".consultSwiper-prev",
+    // },
+    // pagination: {
+    //   el: ".swiper-pagination",
+    //   clickable: true,
+    // },
+	// });
+    //
+	// var swiper = new Swiper(".partnersSwiper", {
+	// 	slidesPerView: 4,
+	// 	spaceBetween: 48,
+	// 	// grabCursor: true,
+	// 	loop: true,
+	// 	autoplay: {
+	// 		delay: 3500,
+	// 		disableOnInteraction: false,
+	// 		pauseOnMouseEnter: true,
+	// 	},
+	// 	pagination: {
+	// 		el: ".partnersSwiper-pagination",
+	// 		clickable: true,
+    // },
+    // navigation: {
+    //   nextEl: ".partnersSwiper-next",
+    //   prevEl: ".partnersSwiper-prev",
+    // },
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 2,
+    //     spaceBetween: 20,
+    //   },
+    //   400: {
+    //     slidesPerView: 3,
+    //     spaceBetween: 20,
+    //   },
+    //   768: {
+    //     slidesPerView: 4,
+    //     spaceBetween: 30,
+    //   },
+    //   1025: {
+    //     spaceBetween: 48,
+    //     autoplay: {
+    //       delay: 6000,
+    //     },
+    //   }
+    // }
+	// });
+    //
+	// var swiper = new Swiper(".advantSwiper", {
+	// 	slidesPerView: 1,
+	// 	spaceBetween: 20,
+	// 	// grabCursor: true,
+	// 	loop: true,
+	// 	navigation: {
+	// 		nextEl: ".advantSwiper-next",
+	// 		prevEl: ".advantSwiper-prev",
+	// 	},
+	// 	pagination: {
+	// 		el: ".advantSwiper-pagination",
+	// 		clickable: true,
+	// 	},
+	// });
+    //
+	// var swiperKp = new Swiper(".kpSecondSwiper", {
+	// 	spaceBetween: 16,
+	// 	slidesPerView: 4,
+	// 	freeMode: true,
+	// 	watchSlidesProgress: true,
+	// 	breakpoints: {
+	// 		320: {
+	// 			slidesPerView: 4,
+	// 		},
+	// 		576: {
+	// 			slidesPerView: 5,
+	// 		},
+	// 		768: {
+	// 			slidesPerView: 7,
+	// 		},
+	// 		1024: {
+	// 			slidesPerView: 11,
+	// 		}
+	// 	}
+	// });
+	// var swiper2 = new Swiper(".kpMainSwiper", {
+	// 	spaceBetween: 10,
+	// 	loop: true,
+	// 	navigation: {
+	// 		nextEl: ".swiper-button-next--fluid",
+	// 		prevEl: ".swiper-button-prev--fluid",
+	// 	},
+	// 	thumbs: {
+	// 		swiper: swiperKp,
+	// 	},
+	// });
+    //
+	// var swiperJk = new Swiper(".jkSecondSwiper", {
+	// 	spaceBetween: 16,
+	// 	slidesPerView: 4,
+	// 	freeMode: true,
+	// 	watchSlidesProgress: true,
+	// 	breakpoints: {
+	// 		320: {
+	// 			slidesPerView: 4,
+	// 		},
+	// 		576: {
+	// 			slidesPerView: 5,
+	// 		},
+	// 		768: {
+	// 			slidesPerView: 7,
+	// 		},
+	// 		1024: {
+	// 			slidesPerView: 11,
+	// 		}
+	// 	}
+	// });
+	// var swiper2 = new Swiper(".jkMainSwiper", {
+	// 	spaceBetween: 10,
+	// 	loop: true,
+	// 	navigation: {
+	// 		nextEl: ".swiper-button-next--fluid",
+	// 		prevEl: ".swiper-button-prev--fluid",
+	// 	},
+	// 	thumbs: {
+	// 		swiper: swiperJk,
+	// 	},
+	// });
+    //
+	// var swiperApart = new Swiper(".apartSecondSwiper", {
+	// 	spaceBetween: 16,
+	// 	freeMode: true,
+    // watchSlidesProgress: true,
+    // breakpoints: {
+    //   320: {
+    //     spaceBetween: 8,
+    //     slidesPerView: 5,
+    //   },
+    //   1025: {
+    //     spaceBetween: 16,
+    //     slidesPerView: 7,
+    //   },
+    // },
+	// });
+	// var swiper2 = new Swiper(".apartMainSwiper", {
+	// 	spaceBetween: 10,
+	// 	loop: true,
+	// 	navigation: {
+	// 		nextEl: ".swiper-button-next--fluid",
+	// 		prevEl: ".swiper-button-prev--fluid",
+	// 	},
+	// 	pagination: {
+	// 		el: ".swiper-pagination--fluid",
+	// 		clickable: true,
+	// 	},
+	// 	thumbs: {
+	// 		swiper: swiperApart,
+	// 	},
+	// });
+    //
+	// var swiperApartPlan = new Swiper(".apartPlanSecondSwiper", {
+	// 	spaceBetween: 16,
+	// 	freeMode: true,
+    // watchSlidesProgress: true,
+    // breakpoints: {
+    //   320: {
+    //     spaceBetween: 8,
+    //     slidesPerView: 5,
+    //   },
+    //   1025: {
+    //     spaceBetween: 16,
+    //     slidesPerView: 7,
+    //   },
+    // },
+	// });
+	// var swiper2 = new Swiper(".apartPlanMainSwiper", {
+	// 	spaceBetween: 10,
+	// 	loop: true,
+	// 	navigation: {
+	// 		nextEl: ".swiper-button-next--fluid",
+	// 		prevEl: ".swiper-button-prev--fluid",
+	// 	},
+	// 	pagination: {
+	// 		el: ".swiper-pagination--fluid",
+	// 		clickable: true,
+	// 	},
+	// 	thumbs: {
+	// 		swiper: swiperApartPlan,
+	// 	},
+	// });
+    //
+	// var swiper = new Swiper(".similarSwiper", {
+	// 	// grabCursor: true,
+	// 	loop: true,
+	// 	autoplay: {
+	// 		delay: 3500,
+	// 		disableOnInteraction: false,
+	// 		pauseOnMouseEnter: true,
+	// 	},
+	// 	pagination: {
+	// 		el: ".swiper-pagination",
+	// 		clickable: true,
+    // },
+    // breakpoints: {
+    //   320: {
+    //     spaceBetween: 10,
+    //     slidesPerView: 1,
+    //   },
+    //   576: {
+    //     spaceBetween: 14,
+    //     slidesPerView: 2,
+    //   },
+    //   1025: {
+    //     spaceBetween: 26,
+    //     slidesPerView: 3,
+    //   },
+    // },
+	// });
 
 });
 
 
-if ($('.gallerySwiper').length > 0) { //some-slider-wrap-in
-	let swiperInstances = [];
-	$(".gallerySwiper").each(function (index, element) { //some-slider-wrap-in
-		const $this = $(this);
-		$this.addClass("instance-" + index); //instance need to be unique (ex: some-slider)
-		$this.parent().find(".swiper-pagination--fluid").addClass("pagination-" + index);
-		$this.parent().find(".swiper-button-prev--fluid").addClass("prev-" + index); //prev must be unique (ex: some-slider-prev)
-		$this.parent().find(".swiper-button-next--fluid").addClass("next-" + index); //next must be unique (ex: some-slider-next)
-		swiperInstances[index] = new Swiper(".instance-" + index, { //instance need to be unique (ex: some-slider)
-			spaceBetween: 4,
-			navigation: {
-				prevEl: ".prev-" + index,  //prev must be unique (ex: some-slider-prev)
-				nextEl: ".next-" + index, //next must be unique (ex: some-slider-next)
-			},
-			pagination: {
-				el: '.pagination-' + index,
-				clickable: true
-			},
-		});
-	});
-
-	// Now you can call the update on a specific instance in the "swiperInstances" object
-	// e.g.
-	swiperInstances[3].update();
-	//or all of them
-	setTimeout(function () {
-		for (const slider of swiperInstances) {
-			slider.update();
-		}
-	}, 50);
-}
+// if ($('.gallerySwiper').length > 0) { //some-slider-wrap-in
+// 	let swiperInstances = [];
+// 	$(".gallerySwiper").each(function (index, element) { //some-slider-wrap-in
+// 		const $this = $(this);
+// 		$this.addClass("instance-" + index); //instance need to be unique (ex: some-slider)
+// 		$this.parent().find(".swiper-pagination--fluid").addClass("pagination-" + index);
+// 		$this.parent().find(".swiper-button-prev--fluid").addClass("prev-" + index); //prev must be unique (ex: some-slider-prev)
+// 		$this.parent().find(".swiper-button-next--fluid").addClass("next-" + index); //next must be unique (ex: some-slider-next)
+// 		swiperInstances[index] = new Swiper(".instance-" + index, { //instance need to be unique (ex: some-slider)
+// 			spaceBetween: 4,
+// 			navigation: {
+// 				prevEl: ".prev-" + index,  //prev must be unique (ex: some-slider-prev)
+// 				nextEl: ".next-" + index, //next must be unique (ex: some-slider-next)
+// 			},
+// 			pagination: {
+// 				el: '.pagination-' + index,
+// 				clickable: true
+// 			},
+// 		});
+// 	});
+//
+// 	// Now you can call the update on a specific instance in the "swiperInstances" object
+// 	// e.g.
+// 	swiperInstances[3].update();
+// 	//or all of them
+// 	setTimeout(function () {
+// 		for (const slider of swiperInstances) {
+// 			slider.update();
+// 		}
+// 	}, 50);
+// }

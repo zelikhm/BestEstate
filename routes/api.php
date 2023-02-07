@@ -21,3 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('manager')->group(function () {
    Route::post('/send', ['App\Http\Controllers\Manager\SendController', 'send']);
 });
+
+Route::prefix('favorite')->group(function () {
+   Route::post('/add', ['App\Http\Controllers\User\FavoriteController', 'add']);
+   Route::post('/delete', ['App\Http\Controllers\User\FavoriteController', 'delete']);
+});

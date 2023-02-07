@@ -10,7 +10,7 @@ use AdminNavigation;
 use App\Models\Builder\Flat\FlatModel;
 use App\Models\Builder\Flat\FrameModel;
 use App\Models\Builder\HouseModel;
-use App\Models\info\CityModel;
+use App\Models\Info\CityModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;

@@ -11,6 +11,9 @@ use AdminSection;
 use App\Models\Builder\Flat\FlatModel;
 use App\Models\Builder\Flat\FrameModel;
 use App\Models\Builder\HouseModel;
+use App\Models\Info\AreaModel;
+use App\Models\Info\CityModel;
+use App\Models\Jk\JkModel;
 use App\Models\Jk\SupportModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -109,6 +112,7 @@ class Jk extends Section implements Initializable
                 AdminFormElement::text('title', 'Название ЖК')->required(),
                 AdminFormElement::textarea('description', 'Описание ЖК')->required(),
                 AdminFormElement::text('slug', 'название в ссылку (only eng)')->required(),
+                AdminFormElement::date('sale_date', 'Окончание акции'),
             ]);
 
             $tabs[] = AdminDisplay::tab($form)->setLabel("Основная информация")
@@ -137,19 +141,9 @@ class Jk extends Section implements Initializable
                 $form2->setElements([
                     AdminFormElement::columns()
                         ->addColumn([
-                            AdminFormElement::select('city', 'Город', [
-                                0 => 'Москва',
-                                1 => 'Сочи',
-                            ]),
-
                             AdminFormElement::select('status', 'Статус', [
                                 0 => 'Сдан',
                                 1 => 'Не сдан',
-                            ]),
-
-                            AdminFormElement::select('class', 'Класс', [
-                                0 => 'Элитный',
-                                1 => 'Эконом',
                             ]),
 
                             AdminFormElement::number('floors', 'Кол-во этажей'),
@@ -157,12 +151,17 @@ class Jk extends Section implements Initializable
                             AdminFormElement::number('height', 'Высота потолков')->setStep(0.01),
 
                         ], 6)->addColumn([
-                            AdminFormElement::number('longitude', 'Долгота')->setStep(0.000001),
-                            AdminFormElement::number('latitude', 'Широта')->setStep(0.000001),
+
+                            AdminFormElement::select('class', 'Класс', [
+                                0 => 'Эконом',
+                                1 => 'Комфорт',
+                                2 => 'Элитный',
+
+                            ]),
 
                             AdminFormElement::select('variable', 'Вариация отделки', [
-                                0 => 'С ремонтом',
-                                1 => 'Без ремонта',
+                                0 => 'Без ремонта',
+                                1 => 'С ремонтом',
                             ]),
 
                             AdminFormElement::select('parking', 'Парковка', [
@@ -181,12 +180,56 @@ class Jk extends Section implements Initializable
                 $tabs[] = AdminDisplay::tab($form2)
                     ->setLabel("Дополнительная информация")
                     ->setIcon('<i class="fa fa-credit-card"></i>');
+
+                $form3 = AdminForm::form();
+
+                $model = JkModel::where('id', $id)->first();
+
+                if($id !== null && $model->city !== null) {
+                    $form3->setElements([
+                        AdminFormElement::select('city', 'Город')->setModelForOptions(CityModel::class)->setDisplay('city_name'),
+                        AdminFormElement::select('area', 'Район')->setOptions($this->getArea($model->city))->setDisplay('area_name'),
+                        AdminFormElement::number('longitude', 'Долгота')->setStep(0.000001),
+                        AdminFormElement::number('latitude', 'Широта')->setStep(0.000001),
+
+                    ]);
+                } else {
+                    $form3->setElements([
+                        AdminFormElement::select('city', 'Город')->setModelForOptions(CityModel::class)->setDisplay('city_name'),
+                        AdminFormElement::number('longitude', 'Долгота')->setStep(0.000001),
+                        AdminFormElement::number('latitude', 'Широта')->setStep(0.000001),
+
+                    ]);
+                }
+
+                $tabs[] = AdminDisplay::tab($form3)
+                    ->setLabel("Город и район")
+                    ->setIcon('<i class="fa fa-credit-card"></i>');
             }
             return $tabs;
 
 
         });
         return $display;
+    }
+
+    /**
+     * get area
+     * @param $id
+     * @return mixed
+     */
+
+    private function getArea($id) {
+        $areas = AreaModel::where('city_id', $id)->get();
+
+        $array = $areas->map(function ($item) {
+           return [
+               'id' => $item->id,
+               'value' => $item->area_name,
+           ];
+        })->pluck('value', 'id')->toArray();
+
+        return $array;
     }
 
     /**

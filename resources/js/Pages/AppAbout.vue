@@ -1,7 +1,10 @@
 <script setup>
 
     import Header from '../Components/Component/Header.vue'
-    import Footer from  '../Components/Component/Footer.vue'
+    import Footer from '../Components/Component/Footer.vue'
+    import { Link } from '@inertiajs/vue3';
+    import RegistrationModal from "../Components/Component/Modal/Register.vue";
+    import Login from "../Components/Component/Modal/Login.vue";
 
 </script>
 
@@ -12,14 +15,18 @@
 
         <!-- header -->
 
-        <Header></Header>
+        <Header @openLogin="show_login = true"></Header>
+        <RegistrationModal :status="show_reg" @close="show_reg = false"
+                           @openLogin="show_login = true, show_reg = false"></RegistrationModal>
+        <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
+
 
         <main class="page-about">
 
             <!-- breadcrumbs -->
             <div class="breadcrumbs">
                 <nav class="container">
-                    <a href="index.html">Главная</a>
+                    <Link :href="route('main')">Главная</Link>
                     <span>О компании</span>
                 </nav>
             </div>
@@ -133,6 +140,7 @@
 
 <script>
     import Form1 from "../Components/Component/Forms/Form1.vue";
+
     export default {
         props: ['page'],
         components: {
@@ -143,7 +151,12 @@
                 'page': this.page,
             }
         },
-
+        data() {
+            return {
+                show_login: false,
+                show_reg: false,
+            }
+        },
         name: "AppAbout",
     }
 </script>

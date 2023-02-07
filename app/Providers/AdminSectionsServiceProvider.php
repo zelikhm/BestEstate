@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Admin\Jk\Support;
-use App\Models\info\AreaModel;
-use App\Models\info\CityModel;
+use App\Models\Info\AreaModel;
+use App\Models\Info\CityModel;
+use App\Models\Info\ServiceItemModel;
+use App\Models\Info\ServiceModel;
 use App\Models\Jk\DescriptionItemModel;
 use App\Models\Jk\DescriptionModel;
 use App\Models\Jk\ImageModels;
@@ -37,6 +39,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
         //Info
         CityModel::class => 'App\Http\Controllers\Admin\Info\City',
         AreaModel::class => 'App\Http\Controllers\Admin\Info\Area',
+        ServiceModel::class => 'App\Http\Controllers\Admin\Info\Service',
+        ServiceItemModel::class => 'App\Http\Controllers\Admin\Info\ServiceDescription',
     ];
 
     /**

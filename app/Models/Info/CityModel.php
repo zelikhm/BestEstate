@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\info;
+namespace App\Models\Info;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,5 +12,10 @@ class CityModel extends Model
     protected $fillable = [
         'city_name',
         'region_name',
+    ];
+
+    protected $hidden = [
+      'created_at',
+      'updated_at',
     ];
 }

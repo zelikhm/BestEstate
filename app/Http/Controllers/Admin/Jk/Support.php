@@ -97,6 +97,14 @@ class Support extends Section implements Initializable
 
         $form = AdminForm::elements([
 
+            AdminFormElement::image('image', 'Изображение')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
+                return '/storage/support';
+            })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
+
+                $file->move(public_path('/storage/support'), $filename);
+
+                return ['path' => '/storage/support/' . $filename, 'value' => '/storage/support/' . $filename];
+            }),
 
             AdminFormElement::text('name', 'Название')->required(),
             AdminFormElement::text('status', 'Должнось')->required(),

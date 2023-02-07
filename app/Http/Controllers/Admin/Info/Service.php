@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Jk;
+namespace App\Http\Controllers\Admin\Info;
 
 use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
-use AdminSection;
 use App\Models\Builder\Flat\FlatModel;
 use App\Models\Builder\Flat\FrameModel;
 use App\Models\Builder\HouseModel;
-use App\Models\Jk\JkModel;
-use App\Models\Jk\SupportModel;
+use App\Models\Info\CityModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -22,17 +20,16 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\Save;
 use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Form\Buttons\Delete;
-use SleepingOwl\Admin\Form\FormElements;
 use SleepingOwl\Admin\Section;
 
 /**
  * Class Administrators
  *
- * // * @property \App\Models\Jk\DescriptionModel $model
+ * // * @property \App\Models\Info\ServiceModel $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Description extends Section implements Initializable
+class Service extends Section implements Initializable
 {
     /**
      * @var bool
@@ -42,7 +39,7 @@ class Description extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Описание';
+    protected $title = 'Услуги компании';
 
     /**
      * @var string
@@ -54,10 +51,10 @@ class Description extends Section implements Initializable
      */
     public function initialize()
     {
-        $page = AdminNavigation::getPages()->findById('houses');
+        $page = AdminNavigation::getPages()->findById('settings');
 
         $page->addPage(
-            $this->makePage(300)->setIcon('fas fa-user-lock')
+            $this->makePage(400)->setIcon('fas fa-user-lock')
         );
     }
 
@@ -72,20 +69,18 @@ class Description extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::relatedLink('jk.title', 'Название ЖК')->setWidth('350px'),
-
             AdminColumn::text('title', 'Заголовок')->setWidth('350px'),
         ];
 
         $display = AdminDisplay::datatablesAsync()
             ->paginate(40)
             ->setColumns($columns)
-//            ->setDisplaySearch(true, 'поиск')
+            ->setDisplaySearch(true, 'поиск')
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
             $query->OrderBy('id', 'asc');
-        })->setNewEntryButtonText('Добавить блок описания');
+        })->setNewEntryButtonText('Добавить услугу');
 
         return $display;
     }
@@ -97,25 +92,15 @@ class Description extends Section implements Initializable
      */
     public function onEdit($id = null, array $payload = [])
     {
-
         $card = AdminForm::card();
 
         $form = AdminForm::elements([
-            AdminFormElement::select('jk_id', 'ЖК')->setModelForOptions(JkModel::class),
-
-            AdminFormElement::text('title', 'Заголовок')->required(),
-
-            AdminFormElement::select('category', 'Категория описания', [
-                0 => 'Список с иконками',
-                1 => 'Список цветных блоков',
-                2 => 'Фотография с тайтлом',
-                3 => 'Слайдер',
-            ])->required(),
+            AdminFormElement::text('title', 'Заголовок'),
         ]);
 
         $card->getButtons()->setButtons([
-            'save_and_continue' => (new Save())->setText('Применить'),
-//            'save_and_close' => (new SaveAndClose())->setText('Сохранить и закрыть'),
+//            'save_and_continue' => (new Save())->setText('Применить'),
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить и закрыть'),
             'delete' => (new Delete()),
         ]);
 
@@ -166,4 +151,3 @@ class Description extends Section implements Initializable
         // remove if unused
     }
 }
-
