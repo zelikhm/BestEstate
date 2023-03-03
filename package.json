@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@fawmi/vue-google-maps": "^0.9.79",
+        "@inertiajs/progress": "^0.2.7",
         "google-maps-api-loader": "^1.1.1",
         "swiper": "^8.4.7",
         "vue-awesome-swiper": "^5.0.1",

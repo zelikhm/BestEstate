@@ -12,6 +12,7 @@ use App\Models\Jk\DescriptionModel;
 use App\Models\Jk\ImageModels;
 use App\Models\Jk\JkModel;
 use App\Models\Jk\SupportModel;
+use App\Models\JkFlatModel;
 use App\Models\NewModel;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 use AdminNavigation;
@@ -32,6 +33,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\BuilderModel::class => 'App\Http\Controllers\Admin\Jk\BuilderModel',
         //JK
         JkModel::class => 'App\Http\Controllers\Admin\Jk\Jk',
+        JkFlatModel::class => 'App\Http\Controllers\Admin\Jk\JkFlatModel',
         ImageModels::class => 'App\Http\Controllers\Admin\Jk\Image',
         DescriptionModel::class => 'App\Http\Controllers\Admin\Jk\Description',
         DescriptionItemModel::class => 'App\Http\Controllers\Admin\Jk\DescriptionItem',

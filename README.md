@@ -7,3 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 ## Hello world
+
+## Типовые
+
+Типы жилья:
+- 0 - Вторичная
+- 1 - Новостройка
+- 2 - Пентхаус
+
+Типы ремонта: 
+- 0 - Без ремонта
+- 1 - С ремонтом
+- 2 - Дизайнерский

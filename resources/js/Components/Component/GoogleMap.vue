@@ -1,12 +1,19 @@
 <template>
     <div>
-        <div class="google-map" ref="googleMap"></div>
-        <template v-if="Boolean(this.google) && Boolean(this.map)">
-            <slot
-                :google="google"
-                :map="map"
-            />
-        </template>
+        <div class="google-map" ref="googleMap">
+            <GMapMap :center="center"
+                     :options="options"
+                     :zoom="15" map-type-id="terrain" style="width: 100%; height: 450px">
+                <GMapMarker
+                    :key="index"
+                    v-for="(m, index) in markers"
+                    :position="m.position"
+                    :clickable="true"
+                    :draggable="true"
+                />
+            </GMapMap>
+        </div>
+
     </div>
 </template>
 
@@ -21,28 +28,23 @@
 
         data() {
             return {
-                google: null,
-                map: null,
-                key: 'AIzaSyBo8Ws9ujugchMacJ3BNAvGWTn6b1cmtJ4',
+                center: {lat: 55.755937291365655, lng: 37.579058210228595},
+
+                markers: [
+                    {
+                        position: {
+                            lat: 55.755937291365655, lng: 37.579058210228595
+                        },
+                    }
+                ]
             }
         },
 
         async mounted() {
-            let googleMapApi = await GoogleMapsApiLoader({
-                apiKey: this.apiKey
-            })
-            this.google = googleMapApi
-            this.initializeMap()
+
         },
 
-        methods: {
-            initializeMap() {
-                const mapContainer = this.$refs.googleMap
-                this.map = new this.google.maps.Map(
-                    mapContainer, this.mapConfig
-                )
-            }
-        }
+        methods: {}
     }
 </script>
 

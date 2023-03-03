@@ -82,7 +82,7 @@
             </ul>
             <ul class="footer-info">
                 <li class="footer-info__group">
-                    <img src="img/footer-logo.svg" class="footer-logo" alt="">
+                    <img src="/img/footer-logo.svg" class="footer-logo" alt="">
                     <div class="footer-info__copy">
                         <span>© 2022 kf.expert Все права защищены</span>
                         <span>Официальный сайт Knight Frank Russia</span>
@@ -98,26 +98,26 @@
                     <h4 class="footer-info__title">Наши социальные сети:</h4>
                     <ul class="footer-social">
                         <li>
-                            <img src="img/footer/yappimedia.svg" alt="">
+                            <img src="/img/footer/yappimedia.svg" alt="">
                             <a href="#">Yappi.media</a>
                         </li>
                         <li>
-                            <img src="img/footer/telegram.svg" alt="">
+                            <img src="/img/footer/telegram.svg" alt="">
                             <a href="#">Telegram</a>
                         </li>
                         <li>
-                            <img src="img/footer/youtube.svg" alt="">
+                            <img src="/img/footer/youtube.svg" alt="">
                             <a href="#">Youtube</a>
                         </li>
                         <li>
-                            <img src="img/footer/vk.svg" alt="">
+                            <img src="/img/footer/vk.svg" alt="">
                             <a href="#">ВКонтакте</a>
                         </li>
                     </ul>
                 </li>
                 <li class="footer-info__group">
                     <h4 class="footer-info__title">Сделано в</h4>
-                    <a href="#" class="webmolot-logo"><img src="img/footer/webmolot.jpg" alt=""></a>
+                    <a href="#" class="webmolot-logo"><img src="/img/footer/webmolot.jpg" alt=""></a>
                 </li>
             </ul>
             <div class="footer-copy">

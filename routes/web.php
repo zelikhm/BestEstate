@@ -19,6 +19,7 @@ use Inertia\Inertia;
 Route::get('/', ['App\Http\Controllers\Page\MainController', 'main'])->name('main');
 Route::get('/contact', ['App\Http\Controllers\Page\MainController', 'contact'])->name('contact');
 Route::get('/jk/{house}', ['App\Http\Controllers\Page\JkController', 'jk'])->name('jk');
+Route::get('/jk/{house}/{flat}', ['App\Http\Controllers\Page\JkController', 'flat'])->name('jk');
 Route::get('/flat', ['App\Http\Controllers\Page\MainController', 'flat'])->name('flat');
 Route::get('/catalog', ['App\Http\Controllers\Page\MainController', 'catalog'])->name('catalog');
 Route::get('/about', ['App\Http\Controllers\Page\MainController', 'about'])->name('about');

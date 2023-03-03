@@ -9,7 +9,7 @@
     <header class="header">
         <div class="container header__container">
             <a :href="route('main')" class="logo">
-                <img src="img/logo-black.png" alt="">
+                <img src="/img/logo-black.png" alt="">
             </a>
             <nav class="nav" id="nav-menu">
                 <ul class="nav__list">
@@ -48,11 +48,11 @@
                     <i class="icomoon icon-favourites"></i>
                 </a>
                 <div class="lang">
-                    <div class="lang-btn"><img src="img/lang/ru.svg" alt="Русский"></div>
+                    <div class="lang-btn"><img src="/img/lang/ru.svg" alt="Русский"></div>
                     <div class="lang-content">
-                        <div class="lang-btn"><img src="img/lang/ru.svg" alt="Русский"></div>
-                        <div class="lang-btn"><img src="img/lang/en.svg" alt="Английский"></div>
-                        <div class="lang-btn"><img src="img/lang/cn.svg" alt="Китайский"></div>
+                        <div class="lang-btn"><img src="/img/lang/ru.svg" alt="Русский"></div>
+                        <div class="lang-btn"><img src="/img/lang/en.svg" alt="Английский"></div>
+                        <div class="lang-btn"><img src="/img/lang/cn.svg" alt="Китайский"></div>
                     </div>
                 </div>
                 <a href="#" class="btn-icon" id="search-btn" v-on:click="showSearch === true ? showSearch = false : showSearch = true">

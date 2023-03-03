@@ -22,4 +22,16 @@ class JkController extends Controller
         ]);
 
     }
+
+    public function flat($house, $flat) {
+        $jk = $this->formationHouseInfo($house);
+
+        $kv = $this->getFlatInfo($jk, $flat);
+
+        return Inertia::render('AppFlat', [
+            'flat' => $kv,
+            'jk' => $jk,
+            'page' => 3,
+        ]);
+    }
 }

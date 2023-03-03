@@ -17,9 +17,8 @@
                     </label>
                     <div class="col">
                         <button class="btn btn-xl" v-on:click="sendForm()">Оставить заявку</button>
-                        <input type="checkbox" id="" v-on:click="request.check === false ? request.check = true : request.check = false">
-                        <label for="" class="accept checkbox">
-                            <input type="checkbox" id="" v-on:click="request.check === false ? request.check = true : request.check = false">
+                        <label for="" class="accept checkbox" v-on:click="request.check === false ? request.check = true : request.check = false">
+                            <input type="checkbox" :checked="request.check">
                             <span v-bind:class="{ 'ErrorCheck': error.check }">Даю согласие на обработку <a href="#">персональных данных</a></span>
                         </label>
                     </div>
@@ -68,6 +67,9 @@
                         phone: this.request.phone,
                     }).then(res => {
                         this.success = true;
+
+                        this.request.check = false;
+                        this.request.phone = '';
                     })
                 }
             }

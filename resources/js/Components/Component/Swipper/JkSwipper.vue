@@ -1,26 +1,27 @@
 <script setup>
 
-    import { Link } from '@inertiajs/vue3';
+    import {Link} from '@inertiajs/vue3';
 
 </script>
 
 <template>
-<!--    <div class="swiper-container">-->
-            <swiper
-                class="swipper"
-                :modules="modules"
-                :space-between="30"
-                :slides-per-view="4"
-                :slides-per-group="4"
-                :autoplay="{ delay: 3500, disableOnInteraction: false }"
-                :loop="true"
-                :loop-fill-group-with-blank="true"
-                :navigation="true"
-                :pagination="{ clickable: true }"
-            >
 
-                <swiper-slide v-for="jk in sale_jk">
-<!--                    <div class="swiper-wrapper">-->
+        <div class="swiper specialSwiper">
+            <div class="swiper-wrapper">
+                <swiper
+                    class="swipper"
+                    :modules="modules"
+                    :space-between="30"
+                    :slides-per-view="4"
+                    :slides-per-group="4"
+                    :autoplay="{ delay: 3500, disableOnInteraction: false }"
+                    :loop="true"
+                    :loop-fill-group-with-blank="true"
+                    :navigation="true"
+                    :pagination="{ clickable: true }"
+                >
+
+                    <swiper-slide v-for="jk in sale_jk">
                         <div class="swiper-slide">
                             <div class="special-slide">
                                 <div class="special-slide-img">
@@ -49,11 +50,10 @@
                                 </div>
                             </div>
                         </div>
-<!--                    </div>-->
-                </swiper-slide>
-            </swiper>
-<!--        </div>-->
-
+                    </swiper-slide>
+                </swiper>
+            </div>
+        </div>
 </template>
 
 <script>
@@ -61,7 +61,7 @@
     import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
 
     export default {
-        inject:['sale_jk'],
+        inject: ['sale_jk'],
         components: {
             Swiper,
             SwiperSlide

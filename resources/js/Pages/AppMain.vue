@@ -161,13 +161,20 @@
 
             </section>
 
-            <div class="swiper-container">
-                <div class="swiper specialSwiper">
-                    <div class="swiper-wrapper">
-                        <JkSwipper></JkSwipper>
+            <section class="special">
+                <div class="container--fluid">
+                    <div class="heading-row">
+                        <h2 class="heading-2">Спецпредложения</h2>
+                    </div>
+                    <div class="swiper-container">
+<!--                        <div class="swiper specialSwiper">-->
+<!--                            <div class="swiper-wrapper">-->
+                                <JkSwipper></JkSwipper>
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
-            </div>
+            </section>
 
             <section class="services-bl">
                 <div class="container--fluid">

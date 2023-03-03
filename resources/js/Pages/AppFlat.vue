@@ -32,11 +32,11 @@
                     <div class="apart-heading">
                         <div class="heading">
                             <h1 class="heading-3">3-к, Логинова, 19</h1>
-                            <p class="text-3">Архангельская область, Архангельск, Октябрьский</p>
+                            <p class="text-3">{{ jk.address }}</p>
                         </div>
                         <div class="apart-heading-nav">
                             <a href="#" class="btn-ic"><i class="icomoon icon-favourites"></i></a>
-                            <a href="img/logo-black.png" download="filename" class="btn-ic"><i
+                            <a href="/img/logo-black.png" download="filename" class="btn-ic"><i
                                 class="icomoon icon-download"></i></a>
                         </div>
                     </div>
@@ -44,78 +44,78 @@
                         <div class="apart-left">
                             <div class="apart-graphics">
                                 <div class="btns-group">
-                                    <a href="#" class="btn-w active"><img src="img/icons/image.svg"
+                                    <a href="#" class="btn-w active"><img src="/img/icons/image.svg"
                                                                           alt=""><span>27 фото</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/plan.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/plan.svg"
                                                                    alt=""><span>Планировка</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/3d.png"
+                                    <a href="#" class="btn-w"><img src="/img/icons/3d.png"
                                                                    alt=""><span>3D-просмотр</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/location.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/location.svg"
                                                                    alt=""><span>На карте</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/video.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/video.svg"
                                                                    alt=""><span>Видео</span></a>
                                 </div>
                                 <div class="apart-graphics-content">
                                     <div class="swiper apartMainSwiper">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-1.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-2.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-1.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-2.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-1.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-2.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-1.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-2.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-1.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-2.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-1.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="img/apartament/apart-img-2.jpg" alt="">
+                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
+                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -125,29 +125,29 @@
                                     </div>
                                     <div thumbsSlider="" class="swiper apartSecondSwiper">
                                         <div class="swiper-wrapper">
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-2.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-2.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-2.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-2.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-2.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
                                             </div>
-                                            <div class="swiper-slide"><img src="img/apartament/apart-img-2.jpg" alt="">
+                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -155,26 +155,26 @@
                             </div>
                             <div class="apart-graphics">
                                 <div class="btns-group">
-                                    <a href="#" class="btn-w"><img src="img/icons/image.svg" alt=""><span>27 фото</span></a>
-                                    <a href="#" class="btn-w active"><img src="img/icons/plan.svg" alt=""><span>Планировка</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/3d.png"
+                                    <a href="#" class="btn-w"><img src="/img/icons/image.svg" alt=""><span>27 фото</span></a>
+                                    <a href="#" class="btn-w active"><img src="/img/icons/plan.svg" alt=""><span>Планировка</span></a>
+                                    <a href="#" class="btn-w"><img src="/img/icons/3d.png"
                                                                    alt=""><span>3D-просмотр</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/location.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/location.svg"
                                                                    alt=""><span>На карте</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/video.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/video.svg"
                                                                    alt=""><span>Видео</span></a>
                                 </div>
                                 <div class="apart-graphics-content">
                                     <div class="swiper apartPlanMainSwiper">
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/plan-1.jpg" data-fancybox="planApart">
-                                                    <img src="img/apartament/plan-1.jpg" alt="">
+                                                <a href="/img/apartament/plan-1.jpg" data-fancybox="planApart">
+                                                    <img src="/img/apartament/plan-1.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="swiper-slide">
-                                                <a href="img/apartament/plan-1.jpg" data-fancybox="planApart">
-                                                    <img src="img/apartament/plan-1.jpg" alt="">
+                                                <a href="/img/apartament/plan-1.jpg" data-fancybox="planApart">
+                                                    <img src="/img/apartament/plan-1.jpg" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -184,22 +184,22 @@
                                     </div>
                                     <div thumbsSlider="" class="swiper apartPlanSecondSwiper">
                                         <div class="swiper-wrapper">
-                                            <div class="swiper-slide"><img src="img/apartament/plan-1.jpg" alt=""></div>
-                                            <div class="swiper-slide"><img src="img/apartament/plan-1.jpg" alt=""></div>
+                                            <div class="swiper-slide"><img src="/img/apartament/plan-1.jpg" alt=""></div>
+                                            <div class="swiper-slide"><img src="/img/apartament/plan-1.jpg" alt=""></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="apart-graphics">
                                 <div class="btns-group">
-                                    <a href="#" class="btn-w"><img src="img/icons/image.svg" alt=""><span>27 фото</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/plan.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/image.svg" alt=""><span>27 фото</span></a>
+                                    <a href="#" class="btn-w"><img src="/img/icons/plan.svg"
                                                                    alt=""><span>Планировка</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/3d.png"
+                                    <a href="#" class="btn-w"><img src="/img/icons/3d.png"
                                                                    alt=""><span>3D-просмотр</span></a>
-                                    <a href="#" class="btn-w"><img src="img/icons/location.svg"
+                                    <a href="#" class="btn-w"><img src="/img/icons/location.svg"
                                                                    alt=""><span>На карте</span></a>
-                                    <a href="#" class="btn-w active"><img src="img/icons/video.svg"
+                                    <a href="#" class="btn-w active"><img src="/img/icons/video.svg"
                                                                           alt=""><span>Видео</span></a>
                                 </div>
                                 <div class="apart-graphics-content">
@@ -213,70 +213,70 @@
                             <div class="apart-info-group">
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">общая</div>
-                                    <div class="apart-info-value">57,1 м²</div>
+                                    <div class="apart-info-value">{{ flat.square_main }} м²</div>
                                 </div>
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">жилая</div>
-                                    <div class="apart-info-value">33,1 м²</div>
+                                    <div class="apart-info-value">{{ flat.square_life }} м²</div>
                                 </div>
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">кухня</div>
-                                    <div class="apart-info-value">10,3 м²</div>
+                                    <div class="apart-info-value">{{ flat.square_kitchen }} м²</div>
                                 </div>
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">из 12</div>
-                                    <div class="apart-info-value">6 этаж</div>
+                                    <div class="apart-info-value">{{ flat.float }} этаж</div>
                                 </div>
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">потолки</div>
-                                    <div class="apart-info-value">2,8 м</div>
+                                    <div class="apart-info-value">{{ flat.height }} м</div>
                                 </div>
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">год постройки</div>
-                                    <div class="apart-info-value">2022 год</div>
+                                    <div class="apart-info-value">{{ flat.date_building }} год</div>
                                 </div>
                             </div>
                             <div class="apart-right">
                                 <div class="apart-card">
                                     <div class="price-dropdown">
                                         <div class="price">
-                                            <img src="img/apartament/wallet.svg" alt="">
+                                            <img src="/img/apartament/wallet.svg" alt="">
                                             <span>19 800 000</span>
                                             <div class="price-arrow">₽</div>
                                         </div>
                                         <ul class="price-dropdown-content">
-                                            <li><img src="img/icons/dollar.svg" alt=""><span>209 800 000</span></li>
-                                            <li><img src="img/icons/ruble.svg" alt=""><span>100 800 000 000</span></li>
-                                            <li><img src="img/icons/bitcoin.svg" alt=""><span>200.210</span></li>
-                                            <li><img src="img/icons/ethereum.svg" alt=""><span>400.210</span></li>
-                                            <li><img src="img/icons/yen.svg" alt=""><span>300 000 000</span></li>
+                                            <li><img src="/img/icons/dollar.svg" alt=""><span>209 800 000</span></li>
+                                            <li><img src="/img/icons/ruble.svg" alt=""><span>100 800 000 000</span></li>
+                                            <li><img src="/img/icons/bitcoin.svg" alt=""><span>200.210</span></li>
+                                            <li><img src="/img/icons/ethereum.svg" alt=""><span>400.210</span></li>
+                                            <li><img src="/img/icons/yen.svg" alt=""><span>300 000 000</span></li>
                                         </ul>
                                     </div>
-                                    <div class="objects-square"><img src="img/icons/square.png" alt="">360 161 ₽/м2
+                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">360 161 ₽/м2
                                     </div>
                                     <div class="apart-second">
-                                        <div class="cards-date">Добавлено: 15.03.22</div>
-                                        <div class="cards-views">119 просмотров</div>
+                                        <div class="cards-date">Добавлено: {{ flat.created_at }}</div>
+                                        <div class="cards-views">{{ flat.view }} просмотров</div>
                                     </div>
                                     <div class="apart-btns">
-                                        <a href="#" class="btn btn-md"><img src="img/icons/bitcoin-white.svg"
+                                        <a href="#" class="btn btn-md"><img src="/img/icons/bitcoin-white.svg"
                                                                             alt=""><span>Купить</span></a>
                                         <a href="#" class="btn-second btn-md">Забронировать</a>
                                     </div>
                                 </div>
-                                <div class="expert">
+                                <div class="expert" v-if="flat.support">
                                     <div class="expert-info">
                                         <div class="expert-info-main">
-                                            <img src="img/kp/expert-img.jpg" alt="">
+                                            <img v-if="flat.support.image === null" src="/img/kp/expert-img.jpg" alt="">
+                                            <img v-if="flat.support.image !== null" :src="flat.support.image" alt="">
                                             <div class="expert-info-content">
                                                 <span>об этом объекте все знает:</span>
-                                                <h4>Юрий Утилин</h4>
+                                                <h4>{{ flat.support.name }}</h4>
                                             </div>
                                         </div>
-                                        <div class="expert-descr">Эксперт в агентстве недвижимости</div>
+                                        <div class="expert-descr">{{ flat.support.status }}</div>
                                         <a href="tel:79005005640" class="phone"><i
-                                            class="icomoon icon-calling-bold"></i><span>+7 (900)
-                  500–56–40</span></a>
+                                            class="icomoon icon-calling-bold"></i><span>{{ flat.support.phone }}</span></a>
                                     </div>
                                     <div class="form-title">Или оставьте ваш номер и я вам перезвоню:</div>
                                     <form action="#" class="form expert-form">
@@ -298,33 +298,8 @@
                                 <div class="info-heading">
                                     <h3 class="heading-3">Описание объекта:</h3>
                                 </div>
-                                <div class="readmore js-read-more" data-rm-words="65">
-                                    <p>Лот: 9216. В продаже двухуровневый пентхаус с отделкой в ЖК "Онегин" на
-                                        Якиманке.</p>
-                                    <p>Планировка:</p>
-                                    <p>На первом уровне располагается просторная кухня-гостиная, 2 спальни с санузлом,
-                                        гостевой санузел. Есть терраса с
-                                        панорамным видом на центр города.</p>
-                                    <p>На втором уровне располагается основная спальня со своим санузлом, гардеробной и
-                                        террасой.</p>
-                                    <p>Выполнена отделка в современном стиле, пентхаус меблирован и оснащен качественной
-                                        бытовой техникой.</p>
-                                    <p>В стоимость включены 2 машино-места в подземном паркинге.</p>
-                                    <p>It is for these reasons that I regard the decision last year to shift our efforts
-                                        in space from low to high gear
-                                        as
-                                        among the most important decisions that will be made during my incumbency in the
-                                        office of the Presidency.</p>
-                                    <p>In the last 24 hours we have seen facilities now being created for the greatest
-                                        and most complex exploration in
-                                        man's history. </p>
-                                    <p>Because that goal will serve to organize and measure the best of our energies and
-                                        skills, because that challenge
-                                        is
-                                        one that we are willing to accept, one we are unwilling to postpone, and one
-                                        which we intend to win, and the
-                                        others,
-                                        too.</p>
+                                <div class="readmore js-read-more" data-rm-words="65" v-html="flat.description">
+
                                 </div>
                             </div>
                             <div class="apart-general">
@@ -333,29 +308,29 @@
                                 </div>
                                 <ul class="apart-general-list">
                                     <li class="apart-general-item">
-                                        <div class="apart-general-title">Тип жилья</div>
+                                        <div class="apart-general-title" v-if="flat.type">Тип жилья</div>
                                         <hr>
-                                        <div class="apart-general-value">Вторичка Пентхаус</div>
+                                        <div class="apart-general-value">{{ flat.type }}</div>
                                     </li>
                                     <li class="apart-general-item">
                                         <div class="apart-general-title">Высота потолков</div>
                                         <hr>
-                                        <div class="apart-general-value">3,2 м</div>
+                                        <div class="apart-general-value">{{ flat.height }} м</div>
                                     </li>
-                                    <li class="apart-general-item">
+                                    <li class="apart-general-item" v-if="flat.bathroom !== 0">
                                         <div class="apart-general-title">Санузел</div>
                                         <hr>
-                                        <div class="apart-general-value">3 совмещенных</div>
+                                        <div class="apart-general-value">{{ flat.bathroom }} совмещенных</div>
                                     </li>
-                                    <li class="apart-general-item">
+                                    <li class="apart-general-item" v-if="flat.balcon !== 0">
                                         <div class="apart-general-title">Балкон/лоджия</div>
                                         <hr>
-                                        <div class="apart-general-value">1 балкон</div>
+                                        <div class="apart-general-value">{{ flat.balcon }} балкон</div>
                                     </li>
-                                    <li class="apart-general-item">
-                                        <div class="apart-general-title">Ремонт</div>
+                                    <li class="apart-general-item" v-if="flat.repair">
+                                        <div class="apart-general-title">Тип ремонта</div>
                                         <hr>
-                                        <div class="apart-general-value">Дизайнерский</div>
+                                        <div class="apart-general-value">{{ flat.repair }}</div>
                                     </li>
                                     <li class="apart-general-item">
                                         <div class="apart-general-title">Вид из окон</div>
@@ -405,7 +380,7 @@
                                 <div class="swiper-slide">
                                     <a href="#" class="similar-slide">
                                         <div class="similar-slide-img">
-                                            <img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <img src="/img/apartament/apart-img-1.jpg" alt="">
                                         </div>
                                         <div class="similar-slide-content">
                                             <div class="similar-price">
@@ -415,10 +390,10 @@
                                             </div>
                                             <div class="heading-3">57,1 м², 2-комнатная квартира</div>
                                             <div class="specifications">
-                                                <div class="specifications-item"><img src="img/similar/rooms.png"
+                                                <div class="specifications-item"><img src="/img/similar/rooms.png"
                                                                                       alt=""><span>2 комнаты</span>
                                                 </div>
-                                                <div class="specifications-item"><img src="img/similar/square.png"
+                                                <div class="specifications-item"><img src="/img/similar/square.png"
                                                                                       alt=""><span>54 м²</span></div>
                                             </div>
                                             <p class="text-2">Ленинградский проспект, 37</p>
@@ -428,7 +403,7 @@
                                 <div class="swiper-slide">
                                     <a href="#" class="similar-slide">
                                         <div class="similar-slide-img">
-                                            <img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <img src="/img/apartament/apart-img-1.jpg" alt="">
                                         </div>
                                         <div class="similar-slide-content">
                                             <div class="similar-price">
@@ -438,10 +413,10 @@
                                             </div>
                                             <div class="heading-3">57,1 м², 2-комнатная квартира</div>
                                             <div class="specifications">
-                                                <div class="specifications-item"><img src="img/similar/rooms.png"
+                                                <div class="specifications-item"><img src="/img/similar/rooms.png"
                                                                                       alt=""><span>2 комнаты</span>
                                                 </div>
-                                                <div class="specifications-item"><img src="img/similar/square.png"
+                                                <div class="specifications-item"><img src="/img/similar/square.png"
                                                                                       alt=""><span>54 м²</span></div>
                                             </div>
                                             <p class="text-2">Ленинградский проспект, 37</p>
@@ -451,7 +426,7 @@
                                 <div class="swiper-slide">
                                     <a href="#" class="similar-slide">
                                         <div class="similar-slide-img">
-                                            <img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <img src="/img/apartament/apart-img-1.jpg" alt="">
                                         </div>
                                         <div class="similar-slide-content">
                                             <div class="similar-price">
@@ -461,10 +436,10 @@
                                             </div>
                                             <div class="heading-3">57,1 м², 2-комнатная квартира</div>
                                             <div class="specifications">
-                                                <div class="specifications-item"><img src="img/similar/rooms.png"
+                                                <div class="specifications-item"><img src="/img/similar/rooms.png"
                                                                                       alt=""><span>2 комнаты</span>
                                                 </div>
-                                                <div class="specifications-item"><img src="img/similar/square.png"
+                                                <div class="specifications-item"><img src="/img/similar/square.png"
                                                                                       alt=""><span>54 м²</span></div>
                                             </div>
                                             <p class="text-2">Ленинградский проспект, 37</p>
@@ -474,7 +449,7 @@
                                 <div class="swiper-slide">
                                     <a href="#" class="similar-slide">
                                         <div class="similar-slide-img">
-                                            <img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <img src="/img/apartament/apart-img-1.jpg" alt="">
                                         </div>
                                         <div class="similar-slide-content">
                                             <div class="similar-price">
@@ -484,10 +459,10 @@
                                             </div>
                                             <div class="heading-3">57,1 м², 2-комнатная квартира</div>
                                             <div class="specifications">
-                                                <div class="specifications-item"><img src="img/similar/rooms.png"
+                                                <div class="specifications-item"><img src="/img/similar/rooms.png"
                                                                                       alt=""><span>2 комнаты</span>
                                                 </div>
-                                                <div class="specifications-item"><img src="img/similar/square.png"
+                                                <div class="specifications-item"><img src="/img/similar/square.png"
                                                                                       alt=""><span>54 м²</span></div>
                                             </div>
                                             <p class="text-2">Ленинградский проспект, 37</p>
@@ -497,7 +472,7 @@
                                 <div class="swiper-slide">
                                     <a href="#" class="similar-slide">
                                         <div class="similar-slide-img">
-                                            <img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <img src="/img/apartament/apart-img-1.jpg" alt="">
                                         </div>
                                         <div class="similar-slide-content">
                                             <div class="similar-price">
@@ -507,10 +482,10 @@
                                             </div>
                                             <div class="heading-3">57,1 м², 2-комнатная квартира</div>
                                             <div class="specifications">
-                                                <div class="specifications-item"><img src="img/similar/rooms.png"
+                                                <div class="specifications-item"><img src="/img/similar/rooms.png"
                                                                                       alt=""><span>2 комнаты</span>
                                                 </div>
-                                                <div class="specifications-item"><img src="img/similar/square.png"
+                                                <div class="specifications-item"><img src="/img/similar/square.png"
                                                                                       alt=""><span>54 м²</span></div>
                                             </div>
                                             <p class="text-2">Ленинградский проспект, 37</p>
@@ -520,7 +495,7 @@
                                 <div class="swiper-slide">
                                     <a href="#" class="similar-slide">
                                         <div class="similar-slide-img">
-                                            <img src="img/apartament/apart-img-1.jpg" alt="">
+                                            <img src="/img/apartament/apart-img-1.jpg" alt="">
                                         </div>
                                         <div class="similar-slide-content">
                                             <div class="similar-price">
@@ -530,10 +505,10 @@
                                             </div>
                                             <div class="heading-3">57,1 м², 2-комнатная квартира</div>
                                             <div class="specifications">
-                                                <div class="specifications-item"><img src="img/similar/rooms.png"
+                                                <div class="specifications-item"><img src="/img/similar/rooms.png"
                                                                                       alt=""><span>2 комнаты</span>
                                                 </div>
-                                                <div class="specifications-item"><img src="img/similar/square.png"
+                                                <div class="specifications-item"><img src="/img/similar/square.png"
                                                                                       alt=""><span>54 м²</span></div>
                                             </div>
                                             <p class="text-2">Ленинградский проспект, 37</p>
@@ -572,7 +547,7 @@
         <div class="state" data-state="login">
             <div class="state-box">
                 <div class="state-heading">
-                    <img src="img/modal-logo.svg" alt="">
+                    <img src="/img/modal-logo.svg" alt="">
                     <div class="icomoon icon-close"></div>
                 </div>
                 <div class="heading-3">Авторизация</div>
@@ -598,11 +573,11 @@
                     <div class="form-other-title">Войти в аккаунт через:</div>
                     <div class="form-other-btns">
                         <a href="#" class="form-other-btn">
-                            <img src="img/modal/google.svg" alt="">
+                            <img src="/img/modal/google.svg" alt="">
                             Google
                         </a>
                         <a href="#" class="form-other-btn">
-                            <img src="img/modal/vk.svg" alt="">
+                            <img src="/img/modal/vk.svg" alt="">
                             Вконтакте
                         </a>
                     </div>
@@ -615,7 +590,7 @@
         <div class="state" data-state="sign-up">
             <div class="state-box">
                 <div class="state-heading">
-                    <img src="img/modal-logo.svg" alt="">
+                    <img src="/img/modal-logo.svg" alt="">
                     <div class="icomoon icon-close"></div>
                 </div>
                 <div class="heading-3">Регистрация аккаунта</div>
@@ -660,7 +635,7 @@
         <div class="state" data-state="connection">
             <div class="state-box">
                 <div class="state-heading">
-                    <img src="img/modal-logo.svg" alt="">
+                    <img src="/img/modal-logo.svg" alt="">
                     <div class="icomoon icon-close"></div>
                 </div>
                 <div class="heading-3">Позвоните мне</div>
@@ -705,7 +680,7 @@
 
 <script>
     export default {
-        props: ['page'],
+        props: ['page', 'jk', 'flat'],
         provide() {
             return {
                 'page': this.page,

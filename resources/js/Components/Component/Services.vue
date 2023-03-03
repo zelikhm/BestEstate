@@ -60,17 +60,15 @@
                 this.first_array = [];
                 this.second_array = [];
 
-                this.services[index].values.forEach((item, count) => {
-                    if (count < 2) {
-
-                        this.first_array.push(item);
-
-                    } else {
-
-                        this.second_array.push(item);
-
-                    }
-                })
+                if(this.services[index] !== undefined) {
+                    this.services[index].values.forEach((item, count) => {
+                        if (count < 2) {
+                            this.first_array.push(item);
+                        } else {
+                            this.second_array.push(item);
+                        }
+                    })
+                }
             }
         }
     }

@@ -11,7 +11,7 @@ trait MainInfo {
     protected function getSalesJk() {
 
         $houses = JkModel::where('sale_date', '>', Carbon::now())
-            ->with(['images', 'city', 'area'])->get();
+            ->with(['images', 'city_info', 'area_info'])->get();
 
         foreach ($houses as $house) {
             $house->image = $this->getPhoto($house->id);
