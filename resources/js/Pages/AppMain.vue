@@ -19,7 +19,8 @@
         <!-- header -->
 
         <Header @openLogin="show_login = true"></Header>
-        <RegistrationModal :status="show_reg" @close="show_reg = false" @openLogin="show_login = true, show_reg = false"></RegistrationModal>
+        <RegistrationModal :status="show_reg" @close="show_reg = false"
+                           @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
 
         <main class="page-home">
@@ -167,11 +168,7 @@
                         <h2 class="heading-2">Спецпредложения</h2>
                     </div>
                     <div class="swiper-container">
-<!--                        <div class="swiper specialSwiper">-->
-<!--                            <div class="swiper-wrapper">-->
-                                <JkSwipper></JkSwipper>
-<!--                            </div>-->
-<!--                        </div>-->
+                        <JkSwipper></JkSwipper>
                     </div>
                 </div>
             </section>
