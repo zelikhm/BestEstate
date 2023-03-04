@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Jk;
+namespace App\Http\Controllers\Admin\Flat;
 
 use AdminColumn;
 use AdminDisplay;
@@ -51,10 +51,10 @@ class JkFlatModel extends Section implements Initializable
      */
     public function initialize()
     {
-        $page = AdminNavigation::getPages()->findById('houses');
+        $page = AdminNavigation::getPages()->findById('flats');
 
         $page->addPage(
-            $this->makePage(600)->setIcon('fas fa-user-lock')
+            $this->makePage(100)->setIcon('fas fa-user-lock')
         );
     }
 
@@ -118,7 +118,7 @@ class JkFlatModel extends Section implements Initializable
             $tabs[] = AdminDisplay::tab($form)->setLabel("Основная информация")
                 ->setIcon('<i class="fa fa-money"></i>');
 
-            if(!is_null($id)){
+            if (!is_null($id)) {
 
                 $form2 = AdminForm::form();
 
@@ -157,31 +157,26 @@ class JkFlatModel extends Section implements Initializable
                 $tabs[] = AdminDisplay::tab($form2)
                     ->setLabel("Дополнительная информация")
                     ->setIcon('<i class="fa fa-credit-card"></i>');
-//
-//                $form3 = AdminForm::form();
-//
-//                $model = JkModel::where('id', $id)->first();
-//
-//                if($id !== null && $model->city !== null) {
-//                    $form3->setElements([
-//                        AdminFormElement::select('city', 'Город')->setModelForOptions(CityModel::class)->setDisplay('city_name'),
-//                        AdminFormElement::select('area', 'Район')->setOptions($this->getArea($model->city))->setDisplay('area_name'),
-//                        AdminFormElement::number('longitude', 'Долгота')->setStep(0.000001),
-//                        AdminFormElement::number('latitude', 'Широта')->setStep(0.000001),
-//
-//                    ]);
-//                } else {
-//                    $form3->setElements([
-//                        AdminFormElement::select('city', 'Город')->setModelForOptions(CityModel::class)->setDisplay('city_name'),
-//                        AdminFormElement::number('longitude', 'Долгота')->setStep(0.000001),
-//                        AdminFormElement::number('latitude', 'Широта')->setStep(0.000001),
-//
-//                    ]);
-//                }
-//
-//                $tabs[] = AdminDisplay::tab($form3)
-//                    ->setLabel("Город и район")
-//                    ->setIcon('<i class="fa fa-credit-card"></i>');
+
+                $form3 = AdminForm::form();
+
+                $form3->setElements([
+
+                    AdminFormElement::belongsTo('price', [
+                        AdminFormElement::hidden('flat_id')->setDefaultValue($id),
+                        AdminFormElement::checkbox('sale', 'Продажа'),
+                        AdminFormElement::checkbox('rent', 'Аренда'),
+                        AdminFormElement::number('price', 'Цена'),
+                        AdminFormElement::number('rent_price', 'Цена аренды (мес)')->setStep(0.01),
+                    ]),
+
+                ]);
+
+
+                $tabs[] = AdminDisplay::tab($form3)
+                    ->setLabel("Цены, аренда, продажа")
+                    ->setIcon('<i class="fa fa-credit-card"></i>');
+
             }
             return $tabs;
 
@@ -196,7 +191,8 @@ class JkFlatModel extends Section implements Initializable
      * @return mixed
      */
 
-    private function getArea($id) {
+    private function getArea($id)
+    {
         $areas = AreaModel::where('city_id', $id)->get();
 
         $array = $areas->map(function ($item) {

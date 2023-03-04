@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Admin\Jk\Support;
+use App\Models\FlatInfo\ImagesModel;
+use App\Models\FlatInfo\PlanModel;
 use App\Models\Info\AreaModel;
 use App\Models\Info\CityModel;
 use App\Models\Info\ServiceItemModel;
@@ -33,7 +35,6 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\BuilderModel::class => 'App\Http\Controllers\Admin\Jk\BuilderModel',
         //JK
         JkModel::class => 'App\Http\Controllers\Admin\Jk\Jk',
-        JkFlatModel::class => 'App\Http\Controllers\Admin\Jk\JkFlatModel',
         ImageModels::class => 'App\Http\Controllers\Admin\Jk\Image',
         DescriptionModel::class => 'App\Http\Controllers\Admin\Jk\Description',
         DescriptionItemModel::class => 'App\Http\Controllers\Admin\Jk\DescriptionItem',
@@ -43,6 +44,10 @@ class AdminSectionsServiceProvider extends ServiceProvider
         AreaModel::class => 'App\Http\Controllers\Admin\Info\Area',
         ServiceModel::class => 'App\Http\Controllers\Admin\Info\Service',
         ServiceItemModel::class => 'App\Http\Controllers\Admin\Info\ServiceDescription',
+        //flat
+        JkFlatModel::class => 'App\Http\Controllers\Admin\Flat\JkFlatModel',
+        ImagesModel::class => 'App\Http\Controllers\Admin\Flat\Images',
+        PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
     ];
 
     /**
@@ -77,16 +82,22 @@ class AdminSectionsServiceProvider extends ServiceProvider
                 'priority' => 200,
             ],
             [
+                'title' => 'Квартиры',
+                'id' => 'flats',
+                'icon' => 'fab fa-dev',
+                'priority' => 300,
+            ],
+            [
                 'title' => 'Общие данные',
                 'id' => 'supports',
                 'icon' => 'fab fa-dev',
-                'priority' => 300,
+                'priority' => 600,
             ],
             [
                 'title' => 'Контакты',
                 'id' => 'contact',
                 'icon' => 'fab fa-dev',
-                'priority' => 400,
+                'priority' => 700,
             ],
         ]);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\FlatInfo\ImagesModel;
+use App\Models\FlatInfo\PlanModel;
 use App\Models\Jk\JkModel;
 use App\Models\Jk\SupportModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -35,8 +37,20 @@ class JkFlatModel extends Model
         'created_at' => 'date:d-m-Y'
     ];
 
+    public function price() {
+        return $this->belongsTo(FlatPriceModel::class, 'id', 'flat_id');
+    }
+
     public function jk() {
-        return $this->belongsTo(JkModel::class, 'id', 'jk_id');
+        return $this->belongsTo(JkModel::class, 'jk_id', 'id');
+    }
+
+    public function images() {
+        return $this->hasMany(ImagesModel::class, 'flat_id', 'id');
+    }
+
+    public function plans() {
+        return $this->hasMany(PlanModel::class, 'flat_id', 'id');
     }
 
     public function support() {

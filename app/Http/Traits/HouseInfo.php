@@ -59,7 +59,7 @@ trait HouseInfo {
 
         $kv = JkFlatModel::where('slug', $flat)
             ->where('jk_id', $house->id)
-            ->with(['support'])
+            ->with(['support', 'price', 'images', 'plans'])
             ->firstOrFail();
 
         $kv = $this->setType($kv);

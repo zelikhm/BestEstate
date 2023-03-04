@@ -3,6 +3,8 @@
     import Header from '../Components/Component/Header.vue'
     import Footer from '../Components/Component/Footer.vue'
     import { Link } from '@inertiajs/vue3';
+    import FlatSwiper from "@/Components/Component/FlatSwiper.vue";
+
 
 </script>
 
@@ -19,7 +21,7 @@
             <!-- breadcrumbs -->
             <div class="breadcrumbs">
                 <nav class="container">
-                    <a href="index.html">Главная</a>
+                    <a href="/">Главная</a>
                     <a href="#">Москва</a>
                     <a href="#">Купить</a>
                     <a href="#">Квартира</a>
@@ -42,174 +44,10 @@
                     </div>
                     <div class="apart-container">
                         <div class="apart-left">
-                            <div class="apart-graphics">
-                                <div class="btns-group">
-                                    <a href="#" class="btn-w active"><img src="/img/icons/image.svg"
-                                                                          alt=""><span>27 фото</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/plan.svg"
-                                                                   alt=""><span>Планировка</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/3d.png"
-                                                                   alt=""><span>3D-просмотр</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/location.svg"
-                                                                   alt=""><span>На карте</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/video.svg"
-                                                                   alt=""><span>Видео</span></a>
-                                </div>
-                                <div class="apart-graphics-content">
-                                    <div class="swiper apartMainSwiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-1.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/apart-img-2.jpg" data-fancybox="galleryApart">
-                                                    <img src="/img/apartament/apart-img-2.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-button-next--fluid"></div>
-                                        <div class="swiper-button-prev--fluid"></div>
-                                        <div class="swiper-pagination--fluid"></div>
-                                    </div>
-                                    <div thumbsSlider="" class="swiper apartSecondSwiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="swiper-slide"><img src="/img/apartament/apart-img-2.jpg" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="apart-graphics">
-                                <div class="btns-group">
-                                    <a href="#" class="btn-w"><img src="/img/icons/image.svg" alt=""><span>27 фото</span></a>
-                                    <a href="#" class="btn-w active"><img src="/img/icons/plan.svg" alt=""><span>Планировка</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/3d.png"
-                                                                   alt=""><span>3D-просмотр</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/location.svg"
-                                                                   alt=""><span>На карте</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/video.svg"
-                                                                   alt=""><span>Видео</span></a>
-                                </div>
-                                <div class="apart-graphics-content">
-                                    <div class="swiper apartPlanMainSwiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/plan-1.jpg" data-fancybox="planApart">
-                                                    <img src="/img/apartament/plan-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="/img/apartament/plan-1.jpg" data-fancybox="planApart">
-                                                    <img src="/img/apartament/plan-1.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-button-next--fluid"></div>
-                                        <div class="swiper-button-prev--fluid"></div>
-                                        <div class="swiper-pagination--fluid"></div>
-                                    </div>
-                                    <div thumbsSlider="" class="swiper apartPlanSecondSwiper">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide"><img src="/img/apartament/plan-1.jpg" alt=""></div>
-                                            <div class="swiper-slide"><img src="/img/apartament/plan-1.jpg" alt=""></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="apart-graphics">
-                                <div class="btns-group">
-                                    <a href="#" class="btn-w"><img src="/img/icons/image.svg" alt=""><span>27 фото</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/plan.svg"
-                                                                   alt=""><span>Планировка</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/3d.png"
-                                                                   alt=""><span>3D-просмотр</span></a>
-                                    <a href="#" class="btn-w"><img src="/img/icons/location.svg"
-                                                                   alt=""><span>На карте</span></a>
-                                    <a href="#" class="btn-w active"><img src="/img/icons/video.svg"
-                                                                          alt=""><span>Видео</span></a>
-                                </div>
-                                <div class="apart-graphics-content">
-                                    <iframe class="apart-graphics-video" width="560" height="315"
-                                            src="https://www.youtube.com/embed/39Y8VLMoXi0" title="YouTube video player"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
-                                </div>
-                            </div>
+                            <flat-swiper
+                                :images="flat.images"
+                                :plans="flat.plans">
+                            </flat-swiper>
                             <div class="apart-info-group">
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">общая</div>
@@ -238,10 +76,10 @@
                             </div>
                             <div class="apart-right">
                                 <div class="apart-card">
-                                    <div class="price-dropdown">
+                                    <div class="price-dropdown" v-if="flat.price">
                                         <div class="price">
                                             <img src="/img/apartament/wallet.svg" alt="">
-                                            <span>19 800 000</span>
+                                            <span>{{flat.price.price.toLocaleString('ru')}}</span>
                                             <div class="price-arrow">₽</div>
                                         </div>
                                         <ul class="price-dropdown-content">
@@ -252,7 +90,7 @@
                                             <li><img src="/img/icons/yen.svg" alt=""><span>300 000 000</span></li>
                                         </ul>
                                     </div>
-                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">360 161 ₽/м2
+                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">{{ (flat.price.price / flat.square_main).toFixed(2) }} ₽/м2
                                     </div>
                                     <div class="apart-second">
                                         <div class="cards-date">Добавлено: {{ flat.created_at }}</div>

@@ -1,14 +1,14 @@
 <template>
     <div id="tabs">
         <!-- Кнопки -->
+
         <ul class="tabs-nav">
             <div v-for="(service, index) in services">
                 <li
                     v-if="service.values.length !== 0"
                     v-on:click="setTab(index)"
-                    v-bind:class="{ 'active': tab === index }"
                 >
-                    <a>{{ service.title }}</a></li>
+                    <a v-bind:class="{ 'cursor': tab !== index, 'active': tab === index }">{{ service.title }}</a></li>
             </div>
         </ul>
         <!-- Контент -->
@@ -75,5 +75,7 @@
 </script>
 
 <style scoped>
-
+    .cursor {
+        cursor: pointer;
+    }
 </style>
