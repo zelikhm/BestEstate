@@ -6,9 +6,16 @@ use App\Http\Controllers\Admin\Jk\Support;
 use App\Models\FlatInfo\ImagesModel;
 use App\Models\FlatInfo\PlanModel;
 use App\Models\Info\AreaModel;
+use App\Models\Info\BalconyModel;
+use App\Models\Info\BathroomModel;
 use App\Models\Info\CityModel;
+use App\Models\Info\InfrastructureModel;
+use App\Models\Info\PlotModel;
+use App\Models\Info\RepairModel;
 use App\Models\Info\ServiceItemModel;
 use App\Models\Info\ServiceModel;
+use App\Models\Info\TypeComModel;
+use App\Models\Info\TypeHouseModel;
 use App\Models\Jk\DescriptionItemModel;
 use App\Models\Jk\DescriptionModel;
 use App\Models\Jk\ImageModels;
@@ -44,6 +51,13 @@ class AdminSectionsServiceProvider extends ServiceProvider
         AreaModel::class => 'App\Http\Controllers\Admin\Info\Area',
         ServiceModel::class => 'App\Http\Controllers\Admin\Info\Service',
         ServiceItemModel::class => 'App\Http\Controllers\Admin\Info\ServiceDescription',
+        BathroomModel::class => 'App\Http\Controllers\Admin\Info\Bathroom',
+        BalconyModel::class => 'App\Http\Controllers\Admin\Info\BalconyModel',
+        InfrastructureModel::class => 'App\Http\Controllers\Admin\Info\Infrastructure',
+        PlotModel::class => 'App\Http\Controllers\Admin\Info\Plot',
+        RepairModel::class => 'App\Http\Controllers\Admin\Info\Repair',
+        TypeComModel::class => 'App\Http\Controllers\Admin\Info\TypeCom',
+        TypeHouseModel::class => 'App\Http\Controllers\Admin\Info\TypeHouse',
         //flat
         JkFlatModel::class => 'App\Http\Controllers\Admin\Flat\JkFlatModel',
         ImagesModel::class => 'App\Http\Controllers\Admin\Flat\Images',
@@ -86,6 +100,12 @@ class AdminSectionsServiceProvider extends ServiceProvider
                 'id' => 'flats',
                 'icon' => 'fab fa-dev',
                 'priority' => 300,
+            ],
+            [
+                'title' => 'Характеристики',
+                'id' => 'characteristic',
+                'icon' => 'fab fa-dev',
+                'priority' => 500,
             ],
             [
                 'title' => 'Общие данные',

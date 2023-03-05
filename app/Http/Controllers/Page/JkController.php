@@ -31,8 +31,6 @@ class JkController extends Controller
 
         JkFlatModel::where('slug', $flat)->increment('view');
 
-//        dd($kv);
-
         return Inertia::render('AppFlat', [
             'flat' => $kv,
             'jk' => $jk,

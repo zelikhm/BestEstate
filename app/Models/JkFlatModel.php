@@ -30,6 +30,7 @@ class JkFlatModel extends Model
         'balcon',
         'repair',
         'view',
+        'rooms'
     ];
 
     protected $casts = [

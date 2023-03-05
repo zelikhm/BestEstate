@@ -1,33 +1,34 @@
 <template>
-    <swiper class="swiper" :modules="modules" :pagination="{ clickable: true }">
-        <swiper-slide class="slide">Slide 1</swiper-slide>
-        <swiper-slide class="slide">Slide 2</swiper-slide>
-        <swiper-slide class="slide">Slide 3</swiper-slide>
-        <swiper-slide class="slide">Slide 4</swiper-slide>
-        <swiper-slide class="slide">Slide 5</swiper-slide>
-        <swiper-slide class="slide">Slide 6</swiper-slide>
-        <swiper-slide class="slide">Slide 7</swiper-slide>
-        <swiper-slide class="slide">Slide 8</swiper-slide>
+    <swiper class="swiper gallerySwiper jk-bl-gallerySwiper" :modules="modules" navigation>
+        <swiper-slide class="slide" v-for="image in images"><img :src="image" alt=""></swiper-slide>
     </swiper>
 </template>
 
 
 <script>
     import { defineComponent } from 'vue'
-    import { Pagination } from 'swiper'
+    import { Navigation } from 'swiper'
     import { Swiper, SwiperSlide } from 'swiper/vue'
+    import 'swiper/css'
+    import 'swiper/css/navigation'
 
     export default {
+        props:['images'],
         name: "ImageSwipper",
+        title: 'Navigation',
+        url: import.meta.url,
         components: {
             Swiper,
             SwiperSlide
         },
         setup() {
             return {
-                modules: [Pagination]
+                modules: [Navigation]
             }
-        }
+        },
+        created() {
+
+        },
     }
 </script>
 

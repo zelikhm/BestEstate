@@ -27,6 +27,10 @@ Route::get('/service', ['App\Http\Controllers\Page\MainController', 'service'])-
 Route::get('/news', ['App\Http\Controllers\Page\MainController', 'news'])->name('news');
 Route::get('/news/{slug}', ['App\Http\Controllers\Page\MainController', 'getNew'])->name('getNew');
 
+Route::get('/test', function () {
+   return Inertia::render('AppTest');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

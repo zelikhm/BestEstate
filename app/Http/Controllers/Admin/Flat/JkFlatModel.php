@@ -8,6 +8,9 @@ use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
 use AdminSection;
+use App\Models\Info\BalconyModel;
+use App\Models\Info\BathroomModel;
+use App\Models\Info\RepairModel;
 use App\Models\Jk\JkModel;
 use App\Models\Jk\SupportModel;
 use Illuminate\Database\Eloquent\Builder;
@@ -111,6 +114,7 @@ class JkFlatModel extends Section implements Initializable
                     ->setModelForOptions(SupportModel::class)
                     ->setDisplay('name'),
                 AdminFormElement::text('title', 'Название')->required(),
+                AdminFormElement::number('rooms', 'Кол-во комнат')->required(),
                 AdminFormElement::wysiwyg('description', 'Описание квартиры')->required(),
                 AdminFormElement::text('slug', 'название в ссылку (only eng)')->required(),
             ]);
@@ -143,14 +147,10 @@ class JkFlatModel extends Section implements Initializable
 
                             AdminFormElement::number('float', 'Этаж'),
                             AdminFormElement::number('height', 'Потолки')->setStep(0.01),
-                            AdminFormElement::number('bathroom', 'Санузлов'),
-                            AdminFormElement::number('balcon', 'Балконов'),
+                            AdminFormElement::select('bathroom', 'Санузел')->setModelForOptions(BathroomModel::class)->setDisplay('title'),
+                            AdminFormElement::select('balcon', 'Балкон')->setModelForOptions(BalconyModel::class)->setDisplay('title'),
                             AdminFormElement::number('view', 'Кол-во просмотров'),
-                            AdminFormElement::select('repair', 'Тип ремнота', [
-                                0 => 'Без ремнота',
-                                1 => 'С ремонтом',
-                                2 => 'Дизайнерский',
-                            ]),
+                            AdminFormElement::select('repair', 'Тип ремнота')->setModelForOptions(RepairModel::class)->setDisplay('title'),
                         ]),
                 ]);
 

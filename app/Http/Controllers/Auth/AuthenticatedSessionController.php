@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\PasswordRule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -27,14 +31,27 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Handle an incoming authentication request.
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->authenticate();
+        $request->validate([
+            'name' => 'exists:App\Models\User,name',
+            'password' => ['required', new PasswordRule()],
+        ]);
 
-        $request->session()->regenerate();
+        $user = User::where('name', $request->name)
+            ->first();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        Auth::login($user, $remember = true);
+
+        if (Auth::user()->admin === 1) {
+            return redirect()->intended(RouteServiceProvider::ADMIN);
+        } else {
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+
     }
 
     /**

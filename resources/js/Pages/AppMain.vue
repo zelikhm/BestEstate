@@ -192,11 +192,7 @@
                     <!-- Swiper -->
 
                     <div class="swiper-container">
-                        <div class="swiper jk-blSwiper">
-                            <div class="swiper-wrapper">
-                                <JkHousesSwipper></JkHousesSwipper>
-                            </div>
-                        </div>
+                        <JkHousesSwipper :jk="jk"></JkHousesSwipper>
                     </div>
                 </div>
             </section>
@@ -1289,7 +1285,7 @@
 
 <script>
     export default {
-        props: ['page', 'sale_jk', 'services'],
+        props: ['page', 'sale_jk', 'services', 'jk'],
         provide() {
             return {
                 'page': this.page,

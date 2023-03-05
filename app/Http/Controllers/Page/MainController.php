@@ -19,9 +19,12 @@ class MainController extends Controller
 
     public function main() {
 
+//        dd($this->getAllJk());
+
         return Inertia::render('AppMain', [
             'page' => 1,
             'sale_jk' => $this->getSalesJk(),
+            'jk' => $this->getAllJk(),
             'services' => ServiceModel::with(['values'])->get(),
         ]);
 

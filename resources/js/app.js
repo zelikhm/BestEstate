@@ -12,7 +12,7 @@ import '../css/swiper-bundle.min.min.css';
 
 import '../js_native/jquery-3.4.1.min.js'
 import '../js_native/app.js';
-import '../js_native/jquery.fancybox.min.js';
+// import '../js_native/jquery.fancybox.min.js';
 import '../js_native/jquery.maskedinput.js';
 import '../js_native/jquery.validate.min.js';
 // import '../js_native/swiper-bundle.min.min.js';

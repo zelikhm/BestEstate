@@ -133,36 +133,36 @@ $(document).ready(function () {
 	ReadMore.init()
 
 	// ----------------- Password input ---------------------
-	$('body').on('click', '#loginPasswordControl', function () {
-		if ($('#loginPasswordInput').attr('type') == 'password') {
-			$(this).addClass('view');
-			$('#loginPasswordInput').attr('type', 'text');
-		} else {
-			$(this).removeClass('view');
-			$('#loginPasswordInput').attr('type', 'password');
-		}
-		return false;
-	});
-	$('body').on('click', '#signPasswordControl', function () {
-		if ($('#signPasswordInput').attr('type') == 'password') {
-			$(this).addClass('view');
-			$('#signPasswordInput').attr('type', 'text');
-		} else {
-			$(this).removeClass('view');
-			$('#signPasswordInput').attr('type', 'password');
-		}
-		return false;
-	});
-	$('body').on('click', '#signVerifyPasswordControl', function () {
-		if ($('#signVerifyPasswordInput').attr('type') == 'password') {
-			$(this).addClass('view');
-			$('#signVerifyPasswordInput').attr('type', 'text');
-		} else {
-			$(this).removeClass('view');
-			$('#signVerifyPasswordInput').attr('type', 'password');
-		}
-		return false;
-	});
+	// $('body').on('click', '#loginPasswordControl', function () {
+	// 	if ($('#loginPasswordInput').attr('type') == 'password') {
+	// 		$(this).addClass('view');
+	// 		$('#loginPasswordInput').attr('type', 'text');
+	// 	} else {
+	// 		$(this).removeClass('view');
+	// 		$('#loginPasswordInput').attr('type', 'password');
+	// 	}
+	// 	return false;
+	// });
+	// $('body').on('click', '#signPasswordControl', function () {
+	// 	if ($('#signPasswordInput').attr('type') == 'password') {
+	// 		$(this).addClass('view');
+	// 		$('#signPasswordInput').attr('type', 'text');
+	// 	} else {
+	// 		$(this).removeClass('view');
+	// 		$('#signPasswordInput').attr('type', 'password');
+	// 	}
+	// 	return false;
+	// });
+	// $('body').on('click', '#signVerifyPasswordControl', function () {
+	// 	if ($('#signVerifyPasswordInput').attr('type') == 'password') {
+	// 		$(this).addClass('view');
+	// 		$('#signVerifyPasswordInput').attr('type', 'text');
+	// 	} else {
+	// 		$(this).removeClass('view');
+	// 		$('#signVerifyPasswordInput').attr('type', 'password');
+	// 	}
+	// 	return false;
+	// });
 
 	// -------------------- burger --------------------------
 	const navMenu = document.getElementById('nav-menu'),
@@ -281,78 +281,78 @@ $(document).ready(function () {
 
 	//--------------- fancybox -----------
 
-	$('[data-fancybox="galleryKp"]').fancybox({
-		Thumbs: false,
-		Toolbar: false,
-		Image: {
-			zoom: false,
-			click: false,
-			wheel: "slide",
-		},
-		backFocus: false,
-		lang: 'ru',
-		hideScrollbar: false,
-		i18n: {
-			ru: {
-				CLOSE: 'Закрыть',
-				NEXT: 'Вперёд',
-				PREV: 'Назад',
-				FULL_SCREEN: 'На весь экран',
-			}
-		},
-		buttons: [
-			"fullScreen",
-			"close"
-		]
-	});
-	$('[data-fancybox="galleryJk"]').fancybox({
-		Thumbs: false,
-		Toolbar: false,
-		Image: {
-			zoom: false,
-			click: false,
-			wheel: "slide",
-		},
-		backFocus: false,
-		lang: 'ru',
-		hideScrollbar: false,
-		i18n: {
-			ru: {
-				CLOSE: 'Закрыть',
-				NEXT: 'Вперёд',
-				PREV: 'Назад',
-				FULL_SCREEN: 'На весь экран',
-			}
-		},
-		buttons: [
-			"fullScreen",
-			"close"
-		]
-	});
-	$('[data-fancybox="galleryApart"], [data-fancybox="planApart"]').fancybox({
-		Thumbs: false,
-		Toolbar: false,
-		Image: {
-			zoom: false,
-			click: false,
-			wheel: "slide",
-		},
-		backFocus: false,
-		lang: 'ru',
-		hideScrollbar: false,
-		i18n: {
-			ru: {
-				CLOSE: 'Закрыть',
-				NEXT: 'Вперёд',
-				PREV: 'Назад',
-				FULL_SCREEN: 'На весь экран',
-			}
-		},
-		buttons: [
-			"fullScreen",
-			"close"
-		]
-	});
+	// $('[data-fancybox="galleryKp"]').fancybox({
+	// 	Thumbs: false,
+	// 	Toolbar: false,
+	// 	Image: {
+	// 		zoom: false,
+	// 		click: false,
+	// 		wheel: "slide",
+	// 	},
+	// 	backFocus: false,
+	// 	lang: 'ru',
+	// 	hideScrollbar: false,
+	// 	i18n: {
+	// 		ru: {
+	// 			CLOSE: 'Закрыть',
+	// 			NEXT: 'Вперёд',
+	// 			PREV: 'Назад',
+	// 			FULL_SCREEN: 'На весь экран',
+	// 		}
+	// 	},
+	// 	buttons: [
+	// 		"fullScreen",
+	// 		"close"
+	// 	]
+	// });
+	// $('[data-fancybox="galleryJk"]').fancybox({
+	// 	Thumbs: false,
+	// 	Toolbar: false,
+	// 	Image: {
+	// 		zoom: false,
+	// 		click: false,
+	// 		wheel: "slide",
+	// 	},
+	// 	backFocus: false,
+	// 	lang: 'ru',
+	// 	hideScrollbar: false,
+	// 	i18n: {
+	// 		ru: {
+	// 			CLOSE: 'Закрыть',
+	// 			NEXT: 'Вперёд',
+	// 			PREV: 'Назад',
+	// 			FULL_SCREEN: 'На весь экран',
+	// 		}
+	// 	},
+	// 	buttons: [
+	// 		"fullScreen",
+	// 		"close"
+	// 	]
+	// });
+	// $('[data-fancybox="galleryApart"], [data-fancybox="planApart"]').fancybox({
+	// 	Thumbs: false,
+	// 	Toolbar: false,
+	// 	Image: {
+	// 		zoom: false,
+	// 		click: false,
+	// 		wheel: "slide",
+	// 	},
+	// 	backFocus: false,
+	// 	lang: 'ru',
+	// 	hideScrollbar: false,
+	// 	i18n: {
+	// 		ru: {
+	// 			CLOSE: 'Закрыть',
+	// 			NEXT: 'Вперёд',
+	// 			PREV: 'Назад',
+	// 			FULL_SCREEN: 'На весь экран',
+	// 		}
+	// 	},
+	// 	buttons: [
+	// 		"fullScreen",
+	// 		"close"
+	// 	]
+	// });
 
 	// -------------------------modal----------------------
 	// $('.to-state').on('click', function (event) {
