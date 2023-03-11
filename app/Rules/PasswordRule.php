@@ -45,7 +45,7 @@ class PasswordRule implements Rule, DataAwareRule
     {
         $user = User::where('name', $this->data['name'])->first();
 
-        return Hash::check($value, $user->password);
+        return $user !== null ? Hash::check($value, $user->password) : false;
     }
 
     /**

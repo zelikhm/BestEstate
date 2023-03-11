@@ -109,8 +109,17 @@ class Jk extends Section implements Initializable
 
             $form = AdminForm::form();
             $form->setElements([
-                AdminFormElement::text('title', 'Название ЖК')->required(),
-                AdminFormElement::textarea('description', 'Описание ЖК')->required(),
+                AdminFormElement::select('type_houses', 'Тип здания')->setOptions([
+                    0 => 'Новостройка',
+                    1 => 'Коттеджный поселок',
+                    2 => 'Вилла',
+                    3 => 'Шалле',
+                    4 => 'Коммерческая недвижимость',
+                ])->required(),
+                AdminFormElement::number('price', 'Цена')->required(),
+                AdminFormElement::number('square', 'Площадь')->setStep(0.01)->required(),
+                AdminFormElement::text('title', 'Название')->required(),
+                AdminFormElement::textarea('description', 'Описание')->required(),
                 AdminFormElement::text('slug', 'название в ссылку (only eng)')->required(),
                 AdminFormElement::date('sale_date', 'Окончание акции'),
             ]);

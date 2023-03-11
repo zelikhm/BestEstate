@@ -3,11 +3,26 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\MainInfo;
 use App\Models\User\FavoriteModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class FavoriteController extends Controller
 {
+    use MainInfo;
+
+    public function main() {
+
+        $favorites = FavoriteModel::where('user_id', Auth::id())->get();
+
+        return Inertia::render('AppFavorite', [
+            'page' => 0,
+            'user' => $this->getUser(),
+            'jk' => $this->getAllJk(0, 20),
+        ]);
+    }
 
     /**
      * added object in the favorites
@@ -21,10 +36,28 @@ class FavoriteController extends Controller
             'user_id' => $request->user_id,
             'jk_id' => $request->jk_id,
             'flat_id' => $request->flat_id,
-            'house_id' => $request->house_id,
-            'village_id' => $request->village_id,
-            'shale_id' => $request->shale_id,
         ]);
+
+        try {
+            return response()->json(true, 200);
+        } catch (\Exception $e) {
+            return response()->json($e, 401);
+        }
+
+    }
+
+    /**
+     * remove
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function remove(Request $request) {
+
+        FavoriteModel::where('user_id', $request->jk_id)
+            ->orWhere('jk_id', $request->jk_id)
+            ->orWhere('flat_id', $request->flat_id)
+            ->delete();
 
         try {
             return response()->json(true, 200);

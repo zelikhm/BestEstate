@@ -19,30 +19,24 @@ class MainController extends Controller
 
     public function main() {
 
-//        dd($this->getAllJk());
-
         return Inertia::render('AppMain', [
             'page' => 1,
             'sale_jk' => $this->getSalesJk(),
-            'jk' => $this->getAllJk(),
+            'jk' => $this->getAllJk(0, 20),
+            'villages' => $this->getAllJk(1, 4),
+            'shale' => $this->getAllJk(3, 4),
+            'ecom' => $this->getAllJk(4, 4),
             'services' => ServiceModel::with(['values'])->get(),
+            'user' => $this->getUser(),
         ]);
 
     }
-
-    public function catalog() {
-
-        return Inertia::render('AppCatalog', [
-            'page' => 2,
-        ]);
-
-    }
-
 
     public function flat() {
 
         return Inertia::render('AppFlat', [
             'page' => 3,
+            'user' => $this->getUser(),
         ]);
 
     }
@@ -58,6 +52,7 @@ class MainController extends Controller
             'contact' => $contact,
             'social' => $socials,
             'info' => $info,
+            'user' => $this->getUser(),
         ]);
 
     }
@@ -66,6 +61,7 @@ class MainController extends Controller
 
         return Inertia::render('AppAbout', [
             'page' => 6,
+            'user' => $this->getUser(),
         ]);
 
     }
@@ -73,6 +69,7 @@ class MainController extends Controller
     public function service() {
         return Inertia::render('AppService', [
             'page' => 4,
+            'user' => $this->getUser(),
         ]);
     }
 
@@ -83,6 +80,7 @@ class MainController extends Controller
         return Inertia::render('AppNews', [
             'page' => 5,
             'news' => $news,
+            'user' => $this->getUser(),
         ]);
 
     }
@@ -97,6 +95,7 @@ class MainController extends Controller
             'page' => 5,
             'info' => $info,
             'news' => $news,
+            'user' => $this->getUser(),
         ]);
 
     }

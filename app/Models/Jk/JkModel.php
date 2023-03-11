@@ -5,14 +5,17 @@ namespace App\Models\Jk;
 use App\Models\BuilderModel;
 use App\Models\Info\AreaModel;
 use App\Models\Info\CityModel;
+use App\Models\JkFlatModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function Termwind\ValueObjects\p;
 
 class JkModel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'type_houses',
         'title',
         'description',
         'city',
@@ -30,12 +33,18 @@ class JkModel extends Model
         'type',
         'support_id',
         'builder_id',
-        'sale_date'
+        'sale_date',
+        'price',
+        'square'
     ];
 
     protected $hidden = [
       'city',
       'area'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d-m-Y'
     ];
 
     public function city_info() {
@@ -48,6 +57,10 @@ class JkModel extends Model
 
     public function images() {
         return $this->hasMany(ImageModels::class, 'jk_id', 'id');
+    }
+
+    public function flat() {
+        return $this->hasMany(JkFlatModel::class, 'jk_id', 'id');
     }
 
     public function support() {

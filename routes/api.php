@@ -25,4 +25,5 @@ Route::prefix('manager')->group(function () {
 Route::prefix('favorite')->group(function () {
    Route::post('/add', ['App\Http\Controllers\User\FavoriteController', 'add']);
    Route::post('/delete', ['App\Http\Controllers\User\FavoriteController', 'delete']);
+   Route::post('/remove', ['App\Http\Controllers\User\FavoriteController', 'remove']);
 });

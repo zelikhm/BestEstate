@@ -4,9 +4,16 @@ namespace App\Http\Traits;
 
 use App\Models\Jk\ImageModels;
 use App\Models\Jk\JkModel;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 trait MainInfo {
+
+    /**
+     * get sales object
+     * @return mixed
+     */
 
     protected function getSalesJk() {
 
@@ -21,24 +28,52 @@ trait MainInfo {
 
     }
 
-    protected function getAllJk() {
+    /**
+     * get all jk
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
 
-        $houses = JkModel::with(['images', 'city_info', 'area_info', 'builder'])
-            ->limit(20)
+    protected function getAllJk($type, $limit) {
+
+        $houses = JkModel::with(['images', 'city_info', 'area_info', 'builder', 'flat'])
+            ->where('type_houses', $type)
+            ->limit($limit)
             ->get();
 
         foreach ($houses as $house) {
             $house->image = $this->getPhoto($house->id);
 
-            $house->address = $house->city_info->city_name !== [] ?  $house->area_info !== [] ? $house->city_info->city_name . ', ' . $house->area_info->area_name : $house->city_info->city_name : '';
+            $house->address = $house->city_info->city_name !== [] ?  $house->area_info !== null ? $house->city_info->city_name . ', ' . $house->area_info->area_name : $house->city_info->city_name : '';
 
             $house->status = $house->status === 0 ? 'Сдан' : 'Не сдан';
 
-            $house->images_array = $house->images !== null ? json_decode($house->images[0]->image) : [];
+            $house->images_array = count($house->images) !== 0 ? json_decode($house->images[0]->image) : [];
+
+            $house->favorite = $this->checkFavorite($house->id);
         }
 
         return $houses;
     }
+
+    /**
+     * check add favorite
+     * @param $house
+     * @return bool
+     */
+
+    protected function checkFavorite($house) {
+
+        $favorite = User\FavoriteModel::where('jk_id', $house)->first();
+
+        return $favorite !== null;
+
+    }
+
+    /**
+     * get photo
+     * @param $house
+     * @return mixed|null
+     */
 
     protected function getPhoto($house) {
 
@@ -55,6 +90,12 @@ trait MainInfo {
         } else {
             return null;
         }
+
+    }
+
+    protected function getUser() {
+
+        return User::where('id', Auth::id())->first();
 
     }
 

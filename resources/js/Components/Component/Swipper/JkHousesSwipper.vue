@@ -22,8 +22,16 @@
                             <div class="jk-bl-slide-info">
                                 <div class="jk-bl-slide-heading">
                                     <h3 class="heading-3">{{ item.title }}</h3>
-                                    <button type="button" class="btn-icon"><i
-                                        class="icomoon icon-favourites"></i></button>
+                                    <button type="button" class="btn-icon"
+                                            v-if="item.favorite === false"
+                                            @click="$emit('addFavorite', item, 0)">
+                                        <i class="icomoon icon-favourites"></i>
+                                    </button>
+                                    <button type="button" class="btn-icon"
+                                            v-else
+                                            @click="$emit('removeFavorite', item, 0)">
+                                        <i class="icomoon icon-favourites RedColor"></i>
+                                    </button>
                                 </div>
                                 <p class="text-2">{{ item.address }}</p>
                                 <div class="way">
@@ -158,5 +166,7 @@
 </script>
 
 <style scoped>
-
+    .RedColor {
+        color: red!important;
+    }
 </style>

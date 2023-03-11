@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Admin\Jk\Render;
 use App\Http\Controllers\Admin\Jk\Support;
 use App\Models\FlatInfo\ImagesModel;
 use App\Models\FlatInfo\PlanModel;
@@ -18,8 +19,10 @@ use App\Models\Info\TypeComModel;
 use App\Models\Info\TypeHouseModel;
 use App\Models\Jk\DescriptionItemModel;
 use App\Models\Jk\DescriptionModel;
+use App\Models\Jk\FileModel;
 use App\Models\Jk\ImageModels;
 use App\Models\Jk\JkModel;
+use App\Models\Jk\RenderModel;
 use App\Models\Jk\SupportModel;
 use App\Models\JkFlatModel;
 use App\Models\NewModel;
@@ -45,6 +48,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
         ImageModels::class => 'App\Http\Controllers\Admin\Jk\Image',
         DescriptionModel::class => 'App\Http\Controllers\Admin\Jk\Description',
         DescriptionItemModel::class => 'App\Http\Controllers\Admin\Jk\DescriptionItem',
+        FileModel::class => 'App\Http\Controllers\Admin\Jk\File',
+        RenderModel::class => 'App\Http\Controllers\Admin\Jk\Render',
         NewModel::class => 'App\Http\Controllers\Admin\News',
         //Info
         CityModel::class => 'App\Http\Controllers\Admin\Info\City',

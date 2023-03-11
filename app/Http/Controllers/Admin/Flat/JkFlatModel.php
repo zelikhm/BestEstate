@@ -110,6 +110,7 @@ class JkFlatModel extends Section implements Initializable
                 AdminFormElement::select('jk_id', 'ЖК')
                     ->setModelForOptions(JkModel::class)
                     ->setDisplay('title'),
+                AdminFormElement::number('price', 'Цена')->required(),
                 AdminFormElement::select('support_id', 'Поддержка')
                     ->setModelForOptions(SupportModel::class)
                     ->setDisplay('name'),

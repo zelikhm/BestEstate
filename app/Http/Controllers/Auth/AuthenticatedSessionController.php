@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      * @param Request $request
-     * @return RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function store(Request $request)
     {
@@ -47,9 +47,9 @@ class AuthenticatedSessionController extends Controller
         Auth::login($user, $remember = true);
 
         if (Auth::user()->admin === 1) {
-            return redirect()->intended(RouteServiceProvider::ADMIN);
+            return Inertia::location(RouteServiceProvider::ADMIN);
         } else {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return Inertia::location(RouteServiceProvider::HOME);
         }
 
     }
@@ -57,7 +57,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
 
@@ -65,6 +65,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return Inertia::location('/');
     }
 }

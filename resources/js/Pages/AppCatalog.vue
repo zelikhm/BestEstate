@@ -5,6 +5,7 @@
     import { Link } from '@inertiajs/vue3';
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
+    import CatalogHouse from "@/Components/Component/CatalogHouse.vue";
 
 </script>
 
@@ -145,102 +146,6 @@
                                     </div>
                                     <div class="filter-row-flex">
                                         <div class="filter-col">
-                                            <div class="filter-col-title">Срок аренды</div>
-                                            <div class="radio-group">
-                                                <label for="time1" class="radio">
-                                                    <input type="radio" id="time1" name="time" class="radio__input">
-                                                    <span>Неважно</span>
-                                                </label>
-                                                <label for="time2" class="radio">
-                                                    <input type="radio" id="time2" name="time" class="radio__input">
-                                                    <span>От года</span>
-                                                </label>
-                                                <label for="time3" class="radio">
-                                                    <input type="radio" id="time3" name="time" class="radio__input">
-                                                    <span>На несколько месяцев</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">До метро</div>
-                                            <div class="radio-group">
-                                                <label for="metro1" class="radio">
-                                                    <input type="radio" id="metro1" name="metro" class="radio__input">
-                                                    <span>Неважно</span>
-                                                </label>
-                                                <label for="metro2" class="radio">
-                                                    <input type="radio" id="metro2" name="metro" class="radio__input">
-                                                    <span>Пешком</span>
-                                                </label>
-                                                <label for="metro3" class="radio">
-                                                    <input type="radio" id="metro3" name="metro" class="radio__input">
-                                                    <span>Транспорт</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Дом</div>
-                                            <div class="radio-group">
-                                                <label for="dom1" class="radio">
-                                                    <input type="radio" id="dom1" name="dom" class="radio__input">
-                                                    <span>Вторичка</span>
-                                                </label>
-                                                <label for="dom2" class="radio">
-                                                    <input type="radio" id="dom2" name="dom" class="radio__input">
-                                                    <span>Новостройки</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="filter-row-flex">
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Удобства</div>
-                                            <div class="checkbox-group">
-                                                <label for="udobstva1" class="checkbox">
-                                                    <input type="checkbox" id="udobstva1">
-                                                    <span>Кондиционер</span>
-                                                </label>
-                                                <label for="udobstva2" class="checkbox">
-                                                    <input type="checkbox" id="udobstva2">
-                                                    <span>Микроволновка</span>
-                                                </label>
-                                                <label for="udobstva3" class="checkbox">
-                                                    <input type="checkbox" id="udobstva3">
-                                                    <span>Балкон/лоджия</span>
-                                                </label>
-                                                <label for="udobstva4" class="checkbox">
-                                                    <input type="checkbox" id="udobstva4">
-                                                    <span>Ремонт</span>
-                                                </label>
-                                                <label for="udobstva5" class="checkbox">
-                                                    <input type="checkbox" id="udobstva5">
-                                                    <span>Стиральная машина</span>
-                                                </label>
-                                                <label for="udobstva6" class="checkbox">
-                                                    <input type="checkbox" id="udobstva6">
-                                                    <span>Пылесос</span>
-                                                </label>
-                                                <label for="udobstva7" class="checkbox">
-                                                    <input type="checkbox" id="udobstva7">
-                                                    <span>Кухонная плита</span>
-                                                </label>
-                                                <label for="udobstva8" class="checkbox">
-                                                    <input type="checkbox" id="udobstva8">
-                                                    <span>Кондиционер</span>
-                                                </label>
-                                                <label for="udobstva9" class="checkbox">
-                                                    <input type="checkbox" id="udobstva9">
-                                                    <span>Микроволновка</span>
-                                                </label>
-                                                <label for="udobstva10" class="checkbox">
-                                                    <input type="checkbox" id="udobstva10">
-                                                    <span>Балкон/лоджия</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="filter-row-flex">
-                                        <div class="filter-col">
                                             <div class="filter-col-title">Условия проживания</div>
                                             <div class="radio-group">
                                                 <label for="uslovia1" class="radio">
@@ -301,14 +206,6 @@
                                 </div>
                             </div>
                             <div class="tabs-item" id="tab-222">
-                                <div class="filter-row-3">
-                                    <div class="filter-col">
-                                        <label for="" class="form-label form-label--location">
-                                            <input type="text" name="" class="form-input"
-                                                   placeholder="Город, адрес, район, ЖК">
-                                        </label>
-                                    </div>
-                                </div>
                                 <div class="filter-hide" style="display: none;">
                                     <div class="filter-row-3">
                                         <div class="filter-col">
@@ -327,14 +224,6 @@
                                 </div>
                             </div>
                             <div class="tabs-item" id="tab-333">
-                                <div class="filter-row-3">
-                                    <div class="filter-col">
-                                        <label for="" class="form-label form-label--location">
-                                            <input type="text" name="" class="form-input"
-                                                   placeholder="Город, адрес, район, ЖК">
-                                        </label>
-                                    </div>
-                                </div>
                                 <div class="filter-hide" style="display: none;">
                                     <div class="filter-row-3">
                                         <div class="filter-col">
@@ -353,14 +242,6 @@
                                 </div>
                             </div>
                             <div class="tabs-item" id="tab-444">
-                                <div class="filter-row-3">
-                                    <div class="filter-col">
-                                        <label for="" class="form-label form-label--location">
-                                            <input type="text" name="" class="form-input"
-                                                   placeholder="Город, адрес, район, ЖК">
-                                        </label>
-                                    </div>
-                                </div>
                                 <div class="filter-hide" style="display: none;">
                                     <div class="filter-row-3">
                                         <div class="filter-col">
@@ -408,94 +289,14 @@
                     </div>
                     <div class="catalog-select">
                         <select class="form-input select-sort" name="sort">
-                            <option value="">По умолчанию</option>
-                            <option value="">По цене (сначала дешевле)</option>
-                            <option value="">По цене (сначала дороже)</option>
-                            <option value="">По общей площади</option>
-                            <option value="">По дате добавления (сначала старые)</option>
-                            <option value="">По дате добавления (сначала новые)</option>
+                            <option v-on:click="filter_type = 1">По цене (сначала дешевле)</option>
+                            <option v-on:click="filter_type = 2">По цене (сначала дороже)</option>
+                            <option v-on:click="filter_type = 3">По общей площади</option>
+                            <option v-on:click="filter_type = 4">По дате добавления (сначала старые)</option>
+                            <option v-on:click="filter_type = 5">По дате добавления (сначала новые)</option>
                         </select>
                     </div>
-                    <div class="cards catalog-cards">
-                        <div class="cards-item">
-                            <!-- Swiper -->
-                            <div class="cards-slider">
-                                <div class="btns-group">
-                                    <a href="#" class="btn-w"><img src="img/icons/3d.png"
-                                                                   alt=""><span>3D-просмотр</span></a>
-                                </div>
-                                <span class="gallery-value">+12</span>
-                                <div class="swiper gallerySwiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-button-next--fluid"></div>
-                                    <div class="swiper-button-prev--fluid"></div>
-                                    <div class="swiper-pagination--fluid"></div>
-                                </div>
-                            </div>
-                            <div class="cards-content">
-                                <div class="cards-info">
-                                    <div class="cards-info-wrapper">
-                                        <div class="cards-info-main">
-                                            <div class="cards-heading">
-                                                <h3 class="heading-3">3-к, Логинова, 19</h3>
-                                                <ul class="cards-specifications">
-                                                    <li>Площадь: 150 м²</li>
-                                                    <li>Этаж: 2 из 19</li>
-                                                </ul>
-                                            </div>
-                                            <div class="builder">
-                                                <div class="builder-title">Москва</div>
-                                                <div class="builder-info">
-                                                    <a href="#" class="builder-name">ЖК Optima Development</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cards-info-second">
-                                            <div class="cards-price">
-                                                <div class="cards-price-wrapper">
-                                                    <div class="cards-price-main">19 800 000 ₽</div>
-                                                </div>
-                                                <div class="cards-price-second">360 161 ₽/м2</div>
-                                            </div>
-                                            <div class="cards-date">Добавлено: 15.03.22</div>
-                                            <div class="cards-views">119 просмотров</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cards-nav">
-                                    <a href="#" class="btn-border btn-lg to-state" data-state="contacts"><i
-                                        class="icomoon icon-calling-bold"></i><span>Показать контакты</span></a>
-                                    <a href="#" class="btn-ic"><i class="icomoon icon-favourites"></i></a>
-                                    <a href="#" class="btn-ic"><i class="icomoon icon-location"></i></a>
-                                    <a href="img/logo-black.png" download="filename" class="btn-ic"><i
-                                        class="icomoon icon-download"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pagination">
-                            <div class="pagination-text">Вы посмотрели 20 из 234 квартир</div>
-                            <div class="nav-links">
-                                <a href="#" class="prev icomoon icon-chevron-left disabled"></a>
-                                <span class="page-numbers current">1</span>
-                                <a href="#" class="page-numbers">2</a>
-                                <a href="#" class="page-numbers">3</a>
-                                <a href="#" class="page-numbers">4</a>
-                                <a href="#" class="page-numbers">5</a>
-                                <a href="#" class="page-numbers">6</a>
-                                <a href="#" class="page-numbers">7</a>
-                                <a href="#" class="next icomoon icon-chevron-right"></a>
-                            </div>
-                        </div>
-                    </div>
+                    <CatalogHouse :jk="getFilters"></CatalogHouse>
                 </div>
             </section>
 
@@ -514,20 +315,52 @@
 
     export default {
         name: "AppCatalog",
-        props: ['page'],
+        props: ['page', 'jk', 'type', 'user'],
         components: {
           Form2
         },
         provide() {
             return {
                 'page': this.page,
+                'user': this.user,
             }
+        },
+        mounted() {
+
+        },
+        created() {
+            window.scrollTo({
+                top: 1000,
+                behavior: 'smooth'
+            });
+        },
+        methods: {
+
         },
         data() {
             return {
                 show: false,
                 show_login: false,
                 show_reg: false,
+                filter_type: 1,
+            }
+        },
+        computed: {
+            getFilters() {
+                if(this.filter_type === 0) {
+                    return this.jk.sort((a, b) => a.price - b.price );
+                } else if(this.filter_type === 1) {
+                    return this.jk.sort((a, b) => a.price - b.price );
+                } else if(this.filter_type === 2) {
+                    return this.jk.sort((a, b) => b.price - a.price );
+                } else if(this.filter_type === 3) {
+
+                } else if(this.filter_type === 4) {
+                    return this.jk.sort((a, b) => new Date(a.updated_at) - new Date(b.updated_at) );
+                } else if(this.filter_type === 5) {
+                    return this.jk.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at) );
+                }
+
             }
         }
     }

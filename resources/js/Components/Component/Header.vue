@@ -15,7 +15,7 @@
                 <ul class="nav__list">
                     <li class="nav__item"><Link :href="route('main')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 1 }">главная</Link></li>
                     <li class="nav__item"><Link :href="route('catalog')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 2 }">каталог</Link></li>
-                    <li class="nav__item"><Link :href="route('flat')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 3 }">квартиры</Link></li>
+<!--                    <li class="nav__item"><Link :href="route('flat')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 3 }">квартиры</Link></li>-->
                     <li class="nav__item"><Link :href="route('service')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 4 }">услуги</Link></li>
                     <li class="nav__item"><Link :href="route('news')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 5 }">новости</Link></li>
                     <li class="nav__item"><Link :href="route('about')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 6 }">о компании</Link></li>
@@ -44,9 +44,9 @@
                 </div>
             </nav>
             <div class="nav__btns">
-                <a href="#" class="btn-icon">
+                <Link href="/favorites" class="btn-icon" v-if="auth === true">
                     <i class="icomoon icon-favourites"></i>
-                </a>
+                </Link>
                 <div class="lang">
                     <div class="lang-btn"><img src="/img/lang/ru.svg" alt="Русский"></div>
                     <div class="lang-content">
@@ -58,7 +58,10 @@
                 <a href="#" class="btn-icon" id="search-btn" v-on:click="showSearch === true ? showSearch = false : showSearch = true">
                     <i class="icomoon icon-search" v-bind:class="{ 'icon-close': showSearch }"></i>
                 </a>
-                <a class="btn-icon to-state" data-state="login" @click="$emit('openLogin')">
+                <a class="btn-icon to-state" data-state="login" @click="$emit('openLogin')" v-if="auth === false">
+                    <i class="icomoon icon-login"></i>
+                </a>
+                <a class="btn-icon to-state" data-state="login" @click="getLogout" v-if="auth === true">
                     <i class="icomoon icon-login"></i>
                 </a>
                 <!-- Toggle button -->
@@ -76,16 +79,32 @@
 </template>
 
 <script>
+
+    import { router, useForm } from '@inertiajs/vue3'
+
     export default {
-        inject:['page'],
+        inject:['page', 'user'],
         data() {
           return {
               showSearch: false,
               showReg: false,
+              auth: false,
           }
         },
+        created() {
+            if(this.user !== null) {
+                this.auth = true;
+            }
+        },
         mounted() {
-            console.log(this.page);
+
+        },
+        methods: {
+            getLogout() {
+                const form = useForm({});
+
+                form.post('/logout');
+            }
         },
         name: "Header"
     }

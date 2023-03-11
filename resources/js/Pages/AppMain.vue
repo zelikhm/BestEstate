@@ -4,10 +4,11 @@
     import Footer from '../Components/Component/Footer.vue'
     import JkSwipper from '../Components/Component/Swipper/JkSwipper.vue'
     import JkHousesSwipper from '../Components/Component/Swipper/JkHousesSwipper.vue'
+    import Villages from '../Components/Component/Swipper/VillagesSwipper.vue'
     import Services from "../Components/Component/Services.vue";
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
-
+    import { Link } from '@inertiajs/vue3'
 
 </script>
 
@@ -183,166 +184,28 @@
             </section>
 
 
-            <section class="jk-bl">
+            <section class="jk-bl" v-if="jk.length > 0">
                 <div class="container--fluid">
                     <div class="heading-row">
                         <h2 class="heading-2">Жилые комплексы</h2>
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
+                        <Link :href="'/catalog?type_jk=0'" class="btn-second btn-md">Смотреть все</Link>
                     </div>
                     <!-- Swiper -->
 
                     <div class="swiper-container">
-                        <JkHousesSwipper :jk="jk"></JkHousesSwipper>
+                        <JkHousesSwipper @addFavorite="addFavorite" @removeFavorite="removeFavorite" :jk="jk"></JkHousesSwipper>
                     </div>
                 </div>
             </section>
 
-            <section class="kp-bl">
+            <section class="kp-bl" v-if="villages.length > 0">
                 <div class="container--fluid">
                     <div class="heading-row">
                         <h2 class="heading-2">Коттеджные поселки</h2>
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
+                        <Link :href="'/catalog?type_jk=1'" class="btn-second btn-md" preserve-state>Смотреть все</Link>
                     </div>
                     <div class="kp-bl__cards">
-                        <div class="kp-bl__cards-item">
-                            <!-- Swiper -->
-                            <div class="swiper gallerySwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></div>
-                                </div>
-                                <div class="swiper-button-next--fluid"></div>
-                                <div class="swiper-button-prev--fluid"></div>
-                                <div class="swiper-pagination--fluid"></div>
-                            </div>
-                            <div class="kp-bl__cards-content">
-                                <div class="kp-bl__cards-info">
-                                    <div class="kp-bl__cards-heading">
-                                        <h3 class="heading-3">КП “Новые вешки”</h3>
-                                        <p class="text-2">Архангельская область, Архангельск, Октябрьский</p>
-                                    </div>
-                                    <div class="specifications-col">
-                                        <div class="specifications-col-item"><img src="img/jk-bl/rooms.png"
-                                                                                  alt=""><span>1–8 комнат</span></div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/square.png"
-                                                                                  alt=""><span>от 224 до 411 м²</span>
-                                        </div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/cost.png" alt=""><span>от 48 млн. ₽</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kp-bl__cards-nav">
-                                    <a href="#" class="btn btn-lg">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kp-bl__cards-item">
-                            <!-- Swiper -->
-                            <div class="swiper gallerySwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt=""></div>
-                                </div>
-                                <div class="swiper-button-next--fluid"></div>
-                                <div class="swiper-button-prev--fluid"></div>
-                                <div class="swiper-pagination--fluid"></div>
-                            </div>
-                            <div class="kp-bl__cards-content">
-                                <div class="kp-bl__cards-info">
-                                    <div class="kp-bl__cards-heading">
-                                        <h3 class="heading-3">КП “Петрово-дальнее”</h3>
-                                        <p class="text-2">Архангельская область, Архангельск, Октябрьский</p>
-                                    </div>
-                                    <div class="specifications-col">
-                                        <div class="specifications-col-item"><img src="img/jk-bl/rooms.png"
-                                                                                  alt=""><span>1–8 комнат</span></div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/square.png"
-                                                                                  alt=""><span>от 224 до 411 м²</span>
-                                        </div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/cost.png" alt=""><span>от 48 млн. ₽</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kp-bl__cards-nav">
-                                    <a href="#" class="btn btn-lg">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kp-bl__cards-item">
-                            <!-- Swiper -->
-                            <div class="swiper gallerySwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt=""></div>
-                                </div>
-                                <div class="swiper-button-next--fluid"></div>
-                                <div class="swiper-button-prev--fluid"></div>
-                                <div class="swiper-pagination--fluid"></div>
-                            </div>
-                            <div class="kp-bl__cards-content">
-                                <div class="kp-bl__cards-info">
-                                    <div class="kp-bl__cards-heading">
-                                        <h3 class="heading-3">Ла–Манш</h3>
-                                        <p class="text-2">Архангельская область, Архангельск, Октябрьский</p>
-                                    </div>
-                                    <div class="specifications-col">
-                                        <div class="specifications-col-item"><img src="img/jk-bl/rooms.png"
-                                                                                  alt=""><span>1–8 комнат</span></div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/square.png"
-                                                                                  alt=""><span>от 224 до 411 м²</span>
-                                        </div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/cost.png" alt=""><span>от 48 млн. ₽</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kp-bl__cards-nav">
-                                    <a href="#" class="btn btn-lg">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kp-bl__cards-item">
-                            <!-- Swiper -->
-                            <div class="swiper gallerySwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt=""></div>
-                                    <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt=""></div>
-                                </div>
-                                <div class="swiper-button-next--fluid"></div>
-                                <div class="swiper-button-prev--fluid"></div>
-                                <div class="swiper-pagination--fluid"></div>
-                            </div>
-                            <div class="kp-bl__cards-content">
-                                <div class="kp-bl__cards-info">
-                                    <div class="kp-bl__cards-heading">
-                                        <h3 class="heading-3">Княжье озеро</h3>
-                                        <p class="text-2">Архангельская область, Архангельск, Октябрьский</p>
-                                    </div>
-                                    <div class="specifications-col">
-                                        <div class="specifications-col-item"><img src="img/jk-bl/rooms.png"
-                                                                                  alt=""><span>1–8 комнат</span></div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/square.png"
-                                                                                  alt=""><span>от 224 до 411 м²</span>
-                                        </div>
-                                        <div class="specifications-col-item"><img src="img/jk-bl/cost.png" alt=""><span>от 48 млн. ₽</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="kp-bl__cards-nav">
-                                    <a href="#" class="btn btn-lg">Подробнее</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="link-center">
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
+                        <Villages :villages="villages"></Villages>
                     </div>
                 </div>
             </section>
@@ -355,105 +218,105 @@
                 </div>
             </section>
 
-            <section class="cat-bl">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Виллы</h2>
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
-                    </div>
-                    <div class="cat-bl__cards">
-                        <div class="cat-bl__cards-item cat-bl__cards-item-1">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-2">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-1">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-2">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<!--            <section class="cat-bl">-->
+<!--                <div class="container&#45;&#45;fluid">-->
+<!--                    <div class="heading-row">-->
+<!--                        <h2 class="heading-2">Виллы</h2>-->
+<!--                        <Link :href="'/catalog?type_jk=2'" class="btn-second btn-md" >Смотреть все</Link>-->
+<!--                    </div>-->
+<!--                    <div class="cat-bl__cards" v-for="item in villa">-->
+<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-1">-->
+<!--                            <div class="cat-bl__cards-info">-->
+<!--                                <div class="cat-bl__cards-heading">-->
+<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
+<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
+<!--                                </div>-->
+<!--                                <div class="specifications">-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="cat-bl__cards-nav">-->
+<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-2">-->
+<!--                            <div class="cat-bl__cards-info">-->
+<!--                                <div class="cat-bl__cards-heading">-->
+<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
+<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
+<!--                                </div>-->
+<!--                                <div class="specifications">-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="cat-bl__cards-nav">-->
+<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-1">-->
+<!--                            <div class="cat-bl__cards-info">-->
+<!--                                <div class="cat-bl__cards-heading">-->
+<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
+<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
+<!--                                </div>-->
+<!--                                <div class="specifications">-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="cat-bl__cards-nav">-->
+<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-2">-->
+<!--                            <div class="cat-bl__cards-info">-->
+<!--                                <div class="cat-bl__cards-heading">-->
+<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
+<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
+<!--                                </div>-->
+<!--                                <div class="specifications">-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="cat-bl__cards-nav">-->
+<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </section>-->
 
-            <section class="cat-bl">
+            <section class="cat-bl" v-if="shale.length > 0">
                 <div class="container--fluid">
                     <div class="heading-row">
                         <h2 class="heading-2">Шале</h2>
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
+                        <Link :href="'/catalog?type_jk=3'" class="btn-second btn-md" >Смотреть все</Link>
                     </div>
-                    <div class="cat-bl__cards">
-                        <div class="cat-bl__cards-item cat-bl__cards-item-1">
+                    <div class="cat-bl__cards" v-for="(item, index) in shale">
+                        <div class="cat-bl__cards-item cat-bl__cards-item-1" v-if="index === 0 && index === 2">
                             <div class="cat-bl__cards-info">
                                 <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
+                                    <h3 class="heading-3">{{ item.title }}</h3>
+                                    <p class="text-2">{{ item.address }}</p>
                                 </div>
                                 <div class="specifications">
                                     <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
@@ -468,49 +331,11 @@
                                 <a href="#" class="btn btn-lg">Подробнее</a>
                             </div>
                         </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-2">
+                        <div class="cat-bl__cards-item cat-bl__cards-item-2" v-if="index === 1 && index === 3">
                             <div class="cat-bl__cards-info">
                                 <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-1">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-2">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>
-                                    <p class="text-2">Антиб, Круцио стрит, 32</p>
+                                    <h3 class="heading-3">{{ item.title }}</h3>
+                                    <p class="text-2">{{ item.address }}</p>
                                 </div>
                                 <div class="specifications">
                                     <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
@@ -529,18 +354,19 @@
                 </div>
             </section>
 
-            <section class="kn-bl">
+            <section class="kn-bl" v-if="ecom.length > 0">
                 <div class="container--fluid">
                     <div class="heading-row">
                         <h2 class="heading-2">Коммерческая недвижимость</h2>
+                        <Link :href="'/catalog?type_jk=4'" class="btn-second btn-md" >Смотреть все</Link>
                     </div>
                     <div class="cards">
-                        <div class="cards-item cards-item--kn">
+                        <div class="cards-item cards-item--kn" v-for="item in ecom">
                             <!-- Swiper -->
                             <div class="cards-slider">
                                 <div class="swiper gallerySwiper">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt="">
+                                        <div class="swiper-slide"><img :src="item.image" alt="">
                                         </div>
                                         <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt="">
                                         </div>
@@ -560,15 +386,14 @@
                                     <div class="cards-info-wrapper">
                                         <div class="cards-info-main">
                                             <div class="cards-heading">
-                                                <h3 class="heading-3">Коммерческая недвижимость в&nbsp;Зальцбурге</h3>
-                                                <p class="text-3">Невероятный замок. Живописные виды и беличьи красоты
-                                                    покоряют сердца даже самых холодных людей</p>
+                                                <h3 class="heading-3">{{ item.title }}</h3>
+                                                <p class="text-3">{{ item.description }}</p>
                                             </div>
                                         </div>
                                         <div class="cards-info-second">
                                             <div class="cards-price">
                                                 <div class="cards-price-wrapper">
-                                                    <div class="cards-price-main">19 800 000 ₽</div>
+                                                    <div class="cards-price-main">{{ item.price.toLocaleString('ru') }} ₽</div>
                                                     <!-- <div class="select-wallet-container">
                                                       <select class="select-wallet" name="wallet">
                                                         <option value="">₽</option>
@@ -577,10 +402,10 @@
                                                       </select>
                                                     </div> -->
                                                 </div>
-                                                <div class="cards-price-second">360 161 ₽/м2</div>
+                                                <div class="cards-price-second">{{ (item.price / item.square).toLocaleString('ru') }} ₽/м2</div>
                                             </div>
-                                            <div class="cards-date">Добавлено: 15.03.22</div>
-                                            <div class="cards-views">119 просмотров</div>
+                                            <div class="cards-date">Добавлено: {{ item.created_at }}</div>
+                                            <div class="cards-views" v-if="item.visible">{{ item.visible }} просмотров</div>
                                         </div>
                                     </div>
 
@@ -604,78 +429,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="cards-item cards-item--kn">
-                            <!-- Swiper -->
-                            <div class="cards-slider">
-                                <div class="swiper gallerySwiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-button-next--fluid"></div>
-                                    <div class="swiper-button-prev--fluid"></div>
-                                    <div class="swiper-pagination--fluid"></div>
-                                </div>
-                            </div>
-
-                            <div class="cards-content">
-                                <div class="cards-info">
-                                    <div class="cards-info-wrapper">
-                                        <div class="cards-info-main">
-                                            <div class="cards-heading">
-                                                <h3 class="heading-3">Коммерческая недвижимость в&nbsp;Зальцбурге</h3>
-                                                <p class="text-3">Невероятный замок. Живописные виды и беличьи красоты
-                                                    покоряют сердца даже самых холодных людей</p>
-                                            </div>
-                                        </div>
-                                        <div class="cards-info-second">
-                                            <div class="cards-price">
-                                                <div class="cards-price-wrapper">
-                                                    <div class="cards-price-main">19 800 000 ₽</div>
-                                                    <!-- <div class="select-wallet-container">
-                                                      <select class="select-wallet" name="wallet">
-                                                        <option value="">₽</option>
-                                                        <option value="">₽</option>
-                                                        <option value="">₽</option>
-                                                      </select>
-                                                    </div> -->
-                                                </div>
-                                                <div class="cards-price-second">360 161 ₽/м2</div>
-                                            </div>
-                                            <div class="cards-date">Добавлено: 15.03.22</div>
-                                            <div class="cards-views">119 просмотров</div>
-                                        </div>
-                                    </div>
-
-                                    <ul class="cards-specifications">
-                                        <li>Площадь: 150 м²</li>
-                                        <li>Вид на море/океан</li>
-                                        <li>Бассейн</li>
-                                        <li>Фитнес–центр</li>
-                                        <li>Собственный пляж</li>
-                                        <li>Продавец кто то там на английском</li>
-                                    </ul>
-                                </div>
-
-                                <div class="cards-nav">
-                                    <a href="#" class="btn-border btn-lg to-state" data-state="contacts"><i
-                                        class="icomoon icon-calling-bold"></i><span>Показать контакты</span></a>
-                                    <a href="#" class="btn-ic"><i class="icomoon icon-favourites"></i></a>
-                                    <a href="#" class="btn-ic"><i class="icomoon icon-location"></i></a>
-                                    <a href="img/logo-black.png" download="filename" class="btn-ic"><i
-                                        class="icomoon icon-download"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="link-center">
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
                     </div>
                 </div>
             </section>
@@ -1284,13 +1037,17 @@
 </template>
 
 <script>
+
+    import { router } from '@inertiajs/vue3'
+
     export default {
-        props: ['page', 'sale_jk', 'services', 'jk'],
+        props: ['page', 'sale_jk', 'services', 'jk', 'user', 'villages', 'shale', 'ecom'],
         provide() {
             return {
                 'page': this.page,
                 'sale_jk': this.sale_jk,
                 'services': this.services,
+                'user': this.user
             }
         },
         data() {
@@ -1302,7 +1059,50 @@
         created() {
 
         },
-        name: "AppMain"
+        name: "AppMain",
+        methods: {
+            link(link, data) {
+                router.visit(link, {
+                    method: 'get',
+                    replace: true,
+                    onSuccess: page => {window.scrollTo(0, 0)},
+                    preserveState: true,
+                    preserveScroll: true,
+                })
+            },
+            addFavorite(item, type) {
+
+                if(this.user !== null) {
+
+                    axios.post('/api/favorite/add', {
+                        user_id: this.user.id,
+                        flat_id: type === 1 ? item.id : null,
+                        jk_id: type === 0 ? item.id : null,
+                    }).then(res => {
+                        if(res.status === 200) {
+                            item.favorite = true;
+                        }
+                    })
+
+                }
+
+            },
+            removeFavorite(item, type) {
+                if(this.user !== null) {
+
+                    axios.post('/api/favorite/remove', {
+                        user_id: this.user.id,
+                        flat_id: type === 1 ? item.id : null,
+                        jk_id: type === 0 ? item.id : null,
+                    }).then(res => {
+                        if(res.status === 200) {
+                            item.favorite = false;
+                        }
+                    })
+
+                }
+            }
+        }
     }
 </script>
 
