@@ -16,6 +16,8 @@ class FlatPriceModel extends Model
         'sale',
         'rent',
         'rent_price',
+        'days',
+        'day_price'
     ];
 
     public function flat() {

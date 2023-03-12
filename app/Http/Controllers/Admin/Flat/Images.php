@@ -110,17 +110,9 @@ class Images extends Section implements Initializable
 
             AdminFormElement::select('flat_id', 'Квартира')->setModelForOptions(JkFlatModel::class)->setDisplay('title'),
 
-            AdminFormElement::image('image', 'Изображение')->setUploadPath(function(\Illuminate\Http\UploadedFile $file) {
-                return '/storage/flat';
-            })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
-
-                $file->move(public_path('/storage/flat'), $filename);
-
-                return ['path' => '/storage/flat/' . $filename, 'value' => '/storage/flat/' . $filename];
-            }),
+            AdminFormElement::images('image', 'Изображение')->storeAsJson(),
 
         ]);
-
 
         $card->getButtons()->setButtons([
             'save_and_continue' => (new Save())->setText('Применить'),

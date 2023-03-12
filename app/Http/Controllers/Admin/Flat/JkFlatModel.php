@@ -110,6 +110,11 @@ class JkFlatModel extends Section implements Initializable
                 AdminFormElement::select('jk_id', 'ЖК')
                     ->setModelForOptions(JkModel::class)
                     ->setDisplay('title'),
+                AdminFormElement::select('type_flat', 'Постройка')->setOptions([
+                    1 => 'Квартира',
+                    2 => 'Вилла',
+                    3 => 'Шалле',
+                ]),
                 AdminFormElement::number('price', 'Цена')->required(),
                 AdminFormElement::select('support_id', 'Поддержка')
                     ->setModelForOptions(SupportModel::class)
@@ -163,12 +168,14 @@ class JkFlatModel extends Section implements Initializable
 
                 $form3->setElements([
 
-                    AdminFormElement::belongsTo('price', [
+                    AdminFormElement::belongsTo('price_object', [
                         AdminFormElement::hidden('flat_id')->setDefaultValue($id),
                         AdminFormElement::checkbox('sale', 'Продажа'),
                         AdminFormElement::checkbox('rent', 'Аренда'),
+                        AdminFormElement::checkbox('days', 'Сутки'),
                         AdminFormElement::number('price', 'Цена'),
                         AdminFormElement::number('rent_price', 'Цена аренды (мес)')->setStep(0.01),
+                        AdminFormElement::number('day_price', 'Цена аренды (сутки)')->setStep(0.01),
                     ]),
 
                 ]);

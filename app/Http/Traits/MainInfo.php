@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 use App\Models\Jk\ImageModels;
 use App\Models\Jk\JkModel;
+use App\Models\JkFlatModel;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -92,6 +93,7 @@ trait MainInfo {
         }
 
     }
+
 
     protected function getUser() {
 

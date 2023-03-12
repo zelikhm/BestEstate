@@ -5,7 +5,7 @@
     import { Link } from '@inertiajs/vue3';
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
-    import CatalogHouse from "@/Components/Component/CatalogHouse.vue";
+    import CatalogFlat from "@/Components/Component/CatalogFlat.vue";
 
 </script>
 
@@ -49,10 +49,10 @@
                                     <div class="filter-col filter-col-2">
                                         <div class="select select-house">
                                             <select class="form-input select-default" name="house">
-                                                <option value="">Квартиру</option>
-                                                <option value="">Другое</option>
-                                                <option value="">Другое другое</option>
-                                                <option value="">Другое другое другое</option>
+                                                <option :selected="type == 1" v-on:click="visit(1)">Квартира</option>
+                                                <option :selected="type == 2" v-on:click="visit(2)">Вилла</option>
+                                                <option :selected="type == 3" v-on:click="visit(3)">Шалле</option>
+                                                <option :selected="type == 4" v-on:click="visit(4)">Коммерческая недвижимость</option>
                                             </select>
                                         </div>
                                         <div class="filter-radio-group">
@@ -296,7 +296,7 @@
                             <option v-on:click="filter_type = 5">По дате добавления (сначала новые)</option>
                         </select>
                     </div>
-                    <CatalogHouse :jk="getFilters"></CatalogHouse>
+                    <CatalogFlat :jk="getFilters"></CatalogFlat>
                 </div>
             </section>
 
@@ -312,10 +312,17 @@
 
 <script>
     import Form2 from "../Components/Component/Forms/Form2.vue";
+    import { router } from '@inertiajs/vue3'
 
     export default {
         name: "AppCatalog",
-        props: ['page', 'jk', 'type', 'user'],
+        props: [
+            'page',
+            'jk',
+            'type',
+            'user',
+
+        ],
         components: {
           Form2
         },
@@ -335,7 +342,9 @@
             });
         },
         methods: {
-
+            visit(id) {
+                router.visit('/catalog?type_jk=' + id);
+            }
         },
         data() {
             return {
@@ -354,7 +363,7 @@
                 } else if(this.filter_type === 2) {
                     return this.jk.sort((a, b) => b.price - a.price );
                 } else if(this.filter_type === 3) {
-
+                    return this.jk.sort((a, b) => b.square_main - a.square_main);
                 } else if(this.filter_type === 4) {
                     return this.jk.sort((a, b) => new Date(a.updated_at) - new Date(b.updated_at) );
                 } else if(this.filter_type === 5) {

@@ -39,7 +39,7 @@ class JkFlatModel extends Model
         'created_at' => 'date:d-m-Y'
     ];
 
-    public function price() {
+    public function price_object() {
         return $this->belongsTo(FlatPriceModel::class, 'id', 'flat_id');
     }
 
