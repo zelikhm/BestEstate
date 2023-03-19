@@ -21,7 +21,10 @@ Route::get('/contact', ['App\Http\Controllers\Page\MainController', 'contact'])-
 Route::get('/jk/{house}', ['App\Http\Controllers\Page\JkController', 'jk'])->name('jk');
 Route::get('/jk/{house}/{flat}', ['App\Http\Controllers\Page\JkController', 'flat'])->name('jk');
 Route::get('/flat', ['App\Http\Controllers\Page\MainController', 'flat'])->name('flat');
-Route::get('/catalog', ['App\Http\Controllers\Page\CatalogController', 'main'])->name('catalog');
+
+Route::get('/catalog', ['App\Http\Controllers\Page\CatalogController', 'render'])->name('catalog');
+Route::post('/catalog', ['App\Http\Controllers\Page\CatalogController', 'filtered'])->name('catalog');
+
 Route::get('/about', ['App\Http\Controllers\Page\MainController', 'about'])->name('about');
 Route::get('/service', ['App\Http\Controllers\Page\MainController', 'service'])->name('service');
 Route::get('/news', ['App\Http\Controllers\Page\MainController', 'news'])->name('news');

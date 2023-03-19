@@ -11,7 +11,8 @@ class TypeHouseModel extends Model
 
     protected $fillable = [
         'title',
-        'type'
+        'type',
+        'active'
     ];
 
 }

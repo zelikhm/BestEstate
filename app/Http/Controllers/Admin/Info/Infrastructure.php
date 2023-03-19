@@ -29,7 +29,7 @@ use SleepingOwl\Admin\Section;
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Infrastucture extends Section implements Initializable
+class Infrastructure extends Section implements Initializable
 {
     /**
      * @var bool

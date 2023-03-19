@@ -1,6 +1,6 @@
 <template>
     <div class="cards catalog-cards">
-        <div class="cards-item" v-for="item in jk" :key="item.id">
+        <div class="cards-item" v-for="(item, index) in jk" :key="index">
             <!-- Swiper -->
             <div class="cards-slider">
                 <div class="btns-group">
@@ -38,7 +38,7 @@
                             <div class="builder">
                                 <div class="builder-title">{{ item.address }}</div>
                                 <div class="builder-info">
-                                    <a href="#" class="builder-name" v-if="item.builder">{{ item.builder.name }}</a>
+                                    <a href="#" class="builder-name" v-if="item.builder !== undefined">{{ item.builder.name }}</a>
                                 </div>
                             </div>
                         </div>
@@ -62,20 +62,6 @@
                     <a href="img/logo-black.png" download="filename" class="btn-ic"><i
                         class="icomoon icon-download"></i></a>
                 </div>
-            </div>
-        </div>
-        <div class="pagination">
-            <div class="pagination-text">Вы посмотрели {{ show }} из {{ jk.length }} обьектов</div>
-            <div class="nav-links">
-                <a href="#" class="prev icomoon icon-chevron-left disabled"></a>
-                <span class="page-numbers current">1</span>
-                <a href="#" class="page-numbers">2</a>
-                <a href="#" class="page-numbers">3</a>
-                <a href="#" class="page-numbers">4</a>
-                <a href="#" class="page-numbers">5</a>
-                <a href="#" class="page-numbers">6</a>
-                <a href="#" class="page-numbers">7</a>
-                <a href="#" class="next icomoon icon-chevron-right"></a>
             </div>
         </div>
     </div>

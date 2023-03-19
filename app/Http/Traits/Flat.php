@@ -10,7 +10,7 @@ trait Flat
     protected function getFlat($type, $limit) {
 
         $flats = JkFlatModel::where('type_flat', $type)
-            ->with(['images', 'jk', 'price_object', 'support'])
+            ->with(['images', 'jk', 'price_object', 'support', 'builder'])
             ->limit($limit)
             ->get();
 

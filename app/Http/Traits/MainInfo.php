@@ -57,6 +57,35 @@ trait MainInfo {
     }
 
     /**
+     * get jk on id
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+
+    protected function getJk($id) {
+
+
+        $houses = JkModel::with(['images', 'city_info', 'area_info', 'builder', 'flat'])
+            ->where('id', $id)
+            ->get();
+
+        foreach ($houses as $house) {
+            $house->image = $this->getPhoto($house->id);
+
+            $house->address = $house->city_info->city_name !== [] ?  $house->area_info !== null ? $house->city_info->city_name . ', ' . $house->area_info->area_name : $house->city_info->city_name : '';
+
+            $house->status = $house->status === 0 ? 'Сдан' : 'Не сдан';
+
+            $house->images_array = count($house->images) !== 0 ? json_decode($house->images[0]->image) : [];
+
+            $house->favorite = $this->checkFavorite($house->id);
+        }
+
+        return $houses[0];
+
+    }
+
+    /**
      * check add favorite
      * @param $house
      * @return bool

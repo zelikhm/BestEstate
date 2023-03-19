@@ -10,7 +10,8 @@ class PlotModel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title',
+        'active'
     ];
 
 }

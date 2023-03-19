@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\FlatInfo\ImagesModel;
 use App\Models\FlatInfo\PlanModel;
+use App\Models\Info\InfrastructureModel;
 use App\Models\Jk\JkModel;
 use App\Models\Jk\SupportModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,13 +32,22 @@ class JkFlatModel extends Model
         'repair',
         'view',
         'rooms',
-        'price'
+        'price',
+        'infrastructure',
+        'plot_type',
+        'type_house',
     ];
 
     protected $casts = [
         'date_building' => 'date:Y',
         'created_at' => 'date:d-m-Y'
     ];
+
+    public function setInfrastructureAttribute($values) {
+        JkFlatModel::where('id', $this->id)->update([
+            'infrastructure' => json_encode($values)
+        ]);
+    }
 
     public function price_object() {
         return $this->belongsTo(FlatPriceModel::class, 'id', 'flat_id');
@@ -53,6 +63,19 @@ class JkFlatModel extends Model
 
     public function plans() {
         return $this->hasMany(PlanModel::class, 'flat_id', 'id');
+    }
+
+    public function builder() {
+
+        return $this->hasOneThrough(
+            BuilderModel::class,
+            JkModel::class,
+            'id',
+            'id',
+            'jk_id',
+            'builder_id'
+        );
+
     }
 
     public function support() {

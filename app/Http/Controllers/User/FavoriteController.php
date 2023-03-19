@@ -17,10 +17,18 @@ class FavoriteController extends Controller
 
         $favorites = FavoriteModel::where('user_id', Auth::id())->get();
 
+        $array = collect();
+
+        foreach ($favorites as $favorite) {
+
+            $array->push($this->getJk($favorite->jk_id));
+
+        }
+
         return Inertia::render('AppFavorite', [
             'page' => 0,
             'user' => $this->getUser(),
-            'jk' => $this->getAllJk(0, 20),
+            'jk' => $array,
         ]);
     }
 

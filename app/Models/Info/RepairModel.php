@@ -10,7 +10,12 @@ class RepairModel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title',
+        'active'
+    ];
+
+    protected $casts = [
+        'active' => 'boolean',
     ];
 
 }

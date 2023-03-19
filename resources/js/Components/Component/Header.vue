@@ -14,7 +14,7 @@
             <nav class="nav" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><Link :href="route('main')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 1 }">главная</Link></li>
-                    <li class="nav__item"><Link :href="route('catalog')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 2 }">каталог</Link></li>
+                    <li class="nav__item"><Link href="/catalog?type_jk=1" class="nav__link" v-bind:class="{ 'nav__link-active': page === 2 }">каталог</Link></li>
 <!--                    <li class="nav__item"><Link :href="route('flat')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 3 }">квартиры</Link></li>-->
                     <li class="nav__item"><Link :href="route('service')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 4 }">услуги</Link></li>
                     <li class="nav__item"><Link :href="route('news')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 5 }">новости</Link></li>
@@ -70,12 +70,27 @@
                 </div>
             </div>
         </div>
-        <form action="" class="search-bar-container" v-bind:class="{ 'active': showSearch }">
-            <input type="search" id="search-bar" class="form-input" placeholder="Введите...">
+        <form class="search-bar-container" v-bind:class="{ 'active': showSearch }">
+            <input type="search" id="search-bar" class="form-input" placeholder="Введите..." v-model="search" @input="getContent()">
             <label for="search-bar" class="icomoon icon-search"></label>
         </form>
-
     </header>
+    <div style="width: 100%; display: block" v-if="content.jk.length > 0 || content.flats.length > 0">
+        <div>
+            <h1>Недвижимость (обьекты)</h1>
+                <div v-for="item in content.jk">
+                    <Link :href="'/jk/' + item.slug">
+                        {{ item.title }}
+                    </Link>
+                </div>
+            <h1>Недвижимость (квартиры)</h1>
+            <div v-for="item in content.flats">
+                <Link :href="'/jk/' + item.jk.slug + '/' + item.slug">
+                    {{ item.title }}
+                </Link>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -89,6 +104,11 @@
               showSearch: false,
               showReg: false,
               auth: false,
+              search: '',
+              content: {
+                  jk: [],
+                  flats: [],
+              },
           }
         },
         created() {
@@ -100,6 +120,15 @@
 
         },
         methods: {
+            getContent() {
+
+                axios.post('/api/search/get', {
+                    title: this.search
+                }).then(res => {
+                    this.content = res.data;
+                })
+
+            },
             getLogout() {
                 const form = useForm({});
 

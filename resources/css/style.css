@@ -1832,6 +1832,7 @@ th {
   z-index: 20;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
+
 .search-bar-container .form-input {
   min-height: 30px;
 }

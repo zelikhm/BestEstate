@@ -76,10 +76,10 @@
                             </div>
                             <div class="apart-right">
                                 <div class="apart-card">
-                                    <div class="price-dropdown" v-if="flat.price">
+                                    <div class="price-dropdown" v-if="flat.price_object">
                                         <div class="price">
                                             <img src="/img/apartament/wallet.svg" alt="">
-                                            <span>{{flat.price.price.toLocaleString('ru')}}</span>
+                                            <span>{{flat.price_object.price.toLocaleString('ru')}}</span>
                                             <div class="price-arrow">₽</div>
                                         </div>
                                         <ul class="price-dropdown-content">
@@ -90,7 +90,7 @@
                                             <li><img src="/img/icons/yen.svg" alt=""><span>300 000 000</span></li>
                                         </ul>
                                     </div>
-                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">{{ (flat.price.price / flat.square_main).toFixed(2) }} ₽/м2
+                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">{{ (flat.price_object.price / flat.square_main).toFixed(2) }} ₽/м2
                                     </div>
                                     <div class="apart-second">
                                         <div class="cards-date">Добавлено: {{ flat.created_at }}</div>

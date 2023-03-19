@@ -32,15 +32,15 @@
             <section class="catalog">
                 <div class="container">
                     <div class="heading">
-                        <h1 class="heading-1">Каталог недвижимости</h1>
+                        <h1 class="heading-1">Каталог {{ type == 1 ? 'квартир' : type == 2 ? 'вилл' : type == 3 ? 'шалле' : 'коммерческой недвижимости' }}</h1>
                     </div>
                     <div class="filter" v-bind:class="{ 'filter-open': show }" id="filterTabs">
                         <!-- Кнопки -->
                         <ul class="filter-nav">
-                            <li><a href="#tab-111">Купить</a></li>
-                            <li><a href="#tab-222">Снять</a></li>
-                            <li><a href="#tab-333">Посуточно</a></li>
-                            <li><a href="#tab-444">VR</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 1 }" v-on:click="type_cost = 1">Купить</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 2 }" v-on:click="type_cost = 2">Снять</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 3 }" v-on:click="type_cost = 3">Посуточно</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 4 }" v-on:click="type_cost = 4">VR</a></li>
                         </ul>
                         <!-- Контент -->
                         <div class="tabs-items">
@@ -55,23 +55,22 @@
                                                 <option :selected="type == 4" v-on:click="visit(4)">Коммерческая недвижимость</option>
                                             </select>
                                         </div>
-                                        <div class="filter-radio-group">
-                                            <span class="filter-radio-group-title">Студия</span>
+                                        <div class="filter-radio-group" v-if="type == 1">
+                                            <span class="filter-radio-group-title">Комнат</span>
                                             <label for="1" class="filter-radio">
-                                                <input type="radio" id="1" name="studia" class="filter-radio__input"
-                                                       checked>
+                                                <input v-on:click="plan = 1" type="radio" id="1" name="studia" class="filter-radio__input" :checked="plan === 1">
                                                 <span>1</span>
                                             </label>
                                             <label for="2" class="filter-radio">
-                                                <input type="radio" id="2" name="studia" class="filter-radio__input">
+                                                <input v-on:click="plan = 2" type="radio" id="2" name="studia" class="filter-radio__input" :checked="plan === 2">
                                                 <span>2</span>
                                             </label>
                                             <label for="3" class="filter-radio">
-                                                <input type="radio" id="3" name="studia" class="filter-radio__input">
+                                                <input v-on:click="plan = 3" type="radio" id="3" name="studia" class="filter-radio__input" :checked="plan === 3">
                                                 <span>3</span>
                                             </label>
                                             <label for="4+" class="filter-radio">
-                                                <input type="radio" id="4+" name="studia" class="filter-radio__input">
+                                                <input v-on:click="plan = 4" type="radio" id="4+" name="studia" class="filter-radio__input" :checked="plan === 4">
                                                 <span>4+</span>
                                             </label>
                                         </div>
@@ -79,11 +78,11 @@
                                     <div class="filter-col">
                                         <div for="" class="form-label form-label-range">
                                             <label class="form-range-group">
-                                                от <input id="start" type="number" value=""> ₽
+                                                от <input id="start" type="number" v-model="price.min"> ₽
                                             </label>
                                             <span class="form-range-separator">–</span>
                                             <label class="form-range-group">
-                                                до <input id="end" type="number" value=""> ₽
+                                                до <input id="end" type="number" v-model="price.max"> ₽
                                             </label>
                                         </div>
                                     </div>
@@ -106,99 +105,52 @@
                                     </div>
                                 </div>
                                 <div class="filter-hide" v-show="show">
-                                    <div class="filter-row-3">
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Общая площадь:</div>
-                                            <label for="" class="form-label form-label-range">
-                                                <div class="form-range-group">
-                                                    от <input id="" type="number" value="">
-                                                </div>
-                                                <span class="form-range-separator">–</span>
-                                                <div class="form-range-group">
-                                                    до <input id="" type="number" value=""> м²
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Площадь кухни:</div>
-                                            <label for="" class="form-label form-label-range">
-                                                <div class="form-range-group">
-                                                    от <input id="" type="number" value="">
-                                                </div>
-                                                <span class="form-range-separator">–</span>
-                                                <div class="form-range-group">
-                                                    до <input id="" type="number" value=""> м²
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Жилая площадь:</div>
-                                            <label for="" class="form-label form-label-range">
-                                                <div class="form-range-group">
-                                                    от <input id="" type="number" value="">
-                                                </div>
-                                                <span class="form-range-separator">–</span>
-                                                <div class="form-range-group">
-                                                    до <input id="" type="number" value=""> м²
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="filter-row-flex">
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Условия проживания</div>
+<!--                                    <div class="filter-row-3">-->
+<!--                                        <div class="filter-col">-->
+<!--                                            <div class="filter-col-title">Общая площадь:</div>-->
+<!--                                            <label for="" class="form-label form-label-range">-->
+<!--                                                <div class="form-range-group">-->
+<!--                                                    от <input id="" type="number" value="">-->
+<!--                                                </div>-->
+<!--                                                <span class="form-range-separator">–</span>-->
+<!--                                                <div class="form-range-group">-->
+<!--                                                    до <input id="" type="number" value=""> м²-->
+<!--                                                </div>-->
+<!--                                            </label>-->
+<!--                                        </div>-->
+<!--                                        <div class="filter-col">-->
+<!--                                            <div class="filter-col-title">Площадь кухни:</div>-->
+<!--                                            <label for="" class="form-label form-label-range">-->
+<!--                                                <div class="form-range-group">-->
+<!--                                                    от <input id="" type="number" value="">-->
+<!--                                                </div>-->
+<!--                                                <span class="form-range-separator">–</span>-->
+<!--                                                <div class="form-range-group">-->
+<!--                                                    до <input id="" type="number" value=""> м²-->
+<!--                                                </div>-->
+<!--                                            </label>-->
+<!--                                        </div>-->
+<!--                                        <div class="filter-col">-->
+<!--                                            <div class="filter-col-title">Жилая площадь:</div>-->
+<!--                                            <label for="" class="form-label form-label-range">-->
+<!--                                                <div class="form-range-group">-->
+<!--                                                    от <input id="" type="number" value="">-->
+<!--                                                </div>-->
+<!--                                                <span class="form-range-separator">–</span>-->
+<!--                                                <div class="form-range-group">-->
+<!--                                                    до <input id="" type="number" value=""> м²-->
+<!--                                                </div>-->
+<!--                                            </label>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                    <div class="filter-row-flex" >
+                                        <div class="filter-col" v-for="(item, idx) in options" :key="item.id">
+                                            <div class="filter-col-title">{{ item.name }}</div>
                                             <div class="radio-group">
-                                                <label for="uslovia1" class="radio">
-                                                    <input type="radio" id="uslovia1" name="uslovia"
+                                                <label :for="'block' + idx + 'id' + index" class="checkbox" v-for="(option, index) in item.opt" :key="option.id">
+                                                    <input v-on:click="check()" v-model="options[idx].opt[index].active" type="checkbox" :id="'block' + idx + 'id' + index" name="uslovia"
                                                            class="radio__input">
-                                                    <span>Неважно</span>
-                                                </label>
-                                                <label for="uslovia2" class="radio">
-                                                    <input type="radio" id="uslovia2" name="uslovia"
-                                                           class="radio__input">
-                                                    <span>Можно с детьми</span>
-                                                </label>
-                                                <label for="uslovia3" class="radio">
-                                                    <input type="radio" id="uslovia3" name="uslovia"
-                                                           class="radio__input">
-                                                    <span>Можно с животными</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Планировка</div>
-                                            <div class="radio-group">
-                                                <label for="planirovka1" class="radio">
-                                                    <input type="radio" id="planirovka1" name="planirovka"
-                                                           class="radio__input">
-                                                    <span>Неважно</span>
-                                                </label>
-                                                <label for="planirovka2" class="radio">
-                                                    <input type="radio" id="planirovka2" name="planirovka"
-                                                           class="radio__input">
-                                                    <span>Смежная</span>
-                                                </label>
-                                                <label for="planirovka3" class="radio">
-                                                    <input type="radio" id="planirovka3" name="planirovka"
-                                                           class="radio__input">
-                                                    <span>Изолированная</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Апартаменты</div>
-                                            <div class="radio-group">
-                                                <label for="apart1" class="radio">
-                                                    <input type="radio" id="apart1" name="apart" class="radio__input">
-                                                    <span>Неважно</span>
-                                                </label>
-                                                <label for="apart2" class="radio">
-                                                    <input type="radio" id="apart2" name="apart" class="radio__input">
-                                                    <span>Без апартаментов</span>
-                                                </label>
-                                                <label for="apart3" class="radio">
-                                                    <input type="radio" id="apart3" name="apart" class="radio__input">
-                                                    <span>Только апартаменты</span>
+                                                    <span>{{ option.title }}</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -263,7 +215,7 @@
                         <div class="filter-btns">
                             <div class="filter-btns-left">
                                 <button class="filter-more filter-toggle" v-bind:class="{ 'filter-close': show }"
-                                        v-on:click="show === false ? show = true : show = false">
+                                        v-on:click="show = !show">
                                     <div v-if="show === false" style="display: inline-flex; align-items: center">
                                         <i class="icomoon icon-filter"></i><span>Расширенный поиск</span>
                                     </div>
@@ -281,7 +233,7 @@
                                     <i class="icomoon icon-location-bold"></i>
                                     Смотреть на карте
                                 </button>
-                                <button class="btn btn-lg">
+                                <button class="btn btn-lg" v-on:click="sendOptions()">
                                     Показать 100 объявлений
                                 </button>
                             </div>
@@ -297,6 +249,7 @@
                         </select>
                     </div>
                     <CatalogFlat :jk="getFilters"></CatalogFlat>
+                    <button v-if="load" v-on:click="load_count + 20">Показать еще</button>
                 </div>
             </section>
 
@@ -312,7 +265,7 @@
 
 <script>
     import Form2 from "../Components/Component/Forms/Form2.vue";
-    import { router } from '@inertiajs/vue3'
+    import { router, useForm } from '@inertiajs/vue3'
 
     export default {
         name: "AppCatalog",
@@ -321,7 +274,7 @@
             'jk',
             'type',
             'user',
-
+            'options'
         ],
         components: {
           Form2
@@ -344,6 +297,23 @@
         methods: {
             visit(id) {
                 router.visit('/catalog?type_jk=' + id);
+            },
+            check() {
+
+            },
+            sendOptions() {
+
+                const form = useForm({
+                    'type_jk': this.type,
+                    'options': this.options,
+                    'price': this.price,
+                    'city': this.city,
+                    'plan': this.plan,
+                    'cost': this.type_cost
+                })
+
+                router.post('/catalog?type_jk=' + this.type, form);
+
             }
         },
         data() {
@@ -352,22 +322,43 @@
                 show_login: false,
                 show_reg: false,
                 filter_type: 1,
+                type_cost: 1,
+                price: {
+                    min: 0,
+                    max: 0,
+                },
+                plan: 0,
+                load: false,
+                load_count: 20,
             }
         },
         computed: {
             getFilters() {
+
+                if(this.jk.length > this.load_count) {
+                    this.load = true;
+                } else {
+                    this.load = false;
+                }
+
                 if(this.filter_type === 0) {
-                    return this.jk.sort((a, b) => a.price - b.price );
+                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                    return arr.sort((a, b) => a.price - b.price );
                 } else if(this.filter_type === 1) {
-                    return this.jk.sort((a, b) => a.price - b.price );
+                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                    return arr.sort((a, b) => a.price - b.price );
                 } else if(this.filter_type === 2) {
-                    return this.jk.sort((a, b) => b.price - a.price );
+                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                    return arr.sort((a, b) => b.price - a.price );
                 } else if(this.filter_type === 3) {
-                    return this.jk.sort((a, b) => b.square_main - a.square_main);
+                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                    return arr.sort((a, b) => b.square_main - a.square_main);
                 } else if(this.filter_type === 4) {
-                    return this.jk.sort((a, b) => new Date(a.updated_at) - new Date(b.updated_at) );
+                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                    return arr.sort((a, b) => new Date(a.updated_at) - new Date(b.updated_at));
                 } else if(this.filter_type === 5) {
-                    return this.jk.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at) );
+                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                    return arr.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
                 }
 
             }
