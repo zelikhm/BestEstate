@@ -73,24 +73,25 @@
         <form class="search-bar-container" v-bind:class="{ 'active': showSearch }">
             <input type="search" id="search-bar" class="form-input" placeholder="Введите..." v-model="search" @input="getContent()">
             <label for="search-bar" class="icomoon icon-search"></label>
+
+            <div class="search-vivod" style="width: 100%;display: block;" v-if="content.jk.length > 0 || content.flats.length > 0">
+                <div>
+                    <h1>Недвижимость (обьекты)</h1>
+                        <div v-for="item in content.jk">
+                            <Link :href="'/jk/' + item.slug">
+                                {{ item.title }}
+                            </Link>
+                        </div>
+                    <h1>Недвижимость (квартиры)</h1>
+                    <div v-for="item in content.flats">
+                        <Link :href="'/jk/' + item.jk.slug + '/' + item.slug">
+                            {{ item.title }}
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </form>
     </header>
-    <div class="search-vivod" style="width: 100%;display: block;" v-if="content.jk.length > 0 || content.flats.length > 0">
-        <div>
-            <h1>Недвижимость (обьекты)</h1>
-                <div v-for="item in content.jk">
-                    <Link :href="'/jk/' + item.slug">
-                        {{ item.title }}
-                    </Link>
-                </div>
-            <h1>Недвижимость (квартиры)</h1>
-            <div v-for="item in content.flats">
-                <Link :href="'/jk/' + item.jk.slug + '/' + item.slug">
-                    {{ item.title }}
-                </Link>
-            </div>
-        </div>
-    </div>
 </template>
 
 <script>
