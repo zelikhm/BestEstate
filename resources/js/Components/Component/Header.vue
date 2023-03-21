@@ -75,7 +75,7 @@
             <label for="search-bar" class="icomoon icon-search"></label>
         </form>
     </header>
-    <div style="width: 100%; display: block" v-if="content.jk.length > 0 || content.flats.length > 0">
+    <div class="search-vivod" style="width: 100%;display: block;" v-if="content.jk.length > 0 || content.flats.length > 0">
         <div>
             <h1>Недвижимость (обьекты)</h1>
                 <div v-for="item in content.jk">
