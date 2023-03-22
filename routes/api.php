@@ -26,6 +26,8 @@ Route::prefix('search')->group(function () {
    Route::post('/get', ['App\Http\Controllers\Search\IndexController', 'search']);
 });
 
+Route::post('/getCountFlats', ['App\Http\Controllers\Page\CatalogController', 'getCount']);
+
 Route::prefix('favorite')->group(function () {
    Route::post('/add', ['App\Http\Controllers\User\FavoriteController', 'add']);
    Route::post('/delete', ['App\Http\Controllers\User\FavoriteController', 'delete']);

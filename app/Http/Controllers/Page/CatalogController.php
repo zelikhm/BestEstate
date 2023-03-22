@@ -59,6 +59,30 @@ class CatalogController extends Controller
     }
 
     /**
+     * get count flats with help options
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function getCount(Request $request) {
+
+        $type = (int)$request->type_jk;
+
+        $filters = $this->getFiltersFlat($request, $type);
+
+        if($type === 1) {
+            $flats = $this->filteredFirstType($filters, $request);
+        } else if ($type === 2 || $type === 3) {
+            $flats = $this->filteredSecondType($filters, $request, $type);
+        } else if ($type === 4) {
+            $flats = $this->filteredThreeType($filters, $request);
+        }
+
+        return response()->json(count($flats), 200);
+
+    }
+
+    /**
      * render page with options
      * @param Request $request
      */
@@ -111,8 +135,6 @@ class CatalogController extends Controller
                     ->where('type_flat', 1)
                     ->with(['images', 'jk', 'price_object', 'support', 'builder'])
                     ->get();
-
-
             }
         } else {
             if($request->plan != 0) {
@@ -302,42 +324,6 @@ class CatalogController extends Controller
         }
 
         return $filters;
-
-    }
-
-    /**
-     * get options
-     * @param $type
-     * @return \Illuminate\Support\Collection
-     */
-
-    protected function getOptions($type) {
-
-        if($type == 1) {
-
-            return collect([
-                0 => ['name' => 'Ремонт', 'opt' => RepairModel::all()],
-                1 => ['name' => 'Балкон', 'opt' => BalconyModel::all()],
-                2 => ['name' => 'Санузел', 'opt' => BathroomModel::all()],
-            ]);
-
-        } else if ($type == 2 || $type == 3) {
-
-            return collect([
-                0 => ['name' => 'Ремонт', 'opt' => RepairModel::all()],
-                1 => ['name' => 'Инфраструктура', 'opt' => InfrastructureModel::all()],
-                2 => ['name' => 'Тип участка', 'opt' => PlotModel::all()],
-                3 => ['name' => 'Тип здания', 'opt' => TypeHouseModel::where('type', 1)->get()],
-            ]);
-
-        } else if ($type == 4) {
-
-            return collect([
-                0 => ['name' => 'Тип здания (ком)', 'opt' => TypeHouseModel::where('type', 0)->get()],
-                1 => ['name' => 'Тип Недвижимости', 'opt' => TypeComModel::all()],
-            ]);
-
-        }
 
     }
 }

@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Models\Jk;
+namespace App\Models\Info;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SupportModel extends Model
+class WorkinModel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'status',
-        'phone',
         'image',
-        'description',
-        'active',
     ];
 }

@@ -11,6 +11,7 @@ class SendController extends Controller
     public function send(Request $request) {
 
         SendModel::create([
+            'manager_id' => $request->manager_id,
             'isTg' => $request->isTg,
             'isWhatsapp' => $request->isWhatsapp,
             'isViber' => $request->isViber,

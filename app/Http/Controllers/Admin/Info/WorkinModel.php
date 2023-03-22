@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Jk;
+namespace App\Http\Controllers\Admin\Info;
 
 use AdminColumn;
 use AdminDisplay;
@@ -10,6 +10,7 @@ use AdminNavigation;
 use App\Models\Builder\Flat\FlatModel;
 use App\Models\Builder\Flat\FrameModel;
 use App\Models\Builder\HouseModel;
+use App\Models\Info\CityModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -24,11 +25,11 @@ use SleepingOwl\Admin\Section;
 /**
  * Class Administrators
  *
- * // * @property \App\Models\Jk\SupportModel $model
+ * // * @property \App\Models\Info\WorkinModel $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Support extends Section implements Initializable
+class WorkinModel extends Section implements Initializable
 {
     /**
      * @var bool
@@ -38,7 +39,7 @@ class Support extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Поддержка';
+    protected $title = 'С кем мы работаем';
 
     /**
      * @var string
@@ -50,10 +51,10 @@ class Support extends Section implements Initializable
      */
     public function initialize()
     {
-        $page = AdminNavigation::getPages()->findById('supports');
+        $page = AdminNavigation::getPages()->findById('settings');
 
         $page->addPage(
-            $this->makePage(100)->setIcon('fas fa-user-lock')
+            $this->makePage(800)->setIcon('fas fa-user-lock')
         );
     }
 
@@ -68,20 +69,18 @@ class Support extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('name', 'Название')->setWidth('350px'),
-            AdminColumn::text('status', 'Должнось')->setWidth('350px'),
-            AdminColumn::text('phone', 'Телефон')->setWidth('350px'),
+            AdminColumn::image('image', 'Название')->setWidth('350px'),
         ];
 
         $display = AdminDisplay::datatablesAsync()
             ->paginate(40)
             ->setColumns($columns)
-//            ->setDisplaySearch(true, 'поиск')
+            ->setDisplaySearch(false, 'поиск')
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
             $query->OrderBy('id', 'asc');
-        })->setNewEntryButtonText('Добавить специалиста поддержки');
+        })->setNewEntryButtonText('Добавить');
 
         return $display;
     }
@@ -97,28 +96,20 @@ class Support extends Section implements Initializable
 
         $form = AdminForm::elements([
 
-            AdminFormElement::checkbox('active', 'выводить на главной'),
-
             AdminFormElement::image('image', 'Изображение')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
-                return '/storage/support';
+                return '/storage/working';
             })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
 
-                $file->move(public_path('/storage/support'), $filename);
+                $file->move(public_path('/storage/working'), $filename);
 
-                return ['path' => '/storage/support/' . $filename, 'value' => '/storage/support/' . $filename];
+                return ['path' => '/storage/working/' . $filename, 'value' => '/storage/working/' . $filename];
             }),
-
-            AdminFormElement::text('name', 'Название')->required(),
-            AdminFormElement::text('status', 'Должнось')->required(),
-            AdminFormElement::text('phone', 'Телефон')->required(),
-            AdminFormElement::wysiwyg('description', 'описание'),
 
         ]);
 
-
         $card->getButtons()->setButtons([
-            'save_and_continue' => (new Save())->setText('Применить'),
-//            'save_and_close' => (new SaveAndClose())->setText('Сохранить и закрыть'),
+//            'save_and_continue' => (new Save())->setText('Применить'),
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить и закрыть'),
             'delete' => (new Delete()),
         ]);
 
@@ -169,4 +160,3 @@ class Support extends Section implements Initializable
         // remove if unused
     }
 }
-

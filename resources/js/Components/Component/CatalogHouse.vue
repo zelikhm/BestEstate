@@ -66,20 +66,6 @@
                 </div>
             </div>
         </div>
-        <div class="pagination">
-            <div class="pagination-text">Вы посмотрели {{ show }} из {{ jk.length }} обьектов</div>
-            <div class="nav-links">
-                <a href="#" class="prev icomoon icon-chevron-left disabled"></a>
-                <span class="page-numbers current">1</span>
-                <a href="#" class="page-numbers">2</a>
-                <a href="#" class="page-numbers">3</a>
-                <a href="#" class="page-numbers">4</a>
-                <a href="#" class="page-numbers">5</a>
-                <a href="#" class="page-numbers">6</a>
-                <a href="#" class="page-numbers">7</a>
-                <a href="#" class="next icomoon icon-chevron-right"></a>
-            </div>
-        </div>
     </div>
 </template>
 

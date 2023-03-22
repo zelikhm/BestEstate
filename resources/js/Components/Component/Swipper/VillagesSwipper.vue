@@ -40,7 +40,7 @@
         props:['villages'],
         name: "VillagesSwipper",
         created() {
-            console.lo
+            
         }
     }
 </script>

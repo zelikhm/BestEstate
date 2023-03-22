@@ -34,9 +34,6 @@
                         <h1 class="heading-1">Избранное</h1>
                     </div>
                     <CatalogHouse :jk="jk"></CatalogHouse>
-                    <div class="link-center">
-                        <button class="btn btn-xl">Показать ещё</button>
-                    </div>
                 </div>
             </section>
         </main>

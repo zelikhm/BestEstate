@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Jk;
+namespace App\Http\Controllers\Admin\Order;
 
 use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
-use App\Models\Builder\Flat\FlatModel;
-use App\Models\Builder\Flat\FrameModel;
-use App\Models\Builder\HouseModel;
+use AdminColumnEditable;
+use App\Models\Jk\SupportModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -24,11 +23,11 @@ use SleepingOwl\Admin\Section;
 /**
  * Class Administrators
  *
- * // * @property \App\Models\Jk\SupportModel $model
+ * // * @property \App\Models\Manager\SendModel $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Support extends Section implements Initializable
+class SupportOrder extends Section implements Initializable
 {
     /**
      * @var bool
@@ -38,7 +37,7 @@ class Support extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Поддержка';
+    protected $title = 'Заявки поддержке';
 
     /**
      * @var string
@@ -50,7 +49,7 @@ class Support extends Section implements Initializable
      */
     public function initialize()
     {
-        $page = AdminNavigation::getPages()->findById('supports');
+        $page = AdminNavigation::getPages()->findById('orders');
 
         $page->addPage(
             $this->makePage(100)->setIcon('fas fa-user-lock')
@@ -68,20 +67,24 @@ class Support extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('name', 'Название')->setWidth('350px'),
-            AdminColumn::text('status', 'Должнось')->setWidth('350px'),
-            AdminColumn::text('phone', 'Телефон')->setWidth('350px'),
+            AdminColumn::relatedLink('user.name', 'Саппорт')->setWidth('350px'),
+            AdminColumn::text('name', 'Заголовок')->setWidth('350px'),
+            AdminColumn::text('phone', 'Ссылка')->setWidth('350px'),
+            AdminColumnEditable::checkbox('isTg')->setLabel('Телеграмм'),
+            AdminColumnEditable::checkbox('isWhatsapp')->setLabel('Ватсапп'),
+            AdminColumnEditable::checkbox('isViber')->setLabel('Вайбер'),
+            AdminColumnEditable::checkbox('isPhone')->setLabel('Телефон'),
         ];
 
         $display = AdminDisplay::datatablesAsync()
             ->paginate(40)
             ->setColumns($columns)
-//            ->setDisplaySearch(true, 'поиск')
+            ->setDisplaySearch(true, 'поиск')
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
             $query->OrderBy('id', 'asc');
-        })->setNewEntryButtonText('Добавить специалиста поддержки');
+        })->setNewEntryButtonText('Добавить новость');
 
         return $display;
     }
@@ -97,21 +100,12 @@ class Support extends Section implements Initializable
 
         $form = AdminForm::elements([
 
-            AdminFormElement::checkbox('active', 'выводить на главной'),
-
-            AdminFormElement::image('image', 'Изображение')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
-                return '/storage/support';
-            })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
-
-                $file->move(public_path('/storage/support'), $filename);
-
-                return ['path' => '/storage/support/' . $filename, 'value' => '/storage/support/' . $filename];
-            }),
+            AdminFormElement::select('Поддержка', 'user')->setOptionsForModel(SupportModel::class),
 
             AdminFormElement::text('name', 'Название')->required(),
-            AdminFormElement::text('status', 'Должнось')->required(),
-            AdminFormElement::text('phone', 'Телефон')->required(),
-            AdminFormElement::wysiwyg('description', 'описание'),
+
+            AdminFormElement::text('slug', 'Ссылка (only eng)')->required(),
+
 
         ]);
 
@@ -141,7 +135,7 @@ class Support extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -149,7 +143,7 @@ class Support extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return true;
+        return false;
     }
 
     /**

@@ -9,16 +9,6 @@
                 </div>
                 <span class="gallery-value">+{{ item.images.length }}</span>
                 <div class="swiper gallerySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img :src="item.image" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt="">
-                        </div>
-                    </div>
                     <div class="swiper-button-next--fluid"></div>
                     <div class="swiper-button-prev--fluid"></div>
                     <div class="swiper-pagination--fluid"></div>
@@ -77,7 +67,7 @@
             }
         },
         created() {
-          console.log(this.jk);
+          // console.log(this.jk);
         },
         methods: {
             getPrice(item) {

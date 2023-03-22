@@ -2,6 +2,13 @@
 
 namespace App\Http\Traits;
 
+use App\Models\Info\BalconyModel;
+use App\Models\Info\BathroomModel;
+use App\Models\Info\InfrastructureModel;
+use App\Models\Info\PlotModel;
+use App\Models\Info\RepairModel;
+use App\Models\Info\TypeComModel;
+use App\Models\Info\TypeHouseModel;
 use App\Models\Jk\ImageModels;
 use App\Models\Jk\JkModel;
 use App\Models\JkFlatModel;
@@ -127,6 +134,42 @@ trait MainInfo {
     protected function getUser() {
 
         return User::where('id', Auth::id())->first();
+
+    }
+
+    /**
+     * get options
+     * @param $type
+     * @return \Illuminate\Support\Collection
+     */
+
+    protected function getOptions($type) {
+
+        if($type == 1) {
+
+            return collect([
+                0 => ['name' => 'Ремонт', 'opt' => RepairModel::all()],
+                1 => ['name' => 'Балкон', 'opt' => BalconyModel::all()],
+                2 => ['name' => 'Санузел', 'opt' => BathroomModel::all()],
+            ]);
+
+        } else if ($type == 2 || $type == 3) {
+
+            return collect([
+                0 => ['name' => 'Ремонт', 'opt' => RepairModel::all()],
+                1 => ['name' => 'Инфраструктура', 'opt' => InfrastructureModel::all()],
+                2 => ['name' => 'Тип участка', 'opt' => PlotModel::all()],
+                3 => ['name' => 'Тип здания', 'opt' => TypeHouseModel::where('type', 1)->get()],
+            ]);
+
+        } else if ($type == 4) {
+
+            return collect([
+                0 => ['name' => 'Тип здания (ком)', 'opt' => TypeHouseModel::where('type', 0)->get()],
+                1 => ['name' => 'Тип Недвижимости', 'opt' => TypeComModel::all()],
+            ]);
+
+        }
 
     }
 

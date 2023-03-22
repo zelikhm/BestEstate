@@ -112,9 +112,6 @@ class Jk extends Section implements Initializable
                 AdminFormElement::select('type_houses', 'Тип здания')->setOptions([
                     0 => 'Новостройка',
                     1 => 'Коттеджный поселок',
-                    2 => 'Вилла',
-                    3 => 'Шалле',
-                    4 => 'Коммерческая недвижимость',
                 ])->required(),
                 AdminFormElement::number('price', 'Цена')->required(),
                 AdminFormElement::number('square', 'Площадь')->setStep(0.01)->required(),
