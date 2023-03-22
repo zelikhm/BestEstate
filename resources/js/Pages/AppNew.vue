@@ -1,6 +1,6 @@
 <script setup>
 
-    import Header from '../components/component/Header.vue';
+    import Header from '../Components/Component/Header.vue';
     import Footer from  '../Components/Component/Footer.vue'
     import { Link } from '@inertiajs/vue3';
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
