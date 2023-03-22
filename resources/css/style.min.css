@@ -1823,17 +1823,19 @@ th {
   left: 0;
   right: 0;
   padding: 12px 16px;
-  /* border-bottom-left-radius: 20px; */
-  /* border-bottom-right-radius: 20px; */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   background-color: var(--white-color);
   box-shadow: 0px 24px 130px rgba(1, 8, 39, 0.06);
   display: flex;
   align-items: center;
-  z-index: 20;
+  flex-wrap: wrap;
+  z-index: 500;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
 .search-bar-container .form-input {
   min-height: 30px;
+  width: calc(100% - 84px);
 }
 .search-bar-container.active {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -1850,18 +1852,31 @@ th {
 }
 .search-vivod {
   font-size: 16px;
-  position: absolute;
-  top: 174px;
-  padding: 16px;
+  margin-top: 16px;
+  padding: 0 16px 16px 16px;
+  overflow-y: scroll;
+  max-height: calc(100vh - 200px);
   background: #ffffff;
-  box-shadow: 0px 10px 20px rgba(1, 8, 39, 0.05);
   z-index: 100;
+}
+.search-vivod::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+    background: var(--lightGrey-color);
+}
+.search-vivod::-webkit-scrollbar-thumb {
+    width: 6px;
+    height: 100px;
+    background: var(--grey-color);
 }
 .search-vivod h1,
 .search-vivod h2 {
   margin-top: 14px;
   font-size: 18px;
   font-weight: 600;
+}
+.search-vivod a:hover {
+  color: var(--global-color);
 }
 
 @media screen and (max-width: 1439px) {
@@ -1884,9 +1899,6 @@ th {
   }
   .course__list {
     margin-right: 24px;
-  }
-  .search-vivod {
-    top: 166px;
   }
 }
 @media screen and (max-width: 1170px) {
@@ -1919,9 +1931,6 @@ th {
   .header .logo {
     width: 140px;
     margin-right: 14px;
-  }
-  .search-vivod {
-    top: 150px;
   }
   .nav {
     flex-direction: column;
@@ -2012,7 +2021,6 @@ th {
     margin-right: 10px;
   }
   .search-vivod {
-    top: 136px;
     font-size: 14px;
   }
   .search-vivod h1,
