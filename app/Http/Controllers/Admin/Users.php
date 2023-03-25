@@ -1,18 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Jk;
+namespace App\Http\Controllers\Admin;
 
 use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
-use AdminSection;
-use App\Models\Builder\Flat\FlatModel;
-use App\Models\Builder\Flat\FrameModel;
-use App\Models\Builder\HouseModel;
-use App\Models\Jk\JkModel;
-use App\Models\Jk\SupportModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -22,17 +16,16 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\Save;
 use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Form\Buttons\Delete;
-use SleepingOwl\Admin\Form\FormElements;
 use SleepingOwl\Admin\Section;
 
 /**
  * Class Administrators
  *
- * // * @property \App\Models\Jk\ImageModels $model
+ * // * @property \App\Models\Users $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Image extends Section implements Initializable
+class Users extends Section implements Initializable
 {
     /**
      * @var bool
@@ -42,7 +35,7 @@ class Image extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Изображения для ЖК';
+    protected $title = 'Пользователи';
 
     /**
      * @var string
@@ -54,10 +47,10 @@ class Image extends Section implements Initializable
      */
     public function initialize()
     {
-        $page = AdminNavigation::getPages()->findById('houses');
+        $page = AdminNavigation::getPages()->findById('settings');
 
         $page->addPage(
-            $this->makePage(200)->setIcon('fas fa-user-lock')
+            $this->makePage(0)->setIcon('fas fa-user-lock')
         );
     }
 
@@ -72,11 +65,8 @@ class Image extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::relatedLink('jk.title', 'Название ЖК')->setWidth('350px'),
-
-            AdminColumn::custom('Изображения', function(\Illuminate\Database\Eloquent\Model $model) {
-                return $model->image !== '[]' ? 'Загружено' : 'Пустое';
-            })->setWidth('150px'),
+            AdminColumn::text('name', 'Name')->setWidth('350px'),
+            AdminColumn::text('email', 'Email')->setWidth('350px'),
         ];
 
         $display = AdminDisplay::datatablesAsync()
@@ -87,7 +77,7 @@ class Image extends Section implements Initializable
 
         $display->setApply(function (Builder $query) {
             $query->OrderBy('id', 'asc');
-        })->setNewEntryButtonText('Добавить изображение');
+        })->setNewEntryButtonText('Добавить пользователя');
 
         return $display;
     }
@@ -99,14 +89,20 @@ class Image extends Section implements Initializable
      */
     public function onEdit($id = null, array $payload = [])
     {
-
         $card = AdminForm::card();
 
         $form = AdminForm::elements([
-            AdminFormElement::select('jk_id', 'ЖК')->setModelForOptions(JkModel::class),
 
-            AdminFormElement::images('image', 'Изображение')->storeAsJson(),
+            AdminFormElement::checkbox('admin', 'Администратор')->required(),
+
+            AdminFormElement::text('name', 'Логин')->required(),
+
+            AdminFormElement::text('email', 'Email')->required(),
+
+            AdminFormElement::password('password', 'Пароль')->required()->hashWithBcrypt(),
+
         ]);
+
 
         $card->getButtons()->setButtons([
             'save_and_continue' => (new Save())->setText('Применить'),

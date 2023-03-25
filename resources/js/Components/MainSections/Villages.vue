@@ -8,7 +8,7 @@
         <div class="container--fluid">
             <div class="heading-row">
                 <h2 class="heading-2">Коттеджные поселки</h2>
-                <Link :href="'/catalog?type_jk=1'" class="btn-second btn-md">Смотреть все</Link>
+                <Link :href="'/villages'" class="btn-second btn-md">Смотреть все</Link>
             </div>
             <div class="kp-bl__cards">
                 <Villages

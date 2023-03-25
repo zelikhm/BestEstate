@@ -28,6 +28,7 @@ use App\Models\Jk\SupportModel;
 use App\Models\JkFlatModel;
 use App\Models\Manager\SendModel;
 use App\Models\NewModel;
+use App\Models\User;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 use AdminNavigation;
 
@@ -38,6 +39,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
+
         //contact
         \App\Models\Contact\ContactModel::class => 'App\Http\Controllers\Admin\Contact\Contact',
         \App\Models\Contact\SocialModel::class => 'App\Http\Controllers\Admin\Contact\Social',
@@ -72,6 +74,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
         //Orders
         SendModel::class => 'App\Http\Controllers\Admin\Order\SupportOrder',
+        User::class => 'App\Http\Controllers\Admin\Users',
     ];
 
     /**

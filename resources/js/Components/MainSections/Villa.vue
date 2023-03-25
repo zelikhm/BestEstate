@@ -10,7 +10,7 @@
                 <Link :href="'/catalog?type_jk=2&method=1'" class="btn-second btn-md">Смотреть все</Link>
             </div>
             <div class="cat-bl__cards" v-for="item in villa">
-                <div class="cat-bl__cards-item cat-bl__cards-item-1">
+                <div class="cat-bl__cards-item cat-bl__cards-item-1" v-bind:style="{ backgroundImage: 'url(' + item.image + ')' }">
                     <div class="cat-bl__cards-info">
                         <div class="cat-bl__cards-heading">
                             <h3 class="heading-3">Дом в Антибе, Франция</h3>

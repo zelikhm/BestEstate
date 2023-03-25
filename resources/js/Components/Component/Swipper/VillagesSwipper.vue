@@ -1,17 +1,9 @@
 <template>
     <div class="kp-bl__cards-item" v-for="item in villages">
         <!-- Swiper -->
-        <div class="swiper gallerySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></div>
-            </div>
-            <div class="swiper-button-next--fluid"></div>
-            <div class="swiper-button-prev--fluid"></div>
-            <div class="swiper-pagination--fluid"></div>
-        </div>
+            <swiper class="swiper gallerySwiper" :modules="modules" navigation>
+                <swiper-slide class="slide" v-for="image in item.images_array"><img :src="image" alt=""></swiper-slide>
+            </swiper>
         <div class="kp-bl__cards-content">
             <div class="kp-bl__cards-info">
                 <div class="kp-bl__cards-heading">
@@ -29,18 +21,35 @@
                 </div>
             </div>
             <div class="kp-bl__cards-nav">
-                <a href="#" class="btn btn-lg">Подробнее</a>
+                <Link :href="'/jk/' + item.slug" class="btn btn-lg">Подробнее</Link>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import { defineComponent } from 'vue'
+    import { Navigation } from 'swiper'
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    import 'swiper/css'
+    import 'swiper/css/navigation'
+    import { Link } from '@inertiajs/vue3';
+
     export default {
         props:['villages'],
         name: "VillagesSwipper",
+        components: {
+            Swiper,
+            SwiperSlide,
+            Link
+        },
+        setup() {
+            return {
+                modules: [Navigation]
+            }
+        },
         created() {
-            
+
         }
     }
 </script>

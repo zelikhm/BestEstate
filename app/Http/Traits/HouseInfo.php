@@ -12,7 +12,7 @@ trait HouseInfo {
     private function formationHouseInfo($slug) {
 
         $jk = JkModel::where('slug', $slug)->with([
-            'city_info', 'area_info', 'images', 'support', 'builder'
+            'city_info', 'area_info', 'images', 'support', 'builder', 'images', 'flat'
         ])->firstOrFail();
 
         $str = '';
@@ -50,6 +50,8 @@ trait HouseInfo {
         }
 
         $jk->description = DescriptionModel::where('jk_id', $jk->id)->with(['items'])->get();
+
+        $jk->images_array = count($jk->images) > 0 ? json_decode($jk->images[0]->image) : null;
 
         return $jk;
 

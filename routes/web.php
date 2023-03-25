@@ -31,11 +31,7 @@ Route::get('/news', ['App\Http\Controllers\Page\MainController', 'news'])->name(
 Route::get('/news/{slug}', ['App\Http\Controllers\Page\MainController', 'getNew'])->name('getNew');
 Route::get('/favorites', ['App\Http\Controllers\User\FavoriteController', 'main'])->name('favorite');
 
-Route::get('/test', function () {
-
-
-//    dd($koeficient1);
-
-});
+Route::get('/houses', ['App\Http\Controllers\Page\HousesController', 'houses']);
+Route::get('/villages', ['App\Http\Controllers\Page\HousesController', 'villages']);
 
 require __DIR__.'/auth.php';

@@ -9,7 +9,7 @@
         <div class="container--fluid">
             <div class="heading-row">
                 <h2 class="heading-2">Жилые комплексы</h2>
-                <Link :href="'/catalog?type_jk=0&method=1'" class="btn-second btn-md">Смотреть все</Link>
+                <Link :href="'/houses'" class="btn-second btn-md">Смотреть все</Link>
             </div>
             <!-- Swiper -->
 

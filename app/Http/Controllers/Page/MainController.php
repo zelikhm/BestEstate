@@ -29,6 +29,8 @@ class MainController extends Controller
             ['type' => 4, 'options' => $this->getOptions(4)]
         );
 
+//        dd($this->getFlat(2, 4));
+
         return Inertia::render('AppMain', [
             'page' => 1,
             'sale_jk' => $this->getSalesJk(),
