@@ -74,8 +74,8 @@
                                 <div class="jk-card">
                                     <div class="jk-card-heading">
                                         <div class="prices">
-                                            <div class="price">от <span>{{ minPrice }} ₽</span></div>
-                                            <div class="price">до <span>{{ maxPrice }} ₽</span></div>
+                                            <div class="price">от <span>{{ minPrice.toLocaleString('ru') }} ₽</span></div>
+                                            <div class="price">до <span>{{ maxPrice.toLocaleString('ru') }} ₽</span></div>
                                         </div>
                                         <a href="img/logo-black.png" download="filename" class="btn-ic"><i
                                             class="icomoon icon-download"></i></a>
