@@ -74,8 +74,8 @@
                                 <div class="jk-card">
                                     <div class="jk-card-heading">
                                         <div class="prices">
-                                            <div class="price">от <span>{{ getMinPrice() }} ₽</span></div>
-                                            <div class="price">до <span>{{ getMaxPrice() }} ₽</span></div>
+                                            <div class="price">от <span>{{ minPrice }} ₽</span></div>
+                                            <div class="price">до <span>{{ maxPrice }} ₽</span></div>
                                         </div>
                                         <a href="img/logo-black.png" download="filename" class="btn-ic"><i
                                             class="icomoon icon-download"></i></a>
@@ -365,7 +365,7 @@
     import Login from "../Components/Component/Modal/Login.vue";
 
     export default {
-        props: ['page', 'jk'],
+        props: ['page', 'jk', 'minPrice', 'maxPrice'],
         provide() {
             return {
                 'page': this.page,
@@ -392,21 +392,6 @@
                     return frames + ' корпусов';
                 }
             },
-            getMinPrice() {
-                if (this.jk.flat.length > 0) {
-                    return 1
-                } else {
-                    return 0;
-                }
-
-            },
-            getMaxPrice() {
-                if (this.jk.flat.length > 0) {
-                    return 1
-                } else {
-                    return 0;
-                }
-            }
         },
         components: {
             Swiper,
