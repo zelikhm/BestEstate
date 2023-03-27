@@ -181,6 +181,7 @@ class Jk extends Section implements Initializable
                                 1 => 'Блочный',
                             ]),
                         ]),
+                    AdminFormElement::wysiwyg('description_page', 'Описание для страницы'),
                 ]);
 
                 $tabs[] = AdminDisplay::tab($form2)

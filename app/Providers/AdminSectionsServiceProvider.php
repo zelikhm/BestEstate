@@ -71,7 +71,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         //flat
         JkFlatModel::class => 'App\Http\Controllers\Admin\Flat\JkFlatModel',
         ImagesModel::class => 'App\Http\Controllers\Admin\Flat\Images',
-        PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
+//        PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
         //Orders
         SendModel::class => 'App\Http\Controllers\Admin\Order\SupportOrder',
         User::class => 'App\Http\Controllers\Admin\Users',

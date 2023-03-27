@@ -35,7 +35,8 @@ class JkModel extends Model
         'builder_id',
         'sale_date',
         'price',
-        'square'
+        'square',
+        'description_page'
     ];
 
     protected $hidden = [

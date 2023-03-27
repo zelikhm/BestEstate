@@ -36,6 +36,8 @@ class JkFlatModel extends Model
         'infrastructure',
         'plot_type',
         'type_house',
+        'plan_image',
+        'render',
     ];
 
     protected $casts = [

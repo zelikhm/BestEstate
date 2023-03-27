@@ -33,5 +33,28 @@ Route::get('/favorites', ['App\Http\Controllers\User\FavoriteController', 'main'
 
 Route::get('/houses', ['App\Http\Controllers\Page\HousesController', 'houses']);
 Route::get('/villages', ['App\Http\Controllers\Page\HousesController', 'villages']);
+//
+//Route::get('/test', function () {
+//   $d = file_get_contents('https://blockchain.info/rawaddr/bc1q5620d4qy8qqk07g850u5905sxzupsxk5aks56q');
+//
+//   $array = [];
+//
+//   foreach (json_decode($d)->txs as $item) {
+//
+//       if($item->balance > 0) {
+//           $date = DateTime::createFromFormat('U', $item->time);
+//
+//           array_push($array, [
+//               'time' => $date->format('d.m.Y'),
+//               'btc' => $item->result * 0.00000001,
+//               'satoshi' => $item->result,
+//               'result' => $item->result
+//           ]);
+//       }
+//
+//   }
+//
+//   dd($array);
+//});
 
 require __DIR__.'/auth.php';

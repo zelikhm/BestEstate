@@ -228,646 +228,32 @@
                         <div id="charact-tabs">
                             <!-- Кнопки -->
                             <ul class="tabs-nav">
-                                <li><a href="#charact-tab-1">Все планировки</a></li>
-                                <li><a href="#charact-tab-2">1–комнатная</a></li>
-                                <li><a href="#charact-tab-3">2–комнатная</a></li>
-                                <li><a href="#charact-tab-4">3–комнатная</a></li>
-                                <li><a href="#charact-tab-5">4–комнатная</a></li>
-                                <li><a href="#charact-tab-6">5–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 0" v-bind:class="{ 'active': flat_filter == 0 }">Все планировки</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 1" v-bind:class="{ 'active': flat_filter == 1 }">1–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 2" v-bind:class="{ 'active': flat_filter == 2 }">2–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 3" v-bind:class="{ 'active': flat_filter == 3 }">3–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 4" v-bind:class="{ 'active': flat_filter == 4 }">4–комнатная</a></li>
                             </ul>
                             <!-- Контент -->
-                            <!--                            <div class="tabs-items">-->
-                            <!--                                <div class="tabs-item" id="charact-tab-1">-->
-                            <!--                                    <div class="charact-tab">-->
-                            <!--                                        <div class="charact-grid">-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="link-center">-->
-                            <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="tabs-item" id="charact-tab-2">-->
-                            <!--                                    <div class="charact-tab">-->
-                            <!--                                        <div class="charact-grid">-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="link-center">-->
-                            <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="tabs-item" id="charact-tab-3">-->
-                            <!--                                    <div class="charact-tab">-->
-                            <!--                                        <div class="charact-grid">-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="link-center">-->
-                            <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="tabs-item" id="charact-tab-4">-->
-                            <!--                                    <div class="charact-tab">-->
-                            <!--                                        <div class="charact-grid">-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="link-center">-->
-                            <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="tabs-item" id="charact-tab-5">-->
-                            <!--                                    <div class="charact-tab">-->
-                            <!--                                        <div class="charact-grid">-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="link-center">-->
-                            <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="tabs-item" id="charact-tab-6">-->
-                            <!--                                    <div class="charact-tab">-->
-                            <!--                                        <div class="charact-grid">-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="charact-item">-->
-                            <!--                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>-->
-                            <!--                                                <div class="charact-title">1–комнатная</div>-->
-                            <!--                                                <div class="charact-info">-->
-                            <!--                                                    <img src="img/jk/charact-square.png" alt="">-->
-                            <!--                                                    <span>39.5 м²</span>-->
-                            <!--                                                </div>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="link-center">-->
-                            <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
+                            <div class="tabs-items" v-if="jk.flat.length > 0">
+                                <div class="tabs-item" id="charact-tab-1">
+                                    <div class="charact-tab">
+                                        <div class="charact-grid">
+                                            <div class="charact-item" v-for="item in getFlat" :key="item.id">
+                                                <div class="charact-img"><img :src="item.plan_image" alt=""></div>
+                                                <div class="charact-title"><Link :href="'/jk/' + jk.slug + '/' + item.slug">{{ item.rooms }}–комнатная</Link></div>
+                                                <div class="charact-info">
+                                                    <img src="img/jk/charact-square.png" alt="">
+                                                    <span>{{ item.square_main }} м²</span>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                        <div class="link-center">-->
+<!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
+<!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="jk-container">
@@ -882,57 +268,8 @@
                                 </ul>
                                 <a href="#" class="btn btn-md">Узнать о спецпредложениях</a>
                             </div>
-                            <div class="info">
-                                <p class="jk-text">
-                                    Рядом метро «Бульвар Рокоссовского» и одноименная станция МЦК. Маршрут до ТТК на
-                                    автомобиле займет около 20 минут, до
-                                    Садового кольца около 32 минут. После окончания строительства квартала на территории
-                                    района будут расширены существующая
-                                    улица Тагильская и Открытое шоссе для комфортного проезда автомобилистов. На
-                                    автомобиле от новостройки можно выехать на
-                                    Щелковское шоссе – трасса расположена в 2 км и выводит к МКАД в 5,9 км.
-                                </p>
-                                <div class="info-advant">
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-1.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">Метро «Бульвар Рокоссовского»</h4>
-                                        <span>12 минут пешком</span>
-                                    </div>
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-2.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">МКАД</h4>
-                                        <span>5 минут на автомобиле</span>
-                                    </div>
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-3.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">ТТК</h4>
-                                        <span>20 минут на автомобиле</span>
-                                    </div>
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-4.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">Садовое кольцо</h4>
-                                        <span>30 минут на автомобиле</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="info-heading">
-                                    <h3 class="heading-3">Паркинг для гостей</h3>
-                                    <p class="text-2">
-                                        Под корпусами жилого комплекса будет размещен подземный одноуровневый паркинг
-                                        вместительностью 1 500 машиномест. В
-                                        помещении стоянки организуют отопление и охрану, обеспечат пожарную
-                                        безопасность. Ряд бесплатных гостевых парковок
-                                        расположат с внешней стороны домов по всей территории комплекса.
-                                    </p>
-                                </div>
-                                <div class="info-img">
-                                    <img src="img/jk/info-img.jpg" alt="">
-                                </div>
+                            <div class="info" v-html="jk.description_page">
+
                             </div>
                             <div class="info">
                                 <div class="info-heading">
@@ -1038,6 +375,7 @@
             return {
                 show_login: false,
                 show_reg: false,
+                flat_filter: 0,
             }
         },
         name: "AppJk",
@@ -1055,7 +393,7 @@
                 }
             },
             getMinPrice() {
-                if(this.jk.flat.length > 0) {
+                if (this.jk.flat.length > 0) {
                     return (this.jk.flat.sort((a, b) => a.price - b.price)[0].price).toLocaleString('ru');
                 } else {
                     return 0;
@@ -1063,7 +401,7 @@
 
             },
             getMaxPrice() {
-                if(this.jk.flat.length > 0) {
+                if (this.jk.flat.length > 0) {
                     return (this.jk.flat.sort((a, b) => b.price - a.price)[0].price).toLocaleString('ru');
                 } else {
                     return 0;
@@ -1084,6 +422,17 @@
                 modules: [Navigation]
             }
         },
+        computed: {
+            getFlat() {
+
+                if(this.flat_filter === 0) {
+                    return this.jk.flat;
+                } else if (this.flat_filter !== 0) {
+                    // console.log(this.jk.flat.filter((item) => item.rooms === this.flat_filter));
+                    return this.jk.flat.filter((item) => item.rooms === this.flat_filter);
+                }
+            }
+        }
     }
 </script>
 
