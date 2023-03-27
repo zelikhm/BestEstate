@@ -394,7 +394,7 @@
             },
             getMinPrice() {
                 if (this.jk.flat.length > 0) {
-                    return (this.jk.flat.sort((a, b) => a.price - b.price)[0].price).toLocaleString('ru');
+                    return 1
                 } else {
                     return 0;
                 }
@@ -402,7 +402,7 @@
             },
             getMaxPrice() {
                 if (this.jk.flat.length > 0) {
-                    return (this.jk.flat.sort((a, b) => b.price - a.price)[0].price).toLocaleString('ru');
+                    return 1
                 } else {
                     return 0;
                 }
