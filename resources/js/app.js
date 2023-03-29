@@ -33,7 +33,6 @@ const settings = {
     version: '2.1' // Версия Я.Карт
 }
 
-import { YandexMap, YandexMarker } from 'vue-yandex-maps'
 import YmapPlugin from 'vue-yandex-maps'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
