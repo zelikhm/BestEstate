@@ -86,11 +86,30 @@
                                 {{ item.title }}
                             </Link>
                         </div>
+
+                    <div class="s-card">
+                        <img src="img/special/special-slide-img3.jpg" alt="">
+                        <div>
+                            <h3 class="heading-3">Kv1</h3>
+                            <div class="s-card-price">150&nbsp;000 ₽</div>
+                        </div>
+                        <a href="#" class="btn btn-md">Подробнее</a>
+                    </div>
+
                     <h1>Недвижимость (квартиры)</h1>
                     <div v-for="item in content.flats">
                         <Link :href="'/jk/' + item.jk.slug + '/' + item.slug">
                             {{ item.title }}
                         </Link>
+                    </div>
+
+                    <div class="s-card">
+                        <img src="img/special/special-slide-img3.jpg" alt="">
+                        <div>
+                            <h3 class="heading-3">Kv1</h3>
+                            <div class="s-card-price">150&nbsp;000 ₽</div>
+                        </div>
+                        <a href="#" class="btn btn-md">Подробнее</a>
                     </div>
                 </div>
             </div>
