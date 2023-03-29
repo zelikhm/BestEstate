@@ -243,7 +243,7 @@
                                                 <div class="charact-img"><img :src="item.plan_image" alt=""></div>
                                                 <div class="charact-title"><Link :href="'/jk/' + jk.slug + '/' + item.slug">{{ item.rooms }}–комнатная</Link></div>
                                                 <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
+                                                    <img src="/img/jk/charact-square.png" alt="">
                                                     <span>{{ item.square_main }} м²</span>
                                                 </div>
                                             </div>

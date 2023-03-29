@@ -7,19 +7,30 @@
                     <a href="#" class="btn-w"><img src="img/icons/3d.png"
                                                    alt=""><span>3D-просмотр</span></a>
                 </div>
-                <span class="gallery-value">+{{ item.images.length }}</span>
-                <div class="swiper gallerySwiper">
-                    <div class="swiper-button-next--fluid"></div>
-                    <div class="swiper-button-prev--fluid"></div>
-                    <div class="swiper-pagination--fluid"></div>
-                </div>
+                <span class="gallery-value">+{{ item.images_array.length }}</span>
+                <swiper
+                    class="swiper"
+                    :modules="modules"
+                    :slides-per-view="1"
+                    :space-between="30"
+                    :loop="true"
+                    :pagination="{ clickable: true }"
+                    :navigation="true"
+                >
+                    <swiper-slide v-if="item.images_array.length > 0" v-for="image in item.images_array"><img :src="image" alt=""></swiper-slide>
+                    <swiper-slide v-else><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></swiper-slide>
+                </swiper>
             </div>
             <div class="cards-content">
                 <div class="cards-info">
                     <div class="cards-info-wrapper">
                         <div class="cards-info-main">
                             <div class="cards-heading">
-                                <h3 class="heading-3">{{ item.title }}</h3>
+                                <h3 class="heading-3">
+                                    <Link :href="'/jk/' + item.jk.slug + '/' + item.slug">
+                                        {{ item.title }}
+                                    </Link>
+                                </h3>
                                 <ul class="cards-specifications">
                                     <li v-if="item.square_main">Площадь: {{ item.square_main }} м²</li>
                                     <li v-if="item.float">Этаж: {{ item.float }} из {{ item.jk.floors }}</li>
@@ -49,7 +60,7 @@
                         class="icomoon icon-calling-bold"></i><span>Показать контакты</span></a>
                     <a href="#" class="btn-ic"><i class="icomoon icon-favourites"></i></a>
                     <a href="#" class="btn-ic"><i class="icomoon icon-location"></i></a>
-                    <a href="img/logo-black.png" download="filename" class="btn-ic"><i
+                    <a href="/img/logo-black.png" download="filename" class="btn-ic"><i
                         class="icomoon icon-download"></i></a>
                 </div>
             </div>
@@ -58,6 +69,15 @@
 </template>
 
 <script>
+    import { defineComponent } from 'vue'
+    import { Pagination, Navigation } from 'swiper'
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    import 'swiper/css'
+    import 'swiper/css/pagination'
+    import 'swiper/css/navigation'
+
+    import { Link } from '@inertiajs/vue3'
+
     export default {
         name: "CatalogFlat",
         props:['jk'],
@@ -67,7 +87,7 @@
             }
         },
         created() {
-          // console.log(this.jk);
+          console.log(this.jk);
         },
         methods: {
             getPrice(item) {
@@ -111,6 +131,16 @@
                     })
 
                 }
+            }
+        },
+        components: {
+            Swiper,
+            SwiperSlide,
+            Link
+        },
+        setup() {
+            return {
+                modules: [Pagination, Navigation]
             }
         }
     }

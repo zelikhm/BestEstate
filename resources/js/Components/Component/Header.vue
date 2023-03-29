@@ -8,9 +8,9 @@
 <template>
     <header class="header">
         <div class="container header__container">
-            <a :href="route('main')" class="logo">
+            <Link :href="route('main')" class="logo">
                 <img src="/img/logo-black.png" alt="">
-            </a>
+            </Link>
             <nav class="nav" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><Link :href="route('main')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 1 }">главная</Link></li>

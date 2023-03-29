@@ -201,7 +201,7 @@
                                     </div>
 
                                 </button>
-                                <Link :href="'/catalog?type_jk=' . type + '&method=' + type_cost" class="filter-reset">
+                                <Link :href="'/catalog?type_jk=' + type + '&method=' + type_cost" class="filter-reset">
                                     Сбросить всё
                                 </Link>
                             </div>

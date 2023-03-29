@@ -24,4 +24,28 @@ trait Flat
 
     }
 
+    protected function getFlatOnCatalog($type, $limit) {
+
+        $flats = JkFlatModel::where('type_flat', $type)
+            ->with(['images', 'jk', 'price_object', 'support', 'builder'])
+            ->limit($limit)
+            ->get();
+
+        return $flats;
+
+    }
+
+    protected function setImages($flats) {
+
+        foreach ($flats as $flat) {
+            if(count($flat->images) > 0) {
+                $flat->images_array = json_decode($flat->images[0]->image);
+            } else {
+                $flat->images_array = [];
+            }
+        }
+
+        return $flats;
+    }
+
 }

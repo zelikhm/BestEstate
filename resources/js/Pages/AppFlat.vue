@@ -1,13 +1,3 @@
-<script setup>
-
-    import Header from '../Components/Component/Header.vue'
-    import Footer from '../Components/Component/Footer.vue'
-    import { Link } from '@inertiajs/vue3';
-    import FlatSwiper from "@/Components/Component/FlatSwiper.vue";
-
-
-</script>
-
 <template>
 
     <body>
@@ -44,10 +34,10 @@
                     </div>
                     <div class="apart-container">
                         <div class="apart-left">
-                            <flat-swiper
-                                :images="flat.images"
-                                :plans="flat.plans">
-                            </flat-swiper>
+                            <ImageFlat
+                                :flat="flat"
+                                :jk="jk"
+                            ></ImageFlat>
                             <div class="apart-info-group">
                                 <div class="apart-info-item">
                                     <div class="apart-info-title">общая</div>
@@ -90,7 +80,8 @@
                                             <li><img src="/img/icons/yen.svg" alt=""><span>300 000 000</span></li>
                                         </ul>
                                     </div>
-                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">{{ (flat.price_object.price / flat.square_main).toFixed(2) }} ₽/м2
+                                    <div class="objects-square"><img src="/img/icons/square.png" alt="">{{
+                                        (flat.price_object.price / flat.square_main).toFixed(2) }} ₽/м2
                                     </div>
                                     <div class="apart-second">
                                         <div class="cards-date">Добавлено: {{ flat.created_at }}</div>
@@ -517,6 +508,13 @@
 </template>
 
 <script>
+    import Header from '../Components/Component/Header.vue'
+    import Footer from '../Components/Component/Footer.vue'
+    import FlatSwiper from "@/Components/Component/FlatSwiper.vue";
+
+    import {Link} from '@inertiajs/vue3'
+
+    import ImageFlat from '../Components/FlatComponent/Image.vue'
     export default {
         props: ['page', 'jk', 'flat'],
         provide() {
@@ -524,7 +522,14 @@
                 'page': this.page,
             }
         },
-        name: "AppFlat"
+        name: "AppFlat",
+        components: {
+            Link,
+            Header,
+            Footer,
+            FlatSwiper,
+            ImageFlat
+        },
     }
 </script>
 
