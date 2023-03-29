@@ -28,7 +28,7 @@
                     <div class="cards-info-wrapper">
                         <div class="cards-info-main">
                             <div class="cards-heading">
-                                <h3 class="heading-3">{{ item.title }}</h3>
+                                <h3 class="heading-3"><Link :href="'/jk/' + item.slug">{{ item.title }}</Link></h3>
                                 <ul class="cards-specifications">
                                     <li v-if="item.square">Площадь: {{ item.square }} м²</li>
                                     <li v-if="item.square_main">Площадь: {{ item.square_main }} м²</li>

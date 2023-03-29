@@ -220,7 +220,7 @@
 
                         </div>
                     </div>
-                    <div class="info">
+                    <div class="info" v-if="jk.flat.length > 0">
                         <div class="info-heading">
                             <h3 class="heading-3">Характеристики помещений</h3>
                         </div>
