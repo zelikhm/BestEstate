@@ -7,7 +7,16 @@ use App\Models\JkFlatModel;
 
 trait Flat
 {
-    protected function getFlat($type, $limit) {
+
+    /**
+     * get flat with help type and use limit
+     * @param $type
+     * @param $limit
+     * @return mixed
+     */
+
+    protected function getFlat($type, $limit)
+    {
 
         $flats = JkFlatModel::where('type_flat', $type)
             ->with(['images', 'jk', 'price_object', 'support', 'builder'])
@@ -24,7 +33,36 @@ trait Flat
 
     }
 
-    protected function getFlatOnCatalog($type, $limit) {
+    /**
+     * get flat with help id
+     * @param $id
+     * @return mixed
+     */
+
+    protected function getFlatOnId($id)
+    {
+
+        $flat = JkFlatModel::where('id', $id)
+            ->with(['images', 'jk', 'price_object', 'support', 'builder'])
+            ->first();
+
+        $flat->images_array = count($flat->images) !== 0 ? json_decode($flat->images[0]->image) : [];
+
+//        $flat->image = $flat->images !== null ? $flat->images[0] : null;
+
+        return $flat;
+
+    }
+
+    /**
+     * get flat for catalog
+     * @param $type
+     * @param $limit
+     * @return mixed
+     */
+
+    protected function getFlatOnCatalog($type, $limit)
+    {
 
         $flats = JkFlatModel::where('type_flat', $type)
             ->with(['images', 'jk', 'price_object', 'support', 'builder'])
@@ -35,10 +73,17 @@ trait Flat
 
     }
 
-    protected function setImages($flats) {
+    /**
+     * set images for flat
+     * @param $flats
+     * @return mixed
+     */
+
+    protected function setImages($flats)
+    {
 
         foreach ($flats as $flat) {
-            if(count($flat->images) > 0) {
+            if (count($flat->images) > 0) {
                 $flat->images_array = json_decode($flat->images[0]->image);
             } else {
                 $flat->images_array = [];

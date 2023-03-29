@@ -14,7 +14,9 @@ use App\Models\Info\TypeComModel;
 use App\Models\Info\TypeHouseModel;
 use App\Models\Jk\JkModel;
 use App\Models\JkFlatModel;
+use App\Models\User\FavoriteModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 //Resource
@@ -27,6 +29,12 @@ class CatalogController extends Controller
     protected function main($flats, $type)
     {
         $flats = $this->setImages($flats);
+
+        foreach ($flats as $flat) {
+            $favorite = FavoriteModel::where('user_id', Auth::id())->where('flat_id', $flat->id)->first();
+
+            $flat->favorite = $favorite !== null;
+        }
 
         return Inertia::render('AppCatalog', [
             'page' => 2,

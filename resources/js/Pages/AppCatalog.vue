@@ -225,7 +225,7 @@
                             <option v-on:click="filter_type = 5">По дате добавления (сначала новые)</option>
                         </select>
                     </div>
-                    <CatalogFlat :jk="getFilters"></CatalogFlat>
+                    <CatalogFlat :spliceStatus="false" :jk="getFilters" :user="user"></CatalogFlat>
                     <div class="link-center" v-if="load">
                         <button class="btn btn-xl" v-on:click="loadCount += 20">Показать ещё</button>
                     </div>

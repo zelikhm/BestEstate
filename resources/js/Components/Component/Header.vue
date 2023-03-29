@@ -82,35 +82,29 @@
                 <div>
                     <h1>Недвижимость (обьекты)</h1>
                         <div v-for="item in content.jk">
-                            <Link :href="'/jk/' + item.slug">
-                                {{ item.title }}
-                            </Link>
+                                <div class="s-card">
+                                    <img :src="'/' + item.image" alt="">
+                                    <div>
+                                        <h3 class="heading-3">{{ item.title }}</h3>
+                                        <div class="s-card-price">от {{ item.minPrice !== null ? item.minPrice.toLocaleString('ru') : 0 }} до {{ item.maxPrice !== null ? item.maxPrice.toLocaleString('ru') : 0 }}  ₽</div>
+                                    </div>
+                                    <Link :href="'/jk/' + item.slug" class="btn btn-md">Подробнее</Link>
+                                </div>
                         </div>
-
-                    <div class="s-card">
-                        <img src="img/special/special-slide-img3.jpg" alt="">
-                        <div>
-                            <h3 class="heading-3">Kv1</h3>
-                            <div class="s-card-price">150&nbsp;000 ₽</div>
-                        </div>
-                        <a href="#" class="btn btn-md">Подробнее</a>
-                    </div>
 
                     <h1>Недвижимость (квартиры)</h1>
                     <div v-for="item in content.flats">
-                        <Link :href="'/jk/' + item.jk.slug + '/' + item.slug">
-                            {{ item.title }}
-                        </Link>
+                            <div class="s-card">
+                                <img :src="'/' + item.image" alt="">
+                                <div>
+                                    <h3 class="heading-3">{{ item.title }}</h3>
+                                    <div class="s-card-price">{{ item.price.toLocaleString('ru') }} ₽</div>
+                                </div>
+                                <Link :href="'/jk/' + item.jk.slug + '/' + item.slug" class="btn btn-md">Подробнее</Link>
+                            </div>
                     </div>
 
-                    <div class="s-card">
-                        <img src="img/special/special-slide-img3.jpg" alt="">
-                        <div>
-                            <h3 class="heading-3">Kv1</h3>
-                            <div class="s-card-price">150&nbsp;000 ₽</div>
-                        </div>
-                        <a href="#" class="btn btn-md">Подробнее</a>
-                    </div>
+
                 </div>
             </div>
         </form>
@@ -155,6 +149,7 @@
                     title: this.search
                 }).then(res => {
                     this.content = res.data;
+                    console.log(res.data)
                 })
 
             },

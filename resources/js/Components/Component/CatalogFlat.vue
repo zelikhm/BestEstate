@@ -58,7 +58,10 @@
                 <div class="cards-nav">
                     <a href="#" class="btn-border btn-lg to-state" data-state="contacts"><i
                         class="icomoon icon-calling-bold"></i><span>Показать контакты</span></a>
-                    <a href="#" class="btn-ic"><i class="icomoon icon-favourites"></i></a>
+                    <a style="cursor: pointer" v-if="item.favorite === false" v-on:click="addFavorite(item, item.id)" class="btn-ic"><img
+                        style="width: 30px" src="/img/favo.png" alt=""></a>
+                    <a style="cursor: pointer" v-else v-on:click="removeFavorite(item, item.id, index)" class="btn-ic"><img
+                        style="width: 30px" src="/img/favo-true.png" alt=""></a>
                     <a href="#" class="btn-ic"><i class="icomoon icon-location"></i></a>
                     <a href="/img/logo-black.png" download="filename" class="btn-ic"><i
                         class="icomoon icon-download"></i></a>
@@ -80,7 +83,7 @@
 
     export default {
         name: "CatalogFlat",
-        props:['jk'],
+        props:['jk', 'user', 'spliceStatus'],
         data() {
             return {
                 show: 0,
@@ -106,8 +109,8 @@
 
                     axios.post('/api/favorite/add', {
                         user_id: this.user.id,
-                        flat_id: type === 1 ? item.id : null,
-                        jk_id: type === 0 ? item.id : null,
+                        flat_id: type,
+                        jk_id: null,
                     }).then(res => {
                         if(res.status === 200) {
                             item.favorite = true;
@@ -117,16 +120,19 @@
                 }
 
             },
-            removeFavorite(item, type) {
+            removeFavorite(item, type, index) {
                 if(this.user !== null) {
 
                     axios.post('/api/favorite/remove', {
                         user_id: this.user.id,
-                        flat_id: type === 1 ? item.id : null,
-                        jk_id: type === 0 ? item.id : null,
+                        flat_id: type,
+                        jk_id: null,
                     }).then(res => {
                         if(res.status === 200) {
                             item.favorite = false;
+                            if(this.spliceStatus === true) {
+                                this.jk.splice(index, 1);
+                            }
                         }
                     })
 

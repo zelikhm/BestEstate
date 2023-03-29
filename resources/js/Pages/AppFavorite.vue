@@ -6,6 +6,8 @@
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
     import CatalogHouse from "@/Components/Component/CatalogHouse.vue";
+    import CatalogFlat from "@/Components/Component/CatalogFlat.vue";
+
 </script>
 
 <template>
@@ -36,15 +38,29 @@
                         </div>
                         <div class="catalog-select">
                             <select class="form-input select-sort" name="sort">
-                                <option v-on:click="filter_type = 1">По цене (сначала дешевле)</option>
-                                <option v-on:click="filter_type = 2">По цене (сначала дороже)</option>
-                                <option v-on:click="filter_type = 3">По общей площади</option>
-                                <option v-on:click="filter_type = 4">По дате добавления (сначала старые)</option>
-                                <option v-on:click="filter_type = 5">По дате добавления (сначала новые)</option>
+                                <option v-on:click="setType(0)" :selected="type_fillter === 0">Новостройки ({{ jk.length }})</option>
+                                <option v-on:click="setType(1)" :selected="type_fillter === 1">Котеджные поселки ({{ villages.length }})</option>
+                                <option v-on:click="setType(2)" :selected="type_fillter === 2">Квартиры ({{ flat.length }})</option>
+                                <option v-on:click="setType(3)" :selected="type_fillter === 3">Виллы ({{ villa.length }})</option>
+                                <option v-on:click="setType(4)" :selected="type_fillter === 4">Шалле ({{ shale.length }})</option>
+                                <option v-on:click="setType(5)" :selected="type_fillter === 5">Коммерческие недвижимости ({{ ecom.length }})</option>
                             </select>
                         </div>
                     </div>
-                    <CatalogHouse :jk="jk"></CatalogHouse>
+                    <CatalogHouse v-if="type_fillter === 0" :jk="jk"></CatalogHouse>
+                    <CatalogHouse v-if="type_fillter === 1" :jk="villages"></CatalogHouse>
+                    <CatalogFlat v-if="type_fillter === 2" :spliceStatus="true" :jk="flat" :user="user"></CatalogFlat>
+                    <CatalogFlat v-if="type_fillter === 3" :spliceStatus="true" :jk="villa" :user="user"></CatalogFlat>
+                    <CatalogFlat v-if="type_fillter === 4" :spliceStatus="true" :jk="shale" :user="user"></CatalogFlat>
+                    <CatalogFlat v-if="type_fillter === 5" :spliceStatus="true" :jk="ecom" :user="user"></CatalogFlat>
+
+                    <div v-if="checkEmpty()">
+                        <div class="content-box" style="height: 150px">
+                            <p class="align-items-center">
+                                В избранном пока что ничего нет
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -56,9 +72,21 @@
 </template>
 
 <script>
+    import { Inertia } from '@inertiajs/inertia'
+
     export default {
         name: "AppFavorite",
-        props: ['page', 'jk', 'user'],
+        props: [
+            'page',
+            'jk',
+            'user',
+            'villages',
+            'villa',
+            'flat',
+            'shale',
+            'ecom',
+            'type_fillter'
+        ],
         provide() {
             return {
                 'page': this.page,
@@ -78,6 +106,28 @@
                 show_reg: false,
             }
         },
+        methods: {
+            setType(type) {
+                this.$inertia.visit('/favorites?type_fillter=' + type);
+            },
+            checkEmpty() {
+
+                if(this.type_fillter === 0) {
+                    return this.jk.length === 0;
+                } else if (this.type_fillter === 1) {
+                    return this.villages.length === 0;
+                } else if (this.type_fillter === 2) {
+                    return this.flat.length === 0;
+                } else if (this.type_fillter === 3) {
+                    return this.villa.length === 0;
+                } else if (this.type_fillter === 4) {
+                    return this.shale.length === 0;
+                } else if (this.type_fillter === 5) {
+                    return this.ecom.length === 0;
+                }
+
+            }
+        }
     }
 </script>
 
