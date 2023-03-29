@@ -108,8 +108,6 @@ class Image extends Section implements Initializable
             AdminFormElement::images('image', 'Изображение')->storeAsJson(),
         ]);
 
-
-
         $card->getButtons()->setButtons([
             'save_and_continue' => (new Save())->setText('Применить'),
 //            'save_and_close' => (new SaveAndClose())->setText('Сохранить и закрыть'),

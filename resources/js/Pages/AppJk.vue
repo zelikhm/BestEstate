@@ -1,21 +1,11 @@
-<script setup>
-
-    import Header from '../Components/Component/Header.vue'
-    import Footer from '../Components/Component/Footer.vue'
-    import RegistrationModal from "../Components/Component/Modal/Register.vue";
-    import Login from "../Components/Component/Modal/Login.vue";
-    import { Link } from '@inertiajs/vue3';
-
-</script>
-
-
 <template>
     <body>
     <div class="wrapper">
 
         <!-- header -->
         <Header @openLogin="show_login = true"></Header>
-        <RegistrationModal :status="show_reg" @close="show_reg = false" @openLogin="show_login = true, show_reg = false"></RegistrationModal>
+        <RegistrationModal :status="show_reg" @close="show_reg = false"
+                           @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
 
         <main class="page-kp">
@@ -34,88 +24,11 @@
                 <div class="container">
                     <div class="jk-slider">
                         <!-- Swiper -->
-                        <div class="swiper jkMainSwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="img/jk/jk-img.jpg" data-fancybox="galleryJk">
-                                        <img src="img/jk/jk-img.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="swiper-button-next--fluid"></div>
-                            <div class="swiper-button-prev--fluid"></div>
-                        </div>
-                        <div thumbsSlider="" class="swiper jkSecondSwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                                <div class="swiper-slide"><img src="img/jk/jk-img.jpg" alt=""></div>
-                            </div>
-                        </div>
+
+                        <swiper class="swiper jkMainSwiper" :modules="modules" navigation>
+                            <swiper-slide class="slide" v-for="image in jk.images_array"><img :src="'/' + image" alt="">
+                            </swiper-slide>
+                        </swiper>
                     </div>
                     <div class="jk-container">
                         <div class="jk-left">
@@ -161,8 +74,8 @@
                                 <div class="jk-card">
                                     <div class="jk-card-heading">
                                         <div class="prices">
-                                            <div class="price">от <span>19 800 000 ₽</span></div>
-                                            <div class="price">до <span>39 800 000 ₽</span></div>
+                                            <div class="price">от <span>{{ minPrice.toLocaleString('ru') }} ₽</span></div>
+                                            <div class="price">до <span>{{ maxPrice.toLocaleString('ru') }} ₽</span></div>
                                         </div>
                                         <a href="img/logo-black.png" download="filename" class="btn-ic"><i
                                             class="icomoon icon-download"></i></a>
@@ -205,7 +118,7 @@
                                     </form>
                                 </div>
                             </div>
-<!--                            info-->
+                            <!--                            info-->
                             <div v-if="jk.description !== null" v-for="info in jk.description">
                                 <div v-if="info.category === 0" class="info">
                                     <div class="info-heading">
@@ -220,7 +133,8 @@
                                 </div>
                                 <div v-else-if="info.category === 1" class="stock">
                                     <h3 class="heading-3">{{ info.title }}</h3>
-                                    <div class="stock-cards__item" v-bind:style="{ 'background-color': item.color }" v-for="item in info.items">
+                                    <div class="stock-cards__item" v-bind:style="{ 'background-color': item.color }"
+                                         v-for="item in info.items">
                                         <div class="stock-cards__item-content">
                                             <p v-html="item.description">
 
@@ -258,7 +172,8 @@
                                                             супермаркет,
                                                             фермерскую лавку, пекарню, кофейню, бар, кафе, ресторан,
                                                             пиццерию, офис продаж, шоурум, мини-гостиницу, детский
-                                                            развивающий центр, салон красоты, барбершоп, маникюрный салон,
+                                                            развивающий центр, салон красоты, барбершоп, маникюрный
+                                                            салон,
                                                             аптеку или офис.</p>
                                                         <a href="#" class="btn btn-md">Узнать больше о помещениях</a>
                                                     </div>
@@ -271,7 +186,8 @@
                                                             супермаркет,
                                                             фермерскую лавку, пекарню, кофейню, бар, кафе, ресторан,
                                                             пиццерию, офис продаж, шоурум, мини-гостиницу, детский
-                                                            развивающий центр, салон красоты, барбершоп, маникюрный салон,
+                                                            развивающий центр, салон красоты, барбершоп, маникюрный
+                                                            салон,
                                                             аптеку или офис.</p>
                                                         <a href="#" class="btn btn-md">Узнать больше о помещениях</a>
                                                     </div>
@@ -284,7 +200,8 @@
                                                             супермаркет,
                                                             фермерскую лавку, пекарню, кофейню, бар, кафе, ресторан,
                                                             пиццерию, офис продаж, шоурум, мини-гостиницу, детский
-                                                            развивающий центр, салон красоты, барбершоп, маникюрный салон,
+                                                            развивающий центр, салон красоты, барбершоп, маникюрный
+                                                            салон,
                                                             аптеку или офис.</p>
                                                         <a href="#" class="btn btn-md">Узнать больше о помещениях</a>
                                                     </div>
@@ -311,643 +228,29 @@
                         <div id="charact-tabs">
                             <!-- Кнопки -->
                             <ul class="tabs-nav">
-                                <li><a href="#charact-tab-1">Все планировки</a></li>
-                                <li><a href="#charact-tab-2">1–комнатная</a></li>
-                                <li><a href="#charact-tab-3">2–комнатная</a></li>
-                                <li><a href="#charact-tab-4">3–комнатная</a></li>
-                                <li><a href="#charact-tab-5">4–комнатная</a></li>
-                                <li><a href="#charact-tab-6">5–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 0" v-bind:class="{ 'active': flat_filter == 0 }">Все планировки</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 1" v-bind:class="{ 'active': flat_filter == 1 }">1–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 2" v-bind:class="{ 'active': flat_filter == 2 }">2–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 3" v-bind:class="{ 'active': flat_filter == 3 }">3–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 4" v-bind:class="{ 'active': flat_filter == 4 }">4–комнатная</a></li>
                             </ul>
                             <!-- Контент -->
-                            <div class="tabs-items">
+                            <div class="tabs-items" v-if="jk.flat.length > 0">
                                 <div class="tabs-item" id="charact-tab-1">
                                     <div class="charact-tab">
                                         <div class="charact-grid">
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
+                                            <div class="charact-item" v-for="item in getFlat" :key="item.id">
+                                                <div class="charact-img"><img :src="item.plan_image" alt=""></div>
+                                                <div class="charact-title"><Link :href="'/jk/' + jk.slug + '/' + item.slug">{{ item.rooms }}–комнатная</Link></div>
                                                 <div class="charact-info">
                                                     <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
+                                                    <span>{{ item.square_main }} м²</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="link-center">
-                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs-item" id="charact-tab-2">
-                                    <div class="charact-tab">
-                                        <div class="charact-grid">
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="link-center">
-                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs-item" id="charact-tab-3">
-                                    <div class="charact-tab">
-                                        <div class="charact-grid">
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="link-center">
-                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs-item" id="charact-tab-4">
-                                    <div class="charact-tab">
-                                        <div class="charact-grid">
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="link-center">
-                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs-item" id="charact-tab-5">
-                                    <div class="charact-tab">
-                                        <div class="charact-grid">
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="link-center">
-                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tabs-item" id="charact-tab-6">
-                                    <div class="charact-tab">
-                                        <div class="charact-grid">
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                            <div class="charact-item">
-                                                <div class="charact-img"><img src="img/jk/charact-img.png" alt=""></div>
-                                                <div class="charact-title">1–комнатная</div>
-                                                <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
-                                                    <span>39.5 м²</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="link-center">
-                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>
-                                        </div>
+<!--                                        <div class="link-center">-->
+<!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
+<!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -965,57 +268,8 @@
                                 </ul>
                                 <a href="#" class="btn btn-md">Узнать о спецпредложениях</a>
                             </div>
-                            <div class="info">
-                                <p class="jk-text">
-                                    Рядом метро «Бульвар Рокоссовского» и одноименная станция МЦК. Маршрут до ТТК на
-                                    автомобиле займет около 20 минут, до
-                                    Садового кольца около 32 минут. После окончания строительства квартала на территории
-                                    района будут расширены существующая
-                                    улица Тагильская и Открытое шоссе для комфортного проезда автомобилистов. На
-                                    автомобиле от новостройки можно выехать на
-                                    Щелковское шоссе – трасса расположена в 2 км и выводит к МКАД в 5,9 км.
-                                </p>
-                                <div class="info-advant">
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-1.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">Метро «Бульвар Рокоссовского»</h4>
-                                        <span>12 минут пешком</span>
-                                    </div>
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-2.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">МКАД</h4>
-                                        <span>5 минут на автомобиле</span>
-                                    </div>
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-3.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">ТТК</h4>
-                                        <span>20 минут на автомобиле</span>
-                                    </div>
-                                    <div class="info-advant-item">
-                                        <div class="info-advant-img"><img src="img/jk/info-advant-img-4.png" alt="">
-                                        </div>
-                                        <h4 class="heading-4">Садовое кольцо</h4>
-                                        <span>30 минут на автомобиле</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="info-heading">
-                                    <h3 class="heading-3">Паркинг для гостей</h3>
-                                    <p class="text-2">
-                                        Под корпусами жилого комплекса будет размещен подземный одноуровневый паркинг
-                                        вместительностью 1 500 машиномест. В
-                                        помещении стоянки организуют отопление и охрану, обеспечат пожарную
-                                        безопасность. Ряд бесплатных гостевых парковок
-                                        расположат с внешней стороны домов по всей территории комплекса.
-                                    </p>
-                                </div>
-                                <div class="info-img">
-                                    <img src="img/jk/info-img.jpg" alt="">
-                                </div>
+                            <div class="info" v-html="jk.description_page">
+
                             </div>
                             <div class="info">
                                 <div class="info-heading">
@@ -1098,8 +352,20 @@
 </template>
 
 <script>
+    import {defineComponent} from 'vue'
+    import {Navigation} from 'swiper'
+    import {Swiper, SwiperSlide} from 'swiper/vue'
+    import 'swiper/css'
+    import 'swiper/css/navigation'
+    import {Link} from '@inertiajs/vue3';
+
+    import Header from '../Components/Component/Header.vue'
+    import Footer from '../Components/Component/Footer.vue'
+    import RegistrationModal from "../Components/Component/Modal/Register.vue";
+    import Login from "../Components/Component/Modal/Login.vue";
+
     export default {
-        props: ['page', 'jk'],
+        props: ['page', 'jk', 'minPrice', 'maxPrice'],
         provide() {
             return {
                 'page': this.page,
@@ -1109,13 +375,14 @@
             return {
                 show_login: false,
                 show_reg: false,
+                flat_filter: 0,
             }
         },
         name: "AppJk",
         methods: {
             getFrames(frames) {
 
-                if(frames === 0) {
+                if (frames === 0) {
                     return frames + ' корпусов';
                 } else if (frames === 1) {
                     return frames + ' корпус';
@@ -1124,7 +391,31 @@
                 } else if (frames > 4) {
                     return frames + ' корпусов';
                 }
+            },
+        },
+        components: {
+            Swiper,
+            SwiperSlide,
+            Link,
+            Header,
+            Footer,
+            RegistrationModal,
+            Login,
+        },
+        setup() {
+            return {
+                modules: [Navigation]
+            }
+        },
+        computed: {
+            getFlat() {
 
+                if(this.flat_filter === 0) {
+                    return this.jk.flat;
+                } else if (this.flat_filter !== 0) {
+                    // console.log(this.jk.flat.filter((item) => item.rooms === this.flat_filter));
+                    return this.jk.flat.filter((item) => item.rooms === this.flat_filter);
+                }
             }
         }
     }

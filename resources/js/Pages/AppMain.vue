@@ -2,13 +2,21 @@
 
     import Header from '../Components/Component/Header.vue'
     import Footer from '../Components/Component/Footer.vue'
-    import JkSwipper from '../Components/Component/Swipper/JkSwipper.vue'
-    import JkHousesSwipper from '../Components/Component/Swipper/JkHousesSwipper.vue'
-    import Villages from '../Components/Component/Swipper/VillagesSwipper.vue'
-    import Services from "../Components/Component/Services.vue";
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
-    import { Link } from '@inertiajs/vue3'
+    import {Link} from '@inertiajs/vue3'
+
+    //sections
+    import Hero from "../Components/MainSections/Hero.vue";
+    import Special from "../Components/MainSections/Special.vue";
+    import Services from "../Components/MainSections/Services.vue";
+    import Jk from "../Components/MainSections/Jk.vue";
+    import Villages from "../Components/MainSections/Villages.vue";
+    import Working from "@/Components/MainSections/Working.vue";
+    import Support from "@/Components/MainSections/Support.vue";
+    import Commerc from "@/Components/MainSections/Commerc.vue";
+    import Shale from "@/Components/MainSections/Commerc.vue";
+    import Villa from "@/Components/MainSections/Villa.vue";
 
 </script>
 
@@ -26,191 +34,17 @@
 
         <main class="page-home">
 
-            <section class="hero">
+            <Hero :options="options"></Hero>
 
-                <div class="container">
-                    <div class="slider-container">
-                        <a href="#" class="location to-state" data-state="city">
-                            <i class="icomoon icon-location"></i>
-                            <span>Москва</span>
-                        </a>
-                        <!-- Swiper -->
-                        <div class="swiper heroSwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="heroSwiper-slide heroSwiper-slide-1">
-                                        <div class="container--fluid">
-                                            <h1 class="heading-1">Аренда недвижимости на&nbsp;В&nbsp;МОСКВЕ И СОЧИ</h1>
-                                            <p class="text-1">Мы собрали лучшую недвижимость Москвы и Сочи на&nbsp;тематических
-                                                порталах и маркетплейсах
-                                                компании</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="heroSwiper-slide heroSwiper-slide-2">
-                                        <div class="container--fluid">
-                                            <h1 class="heading-1">Аренда недвижимости В&nbsp;СОЧИ</h1>
-                                            <p class="text-1">Мы собрали лучшую недвижимость Москвы и Сочи на&nbsp;тематических
-                                                порталах и маркетплейсах
-                                                компании</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="heroSwiper-slide heroSwiper-slide-3">
-                                        <div class="container--fluid">
-                                            <h1 class="heading-1">Аренда недвижимости на&nbsp;В&nbsp;МОСКВЕ И СОЧИ</h1>
-                                            <p class="text-1">Мы собрали лучшую недвижимость Москвы и Сочи на&nbsp;тематических
-                                                порталах и маркетплейсах
-                                                компании</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="heroSwiper-slide heroSwiper-slide-4">
-                                        <div class="container--fluid">
-                                            <h1 class="heading-1">Аренда недвижимости В&nbsp;СОЧИ</h1>
-                                            <p class="text-1">Мы собрали лучшую недвижимость Москвы и Сочи на&nbsp;тематических
-                                                порталах и маркетплейсах
-                                                компании</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
+            <Special></Special>
 
-                    <div class="container--fluid">
-                        <div class="filter">
-                            <ul class="filter-nav">
-                                <li><a href="#" class="active">Купить</a></li>
-                                <li><a href="#">Снять</a></li>
-                                <li><a href="#">Посуточно</a></li>
-                                <li><a href="#">VR</a></li>
-                            </ul>
-                            <div class="filter-row-3">
-                                <div class="filter-col filter-col-2">
-                                    <div class="select select-house">
-                                        <select class="form-input select-default" name="house">
-                                            <option value="">Квартиру</option>
-                                            <option value="">Другое</option>
-                                            <option value="">Другое другое</option>
-                                            <option value="">Другое другое другое</option>
-                                        </select>
-                                    </div>
-                                    <div class="filter-radio-group">
-                                        <span class="filter-radio-group-title">Студия</span>
-                                        <label for="1" class="filter-radio">
-                                            <input type="radio" id="1" name="studia" class="filter-radio__input"
-                                                   checked>
-                                            <span>1</span>
-                                        </label>
-                                        <label for="2" class="filter-radio">
-                                            <input type="radio" id="2" name="studia" class="filter-radio__input">
-                                            <span>2</span>
-                                        </label>
-                                        <label for="3" class="filter-radio">
-                                            <input type="radio" id="3" name="studia" class="filter-radio__input">
-                                            <span>3</span>
-                                        </label>
-                                        <label for="4+" class="filter-radio">
-                                            <input type="radio" id="4+" name="studia" class="filter-radio__input">
-                                            <span>4+</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="filter-col">
-                                    <label for="" class="form-label form-label-range">
-                                        <div class="form-range-group">
-                                            от <input id="start" type="number" value=""> ₽
-                                        </div>
-                                        <span class="form-range-separator">–</span>
-                                        <div class="form-range-group">
-                                            до <input id="end" type="number" value=""> ₽
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="filter-col">
-                                    <label for="" class="form-label form-label--location">
-                                        <input type="text" name="" id="" class="form-input"
-                                               placeholder="Город, адрес, район, ЖК">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="filter-btns">
-                                <div class="filter-btns-left">
-                                    <button class="filter-more">
-                                        <i class="icomoon icon-filter"></i>
-                                        Расширенный поиск
-                                    </button>
-                                </div>
-                                <div class="filter-btns-right">
-                                    <button class="btn-border btn-lg">
-                                        <i class="icomoon icon-location-bold"></i>
-                                        Смотреть на карте
-                                    </button>
-                                    <button class="btn btn-lg">
-                                        Показать 100 объявлений
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <Services></Services>
 
-                </div>
+            <Jk v-if="jk.length > 0" :user="user" :jk="jk"></Jk>
 
-            </section>
+            <Villages v-if="villages.length > 0" :villages="villages"></Villages>
 
-            <section class="special">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Спецпредложения</h2>
-                    </div>
-                    <div class="swiper-container">
-                        <JkSwipper></JkSwipper>
-                    </div>
-                </div>
-            </section>
-
-            <section class="services-bl">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Услуги компании</h2>
-                    </div>
-                    <Services></Services>
-                </div>
-            </section>
-
-
-            <section class="jk-bl" v-if="jk.length > 0">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Жилые комплексы</h2>
-                        <Link :href="'/catalog?type_jk=0'" class="btn-second btn-md">Смотреть все</Link>
-                    </div>
-                    <!-- Swiper -->
-
-                    <div class="swiper-container">
-                        <JkHousesSwipper @addFavorite="addFavorite" @removeFavorite="removeFavorite" :jk="jk"></JkHousesSwipper>
-                    </div>
-                </div>
-            </section>
-
-            <section class="kp-bl" v-if="villages.length > 0">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Коттеджные поселки</h2>
-                        <Link :href="'/catalog?type_jk=1'" class="btn-second btn-md" preserve-state>Смотреть все</Link>
-                    </div>
-                    <div class="kp-bl__cards">
-                        <Villages :villages="villages"></Villages>
-                    </div>
-                </div>
-            </section>
-
-            <section class="offer">
+            <section class="offer" v-if="villages.length > 0">
                 <div class="container">
                     <div class="offer-img">
                         <img src="img/offer/offer-img.jpg" alt="">
@@ -218,228 +52,19 @@
                 </div>
             </section>
 
-<!--            <section class="cat-bl">-->
-<!--                <div class="container&#45;&#45;fluid">-->
-<!--                    <div class="heading-row">-->
-<!--                        <h2 class="heading-2">Виллы</h2>-->
-<!--                        <Link :href="'/catalog?type_jk=2'" class="btn-second btn-md" >Смотреть все</Link>-->
-<!--                    </div>-->
-<!--                    <div class="cat-bl__cards" v-for="item in villa">-->
-<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-1">-->
-<!--                            <div class="cat-bl__cards-info">-->
-<!--                                <div class="cat-bl__cards-heading">-->
-<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
-<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
-<!--                                </div>-->
-<!--                                <div class="specifications">-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="cat-bl__cards-nav">-->
-<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-2">-->
-<!--                            <div class="cat-bl__cards-info">-->
-<!--                                <div class="cat-bl__cards-heading">-->
-<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
-<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
-<!--                                </div>-->
-<!--                                <div class="specifications">-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="cat-bl__cards-nav">-->
-<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-1">-->
-<!--                            <div class="cat-bl__cards-info">-->
-<!--                                <div class="cat-bl__cards-heading">-->
-<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
-<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
-<!--                                </div>-->
-<!--                                <div class="specifications">-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="cat-bl__cards-nav">-->
-<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="cat-bl__cards-item cat-bl__cards-item-2">-->
-<!--                            <div class="cat-bl__cards-info">-->
-<!--                                <div class="cat-bl__cards-heading">-->
-<!--                                    <h3 class="heading-3">Дом в Антибе, Франция</h3>-->
-<!--                                    <p class="text-2">Антиб, Круцио стрит, 32</p>-->
-<!--                                </div>-->
-<!--                                <div class="specifications">-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="cat-bl__cards-nav">-->
-<!--                                <a href="#" class="btn btn-lg">Подробнее</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </section>-->
+            <Villa v-if="villa.length > 0" :villa="villa" ></Villa>
 
-            <section class="cat-bl" v-if="shale.length > 0">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Шале</h2>
-                        <Link :href="'/catalog?type_jk=3'" class="btn-second btn-md" >Смотреть все</Link>
-                    </div>
-                    <div class="cat-bl__cards" v-for="(item, index) in shale">
-                        <div class="cat-bl__cards-item cat-bl__cards-item-1" v-if="index === 0 && index === 2">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">{{ item.title }}</h3>
-                                    <p class="text-2">{{ item.address }}</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="cat-bl__cards-item cat-bl__cards-item-2" v-if="index === 1 && index === 3">
-                            <div class="cat-bl__cards-info">
-                                <div class="cat-bl__cards-heading">
-                                    <h3 class="heading-3">{{ item.title }}</h3>
-                                    <p class="text-2">{{ item.address }}</p>
-                                </div>
-                                <div class="specifications">
-                                    <div class="specifications-item"><img src="img/cat-bl/rooms-w.png" alt=""><span>1–8 комнат</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/square-w.png" alt=""><span>от 224 до 411 м²</span>
-                                    </div>
-                                    <div class="specifications-item"><img src="img/cat-bl/cost-w.png" alt=""><span>от 48 млн. ₽</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cat-bl__cards-nav">
-                                <a href="#" class="btn btn-lg">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Shale v-if="shale.length > 0" :shale="shale"></Shale>
 
-            <section class="kn-bl" v-if="ecom.length > 0">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Коммерческая недвижимость</h2>
-                        <Link :href="'/catalog?type_jk=4'" class="btn-second btn-md" >Смотреть все</Link>
-                    </div>
-                    <div class="cards">
-                        <div class="cards-item cards-item--kn" v-for="item in ecom">
-                            <!-- Swiper -->
-                            <div class="cards-slider">
-                                <div class="swiper gallerySwiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide"><img :src="item.image" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper1.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper2.jpg" alt="">
-                                        </div>
-                                        <div class="swiper-slide"><img src="img/kp-bl/kpGallerySwiper3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-button-next--fluid"></div>
-                                    <div class="swiper-button-prev--fluid"></div>
-                                    <div class="swiper-pagination--fluid"></div>
-                                </div>
-                            </div>
-
-                            <div class="cards-content">
-                                <div class="cards-info">
-                                    <div class="cards-info-wrapper">
-                                        <div class="cards-info-main">
-                                            <div class="cards-heading">
-                                                <h3 class="heading-3">{{ item.title }}</h3>
-                                                <p class="text-3">{{ item.description }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="cards-info-second">
-                                            <div class="cards-price">
-                                                <div class="cards-price-wrapper">
-                                                    <div class="cards-price-main">{{ item.price.toLocaleString('ru') }} ₽</div>
-                                                    <!-- <div class="select-wallet-container">
-                                                      <select class="select-wallet" name="wallet">
-                                                        <option value="">₽</option>
-                                                        <option value="">₽</option>
-                                                        <option value="">₽</option>
-                                                      </select>
-                                                    </div> -->
-                                                </div>
-                                                <div class="cards-price-second">{{ (item.price / item.square).toLocaleString('ru') }} ₽/м2</div>
-                                            </div>
-                                            <div class="cards-date">Добавлено: {{ item.created_at }}</div>
-                                            <div class="cards-views" v-if="item.visible">{{ item.visible }} просмотров</div>
-                                        </div>
-                                    </div>
-
-                                    <ul class="cards-specifications">
-                                        <li>Площадь: 150 м²</li>
-                                        <li>Вид на море/океан</li>
-                                        <li>Бассейн</li>
-                                        <li>Фитнес–центр</li>
-                                        <li>Собственный пляж</li>
-                                        <li>Продавец кто то там на английском</li>
-                                    </ul>
-                                </div>
-
-                                <div class="cards-nav">
-                                    <a href="#" class="btn-border btn-lg to-state" data-state="contacts"><i
-                                        class="icomoon icon-calling-bold"></i><span>Показать контакты</span></a>
-                                    <a href="#" class="btn-ic active"><i class="icomoon icon-favourites"></i></a>
-                                    <a href="#" class="btn-ic"><i class="icomoon icon-location"></i></a>
-                                    <a href="img/logo-black.png" download="filename" class="btn-ic"><i
-                                        class="icomoon icon-download"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="offer">
+            <section class="offer" v-if="shale.length > 0 || villa.length > 0">
                 <div class="container">
                     <div class="offer-img">
                         <img src="img/offer/offer-img.jpg" alt="">
                     </div>
                 </div>
             </section>
+
+            <Commerc v-if="ecom.length > 0" :ecom="ecom" ></Commerc>
 
             <section class="videos">
                 <div class="container--fluid">
@@ -534,228 +159,9 @@
                 </div>
             </section>
 
-            <section class="consult">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Консультация эксперта</h2>
-                    </div>
-                    <!-- Swiper -->
-                    <div class="swiper-container">
-                        <div class="swiper consultSwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="consult-slide">
-                                        <div class="consult-slide-img">
-                                            <img src="img/consult/consult-img.jpg" alt="">
-                                        </div>
-                                        <div class="consult-slide-content">
-                                            <div class="consult-slide-info">
-                                                <h3 class="heading-3">Андрей Черных</h3>
-                                                <p class="text-2">Директор департмента подбора недвижимости в Москве и
-                                                    Московской области</p>
-                                            </div>
-                                            <div class="quote">
-                                                У нас есть опыт в подборе недвижимости уже более 20 лет и поэтому мы без
-                                                труда сможем найти квартиру вашей мечты!
-                                            </div>
-                                            <form action="#" class="form">
-                                                <div class="radiob-group">
-                                                    <label class="radiob tg">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>telegram</span>
-                                                    </label>
-                                                    <label class="radiob wa">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>whats app</span>
-                                                    </label>
-                                                    <label class="radiob vb">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>viber</span>
-                                                    </label>
-                                                    <label class="radiob ph">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>звонок</span>
-                                                    </label>
-                                                </div>
-                                                <label for="" class="form-label">
-                                                    <input type="text" name="" id="" class="form-input form-input--big"
-                                                           placeholder="Ваше имя">
-                                                </label>
-                                                <label for="" class="form-label">
-                                                    <input type="number" name="" id=""
-                                                           class="form-input form-input--big"
-                                                           placeholder="Ваш номер телефона">
-                                                </label>
-                                                <button class="btn btn-xl">Отправить</button>
-                                                <label for="" class="accept checkbox">
-                                                    <input type="checkbox" id="">
-                                                    <span>Даю согласие на обработку <a href="#">персональных данных</a></span>
-                                                </label>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="consult-slide">
-                                        <div class="consult-slide-img">
-                                            <img src="img/consult/consult-img.jpg" alt="">
-                                        </div>
-                                        <div class="consult-slide-content">
-                                            <div class="consult-slide-info">
-                                                <h3 class="heading-3">Андрей Черных</h3>
-                                                <p class="text-2">Директор департмента подбора недвижимости в Москве и
-                                                    Московской области</p>
-                                            </div>
-                                            <div class="quote">
-                                                У нас есть опыт в подборе недвижимости уже более 20 лет и поэтому мы без
-                                                труда сможем найти квартиру вашей мечты!
-                                            </div>
-                                            <form action="#" class="form">
-                                                <div class="radiob-group">
-                                                    <label class="radiob tg">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>telegram</span>
-                                                    </label>
-                                                    <label class="radiob wa">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>whats app</span>
-                                                    </label>
-                                                    <label class="radiob vb">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>viber</span>
-                                                    </label>
-                                                    <label class="radiob ph">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>звонок</span>
-                                                    </label>
-                                                </div>
-                                                <label for="" class="form-label">
-                                                    <input type="text" name="" id="" class="form-input form-input--big"
-                                                           placeholder="Ваше имя">
-                                                </label>
-                                                <label for="" class="form-label">
-                                                    <input type="number" name="" id=""
-                                                           class="form-input form-input--big"
-                                                           placeholder="Ваш номер телефона">
-                                                </label>
-                                                <button class="btn btn-xl">Отправить</button>
-                                                <label for="" class="accept checkbox">
-                                                    <input type="checkbox" id="">
-                                                    <span>Даю согласие на обработку <a href="#">персональных данных</a></span>
-                                                </label>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="consult-slide">
-                                        <div class="consult-slide-img">
-                                            <img src="img/consult/consult-img.jpg" alt="">
-                                        </div>
-                                        <div class="consult-slide-content">
-                                            <div class="consult-slide-info">
-                                                <h3 class="heading-3">Андрей Черных</h3>
-                                                <p class="text-2">Директор департмента подбора недвижимости в Москве и
-                                                    Московской области</p>
-                                            </div>
-                                            <div class="quote">
-                                                У нас есть опыт в подборе недвижимости уже более 20 лет и поэтому мы без
-                                                труда сможем найти квартиру вашей мечты!
-                                            </div>
-                                            <form action="#" class="form">
-                                                <div class="radiob-group">
-                                                    <label class="radiob tg">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>telegram</span>
-                                                    </label>
-                                                    <label class="radiob wa">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>whats app</span>
-                                                    </label>
-                                                    <label class="radiob vb">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>viber</span>
-                                                    </label>
-                                                    <label class="radiob ph">
-                                                        <input type="checkbox" id="" class="radiob__input">
-                                                        <span>звонок</span>
-                                                    </label>
-                                                </div>
-                                                <label for="" class="form-label">
-                                                    <input type="text" name="" id="" class="form-input form-input--big"
-                                                           placeholder="Ваше имя">
-                                                </label>
-                                                <label for="" class="form-label">
-                                                    <input type="number" name="" id=""
-                                                           class="form-input form-input--big"
-                                                           placeholder="Ваш номер телефона">
-                                                </label>
-                                                <button class="btn btn-xl">Отправить</button>
-                                                <label for="" class="accept checkbox">
-                                                    <input type="checkbox" id="">
-                                                    <span>Даю согласие на обработку <a href="#">персональных данных</a></span>
-                                                </label>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                        <div class="swiper-nav">
-                            <div class="swiper-button-next consultSwiper-next"></div>
-                            <div class="swiper-button-prev consultSwiper-prev"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Support v-if="support.length > 0" :support="support"></Support>
 
-            <section class="partners">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">С кем мы работаем</h2>
-                    </div>
-                    <!-- Swiper -->
-                    <div class="swiper-container partnersSwiper-container">
-                        <div class="swiper partnersSwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="img/partners/ozon.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/mvideo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/dns.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/ozon.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/mvideo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/dns.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/ozon.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/mvideo.png" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="img/partners/dns.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-nav">
-                            <div class="swiper-button-next partnersSwiper-next"></div>
-                            <div class="swiper-pagination partnersSwiper-pagination"></div>
-                            <div class="swiper-button-prev partnersSwiper-prev"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Working v-if="working.length > 0" :working="working" ></Working>
 
             <section class="about-bl">
                 <div class="container--fluid">
@@ -901,130 +307,130 @@
             </div>
         </div>
 
-        <div class="state city-state" data-state="city">
-            <div class="state-box">
-                <div class="state-heading">
-                    <div class="heading-4">Выберите регион или город</div>
-                    <div class="icomoon icon-close"></div>
-                </div>
-                <div class="search-group">
-                    <label class="form-label">
-                        <input type="text" class="form-input" placeholder="Выберите регион или город">
-                    </label>
-                    <button type="submit" class="btn btn-lg">Выбрать</button>
-                </div>
-                <div class="city-switchers">
-                    <div class="city-switchers__btns">
-                        <button class="btn-border btn-sm">Москва</button>
-                        <button class="btn-border btn-sm">Московская область</button>
-                        <button class="btn-border btn-sm">Санкт-Петербург</button>
-                        <button class="btn-border btn-sm">Ленинградская область</button>
-                        <button class="btn-border btn-sm">Екатеринбург</button>
-                        <button class="btn-border btn-sm">Краснодар</button>
-                        <button class="btn-border btn-sm">Новосибирск</button>
-                        <button class="btn-border btn-sm">Красноярск</button>
-                    </div>
-                    <ul class="city-switchers__list">
-                        <li>
-                            <button>Москва</button>
-                        </li>
-                        <li>
-                            <button>Московская область</button>
-                        </li>
-                        <li>
-                            <button>Санкт-Петербург</button>
-                        </li>
-                        <li>
-                            <button>Ленинградская область</button>
-                        </li>
-                        <li>
-                            <button>Екатеринбург</button>
-                        </li>
-                        <li>
-                            <button>Краснодар</button>
-                        </li>
-                        <li>
-                            <button>Новосибирск</button>
-                        </li>
-                        <li>
-                            <button>Красноярск</button>
-                        </li>
-                        <li>
-                            <button>Челябинск</button>
-                        </li>
-                        <li>
-                            <button>Ростов-на-Дону</button>
-                        </li>
-                        <li>
-                            <button>Тюмень</button>
-                        </li>
-                        <li>
-                            <button>Уфа</button>
-                        </li>
-                        <li>
-                            <button>Казань</button>
-                        </li>
-                        <li>
-                            <button>Пермь</button>
-                        </li>
-                        <li>
-                            <button>Нижний Новгород</button>
-                        </li>
-                        <li>
-                            <button>Самара</button>
-                        </li>
-                        <li>
-                            <button>Саратов</button>
-                        </li>
-                        <li>
-                            <button>Омск</button>
-                        </li>
-                        <li>
-                            <button>Балашиха</button>
-                        </li>
-                        <li>
-                            <button>Волгоград</button>
-                        </li>
-                        <li>
-                            <button>Воронеж</button>
-                        </li>
-                        <li>
-                            <button>Иркутск</button>
-                        </li>
-                        <li>
-                            <button>Хабаровск</button>
-                        </li>
-                        <li>
-                            <button>Томск</button>
-                        </li>
-                        <li>
-                            <button>Ярославль</button>
-                        </li>
-                        <li>
-                            <button>Сочи</button>
-                        </li>
-                        <li>
-                            <button>Сургут</button>
-                        </li>
-                        <li>
-                            <button>Подольск</button>
-                        </li>
-                        <li>
-                            <button>Мытищи</button>
-                        </li>
-                        <li>
-                            <button>Владивосток</button>
-                        </li>
-                        <li>
-                            <button>Калуга</button>
-                        </li>
-                        <li>
-                            <button>Пятигорск</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!--        <div class="state city-state" data-state="city">-->
+<!--            <div class="state-box">-->
+<!--                <div class="state-heading">-->
+<!--                    <div class="heading-4">Выберите регион или город</div>-->
+<!--                    <div class="icomoon icon-close"></div>-->
+<!--                </div>-->
+<!--                <div class="search-group">-->
+<!--                    <label class="form-label">-->
+<!--                        <input type="text" class="form-input" placeholder="Выберите регион или город">-->
+<!--                    </label>-->
+<!--                    <button type="submit" class="btn btn-lg">Выбрать</button>-->
+<!--                </div>-->
+<!--                <div class="city-switchers">-->
+<!--                    <div class="city-switchers__btns">-->
+<!--                        <button class="btn-border btn-sm">Москва</button>-->
+<!--                        <button class="btn-border btn-sm">Московская область</button>-->
+<!--                        <button class="btn-border btn-sm">Санкт-Петербург</button>-->
+<!--                        <button class="btn-border btn-sm">Ленинградская область</button>-->
+<!--                        <button class="btn-border btn-sm">Екатеринбург</button>-->
+<!--                        <button class="btn-border btn-sm">Краснодар</button>-->
+<!--                        <button class="btn-border btn-sm">Новосибирск</button>-->
+<!--                        <button class="btn-border btn-sm">Красноярск</button>-->
+<!--                    </div>-->
+<!--                    <ul class="city-switchers__list">-->
+<!--                        <li>-->
+<!--                            <button>Москва</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Московская область</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Санкт-Петербург</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Ленинградская область</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Екатеринбург</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Краснодар</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Новосибирск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Красноярск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Челябинск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Ростов-на-Дону</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Тюмень</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Уфа</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Казань</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Пермь</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Нижний Новгород</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Самара</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Саратов</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Омск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Балашиха</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Волгоград</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Воронеж</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Иркутск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Хабаровск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Томск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Ярославль</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Сочи</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Сургут</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Подольск</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Мытищи</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Владивосток</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Калуга</button>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <button>Пятигорск</button>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
     </div>
 
@@ -1038,10 +444,10 @@
 
 <script>
 
-    import { router } from '@inertiajs/vue3'
+    import {router} from '@inertiajs/vue3'
 
     export default {
-        props: ['page', 'sale_jk', 'services', 'jk', 'user', 'villages', 'shale', 'ecom'],
+        props: ['page', 'sale_jk', 'services', 'jk', 'user', 'villages', 'villa', 'shale', 'ecom', 'support', 'working', 'options'],
         provide() {
             return {
                 'page': this.page,
@@ -1065,43 +471,14 @@
                 router.visit(link, {
                     method: 'get',
                     replace: true,
-                    onSuccess: page => {window.scrollTo(0, 0)},
+                    onSuccess: page => {
+                        window.scrollTo(0, 0)
+                    },
                     preserveState: true,
                     preserveScroll: true,
                 })
             },
-            addFavorite(item, type) {
 
-                if(this.user !== null) {
-
-                    axios.post('/api/favorite/add', {
-                        user_id: this.user.id,
-                        flat_id: type === 1 ? item.id : null,
-                        jk_id: type === 0 ? item.id : null,
-                    }).then(res => {
-                        if(res.status === 200) {
-                            item.favorite = true;
-                        }
-                    })
-
-                }
-
-            },
-            removeFavorite(item, type) {
-                if(this.user !== null) {
-
-                    axios.post('/api/favorite/remove', {
-                        user_id: this.user.id,
-                        flat_id: type === 1 ? item.id : null,
-                        jk_id: type === 0 ? item.id : null,
-                    }).then(res => {
-                        if(res.status === 200) {
-                            item.favorite = false;
-                        }
-                    })
-
-                }
-            }
         }
     }
 </script>

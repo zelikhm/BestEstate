@@ -77,7 +77,9 @@ class Images extends Section implements Initializable
                     $q->where('title', 'like', '%'.$search.'%');
                 });
             }),
-            AdminColumn::image('image', 'Изображения')->setWidth('350px'),
+            AdminColumn::custom('Изображения', function(\Illuminate\Database\Eloquent\Model $model) {
+                return $model->image !== '[]' ? 'Загружено' : 'Пустое';
+            })->setWidth('150px'),
         ];
 
 

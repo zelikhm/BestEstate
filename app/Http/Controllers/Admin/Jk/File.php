@@ -104,8 +104,6 @@ class File extends Section implements Initializable
             AdminFormElement::file('file', 'Файл'),
         ]);
 
-
-
         $card->getButtons()->setButtons([
             'save_and_continue' => (new Save())->setText('Применить'),
 //            'save_and_close' => (new SaveAndClose())->setText('Сохранить и закрыть'),

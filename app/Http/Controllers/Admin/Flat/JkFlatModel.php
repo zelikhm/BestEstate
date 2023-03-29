@@ -185,7 +185,6 @@ class JkFlatModel extends Section implements Initializable
 
                 ]);
 
-
                 $tabs[] = AdminDisplay::tab($form3)
                     ->setLabel("Цены, аренда, продажа")
                     ->setIcon('<i class="fa fa-credit-card"></i>');
@@ -231,6 +230,34 @@ class JkFlatModel extends Section implements Initializable
 
                 $tabs[] = AdminDisplay::tab($form4)
                     ->setLabel("Характеристики")
+                    ->setIcon('<i class="fa fa-credit-card"></i>');
+
+                $form5 = AdminForm::form();
+
+                $form5->setElements([
+
+                    AdminFormElement::image('plan_image', 'Планировка')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
+                        return '/storage/plan';
+                    })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
+
+                        $file->move(public_path('/storage/plan'), $filename);
+
+                        return ['path' => '/storage/plan/' . $filename, 'value' => '/storage/plan/' . $filename];
+                    }),
+
+                    AdminFormElement::image('render', '3D рендер')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
+                        return '/storage/render';
+                    })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
+
+                        $file->move(public_path('/storage/render'), $filename);
+
+                        return ['path' => '/storage/v/' . $filename, 'value' => '/storage/render/' . $filename];
+                    }),
+
+                ]);
+
+                $tabs[] = AdminDisplay::tab($form5)
+                    ->setLabel("Планировка, рендоры")
                     ->setIcon('<i class="fa fa-credit-card"></i>');
 
             }

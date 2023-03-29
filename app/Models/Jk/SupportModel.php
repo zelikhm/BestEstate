@@ -14,5 +14,7 @@ class SupportModel extends Model
         'status',
         'phone',
         'image',
+        'description',
+        'active',
     ];
 }

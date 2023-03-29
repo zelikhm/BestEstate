@@ -1,8 +1,8 @@
 <script setup>
 
     import Header from '../Components/Component/Header.vue'
-    import Footer from  '../Components/Component/Footer.vue'
-    import { Link } from '@inertiajs/vue3';
+    import Footer from '../Components/Component/Footer.vue'
+    import {Link} from '@inertiajs/vue3';
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
     import CatalogFlat from "@/Components/Component/CatalogFlat.vue";
@@ -16,7 +16,8 @@
         <!-- header -->
 
         <Header @openLogin="show_login = true"></Header>
-        <RegistrationModal :status="show_reg" @close="show_reg = false" @openLogin="show_login = true, show_reg = false"></RegistrationModal>
+        <RegistrationModal :status="show_reg" @close="show_reg = false"
+                           @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
 
         <main class="page-catalog">
@@ -32,15 +33,20 @@
             <section class="catalog">
                 <div class="container">
                     <div class="heading">
-                        <h1 class="heading-1">Каталог {{ type == 1 ? 'квартир' : type == 2 ? 'вилл' : type == 3 ? 'шалле' : 'коммерческой недвижимости' }}</h1>
+                        <h1 class="heading-1">Каталог {{ type == 1 ? 'квартир' : type == 2 ? 'вилл' : type == 3 ?
+                            'шалле' : 'коммерческой недвижимости' }}</h1>
                     </div>
                     <div class="filter" v-bind:class="{ 'filter-open': show }" id="filterTabs">
                         <!-- Кнопки -->
                         <ul class="filter-nav">
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 1 }" v-on:click="type_cost = 1">Купить</a></li>
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 2 }" v-on:click="type_cost = 2">Снять</a></li>
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 3 }" v-on:click="type_cost = 3">Посуточно</a></li>
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 4 }" v-on:click="type_cost = 4">VR</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 1 }"
+                                   v-on:click="type_cost = 1">Купить</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 2 }"
+                                   v-on:click="type_cost = 2">Снять</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 3 }"
+                                   v-on:click="type_cost = 3">Посуточно</a></li>
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 4 }"
+                                   v-on:click="type_cost = 4">VR</a></li>
                         </ul>
                         <!-- Контент -->
                         <div class="tabs-items">
@@ -52,25 +58,31 @@
                                                 <option :selected="type == 1" v-on:click="visit(1)">Квартира</option>
                                                 <option :selected="type == 2" v-on:click="visit(2)">Вилла</option>
                                                 <option :selected="type == 3" v-on:click="visit(3)">Шалле</option>
-                                                <option :selected="type == 4" v-on:click="visit(4)">Коммерческая недвижимость</option>
+                                                <option :selected="type == 4" v-on:click="visit(4)">Коммерческая
+                                                    недвижимость
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="filter-radio-group" v-if="type == 1">
                                             <span class="filter-radio-group-title">Комнат</span>
                                             <label for="1" class="filter-radio">
-                                                <input v-on:click="plan = 1" type="radio" id="1" name="studia" class="filter-radio__input" :checked="plan === 1">
+                                                <input v-on:click="plan = 1" type="radio" id="1" name="studia"
+                                                       class="filter-radio__input" :checked="plan === 1">
                                                 <span>1</span>
                                             </label>
                                             <label for="2" class="filter-radio">
-                                                <input v-on:click="plan = 2" type="radio" id="2" name="studia" class="filter-radio__input" :checked="plan === 2">
+                                                <input v-on:click="plan = 2" type="radio" id="2" name="studia"
+                                                       class="filter-radio__input" :checked="plan === 2">
                                                 <span>2</span>
                                             </label>
                                             <label for="3" class="filter-radio">
-                                                <input v-on:click="plan = 3" type="radio" id="3" name="studia" class="filter-radio__input" :checked="plan === 3">
+                                                <input v-on:click="plan = 3" type="radio" id="3" name="studia"
+                                                       class="filter-radio__input" :checked="plan === 3">
                                                 <span>3</span>
                                             </label>
                                             <label for="4+" class="filter-radio">
-                                                <input v-on:click="plan = 4" type="radio" id="4+" name="studia" class="filter-radio__input" :checked="plan === 4">
+                                                <input v-on:click="plan = 4" type="radio" id="4+" name="studia"
+                                                       class="filter-radio__input" :checked="plan === 4">
                                                 <span>4+</span>
                                             </label>
                                         </div>
@@ -105,50 +117,15 @@
                                     </div>
                                 </div>
                                 <div class="filter-hide" v-show="show">
-<!--                                    <div class="filter-row-3">-->
-<!--                                        <div class="filter-col">-->
-<!--                                            <div class="filter-col-title">Общая площадь:</div>-->
-<!--                                            <label for="" class="form-label form-label-range">-->
-<!--                                                <div class="form-range-group">-->
-<!--                                                    от <input id="" type="number" value="">-->
-<!--                                                </div>-->
-<!--                                                <span class="form-range-separator">–</span>-->
-<!--                                                <div class="form-range-group">-->
-<!--                                                    до <input id="" type="number" value=""> м²-->
-<!--                                                </div>-->
-<!--                                            </label>-->
-<!--                                        </div>-->
-<!--                                        <div class="filter-col">-->
-<!--                                            <div class="filter-col-title">Площадь кухни:</div>-->
-<!--                                            <label for="" class="form-label form-label-range">-->
-<!--                                                <div class="form-range-group">-->
-<!--                                                    от <input id="" type="number" value="">-->
-<!--                                                </div>-->
-<!--                                                <span class="form-range-separator">–</span>-->
-<!--                                                <div class="form-range-group">-->
-<!--                                                    до <input id="" type="number" value=""> м²-->
-<!--                                                </div>-->
-<!--                                            </label>-->
-<!--                                        </div>-->
-<!--                                        <div class="filter-col">-->
-<!--                                            <div class="filter-col-title">Жилая площадь:</div>-->
-<!--                                            <label for="" class="form-label form-label-range">-->
-<!--                                                <div class="form-range-group">-->
-<!--                                                    от <input id="" type="number" value="">-->
-<!--                                                </div>-->
-<!--                                                <span class="form-range-separator">–</span>-->
-<!--                                                <div class="form-range-group">-->
-<!--                                                    до <input id="" type="number" value=""> м²-->
-<!--                                                </div>-->
-<!--                                            </label>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-                                    <div class="filter-row-flex" >
+                                    <div class="filter-row-flex">
                                         <div class="filter-col" v-for="(item, idx) in options" :key="item.id">
                                             <div class="filter-col-title">{{ item.name }}</div>
                                             <div class="radio-group">
-                                                <label :for="'block' + idx + 'id' + index" class="checkbox" v-for="(option, index) in item.opt" :key="option.id">
-                                                    <input v-on:click="check()" v-model="options[idx].opt[index].active" type="checkbox" :id="'block' + idx + 'id' + index" name="uslovia"
+                                                <label :for="'block' + idx + 'id' + index" class="checkbox"
+                                                       v-for="(option, index) in item.opt" :key="option.id">
+                                                    <input v-on:click="check()" v-model="options[idx].opt[index].active"
+                                                           type="checkbox" :id="'block' + idx + 'id' + index"
+                                                           name="uslovia"
                                                            class="radio__input">
                                                     <span>{{ option.title }}</span>
                                                 </label>
@@ -224,9 +201,9 @@
                                     </div>
 
                                 </button>
-                                <button class="filter-reset">
+                                <Link :href="'/catalog?type_jk=' . type + '&method=' + type_cost" class="filter-reset">
                                     Сбросить всё
-                                </button>
+                                </Link>
                             </div>
                             <div class="filter-btns-right">
                                 <button class="btn-border btn-lg">
@@ -249,7 +226,10 @@
                         </select>
                     </div>
                     <CatalogFlat :jk="getFilters"></CatalogFlat>
-                    <button v-if="load" v-on:click="load_count + 20">Показать еще</button>
+                    <div class="link-center" v-if="load">
+                        <button class="btn btn-xl" v-on:click="loadCount += 20">Показать ещё</button>
+                    </div>
+<!--                    <button  >Показать еще</button>-->
                 </div>
             </section>
 
@@ -265,7 +245,7 @@
 
 <script>
     import Form2 from "../Components/Component/Forms/Form2.vue";
-    import { router, useForm } from '@inertiajs/vue3'
+    import {router, useForm} from '@inertiajs/vue3'
 
     export default {
         name: "AppCatalog",
@@ -277,7 +257,7 @@
             'options'
         ],
         components: {
-          Form2
+            Form2
         },
         provide() {
             return {
@@ -329,35 +309,35 @@
                 },
                 plan: 0,
                 load: false,
-                load_count: 20,
+                loadCount: 20,
             }
         },
         computed: {
             getFilters() {
 
-                if(this.jk.length > this.load_count) {
+                if (this.jk.length > this.loadCount) {
                     this.load = true;
                 } else {
                     this.load = false;
                 }
 
-                if(this.filter_type === 0) {
-                    let arr = Object.values(this.jk).splice(0, this.load_count);
-                    return arr.sort((a, b) => a.price - b.price );
-                } else if(this.filter_type === 1) {
-                    let arr = Object.values(this.jk).splice(0, this.load_count);
-                    return arr.sort((a, b) => a.price - b.price );
-                } else if(this.filter_type === 2) {
-                    let arr = Object.values(this.jk).splice(0, this.load_count);
-                    return arr.sort((a, b) => b.price - a.price );
-                } else if(this.filter_type === 3) {
-                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                if (this.filter_type === 0) {
+                    let arr = Object.values(this.jk).splice(0, this.loadCount);
+                    return arr.sort((a, b) => a.price - b.price);
+                } else if (this.filter_type === 1) {
+                    let arr = Object.values(this.jk).splice(0, this.loadCount);
+                    return arr.sort((a, b) => a.price - b.price);
+                } else if (this.filter_type === 2) {
+                    let arr = Object.values(this.jk).splice(0, this.loadCount);
+                    return arr.sort((a, b) => b.price - a.price);
+                } else if (this.filter_type === 3) {
+                    let arr = Object.values(this.jk).splice(0, this.loadCount);
                     return arr.sort((a, b) => b.square_main - a.square_main);
-                } else if(this.filter_type === 4) {
-                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                } else if (this.filter_type === 4) {
+                    let arr = Object.values(this.jk).splice(0, this.loadCount);
                     return arr.sort((a, b) => new Date(a.updated_at) - new Date(b.updated_at));
-                } else if(this.filter_type === 5) {
-                    let arr = Object.values(this.jk).splice(0, this.load_count);
+                } else if (this.filter_type === 5) {
+                    let arr = Object.values(this.jk).splice(0, this.loadCount);
                     return arr.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
                 }
 

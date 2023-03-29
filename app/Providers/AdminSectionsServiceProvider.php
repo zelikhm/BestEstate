@@ -17,6 +17,7 @@ use App\Models\Info\ServiceItemModel;
 use App\Models\Info\ServiceModel;
 use App\Models\Info\TypeComModel;
 use App\Models\Info\TypeHouseModel;
+use App\Models\Info\WorkinModel;
 use App\Models\Jk\DescriptionItemModel;
 use App\Models\Jk\DescriptionModel;
 use App\Models\Jk\FileModel;
@@ -25,7 +26,9 @@ use App\Models\Jk\JkModel;
 use App\Models\Jk\RenderModel;
 use App\Models\Jk\SupportModel;
 use App\Models\JkFlatModel;
+use App\Models\Manager\SendModel;
 use App\Models\NewModel;
+use App\Models\User;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 use AdminNavigation;
 
@@ -36,6 +39,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $sections = [
+
         //contact
         \App\Models\Contact\ContactModel::class => 'App\Http\Controllers\Admin\Contact\Contact',
         \App\Models\Contact\SocialModel::class => 'App\Http\Controllers\Admin\Contact\Social',
@@ -51,6 +55,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         FileModel::class => 'App\Http\Controllers\Admin\Jk\File',
         RenderModel::class => 'App\Http\Controllers\Admin\Jk\Render',
         NewModel::class => 'App\Http\Controllers\Admin\News',
+        WorkinModel::class => 'App\Http\Controllers\Admin\Info\WorkinModel',
         //Info
         CityModel::class => 'App\Http\Controllers\Admin\Info\City',
         AreaModel::class => 'App\Http\Controllers\Admin\Info\Area',
@@ -66,7 +71,10 @@ class AdminSectionsServiceProvider extends ServiceProvider
         //flat
         JkFlatModel::class => 'App\Http\Controllers\Admin\Flat\JkFlatModel',
         ImagesModel::class => 'App\Http\Controllers\Admin\Flat\Images',
-        PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
+//        PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
+        //Orders
+        SendModel::class => 'App\Http\Controllers\Admin\Order\SupportOrder',
+        User::class => 'App\Http\Controllers\Admin\Users',
     ];
 
     /**
@@ -105,6 +113,12 @@ class AdminSectionsServiceProvider extends ServiceProvider
                 'id' => 'flats',
                 'icon' => 'fab fa-dev',
                 'priority' => 300,
+            ],
+            [
+                'title' => 'Заявки',
+                'id' => 'orders',
+                'icon' => 'fab fa-dev',
+                'priority' => 400,
             ],
             [
                 'title' => 'Характеристики',

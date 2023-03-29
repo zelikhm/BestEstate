@@ -24,19 +24,23 @@
                 <ul class="course__list">
                     <li class="course__item">
                         <div class="course__item-name">BTC</div>
-                        <div class="course__item-rate green-color">$ 43 212,3</div>
+                        <div class="course__item-rate green-color">{{ course[3].price }} ₽</div>
                     </li>
                     <li class="course__item">
                         <div class="course__item-name">ETH</div>
-                        <div class="course__item-rate green-color">$ 2 887,61</div>
+                        <div class="course__item-rate green-color">{{ course[4].price }} ₽</div>
                     </li>
                     <li class="course__item">
                         <div class="course__item-name">USD</div>
-                        <div class="course__item-rate green-color">117,43 ₽</div>
+                        <div class="course__item-rate green-color">{{ course[0].price }} ₽</div>
+                    </li>
+                    <li class="course__item">
+                        <div class="course__item-name">EUR</div>
+                        <div class="course__item-rate green-color">{{ course[1].price }} ₽</div>
                     </li>
                     <li class="course__item">
                         <div class="course__item-name">CNY</div>
-                        <div class="course__item-rate red-color">16,36 ₽</div>
+                        <div class="course__item-rate red-color">{{ course[2].price }} ₽</div>
                     </li>
                 </ul>
                 <div class="nav__close" id="nav-close">
@@ -116,6 +120,8 @@
 <script>
 
     import { router, useForm } from '@inertiajs/vue3'
+    import { computed } from 'vue'
+    import { usePage } from '@inertiajs/vue3'
 
     export default {
         inject:['page', 'user'],
@@ -129,12 +135,15 @@
                   jk: [],
                   flats: [],
               },
+              course: computed(() => usePage().props.course),
           }
         },
         created() {
             if(this.user !== null) {
                 this.auth = true;
             }
+
+            console.log(this.course);
         },
         mounted() {
 

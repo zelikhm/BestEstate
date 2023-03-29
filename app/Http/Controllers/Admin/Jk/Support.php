@@ -97,6 +97,8 @@ class Support extends Section implements Initializable
 
         $form = AdminForm::elements([
 
+            AdminFormElement::checkbox('active', 'выводить на главной'),
+
             AdminFormElement::image('image', 'Изображение')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
                 return '/storage/support';
             })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
@@ -109,6 +111,7 @@ class Support extends Section implements Initializable
             AdminFormElement::text('name', 'Название')->required(),
             AdminFormElement::text('status', 'Должнось')->required(),
             AdminFormElement::text('phone', 'Телефон')->required(),
+            AdminFormElement::wysiwyg('description', 'описание'),
 
         ]);
 
