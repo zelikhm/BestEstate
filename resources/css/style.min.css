@@ -1875,8 +1875,39 @@ th {
   font-size: 18px;
   font-weight: 600;
 }
-.search-vivod a:hover {
+/* .search-vivod a:hover {
   color: var(--global-color);
+} */
+.s-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.s-card > img {
+    width: 160px;
+    max-width: 160px;
+    margin-right: 16px;
+    object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 36 / 22;
+}
+.s-card > div {
+    width: 60%;
+    margin-right: 20px;
+}
+.s-card .heading-3 {
+    font-size: 22px;
+}
+.s-card-price {
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.s-card .btn-md {
+    margin-left: auto;
 }
 
 @media screen and (max-width: 1439px) {
@@ -2028,6 +2059,29 @@ th {
     margin-top: 10px;
     font-size: 16px;
   }
+    .s-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .s-card > img {
+        width: 130px;
+        max-width: 130px;
+    }
+    .s-card > div {
+        width: calc(100% - 146px);
+        margin-right: 0;
+    }
+    .s-card .heading-3 {
+        font-size: 18px;
+    }
+    .s-card-price {
+        font-size: 15px;
+    }
+    .s-card .btn-md {
+        margin-left: 0;
+        margin-top: 8px;
+        width: 100%;
+    }
   .nav {
     padding: 50px 20px 20px 20px;
     width: 320px;
@@ -6559,6 +6613,20 @@ label {
   .about-services__cards {
     grid-template-columns: repeat(1, 1fr);
   }
+    .s-card > img {
+        width: 80px;
+        max-width: 80px;
+        margin-right: 10px;
+    }
+    .s-card > div {
+        width: calc(100% - 90px);
+    }
+    .s-card .heading-3 {
+        font-size: 14px;
+    }
+    .s-card-price {
+        font-size: 13px;
+    }
 }
 .question {
   padding-top: 40px;

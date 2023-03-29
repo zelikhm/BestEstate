@@ -30,8 +30,19 @@
 
             <section class="catalog">
                 <div class="container">
-                    <div class="heading">
-                        <h1 class="heading-1">Избранное</h1>
+                    <div class="heading-row">
+                        <div class="heading">
+                            <h1 class="heading-1">Избранное</h1>
+                        </div>
+                        <div class="catalog-select">
+                            <select class="form-input select-sort" name="sort">
+                                <option v-on:click="filter_type = 1">По цене (сначала дешевле)</option>
+                                <option v-on:click="filter_type = 2">По цене (сначала дороже)</option>
+                                <option v-on:click="filter_type = 3">По общей площади</option>
+                                <option v-on:click="filter_type = 4">По дате добавления (сначала старые)</option>
+                                <option v-on:click="filter_type = 5">По дате добавления (сначала новые)</option>
+                            </select>
+                        </div>
                     </div>
                     <CatalogHouse :jk="jk"></CatalogHouse>
                     <div class="link-center">
