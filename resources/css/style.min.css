@@ -2812,7 +2812,7 @@ th {
   position: relative;
   background: linear-gradient(179.7deg, #000000 0.26%, rgba(0, 0, 0, 0) 103.66%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /*-webkit-text-fill-color: transparent;*/
   background-clip: text;
   text-fill-color: transparent;
 }
@@ -4075,6 +4075,7 @@ th {
   border-radius: 50px;
   background: rgba(0, 0, 0, 0.6);
 }
+
 .swiper-button-next--fluid::after,
 .swiper-button-prev--fluid::after {
   font-family: "icomoon";
@@ -4082,6 +4083,7 @@ th {
   font-weight: 400;
   color: var(--white-color);
 }
+
 .swiper-button-next--fluid:hover,
 .swiper-button-prev--fluid:hover {
   background: rgba(0, 0, 0, 0.9);
@@ -4178,7 +4180,6 @@ label {
   padding: 13px 18px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 7px;
-  background: none;
 }
 .form-input:focus {
   border-color: var(--globalHover-color);

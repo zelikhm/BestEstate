@@ -1,6 +1,6 @@
 <template>
     <swiper
-        class="swiper"
+        class="swiper specialSwiper"
         :modules="modules"
         :space-between="30"
         :slides-per-view="3"
@@ -48,8 +48,8 @@
     import {defineComponent} from 'vue'
     import {Navigation} from 'swiper'
     import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
-    import 'swiper/css'
-    import 'swiper/css/navigation'
+    // import 'swiper/css'
+    // import 'swiper/css/navigation'
     import {Link} from '@inertiajs/vue3';
 
     export default {
@@ -101,5 +101,30 @@
 </script>
 
 <style scoped>
-
+    .swiper-button-next {
+        position: absolute;
+        top: 70%;
+        width: 58px;
+        height: 58px;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background-color: var(--global-color);
+    }
+    .swiper-button-prev {
+        position: absolute;
+        top: 70%;
+        width: 58px;
+        height: 58px;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background-color: var(--global-color);
+    }
 </style>

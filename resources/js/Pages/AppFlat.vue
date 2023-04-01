@@ -87,11 +87,11 @@
                                         <div class="cards-date">Добавлено: {{ flat.created_at }}</div>
                                         <div class="cards-views">{{ flat.view }} просмотров</div>
                                     </div>
-                                    <div class="apart-btns">
-                                        <a href="#" class="btn btn-md"><img src="/img/icons/bitcoin-white.svg"
-                                                                            alt=""><span>Купить</span></a>
-                                        <a href="#" class="btn-second btn-md">Забронировать</a>
-                                    </div>
+<!--                                    <div class="apart-btns">-->
+<!--                                        <a href="#" class="btn btn-md"><img src="/img/icons/bitcoin-white.svg"-->
+<!--                                                                            alt=""><span>Купить</span></a>-->
+<!--                                        <a href="#" class="btn-second btn-md">Забронировать</a>-->
+<!--                                    </div>-->
                                 </div>
                                 <div class="expert" v-if="flat.support">
                                     <div class="expert-info">

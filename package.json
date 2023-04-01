@@ -20,11 +20,11 @@
     "dependencies": {
         "@fawmi/vue-google-maps": "^0.9.79",
         "@inertiajs/progress": "^0.2.7",
+        "@vitalets/google-translate-api": "^9.1.0",
         "google-maps-api-loader": "^1.1.1",
         "swiper": "^8.4.7",
         "vue-awesome-swiper": "^5.0.1",
         "vue-yandex-maps": "^1.0.8",
-        "vuejs-google-maps": "^0.2.0",
-        "vuejs-vr": "^1.2.2"
+        "vuejs-google-maps": "^0.2.0"
     }
 }

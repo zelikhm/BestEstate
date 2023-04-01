@@ -44,7 +44,7 @@ class FavoriteController extends Controller
             } else {
                 $d = $this->getJk($favorite->jk_id);
 
-                if ($d->type === 0) {
+                if ($d->type_houses === 0) {
                     $jk->push($d);
                 } else {
                     $villages->push($d);

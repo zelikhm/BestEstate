@@ -17,7 +17,6 @@ import '../css/style.min.css';
 // import '../js_native/jquery.validate.min.js';
 // import '../js_native/swiper-bundle.min.min.js';
 
-
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';

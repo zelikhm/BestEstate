@@ -1,12 +1,15 @@
 <template>
     <swiper
-        class="swiper"
+        class="swiper partnersSwiper"
         :modules="modules"
-        :slides-per-view="1"
         :space-between="30"
         :keyboard="{ enabled: true }"
         :pagination="{ clickable: true }"
         :navigation="true"
+        :slides-per-view="3"
+        :slides-per-group="3"
+        :loop="true"
+        :loop-fill-group-with-blank="true"
     >
         <swiper-slide class="slide" v-for="work in working"><img :src="work.image" alt=""></swiper-slide>
     </swiper>
