@@ -2,84 +2,84 @@
     <footer class="footer">
         <div class="container--fluid">
             <ul class="footer-menu">
-                <li><a href="services.html">услуги</a></li>
-                <li><a href="catalog.html">каталог</a></li>
-                <li><a href="#">квартиры</a></li>
-                <li><a href="news.html">новости</a></li>
-                <li><a href="about.html">о компании</a></li>
-                <li><a href="contacts.html">контакты</a></li>
+                <li><Link :href="'/service'">услуги</Link></li>
+                <li><Link :href="'/catalog'">каталог</Link></li>
+<!--                <li><Link href="#">квартиры</Link></li>-->
+                <li><Link :href="'/news'">новости</Link></li>
+                <li><Link :href="'/about'">о компании</Link></li>
+                <li><Link :href="'/contact'">контакты</Link></li>
             </ul>
-            <ul class="footer-nav">
-                <li class="footer-nav__item">
-                    <div class="footer-nav__item-title">Загородная недвижимость</div>
-                    <div class="footer-nav__item-groups">
-                        <ul>
-                            <li>Продажа</li>
-                            <li><a href="#">Квартира</a></li>
-                            <li><a href="#">Таунхаусы</a></li>
-                            <li><a href="#">Коттеджные поселки</a></li>
-                        </ul>
-                        <ul>
-                            <li>Аренда</li>
-                            <li><a href="#">Коттеджи</a></li>
-                            <li><a href="#">Участки</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="footer-nav__item">
-                    <div class="footer-nav__item-title">Городская недвижимость</div>
-                    <div class="footer-nav__item-groups">
-                        <ul>
-                            <li>Продажа</li>
-                            <li><a href="#">Квартира</a></li>
-                            <li><a href="#">Пентхаус</a></li>
-                            <li><a href="#">Особняк</a></li>
-                            <li><a href="#">Новостройки</a></li>
-                            <li><a href="#">Апартаменты</a></li>
-                        </ul>
-                        <ul>
-                            <li>Аренда</li>
-                            <li><a href="#">Квартира</a></li>
-                            <li><a href="#">Пентхаус</a></li>
-                            <li><a href="#">Особняк</a></li>
-                            <li><a href="#">Новостройки</a></li>
-                            <li><a href="#">Апартаменты</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="footer-nav__item">
-                    <div class="footer-nav__item-title">Зарубежная недвижимость</div>
-                    <div class="footer-nav__item-groups">
-                        <ul>
-                            <li>Продажа</li>
-                            <li><a href="#">Квартира</a></li>
-                            <li><a href="#">Пентхаус</a></li>
-                            <li><a href="#">Особняк</a></li>
-                            <li><a href="#">Новостройки</a></li>
-                            <li><a href="#">Апартаменты</a></li>
-                        </ul>
-                        <ul>
-                            <li>Аренда</li>
-                            <li><a href="#">Квартира</a></li>
-                            <li><a href="#">Пентхаус</a></li>
-                            <li><a href="#">Особняк</a></li>
-                            <li><a href="#">Новостройки</a></li>
-                            <li><a href="#">Апартаменты</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="footer-nav__item">
-                    <div class="footer-nav__item-title">Офисы</div>
-                    <div class="footer-nav__item-groups">
-                        <ul>
-                            <li><a href="#">Коворкинги</a></li>
-                            <li><a href="#">Бизнес–центры</a></li>
-                            <li><a href="#">Бизнес–парк</a></li>
-                            <li><a href="#">Особняк для офиса</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
+<!--            <ul class="footer-nav">-->
+<!--                <li class="footer-nav__item">-->
+<!--                    <div class="footer-nav__item-title">Загородная недвижимость</div>-->
+<!--                    <div class="footer-nav__item-groups">-->
+<!--                        <ul>-->
+<!--                            <li>Продажа</li>-->
+<!--                            <li><a href="#">Квартира</a></li>-->
+<!--                            <li><a href="#">Таунхаусы</a></li>-->
+<!--                            <li><a href="#">Коттеджные поселки</a></li>-->
+<!--                        </ul>-->
+<!--                        <ul>-->
+<!--                            <li>Аренда</li>-->
+<!--                            <li><a href="#">Коттеджи</a></li>-->
+<!--                            <li><a href="#">Участки</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="footer-nav__item">-->
+<!--                    <div class="footer-nav__item-title">Городская недвижимость</div>-->
+<!--                    <div class="footer-nav__item-groups">-->
+<!--                        <ul>-->
+<!--                            <li>Продажа</li>-->
+<!--                            <li><a href="#">Квартира</a></li>-->
+<!--                            <li><a href="#">Пентхаус</a></li>-->
+<!--                            <li><a href="#">Особняк</a></li>-->
+<!--                            <li><a href="#">Новостройки</a></li>-->
+<!--                            <li><a href="#">Апартаменты</a></li>-->
+<!--                        </ul>-->
+<!--                        <ul>-->
+<!--                            <li>Аренда</li>-->
+<!--                            <li><a href="#">Квартира</a></li>-->
+<!--                            <li><a href="#">Пентхаус</a></li>-->
+<!--                            <li><a href="#">Особняк</a></li>-->
+<!--                            <li><a href="#">Новостройки</a></li>-->
+<!--                            <li><a href="#">Апартаменты</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="footer-nav__item">-->
+<!--                    <div class="footer-nav__item-title">Зарубежная недвижимость</div>-->
+<!--                    <div class="footer-nav__item-groups">-->
+<!--                        <ul>-->
+<!--                            <li>Продажа</li>-->
+<!--                            <li><a href="#">Квартира</a></li>-->
+<!--                            <li><a href="#">Пентхаус</a></li>-->
+<!--                            <li><a href="#">Особняк</a></li>-->
+<!--                            <li><a href="#">Новостройки</a></li>-->
+<!--                            <li><a href="#">Апартаменты</a></li>-->
+<!--                        </ul>-->
+<!--                        <ul>-->
+<!--                            <li>Аренда</li>-->
+<!--                            <li><a href="#">Квартира</a></li>-->
+<!--                            <li><a href="#">Пентхаус</a></li>-->
+<!--                            <li><a href="#">Особняк</a></li>-->
+<!--                            <li><a href="#">Новостройки</a></li>-->
+<!--                            <li><a href="#">Апартаменты</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="footer-nav__item">-->
+<!--                    <div class="footer-nav__item-title">Офисы</div>-->
+<!--                    <div class="footer-nav__item-groups">-->
+<!--                        <ul>-->
+<!--                            <li><a href="#">Коворкинги</a></li>-->
+<!--                            <li><a href="#">Бизнес–центры</a></li>-->
+<!--                            <li><a href="#">Бизнес–парк</a></li>-->
+<!--                            <li><a href="#">Особняк для офиса</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
             <ul class="footer-info">
                 <li class="footer-info__group">
                     <img src="/img/footer-logo.svg" class="footer-logo" alt="">
@@ -138,8 +138,13 @@
 </template>
 
 <script>
+    import { Link } from '@inertiajs/vue3'
+
     export default {
-        name: "Footer"
+        name: "Footer",
+        components: {
+            Link
+        }
     }
 </script>
 

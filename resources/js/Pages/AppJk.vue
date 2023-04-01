@@ -133,13 +133,13 @@
                                 </div>
                                 <div v-else-if="info.category === 1" class="stock">
                                     <h3 class="heading-3">{{ info.title }}</h3>
-                                    <div class="stock-cards__item" v-bind:style="{ 'background-color': item.color }"
+                                    <div class="stock-cards__item" style="margin-top: 10px" v-bind:style="{ 'background-color': item.color }"
                                          v-for="item in info.items">
                                         <div class="stock-cards__item-content">
-                                            <p v-html="item.description">
-
-                                            </p>
+                                            <h4 v-html="item.description"></h4>
+                                            <p>акция действует до 26.07.2022</p>
                                         </div>
+                                        <br>
                                         <img :src="item.image" alt="" class="stock-cards__item-img">
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
 
                         </div>
                     </div>
-                    <div class="info">
+                    <div class="info" v-if="jk.flat.length > 0">
                         <div class="info-heading">
                             <h3 class="heading-3">Характеристики помещений</h3>
                         </div>
@@ -243,7 +243,7 @@
                                                 <div class="charact-img"><img :src="item.plan_image" alt=""></div>
                                                 <div class="charact-title"><Link :href="'/jk/' + jk.slug + '/' + item.slug">{{ item.rooms }}–комнатная</Link></div>
                                                 <div class="charact-info">
-                                                    <img src="img/jk/charact-square.png" alt="">
+                                                    <img src="/img/jk/charact-square.png" alt="">
                                                     <span>{{ item.square_main }} м²</span>
                                                 </div>
                                             </div>

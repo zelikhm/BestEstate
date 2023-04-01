@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\Flat;
 use App\Http\Traits\HouseInfo;
 use App\Models\Jk\JkModel;
 use App\Models\JkFlatModel;
@@ -11,7 +12,7 @@ use Inertia\Inertia;
 
 class JkController extends Controller
 {
-    use HouseInfo;
+    use HouseInfo, Flat;
 
     public function jk($house) {
 

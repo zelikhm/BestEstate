@@ -14,7 +14,9 @@ use App\Models\Info\TypeComModel;
 use App\Models\Info\TypeHouseModel;
 use App\Models\Jk\JkModel;
 use App\Models\JkFlatModel;
+use App\Models\User\FavoriteModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 //Resource
@@ -26,6 +28,13 @@ class CatalogController extends Controller
 
     protected function main($flats, $type)
     {
+        $flats = $this->setImages($flats);
+
+        foreach ($flats as $flat) {
+            $favorite = FavoriteModel::where('user_id', Auth::id())->where('flat_id', $flat->id)->first();
+
+            $flat->favorite = $favorite !== null;
+        }
 
         return Inertia::render('AppCatalog', [
             'page' => 2,
@@ -47,12 +56,12 @@ class CatalogController extends Controller
 
         if(count($request->query) !== 0){
             if($type) {
-                $flats = $this->getFlat($type, 20);
+                $flats = $this->getFlatOnCatalog($type, 20);
             } else {
-                $flats = $this->getFlat(1, 20);
+                $flats = $this->getFlatOnCatalog(1, 20);
             }
         } else {
-            $flats = $this->getFlat(1, 20);
+            $flats = $this->getFlatOnCatalog(1, 20);
         }
 
         return $this->main($flats, $type);
@@ -100,6 +109,8 @@ class CatalogController extends Controller
         } else if ($type === 4) {
             $flats = $this->filteredThreeType($filters, $request);
         }
+
+        $flats = $this->setImages($flats);
 
         return Inertia::render('AppCatalog', [
             'page' => 2,
@@ -155,10 +166,6 @@ class CatalogController extends Controller
                 $flats->splice($key, 1);
                 continue;
             }
-
-            $flat->images = count($flat->images) !== 0 ? json_decode($flat->images[0]->image) : null;
-
-            $flat->image = $flat->images !== null ? $flat->images[0] : null;
         }
 
         return $flats;
@@ -201,10 +208,6 @@ class CatalogController extends Controller
                 $flats->splice($key, 1);
                 continue;
             }
-
-            $flat->images = count($flat->images) !== 0 ? json_decode($flat->images[0]->image) : null;
-
-            $flat->image = $flat->images !== null ? $flat->images[0] : null;
         }
 
         return $flats;
@@ -239,10 +242,6 @@ class CatalogController extends Controller
                 $flats->splice($key, 1);
                 continue;
             }
-
-            $flat->images = count($flat->images) !== 0 ? json_decode($flat->images[0]->image) : null;
-
-            $flat->image = $flat->images !== null ? $flat->images[0] : null;
         }
 
         return $flats;

@@ -68,6 +68,12 @@ trait HouseInfo {
         $kv = $this->setRepair($kv);
         $kv->date = $kv->date_building;
 
+        if(count($kv->images) > 0) {
+            $kv->images_array = json_decode($kv->images[0]->image);
+        } else {
+            $kv->images_array = [];
+        }
+
         return $kv;
 
     }
