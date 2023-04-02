@@ -8,19 +8,7 @@
                                                    alt=""><span>3D-просмотр</span></a>
                 </div>
                 <span class="gallery-value">+{{ item.images_array.length }}</span>
-                <swiper
-                    class="swiper"
-                    :modules="modules"
-                    :slides-per-view="1"
-                    :space-between="30"
-                    :loop="true"
-                    :pagination="{ clickable: true }"
-                    :navigation="true"
-                >
-                    <swiper-slide v-if="item.images_array.length > 0" v-for="image in item.images_array"><img
-                        :src="image" alt=""></swiper-slide>
-                    <swiper-slide v-else><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></swiper-slide>
-                </swiper>
+                <ImageSwipper :images="item.images_array"></ImageSwipper>
             </div>
             <div class="cards-content">
                 <div class="cards-info">
@@ -76,17 +64,14 @@
 </template>
 
 <script>
-    import {defineComponent} from 'vue'
-    import {Pagination, Navigation} from 'swiper'
-    import {Swiper, SwiperSlide} from 'swiper/vue'
-    import 'swiper/css'
-    import 'swiper/css/pagination'
-    import 'swiper/css/navigation'
+
 
     import {computed} from 'vue'
     import {usePage} from '@inertiajs/vue3'
 
     import {Link} from '@inertiajs/vue3'
+
+    import ImageSwipper from "@/Components/Component/Swipper/SwipperImages/ImageSwipperFlat.vue";
 
     export default {
         name: "CatalogFlat",
@@ -98,7 +83,7 @@
             }
         },
         created() {
-            console.log(this.user_id);
+
         },
         methods: {
             getPrice(item) {
@@ -148,15 +133,10 @@
             }
         },
         components: {
-            Swiper,
-            SwiperSlide,
-            Link
+            Link,
+            ImageSwipper
         },
-        setup() {
-            return {
-                modules: [Pagination, Navigation]
-            }
-        }
+
     }
 </script>
 

@@ -8,20 +8,7 @@
                 <!--                                                   alt=""><span>3D-просмотр</span></a>-->
                 <!--                </div>-->
                 <span class="gallery-value">+{{ item.images_array.length }}</span>
-
-                <swiper
-                    class="swiper"
-                    :modules="modules"
-                    :slides-per-view="1"
-                    :space-between="30"
-                    :loop="true"
-                    :pagination="{ clickable: true }"
-                    :navigation="true"
-                >
-                    <swiper-slide v-if="item.images_array.length > 0" v-for="image in item.images_array"><img
-                        :src="image" alt=""></swiper-slide>
-                    <swiper-slide v-else><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></swiper-slide>
-                </swiper>
+                <ImageSwipperFlat :images="item.images_array"></ImageSwipperFlat>
             </div>
             <div class="cards-content">
                 <div class="cards-info">
@@ -77,6 +64,7 @@
     import 'swiper/css/pagination'
     import 'swiper/css/navigation'
     import {Link, usePage} from "@inertiajs/vue3";
+    import ImageSwipperFlat from "@/Components/Component/Swipper/SwipperImages/ImageSwipperFlat.vue";
 
     export default {
         name: "CatalogHouse",
@@ -119,6 +107,7 @@
             }
         },
         components: {
+            ImageSwipperFlat,
             Swiper,
             SwiperSlide,
             Link
