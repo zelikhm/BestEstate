@@ -8,6 +8,7 @@ use App\Http\Traits\MainInfo;
 use App\Models\User\FavoriteModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Inertia\Inertia;
 use function Symfony\Component\Routing\Loader\Configurator\collection;
 
@@ -18,7 +19,7 @@ class FavoriteController extends Controller
     public function main(Request $request)
     {
 
-        $favorites = FavoriteModel::where('user_id', Auth::id())->get();
+        $favorites = FavoriteModel::where('user_id', Cookie::get('user_id'))->get();
 
         $jk = collect();
         $villages = collect();

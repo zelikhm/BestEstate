@@ -5,6 +5,7 @@
     import { Link } from '@inertiajs/vue3';
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
+    import { Head } from '@inertiajs/vue3'
 
 </script>
 
@@ -17,6 +18,11 @@
         <Header @openLogin="show_login = true"></Header>
         <RegistrationModal :status="show_reg" @close="show_reg = false" @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
+
+        <Head>
+            <title>Новости</title>
+            <meta name="description" content="главная">
+        </Head>
 
         <main class="page-about">
 

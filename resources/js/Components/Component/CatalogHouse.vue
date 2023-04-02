@@ -70,13 +70,13 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import {computed, defineComponent} from 'vue'
     import { Pagination, Navigation } from 'swiper'
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css'
     import 'swiper/css/pagination'
     import 'swiper/css/navigation'
-    import {Link} from "@inertiajs/vue3";
+    import {Link, usePage} from "@inertiajs/vue3";
 
     export default {
         name: "CatalogHouse",
@@ -85,10 +85,11 @@
         data() {
             return {
                 show: 0,
+                user_id: computed(() => usePage().props.cookie_id),
             }
         },
         created() {
-            console.log(this.jk)
+
         },
         methods: {
             getPrice(item) {
@@ -105,7 +106,7 @@
                 if (this.user !== null) {
 
                     axios.post('/api/favorite/remove', {
-                        user_id: this.user.id,
+                        user_id: this.user_id,
                         flat_id: type === 1 ? item.id : null,
                         jk_id: type === 0 ? item.id : null,
                     }).then(res => {

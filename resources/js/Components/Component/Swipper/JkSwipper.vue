@@ -7,7 +7,10 @@
         :slides-per-group="3"
         :loop="true"
         :loop-fill-group-with-blank="true"
-        :navigation="true"
+        :navigation="{
+      prevEl: prev,
+      nextEl: next,
+    }"
         :pagination="{ clickable: true }"
     >
         <swiper-slide v-for="jk in sale_jk">
@@ -41,6 +44,10 @@
             </div>
         </swiper-slide>
     </swiper>
+    <div class="swiper-nav">
+        <div ref="next" class="swiper-button-next specialSwiper-next"></div>
+        <div ref="prev" class="swiper-button-prev specialSwiper-prev"></div>
+    </div>
 
 </template>
 
@@ -51,6 +58,7 @@
     // import 'swiper/css'
     // import 'swiper/css/navigation'
     import {Link} from '@inertiajs/vue3';
+    import { ref } from 'vue';
 
     export default {
         components: {
@@ -59,8 +67,12 @@
             Link
         },
         setup() {
+            const prev = ref(null);
+            const next = ref(null);
             return {
-                modules: [Navigation]
+                modules: [Navigation],
+                prev,
+                next,
             }
         },
         inject: ['sale_jk'],
@@ -101,11 +113,12 @@
 </script>
 
 <style scoped>
-    .swiper-button-next {
+    .swiper-button-next,
+    .swiper-button-prev {
         position: absolute;
-        top: 70%;
-        width: 58px;
-        height: 58px;
+        top: 50%;
+        width: 38px;
+        height: 38px;
         z-index: 10;
         cursor: pointer;
         display: flex;
@@ -114,17 +127,21 @@
         border-radius: 50px;
         background-color: var(--global-color);
     }
+    .swiper-button-next {
+        right: -3%;
+    }
     .swiper-button-prev {
-        position: absolute;
-        top: 70%;
-        width: 58px;
-        height: 58px;
-        z-index: 10;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50px;
-        background-color: var(--global-color);
+        left: -3%;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        /*font-family: "icomoon";*/
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--white-color);
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background-color: var(--globalHover-color);
     }
 </style>

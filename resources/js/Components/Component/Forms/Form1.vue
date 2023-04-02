@@ -11,36 +11,44 @@
                 <!--                        <form action="#" class="form question-form">-->
                 <div class="radiob-group">
                     <label class="radiob tg">
-                        <input type="checkbox" id="" class="radiob__input" v-on:click="request.isTg === true ? request.isTg = false : request.isTg = true">
+                        <input type="checkbox" id="" class="radiob__input"
+                               v-on:click="request.isTg === true ? request.isTg = false : request.isTg = true">
                         <span>напишите мне в telegram</span>
                     </label>
                     <label class="radiob wa">
-                        <input type="checkbox" id="" class="radiob__input" v-on:click="request.isWhatsapp === true ? request.isWhatsapp = false : request.isWhatsapp = true">
+                        <input type="checkbox" id="" class="radiob__input"
+                               v-on:click="request.isWhatsapp === true ? request.isWhatsapp = false : request.isWhatsapp = true">
                         <span>напишите мне в whats app</span>
                     </label>
                     <label class="radiob vb">
-                        <input type="checkbox" id="" class="radiob__input" v-on:click="request.isViber === true ? request.isViber = false : request.isViber = true">
+                        <input type="checkbox" id="" class="radiob__input"
+                               v-on:click="request.isViber === true ? request.isViber = false : request.isViber = true">
                         <span>напишите мне в viber</span>
                     </label>
                     <label class="radiob ph">
-                        <input type="checkbox" id="" class="radiob__input" v-on:click="request.isPhone === true ? request.isPhone = false : request.isPhone = true">
+                        <input type="checkbox" id="" class="radiob__input"
+                               v-on:click="request.isPhone === true ? request.isPhone = false : request.isPhone = true">
                         <span>звонок</span>
                     </label>
                 </div>
                 <div class="question-row">
                     <label class="form-label">
-                        <input type="text" v-bind:class="{ 'Error': error_array.nameError }" v-model="request.name" name="" id="" class="form-input form-input--big"
+                        <input type="text" v-bind:class="{ 'Error': error_array.nameError }" v-model="request.name"
+                               name="" id="" class="form-input form-input--big"
                                placeholder="Ваше имя">
                     </label>
                     <label class="form-label">
-                        <input v-bind:class="{ 'Error': error_array.phoneError }" v-model="request.phone" type="number" name="" id="" class="form-input form-input--big"
+                        <input v-bind:class="{ 'Error': error_array.phoneError }" v-model="request.phone" type="number"
+                               name="" id="" class="form-input form-input--big"
                                placeholder="Ваш номер телефона">
                     </label>
                     <div class="question-column">
                         <button class="btn btn-xl" v-on:click="sendRequest()">Оставить заявку</button>
-                        <label class="accept checkbox" >
-                            <input type="checkbox" id="" v-on:click="request.check === false ? request.check = true : request.check = false">
-                            <span v-bind:class="{ 'ErrorCheck': error_array.checkError }">Даю согласие на обработку <a href="#">персональных данных</a></span>
+                        <label class="accept checkbox">
+                            <input type="checkbox" id=""
+                                   v-on:click="request.check === false ? request.check = true : request.check = false">
+                            <span v-bind:class="{ 'ErrorCheck': error_array.checkError }">Даю согласие на обработку <a
+                                href="#">персональных данных</a></span>
                         </label>
                     </div>
                 </div>
@@ -80,7 +88,7 @@
                 this.request.name.length < 3 ? this.error_array.nameError = true : this.error_array.nameError = false;
                 this.request.check === false ? this.error_array.checkError = true : this.error_array.checkError = false;
 
-                if(this.error_array.nameError === false && this.error_array.phoneError === false && this.error_array.checkError === false) {
+                if (this.error_array.nameError === false && this.error_array.phoneError === false && this.error_array.checkError === false) {
                     return true;
                 } else {
                     return false;
@@ -90,7 +98,7 @@
             sendRequest() {
                 let status = this.validation();
 
-                if(status && this.success === false) {
+                if (status && this.success === false) {
                     axios.post('/api/manager/send', {
                         isTg: this.request.isTg,
                         isWhatsapp: this.request.isWhatsapp,
@@ -100,6 +108,14 @@
                         phone: this.request.phone,
                     }).then(res => {
                         this.success = true;
+
+                        this.request.isTg = false
+                        this.request.isWhatsapp = false
+                        this.request.isViber = false
+                        this.request.isPhone = false
+                        this.request.name = ''
+                        this.request.phone = ''
+                        this.request.check = false
                     })
                 }
             }
@@ -112,7 +128,8 @@
     .Error {
         border-color: red;
     }
+
     .ErrorCheck {
-        color: red!important;
+        color: red !important;
     }
 </style>

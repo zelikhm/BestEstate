@@ -17,6 +17,7 @@ use App\Models\JkFlatModel;
 use App\Models\User\FavoriteModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Inertia\Inertia;
 
 //Resource
@@ -31,7 +32,9 @@ class CatalogController extends Controller
         $flats = $this->setImages($flats);
 
         foreach ($flats as $flat) {
-            $favorite = FavoriteModel::where('user_id', Auth::id())->where('flat_id', $flat->id)->first();
+            $favorite = FavoriteModel::where('user_id', Cookie::get('user_id'))
+                ->where('flat_id', $flat->id)
+                ->first();
 
             $flat->favorite = $favorite !== null;
         }

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import { translate } from '@vitalets/google-translate-api';
+
 
     export default {
         data() {
@@ -18,7 +18,7 @@
             }
         },
         mounted() {
-            const { text } = await translate('Привет мир');
+
 
             console.log(text)
         },

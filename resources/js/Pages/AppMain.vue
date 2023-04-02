@@ -5,6 +5,7 @@
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
     import {Link} from '@inertiajs/vue3'
+    import { Head } from '@inertiajs/vue3'
 
     //sections
     import Hero from "../Components/MainSections/Hero.vue";
@@ -17,6 +18,7 @@
     import Commerc from "@/Components/MainSections/Commerc.vue";
     import Shale from "@/Components/MainSections/Commerc.vue";
     import Villa from "@/Components/MainSections/Villa.vue";
+    import Videos from "@/Components/MainSections/Videos.vue"
 
 </script>
 
@@ -24,6 +26,11 @@
 
     <body>
     <div class="wrapper">
+
+        <Head>
+            <title>Главная</title>
+            <meta name="description" content="главная">
+        </Head>
 
         <!-- header -->
 
@@ -66,98 +73,7 @@
 
             <Commerc v-if="ecom.length > 0" :ecom="ecom" ></Commerc>
 
-            <section class="videos">
-                <div class="container--fluid">
-                    <div class="heading-row">
-                        <h2 class="heading-2">Видео–обзоры</h2>
-                        <a href="#" class="btn-second btn-md">Смотреть все</a>
-                    </div>
-                </div>
-                <!-- Swiper -->
-                <div class="swiper videosSwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a data-fancybox class="videosSwiper-slide"
-                               href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
-                                <div class="btn-play"><i class="icomoon icon-play"></i></div>
-                                <div class="videosSwiper-slide-content">
-                                    <h3 class="heading-3">Клубный дом “Река”</h3>
-                                    <p class="text-3">19 июня 2021 год</p>
-                                </div>
-                                <div class="videosSwiper-slide-img">
-                                    <img src="img/videos/video-1.jpg"/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a data-fancybox class="videosSwiper-slide"
-                               href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
-                                <div class="btn-play"><i class="icomoon icon-play"></i></div>
-                                <div class="videosSwiper-slide-content">
-                                    <h3 class="heading-3">Клубный дом “Река”</h3>
-                                    <p class="text-3">19 июня 2021 год</p>
-                                </div>
-                                <div class="videosSwiper-slide-img">
-                                    <img src="img/videos/video-2.jpg"/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a data-fancybox class="videosSwiper-slide"
-                               href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
-                                <div class="btn-play"><i class="icomoon icon-play"></i></div>
-                                <div class="videosSwiper-slide-content">
-                                    <h3 class="heading-3">Клубный дом “Река”</h3>
-                                    <p class="text-3">19 июня 2021 год</p>
-                                </div>
-                                <div class="videosSwiper-slide-img">
-                                    <img src="img/videos/video-3.jpg"/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a data-fancybox class="videosSwiper-slide"
-                               href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
-                                <div class="btn-play"><i class="icomoon icon-play"></i></div>
-                                <div class="videosSwiper-slide-content">
-                                    <h3 class="heading-3">Клубный дом “Река”</h3>
-                                    <p class="text-3">19 июня 2021 год</p>
-                                </div>
-                                <div class="videosSwiper-slide-img">
-                                    <img src="img/videos/video-1.jpg"/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a data-fancybox class="videosSwiper-slide"
-                               href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
-                                <div class="btn-play"><i class="icomoon icon-play"></i></div>
-                                <div class="videosSwiper-slide-content">
-                                    <h3 class="heading-3">Клубный дом “Река”</h3>
-                                    <p class="text-3">19 июня 2021 год</p>
-                                </div>
-                                <div class="videosSwiper-slide-img">
-                                    <img src="img/videos/video-2.jpg"/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a data-fancybox class="videosSwiper-slide"
-                               href="https://www.youtube.com/watch?v=z2X2HaTvkl8">
-                                <div class="btn-play"><i class="icomoon icon-play"></i></div>
-                                <div class="videosSwiper-slide-content">
-                                    <h3 class="heading-3">Клубный дом “Река”</h3>
-                                    <p class="text-3">19 июня 2021 год</p>
-                                </div>
-                                <div class="videosSwiper-slide-img">
-                                    <img src="img/videos/video-3.jpg"/>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </section>
+            <Videos></Videos>
 
             <Support v-if="support.length > 0" :support="support"></Support>
 

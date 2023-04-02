@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -97,6 +98,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'cookie_id' => Cookie::get('user_id'),
             'course' => $course,
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

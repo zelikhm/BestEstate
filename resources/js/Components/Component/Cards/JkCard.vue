@@ -98,6 +98,9 @@
     import 'swiper/css'
     import 'swiper/css/navigation'
 
+    import {computed} from 'vue'
+    import {usePage} from '@inertiajs/vue3'
+
     export default {
         props: ['house', 'sliderStatus', 'user'],
         name: "JkCard",
@@ -106,7 +109,8 @@
         },
         data() {
             return {
-              item: [],
+                item: [],
+                user_id: computed(() => usePage().props.cookie_id),
             }
         },
         methods: {
@@ -115,7 +119,7 @@
                 if (this.user !== null) {
 
                     axios.post('/api/favorite/add', {
-                        user_id: this.user.id,
+                        user_id: this.user_id,
                         flat_id: type === 1 ? item.id : null,
                         jk_id: type === 0 ? item.id : null,
                     }).then(res => {
@@ -131,7 +135,7 @@
                 if (this.user !== null) {
 
                     axios.post('/api/favorite/remove', {
-                        user_id: this.user.id,
+                        user_id: this.user_id,
                         flat_id: type === 1 ? item.id : null,
                         jk_id: type === 0 ? item.id : null,
                     }).then(res => {

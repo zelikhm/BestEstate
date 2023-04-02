@@ -8,6 +8,11 @@
                            @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
 
+        <Head>
+            <title>Обьект - {{ jk.title }}</title>
+            <meta name="description" content="главная">
+        </Head>
+
         <main class="page-kp">
 
             <!-- breadcrumbs -->
@@ -103,19 +108,22 @@
                                             class="icomoon icon-calling-bold"></i><span>{{ jk.support.phone }}</span></a>
                                     </div>
                                     <div class="form-title">Или оставьте ваш номер и я вам перезвоню:</div>
-                                    <form action="#" class="form expert-form">
+                                    <div class="form expert-form">
                                         <div class="col">
+                                            <p style="color: green" v-if="request.success">
+                                                *Ваша заявка успешно отправлена
+                                            </p>
                                             <label for="" class="form-label">
-                                                <input type="number" name="" id="" class="form-input"
-                                                       placeholder="Ваш номер телефона">
+                                                <input type="number" name="" v-bind:class="{ 'Error': request.errorPhone }" id="" class="form-input"
+                                                       placeholder="Ваш номер телефона" v-model="request.phone">
                                             </label>
-                                            <button class="btn btn-md">Перезвоните мне</button>
+                                            <button v-on:click="sendForm()" class="btn btn-md">Перезвоните мне</button>
                                         </div>
                                         <label for="checkboxCta" class="accept checkbox">
-                                            <input type="checkbox" id="checkboxCta">
+                                            <input type="checkbox" id="checkboxCta" v-model="request.check">
                                             <span>Даю согласие на обработку <a href="#">персональных данных</a></span>
                                         </label>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <!--                            info-->
@@ -358,6 +366,7 @@
     import 'swiper/css'
     import 'swiper/css/navigation'
     import {Link} from '@inertiajs/vue3';
+    import { Head } from '@inertiajs/vue3'
 
     import Header from '../Components/Component/Header.vue'
     import Footer from '../Components/Component/Footer.vue'
@@ -376,10 +385,39 @@
                 show_login: false,
                 show_reg: false,
                 flat_filter: 0,
+                request: {
+                    success: false,
+                    errorPhone: false,
+                    phone: '',
+                    check: false,
+                }
             }
         },
         name: "AppJk",
         methods: {
+            sendForm() {
+
+                if(this.request.phone.length < 11 || this.request.phone.length > 15) {
+                    this.request.errorPhone = true;
+                } else {
+                    this.request.errorPhone = false;
+
+                    if(this.request.check === true) {
+
+                        axios.post('/api/manager/send', {
+                            phone: this.request.phone,
+                            name: 'Заявка с формы ЖК'
+                        }).then(res => {
+                            this.request.success = true;
+
+                            this.request.phone = ''
+                            this.request.check = false
+                        })
+
+                    }
+                }
+
+            },
             getFrames(frames) {
 
                 if (frames === 0) {
@@ -401,6 +439,7 @@
             Footer,
             RegistrationModal,
             Login,
+            Head,
         },
         setup() {
             return {
@@ -422,5 +461,9 @@
 </script>
 
 <style scoped>
+
+    .Error {
+        border-color: red;
+    }
 
 </style>
