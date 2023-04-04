@@ -20,12 +20,18 @@
             :space-between="30"
             :loop="true"
             :pagination="{ clickable: true }"
-            :navigation="true"
+            :navigation="{
+                      prevEl: prev,
+                      nextEl: next,
+                    }"
         >
             <swiper-slide v-if="flat.images_array.length > 0" v-for="image in flat.images_array">
                 <img :src="'/' + image" alt=""></swiper-slide>
             <swiper-slide v-else><img src="/img/kp-bl/kpGallerySwiper4.jpg" alt=""></swiper-slide>
         </swiper>
+        <div ref="next" class="swiper-button-next--fluid"></div>
+        <div ref="prev" class="swiper-button-prev--fluid"></div>
+
         <swiper
             v-if="type == 1"
             class="swiper"
@@ -48,7 +54,6 @@
 </template>
 
 <script>
-    import {Tour} from 'vuejs-vr'
 
     import {defineComponent} from 'vue'
     import {Pagination, Navigation} from 'swiper'
@@ -56,6 +61,7 @@
     import 'swiper/css'
     import 'swiper/css/pagination'
     import 'swiper/css/navigation'
+    import {ref} from 'vue';
 
     import YandexMap from '../Component/YandexMap.vue'
     export default {
@@ -139,7 +145,6 @@
             }
         },
         components: {
-            Tour,
             Swiper,
             SwiperSlide,
             YandexMap,
@@ -150,8 +155,12 @@
             }
         },
         setup() {
+            const prev = ref(null);
+            const next = ref(null);
             return {
                 modules: [Pagination, Navigation],
+                prev,
+                next,
             }
         },
         methods: {}

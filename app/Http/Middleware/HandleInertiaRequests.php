@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -35,6 +36,16 @@ class HandleInertiaRequests extends Middleware
 
         $course = [
             [
+                'name' => 'BTC',
+                'code' => 'BTC',
+                'price' => 0,
+            ],
+            [
+                'name' => 'ETH',
+                'code' => 'ETH',
+                'price' => 0,
+            ],
+            [
                 'name' => 'USD',
                 'code' => 'R01235',
                 'price' => 0,
@@ -49,16 +60,6 @@ class HandleInertiaRequests extends Middleware
                 'code' => 'CYN',
                 'price' => 0,
             ],
-            [
-                'name' => 'BTC',
-                'code' => 'BTC',
-                'price' => 0,
-            ],
-            [
-                'name' => 'ETH',
-                'code' => 'ETH',
-                'price' => 0,
-            ]
         ];
 
         $b = file_get_contents('https://bitpay.com/api/rates');
@@ -66,10 +67,8 @@ class HandleInertiaRequests extends Middleware
         $b = json_decode($b);
 
         foreach ($b as $a) {
-            if ($a->code === 'RUB') {
-                $course[3]['price'] = $a->rate;
-            }
             if ($a->code === 'USD') {
+                $course[0]['price'] = $a->rate;
                 $usd = $a->rate;
             }
             if ($a->code === 'ETH') {
@@ -80,25 +79,26 @@ class HandleInertiaRequests extends Middleware
             }
         }
 
-//        $d = file_get_contents('http://www.cbr.ru/scripts/XML_daily.asp');
+        $d = file_get_contents('http://www.cbr.ru/scripts/XML_daily.asp');
 
-//        $languages = simplexml_load_file("https://www.cbr.ru/scripts/XML_daily.asp");
-//
-//        foreach ($languages->Valute as $lang) {
-//            foreach ($course as $key => $item) {
-//                if ($lang["ID"] == $item['code']) { //тип валюты
-//                    $course[$key]['price'] = round(str_replace(',', '.', $lang->Value), 2);
-//                }
-//            }
-//        }
+        $languages = simplexml_load_file("https://www.cbr.ru/scripts/XML_daily.asp");
 
-        $course[4]['price'] = round((($usd / $eth) * $course[0]['price']), 2);
-        $course[2]['price'] = round((($usd / $cny) * $course[0]['price']), 2);
+        foreach ($languages->Valute as $lang) {
+            foreach ($course as $key => $item) {
+                if ($lang["ID"] == $item['code']) { //тип валюты
+                    $course[$key]['price'] = round(str_replace(',', '.', $lang->Value), 2);
+                }
+            }
+        }
+
+        $course[1]['price'] = round((($eth) * $course[3]['price']), 2);
+        $course[4]['price'] = round((($usd / $cny) * $course[3]['price']), 2);
 
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
             ],
+            'cookie_id' => Cookie::get('user_id'),
             'course' => $course,
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

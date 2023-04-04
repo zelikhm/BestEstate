@@ -126,6 +126,7 @@ class JkFlatModel extends Section implements Initializable
                     ->setDisplay('name'),
                 AdminFormElement::text('title', 'Название')->required(),
                 AdminFormElement::select('rooms', 'Кол-во комнат')->setOptions([
+                    0 => 'Студия',
                     1 => '1',
                     2 => '2',
                     3 => '3',

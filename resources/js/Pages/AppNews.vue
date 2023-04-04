@@ -5,6 +5,7 @@
     import { Link } from '@inertiajs/vue3';
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
+    import { Head } from '@inertiajs/vue3'
 
 </script>
 
@@ -17,6 +18,11 @@
         <Header @openLogin="show_login = true"></Header>
         <RegistrationModal :status="show_reg" @close="show_reg = false" @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
+
+        <Head>
+            <title>Новости</title>
+            <meta name="description" content="главная">
+        </Head>
 
         <main class="page-about">
 
@@ -35,7 +41,7 @@
                     </div>
                     <div class="news__cards">
                         <div v-for="(item, index) in news_array">
-                            <div class="news__item" v-if="index !== 2 && index !== 3">
+                            <div class="news__item">
                                 <div class="news__item-img"><img :src="item.image" alt=""></div>
                                 <div class="news__item-content">
                                     <div class="news__item-heading">
@@ -45,34 +51,6 @@
                                     <div class="news__item-nav">
                                         <Link :href="'/news/' + item.slug" class="btn btn-xl">Читать статью</Link>
                                         <div class="date">{{ item.created_at }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="news__cards-row" v-if="index === 2 && news_array.length > 3">
-                                <div class="news__item">
-                                    <div class="news__item-img"><img :src="news_array[2].image" alt=""></div>
-                                    <div class="news__item-content">
-                                        <div class="news__item-heading">
-                                            <h3 class="heading-2">{{ news_array[2].title }}</h3>
-                                            <p class="text-2" v-html="news_array[2].description"></p>
-                                        </div>
-                                        <div class="news__item-nav">
-                                            <Link :href="'/news/' + news_array[2].slug" class="btn btn-xl">Читать статью</Link>
-                                            <div class="date">{{ news_array[2].created_at }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="news__item">
-                                    <div class="news__item-img"><img :src="news_array[3].image" alt=""></div>
-                                    <div class="news__item-content">
-                                        <div class="news__item-heading">
-                                            <h3 class="heading-2">{{ news_array[3].title }}</h3>
-                                            <p class="text-2" v-html="news_array[3].description"></p>
-                                        </div>
-                                        <div class="news__item-nav">
-                                            <Link :href="'/news/' + news_array[3].slug" class="btn btn-xl">Читать статью</Link>
-                                            <div class="date">{{ news_array[3].created_at }}</div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

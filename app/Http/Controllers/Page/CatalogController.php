@@ -17,6 +17,7 @@ use App\Models\JkFlatModel;
 use App\Models\User\FavoriteModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Inertia\Inertia;
 
 //Resource
@@ -26,12 +27,14 @@ class CatalogController extends Controller
 {
     use MainInfo, Flat;
 
-    protected function main($flats, $type)
+    protected function main($flats, $type, $type_cost)
     {
         $flats = $this->setImages($flats);
 
         foreach ($flats as $flat) {
-            $favorite = FavoriteModel::where('user_id', Auth::id())->where('flat_id', $flat->id)->first();
+            $favorite = FavoriteModel::where('user_id', Cookie::get('user_id'))
+                ->where('flat_id', $flat->id)
+                ->first();
 
             $flat->favorite = $favorite !== null;
         }
@@ -42,6 +45,7 @@ class CatalogController extends Controller
             'type' => $type,
             'options' => $this->getOptions($type),
             'user' => $this->getUser(),
+            'method_cost' => $type_cost !== null ? $type_cost : 1,
         ]);
     }
 
@@ -64,7 +68,7 @@ class CatalogController extends Controller
             $flats = $this->getFlatOnCatalog(1, 20);
         }
 
-        return $this->main($flats, $type);
+        return $this->main($flats, $type, $request->type_cost);
     }
 
     /**
@@ -118,6 +122,7 @@ class CatalogController extends Controller
             'type' => $type,
             'options' => $request->options,
             'user' => $this->getUser(),
+            'method_cost' => $request->type_cost,
         ]);
 
     }
@@ -131,12 +136,14 @@ class CatalogController extends Controller
 
     private function filteredFirstType($filters, $request) {
         if(count($filters[0]) !== 0 || count($filters[1]) !== 0 || count($filters[2]) !== 0) {
-            if($request->plan != 0) {
+            if($request->plan != 5) {
                 $flats = JkFlatModel::where('type_flat', 1)
                     ->where('rooms', $request->plan)
                     ->whereIn('balcon', $filters[1])
                     ->whereIn('repair', $filters[0])
                     ->whereIn('bathroom', $filters[2])
+                    ->where('price', '>', $request->price['min'])
+                    ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                     ->with(['images', 'jk', 'price_object', 'support', 'builder'])
                     ->get();
             } else {
@@ -144,18 +151,24 @@ class CatalogController extends Controller
                     ->orWhereIn('repair', $filters[0])
                     ->orWhereIn('bathroom', $filters[2])
                     ->where('type_flat', 1)
+                    ->where('price', '>', $request->price['min'])
+                    ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                     ->with(['images', 'jk', 'price_object', 'support', 'builder'])
                     ->get();
             }
         } else {
-            if($request->plan != 0) {
+            if($request->plan != 5) {
                 $flats = JkFlatModel::where('rooms', $request->plan)
                     ->where('type_flat', 1)
+                    ->where('price', '>', $request->price['min'])
+                    ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                     ->with(['images', 'jk', 'price_object', 'support', 'builder'])
                     ->get();
             } else {
                 $flats = JkFlatModel::with(['images', 'jk', 'price_object', 'support', 'builder'])
                     ->where('type_flat', 1)
+                    ->where('price', '>', $request->price['min'])
+                    ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                     ->get();
             }
         }
@@ -185,11 +198,15 @@ class CatalogController extends Controller
                 ->orWhereIn('repair', $filters[0])
                 ->orWhereIn('plot_type', $filters[2])
                 ->where('type_flat', $type)
+                ->where('price', '>', $request->price['min'])
+                ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                 ->with(['images', 'jk', 'price_object', 'support', 'builder'])
                 ->get();
         } else {
             $flats = JkFlatModel::where('type_flat', $type)
                 ->with(['images', 'jk', 'price_object', 'support', 'builder'])
+                ->where('price', '>', $request->price['min'])
+                ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                 ->get();
 
         }
@@ -220,10 +237,14 @@ class CatalogController extends Controller
                 ->orWhereIn('plot_type', $filters[0])
                 ->where('type_flat', 4)
                 ->with(['images', 'jk', 'price_object', 'support', 'builder'])
+                ->where('price', '>', $request->price['min'])
+                ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                 ->get();
         } else {
             $flats = JkFlatModel::where('type_flat', 4)
                 ->with(['images', 'jk', 'price_object', 'support', 'builder'])
+                ->where('price', '>', $request->price['min'])
+                ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                 ->get();
 
         }

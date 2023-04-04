@@ -15,6 +15,7 @@ use App\Models\JkFlatModel;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 trait MainInfo {
 
@@ -100,7 +101,9 @@ trait MainInfo {
 
     protected function checkFavorite($house) {
 
-        $favorite = User\FavoriteModel::where('jk_id', $house)->first();
+        $favorite = User\FavoriteModel::where('jk_id', $house)
+            ->where('user_id', Cookie::get('user_id'))
+            ->first();
 
         return $favorite !== null;
 

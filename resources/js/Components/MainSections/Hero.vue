@@ -74,7 +74,11 @@
                                 </select>
                             </div>
                             <div class="filter-radio-group" v-if="type_jk === 1">
-                                <span class="filter-radio-group-title">Комнат</span>
+                                <label for="0" class="filter-radio">
+                                    <input v-on:click="plan = 0" type="radio" id="0" name="studia"
+                                           class="filter-radio__input" :checked="plan === 0">
+                                    <span>студия</span>
+                                </label>
                                 <label for="1" class="filter-radio">
                                     <input v-on:click="plan = 1" type="radio" id="1" name="studia"
                                            class="filter-radio__input" :checked="plan === 1">
@@ -100,11 +104,11 @@
                         <div class="filter-col">
                             <div for="" class="form-label form-label-range">
                                 <label class="form-range-group">
-                                    от <input id="start" type="number" v-model="price.min"> ₽
+                                    от <input id="start" type="number" @input="getCountHouse" v-model="price.min"> ₽
                                 </label>
                                 <span class="form-range-separator">–</span>
                                 <label class="form-range-group">
-                                    до <input id="end" type="number" v-model="price.max"> ₽
+                                    до <input id="end" type="number" @input="getCountHouse" v-model="price.max"> ₽
                                 </label>
                             </div>
                         </div>
@@ -228,7 +232,7 @@
                     'cost': this.type
                 })
 
-                router.post('/catalog?type_jk=' + this.type_jk + '&method=' + this.type, form);
+                router.post('/catalog?type_jk=' + this.type_jk + '&type_cost=' + this.type, form);
 
             }
         }

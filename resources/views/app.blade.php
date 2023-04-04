@@ -8,10 +8,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
         <!-- CSS -->
-{{--        <link href="public/css/fancybox.min.css" type="text/css" rel="stylesheet">--}}
-
         <!-- Scripts -->
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])

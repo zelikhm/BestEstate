@@ -22,25 +22,9 @@
                     <li class="nav__item"><Link :href="route('contact')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 7 }">контакты</Link></li>
                 </ul>
                 <ul class="course__list">
-                    <li class="course__item">
-                        <div class="course__item-name">BTC</div>
-                        <div class="course__item-rate green-color">{{ course[3].price }} ₽</div>
-                    </li>
-                    <li class="course__item">
-                        <div class="course__item-name">ETH</div>
-                        <div class="course__item-rate green-color">{{ course[4].price }} ₽</div>
-                    </li>
-                    <li class="course__item">
-                        <div class="course__item-name">USD</div>
-                        <div class="course__item-rate green-color">{{ course[0].price }} ₽</div>
-                    </li>
-                    <li class="course__item">
-                        <div class="course__item-name">EUR</div>
-                        <div class="course__item-rate green-color">{{ course[1].price }} ₽</div>
-                    </li>
-                    <li class="course__item">
-                        <div class="course__item-name">CNY</div>
-                        <div class="course__item-rate red-color">{{ course[2].price }} ₽</div>
+                    <li class="course__item" v-for="(item, index) in course">
+                        <div class="course__item-name">{{ item.name }}</div>
+                        <div class="course__item-rate green-color">{{ item.price }} {{ index < 2 ? '$' : '₽' }}</div>
                     </li>
                 </ul>
                 <div class="nav__close" id="nav-close">
@@ -81,7 +65,7 @@
             <div class="search-vivod" style="width: 100%;display: block;" v-if="content.jk.length > 0 || content.flats.length > 0">
                 <div>
                     <h1>Недвижимость (обьекты)</h1>
-                        <div v-for="item in content.jk">
+                        <div v-for="(item, idx) in content.jk">
                                 <div class="s-card">
                                     <img :src="'/' + item.image" alt="">
                                     <div>

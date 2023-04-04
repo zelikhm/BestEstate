@@ -15,8 +15,7 @@
 
             <div class="swiper-container">
                 <JkHousesSwipper
-                    @addFavorite="addFavorite"
-                    @removeFavorite="removeFavorite"
+                    :user="user"
                     :jk="jk"
                 ></JkHousesSwipper>
             </div>
@@ -28,40 +27,6 @@
     export default {
         props:['user', 'jk'],
         name: "Jk",
-        methods: {
-            addFavorite(item, type) {
-
-                if (this.user !== null) {
-
-                    axios.post('/api/favorite/add', {
-                        user_id: this.user.id,
-                        flat_id: type === 1 ? item.id : null,
-                        jk_id: type === 0 ? item.id : null,
-                    }).then(res => {
-                        if (res.status === 200) {
-                            item.favorite = true;
-                        }
-                    })
-
-                }
-
-            },
-            removeFavorite(item, type) {
-                if (this.user !== null) {
-
-                    axios.post('/api/favorite/remove', {
-                        user_id: this.user.id,
-                        flat_id: type === 1 ? item.id : null,
-                        jk_id: type === 0 ? item.id : null,
-                    }).then(res => {
-                        if (res.status === 200) {
-                            item.favorite = false;
-                        }
-                    })
-
-                }
-            }
-        }
     }
 </script>
 

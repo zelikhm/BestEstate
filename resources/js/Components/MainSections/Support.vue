@@ -9,14 +9,14 @@
                 <h2 class="heading-2">Консультация эксперта</h2>
             </div>
             <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper consultSwiper">
+<!--            <div class="swiper-container">-->
+<!--                <div class="swiper consultSwiper">-->
                     <div class="swiper-wrapper">
                         <Support :support="support"></Support>
                     </div>
                     <div class="swiper-pagination"></div>
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </section>
 </template>

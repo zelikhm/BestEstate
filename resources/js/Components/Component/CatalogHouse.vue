@@ -8,20 +8,7 @@
                 <!--                                                   alt=""><span>3D-просмотр</span></a>-->
                 <!--                </div>-->
                 <span class="gallery-value">+{{ item.images_array.length }}</span>
-
-                <swiper
-                    class="swiper"
-                    :modules="modules"
-                    :slides-per-view="1"
-                    :space-between="30"
-                    :loop="true"
-                    :pagination="{ clickable: true }"
-                    :navigation="true"
-                >
-                    <swiper-slide v-if="item.images_array.length > 0" v-for="image in item.images_array"><img
-                        :src="image" alt=""></swiper-slide>
-                    <swiper-slide v-else><img src="img/kp-bl/kpGallerySwiper4.jpg" alt=""></swiper-slide>
-                </swiper>
+                <ImageSwipperFlat :images="item.images_array"></ImageSwipperFlat>
             </div>
             <div class="cards-content">
                 <div class="cards-info">
@@ -70,13 +57,14 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import {computed, defineComponent} from 'vue'
     import { Pagination, Navigation } from 'swiper'
     import { Swiper, SwiperSlide } from 'swiper/vue'
     import 'swiper/css'
     import 'swiper/css/pagination'
     import 'swiper/css/navigation'
-    import {Link} from "@inertiajs/vue3";
+    import {Link, usePage} from "@inertiajs/vue3";
+    import ImageSwipperFlat from "@/Components/Component/Swipper/SwipperImages/ImageSwipperFlat.vue";
 
     export default {
         name: "CatalogHouse",
@@ -85,10 +73,11 @@
         data() {
             return {
                 show: 0,
+                user_id: computed(() => usePage().props.cookie_id),
             }
         },
         created() {
-            console.log(this.jk)
+
         },
         methods: {
             getPrice(item) {
@@ -105,7 +94,7 @@
                 if (this.user !== null) {
 
                     axios.post('/api/favorite/remove', {
-                        user_id: this.user.id,
+                        user_id: this.user_id,
                         flat_id: type === 1 ? item.id : null,
                         jk_id: type === 0 ? item.id : null,
                     }).then(res => {
@@ -118,6 +107,7 @@
             }
         },
         components: {
+            ImageSwipperFlat,
             Swiper,
             SwiperSlide,
             Link

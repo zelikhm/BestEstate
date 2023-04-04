@@ -8,6 +8,11 @@
                            @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
 
+        <Head>
+            <title>Обьект - {{ jk.title }}</title>
+            <meta name="description" content="главная">
+        </Head>
+
         <main class="page-kp">
 
             <!-- breadcrumbs -->
@@ -25,10 +30,18 @@
                     <div class="jk-slider">
                         <!-- Swiper -->
 
-                        <swiper class="swiper jkMainSwiper" :modules="modules" navigation>
+                        <swiper class="swiper jkMainSwiper"
+                                :modules="modules"
+                                :navigation="{
+                                  prevEl: prev,
+                                  nextEl: next,
+                                }"
+                        >
                             <swiper-slide class="slide" v-for="image in jk.images_array"><img :src="'/' + image" alt="">
                             </swiper-slide>
                         </swiper>
+                        <div ref="next" class="swiper-button-next--fluid"></div>
+                        <div ref="prev" class="swiper-button-prev--fluid"></div>
                     </div>
                     <div class="jk-container">
                         <div class="jk-left">
@@ -74,8 +87,10 @@
                                 <div class="jk-card">
                                     <div class="jk-card-heading">
                                         <div class="prices">
-                                            <div class="price">от <span>{{ minPrice.toLocaleString('ru') }} ₽</span></div>
-                                            <div class="price">до <span>{{ maxPrice.toLocaleString('ru') }} ₽</span></div>
+                                            <div class="price">от <span>{{ minPrice.toLocaleString('ru') }} ₽</span>
+                                            </div>
+                                            <div class="price">до <span>{{ maxPrice.toLocaleString('ru') }} ₽</span>
+                                            </div>
                                         </div>
                                         <a href="img/logo-black.png" download="filename" class="btn-ic"><i
                                             class="icomoon icon-download"></i></a>
@@ -103,19 +118,24 @@
                                             class="icomoon icon-calling-bold"></i><span>{{ jk.support.phone }}</span></a>
                                     </div>
                                     <div class="form-title">Или оставьте ваш номер и я вам перезвоню:</div>
-                                    <form action="#" class="form expert-form">
+                                    <div class="form expert-form">
                                         <div class="col">
+                                            <p style="color: green" v-if="request.success">
+                                                *Ваша заявка успешно отправлена
+                                            </p>
                                             <label for="" class="form-label">
-                                                <input type="number" name="" id="" class="form-input"
-                                                       placeholder="Ваш номер телефона">
+                                                <input type="number" name=""
+                                                       v-bind:class="{ 'Error': request.errorPhone }" id=""
+                                                       class="form-input"
+                                                       placeholder="Ваш номер телефона" v-model="request.phone">
                                             </label>
-                                            <button class="btn btn-md">Перезвоните мне</button>
+                                            <button v-on:click="sendForm()" class="btn btn-md">Перезвоните мне</button>
                                         </div>
                                         <label for="checkboxCta" class="accept checkbox">
-                                            <input type="checkbox" id="checkboxCta">
+                                            <input type="checkbox" id="checkboxCta" v-model="request.check">
                                             <span>Даю согласие на обработку <a href="#">персональных данных</a></span>
                                         </label>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <!--                            info-->
@@ -133,7 +153,8 @@
                                 </div>
                                 <div v-else-if="info.category === 1" class="stock">
                                     <h3 class="heading-3">{{ info.title }}</h3>
-                                    <div class="stock-cards__item" style="margin-top: 10px" v-bind:style="{ 'background-color': item.color }"
+                                    <div class="stock-cards__item" style="margin-top: 10px"
+                                         v-bind:style="{ 'background-color': item.color }"
                                          v-for="item in info.items">
                                         <div class="stock-cards__item-content">
                                             <h4 v-html="item.description"></h4>
@@ -228,11 +249,16 @@
                         <div id="charact-tabs">
                             <!-- Кнопки -->
                             <ul class="tabs-nav">
-                                <li><a style="cursor: pointer" v-on:click="flat_filter = 0" v-bind:class="{ 'active': flat_filter == 0 }">Все планировки</a></li>
-                                <li><a style="cursor: pointer" v-on:click="flat_filter = 1" v-bind:class="{ 'active': flat_filter == 1 }">1–комнатная</a></li>
-                                <li><a style="cursor: pointer" v-on:click="flat_filter = 2" v-bind:class="{ 'active': flat_filter == 2 }">2–комнатная</a></li>
-                                <li><a style="cursor: pointer" v-on:click="flat_filter = 3" v-bind:class="{ 'active': flat_filter == 3 }">3–комнатная</a></li>
-                                <li><a style="cursor: pointer" v-on:click="flat_filter = 4" v-bind:class="{ 'active': flat_filter == 4 }">4–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 0"
+                                       v-bind:class="{ 'active': flat_filter == 0 }">Все планировки</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 1"
+                                       v-bind:class="{ 'active': flat_filter == 1 }">1–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 2"
+                                       v-bind:class="{ 'active': flat_filter == 2 }">2–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 3"
+                                       v-bind:class="{ 'active': flat_filter == 3 }">3–комнатная</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 4"
+                                       v-bind:class="{ 'active': flat_filter == 4 }">4–комнатная</a></li>
                             </ul>
                             <!-- Контент -->
                             <div class="tabs-items" v-if="jk.flat.length > 0">
@@ -241,16 +267,20 @@
                                         <div class="charact-grid">
                                             <div class="charact-item" v-for="item in getFlat" :key="item.id">
                                                 <div class="charact-img"><img :src="item.plan_image" alt=""></div>
-                                                <div class="charact-title"><Link :href="'/jk/' + jk.slug + '/' + item.slug">{{ item.rooms }}–комнатная</Link></div>
+                                                <div class="charact-title">
+                                                    <Link :href="'/jk/' + jk.slug + '/' + item.slug">{{ item.rooms
+                                                        }}–комнатная
+                                                    </Link>
+                                                </div>
                                                 <div class="charact-info">
                                                     <img src="/img/jk/charact-square.png" alt="">
                                                     <span>{{ item.square_main }} м²</span>
                                                 </div>
                                             </div>
                                         </div>
-<!--                                        <div class="link-center">-->
-<!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
-<!--                                        </div>-->
+                                        <!--                                        <div class="link-center">-->
+                                        <!--                                            <a href="#" class="btn btn-lg">Посмотреть все планировки</a>-->
+                                        <!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -358,6 +388,8 @@
     import 'swiper/css'
     import 'swiper/css/navigation'
     import {Link} from '@inertiajs/vue3';
+    import {Head} from '@inertiajs/vue3'
+    import {ref} from 'vue';
 
     import Header from '../Components/Component/Header.vue'
     import Footer from '../Components/Component/Footer.vue'
@@ -376,10 +408,39 @@
                 show_login: false,
                 show_reg: false,
                 flat_filter: 0,
+                request: {
+                    success: false,
+                    errorPhone: false,
+                    phone: '',
+                    check: false,
+                }
             }
         },
         name: "AppJk",
         methods: {
+            sendForm() {
+
+                if (this.request.phone.length < 11 || this.request.phone.length > 15) {
+                    this.request.errorPhone = true;
+                } else {
+                    this.request.errorPhone = false;
+
+                    if (this.request.check === true) {
+
+                        axios.post('/api/manager/send', {
+                            phone: this.request.phone,
+                            name: 'Заявка с формы ЖК'
+                        }).then(res => {
+                            this.request.success = true;
+
+                            this.request.phone = ''
+                            this.request.check = false
+                        })
+
+                    }
+                }
+
+            },
             getFrames(frames) {
 
                 if (frames === 0) {
@@ -401,16 +462,21 @@
             Footer,
             RegistrationModal,
             Login,
+            Head,
         },
         setup() {
+            const prev = ref(null);
+            const next = ref(null);
             return {
-                modules: [Navigation]
+                modules: [Navigation],
+                prev,
+                next,
             }
         },
         computed: {
             getFlat() {
 
-                if(this.flat_filter === 0) {
+                if (this.flat_filter === 0) {
                     return this.jk.flat;
                 } else if (this.flat_filter !== 0) {
                     // console.log(this.jk.flat.filter((item) => item.rooms === this.flat_filter));
@@ -422,5 +488,9 @@
 </script>
 
 <style scoped>
+
+    .Error {
+        border-color: red;
+    }
 
 </style>

@@ -8,11 +8,13 @@
         :autoplay="{ delay: 3500, disableOnInteraction: false }"
         :loop="true"
         :loop-fill-group-with-blank="true"
-        :navigation="true"
+        :navigation="{
+      prevEl: prev,
+      nextEl: next,
+    }"
         :pagination="{ clickable: true }"
     >
-        <swiper-slide class="swiper-slide" v-for="sup in support">
-            <div class="consult-slide">
+        <swiper-slide class="swiper-slide consult-slide" v-for="sup in support">
                 <div class="consult-slide-img">
                     <img src="img/consult/consult-img.jpg" alt="">
                 </div>
@@ -63,9 +65,12 @@
                             <span :class="{ 'Error': error.check }" >Даю согласие на обработку <a href="#">персональных данных</a></span>
                         </label>
                 </div>
-            </div>
         </swiper-slide>
     </swiper>
+    <div class="swiper-nav">
+        <div ref="next" class="swiper-button-next consultSwiper-next"></div>
+        <div ref="prev" class="swiper-button-prev consultSwiper-prev"></div>
+    </div>
 </template>
 
 <script>
@@ -74,6 +79,7 @@
     import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
     import 'swiper/css'
     import 'swiper/css/navigation'
+    import { ref } from 'vue';
 
     export default {
         name: "Support",
@@ -166,8 +172,12 @@
             SwiperSlide
         },
         setup() {
+            const prev = ref(null);
+            const next = ref(null);
             return {
-                modules: [Navigation]
+                modules: [Navigation],
+                prev,
+                next,
             }
         },
     }
@@ -181,6 +191,36 @@
     .ErrorCheck {
         color: red;
     }
-
+    .swiper-button-next,
+    .swiper-button-prev {
+        position: absolute;
+        top: 50%;
+        width: 38px;
+        height: 38px;
+        z-index: 10;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        background-color: var(--global-color);
+    }
+    .swiper-button-next {
+        right: -3%;
+    }
+    .swiper-button-prev {
+        left: -4%;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        /*font-family: "icomoon";*/
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--white-color);
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background-color: var(--globalHover-color);
+    }
 
 </style>

@@ -8,7 +8,7 @@
             <div class="heading-row">
                 <h2 class="heading-2">Спецпредложения</h2>
             </div>
-            <div class="swiper-containerr">
+            <div class="swiper-container">
                 <JkSlider></JkSlider>
             </div>
         </div>

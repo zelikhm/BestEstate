@@ -6,6 +6,7 @@
     import RegistrationModal from "../Components/Component/Modal/Register.vue";
     import Login from "../Components/Component/Modal/Login.vue";
     import CatalogFlat from "@/Components/Component/CatalogFlat.vue";
+    import { Head } from '@inertiajs/vue3'
 
 </script>
 
@@ -19,6 +20,11 @@
         <RegistrationModal :status="show_reg" @close="show_reg = false"
                            @openLogin="show_login = true, show_reg = false"></RegistrationModal>
         <Login :status="show_login" @close="show_login = false" @openReg="show_reg = true, show_login = false"></Login>
+
+        <Head>
+            <title>Каталог</title>
+            <meta name="description" content="главная">
+        </Head>
 
         <main class="page-catalog">
 
@@ -39,13 +45,13 @@
                     <div class="filter" v-bind:class="{ 'filter-open': show }" id="filterTabs">
                         <!-- Кнопки -->
                         <ul class="filter-nav">
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 1 }"
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost == 1 }"
                                    v-on:click="type_cost = 1">Купить</a></li>
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 2 }"
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost == 2 }"
                                    v-on:click="type_cost = 2">Снять</a></li>
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 3 }"
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost == 3 }"
                                    v-on:click="type_cost = 3">Посуточно</a></li>
-                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost === 4 }"
+                            <li><a style="cursor: pointer" v-bind:class="{ 'active': type_cost == 4 }"
                                    v-on:click="type_cost = 4">VR</a></li>
                         </ul>
                         <!-- Контент -->
@@ -64,24 +70,29 @@
                                             </select>
                                         </div>
                                         <div class="filter-radio-group" v-if="type == 1">
-                                            <span class="filter-radio-group-title">Комнат</span>
+<!--                                            <span class="filter-radio-group-title">Комнат</span>-->
+                                            <label for="0" class="filter-radio">
+                                                <input v-on:click="plan = 0, getCount()" type="radio" id="0" name="studia"
+                                                       class="filter-radio__input" :checked="plan === 0">
+                                                <span>Студия</span>
+                                            </label>
                                             <label for="1" class="filter-radio">
-                                                <input v-on:click="plan = 1" type="radio" id="1" name="studia"
+                                                <input v-on:click="plan = 1, getCount()" type="radio" id="1" name="studia"
                                                        class="filter-radio__input" :checked="plan === 1">
                                                 <span>1</span>
                                             </label>
                                             <label for="2" class="filter-radio">
-                                                <input v-on:click="plan = 2" type="radio" id="2" name="studia"
+                                                <input v-on:click="plan = 2, getCount()" type="radio" id="2" name="studia"
                                                        class="filter-radio__input" :checked="plan === 2">
                                                 <span>2</span>
                                             </label>
                                             <label for="3" class="filter-radio">
-                                                <input v-on:click="plan = 3" type="radio" id="3" name="studia"
+                                                <input v-on:click="plan = 3, getCount()" type="radio" id="3" name="studia"
                                                        class="filter-radio__input" :checked="plan === 3">
                                                 <span>3</span>
                                             </label>
                                             <label for="4+" class="filter-radio">
-                                                <input v-on:click="plan = 4" type="radio" id="4+" name="studia"
+                                                <input v-on:click="plan = 4, getCount()" type="radio" id="4+" name="studia"
                                                        class="filter-radio__input" :checked="plan === 4">
                                                 <span>4+</span>
                                             </label>
@@ -90,11 +101,11 @@
                                     <div class="filter-col">
                                         <div for="" class="form-label form-label-range">
                                             <label class="form-range-group">
-                                                от <input id="start" type="number" v-model="price.min"> ₽
+                                                от <input id="start" type="number" @input="getCount()" v-model="price.min"> ₽
                                             </label>
                                             <span class="form-range-separator">–</span>
                                             <label class="form-range-group">
-                                                до <input id="end" type="number" v-model="price.max"> ₽
+                                                до <input id="end" type="number" @input="getCount()" v-model="price.max"> ₽
                                             </label>
                                         </div>
                                     </div>
@@ -134,60 +145,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tabs-item" id="tab-222">
-                                <div class="filter-hide" style="display: none;">
-                                    <div class="filter-row-3">
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Общая площадь:</div>
-                                            <label for="" class="form-label form-label-range">
-                                                <div class="form-range-group">
-                                                    от <input type="number" value="">
-                                                </div>
-                                                <span class="form-range-separator">–</span>
-                                                <div class="form-range-group">
-                                                    до <input type="number" value=""> м²
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tabs-item" id="tab-333">
-                                <div class="filter-hide" style="display: none;">
-                                    <div class="filter-row-3">
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Общая площадь:</div>
-                                            <label for="" class="form-label form-label-range">
-                                                <div class="form-range-group">
-                                                    от <input type="number" value="">
-                                                </div>
-                                                <span class="form-range-separator">–</span>
-                                                <div class="form-range-group">
-                                                    до <input type="number" value=""> м²
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tabs-item" id="tab-444">
-                                <div class="filter-hide" style="display: none;">
-                                    <div class="filter-row-3">
-                                        <div class="filter-col">
-                                            <div class="filter-col-title">Общая площадь:</div>
-                                            <label for="" class="form-label form-label-range">
-                                                <div class="form-range-group">
-                                                    от <input type="number" value="">
-                                                </div>
-                                                <span class="form-range-separator">–</span>
-                                                <div class="form-range-group">
-                                                    до <input type="number" value=""> м²
-                                                </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="filter-btns">
                             <div class="filter-btns-left">
@@ -210,8 +167,11 @@
                                     <i class="icomoon icon-location-bold"></i>
                                     Смотреть на карте
                                 </button>
-                                <button class="btn btn-lg" v-on:click="sendOptions()">
-                                    Показать 100 объявлений
+                                <button class="btn btn-lg" v-on:click="sendOptions()" v-if="preloader === false">
+                                    Показать {{ count }} объявлений
+                                </button>
+                                <button class="btn btn-lg" v-else>
+                                    <div class="loader"></div>
                                 </button>
                             </div>
                         </div>
@@ -254,7 +214,8 @@
             'jk',
             'type',
             'user',
-            'options'
+            'options',
+            'method_cost'
         ],
         components: {
             Form2
@@ -266,7 +227,8 @@
             }
         },
         mounted() {
-
+            this.type_cost = this.method_cost;
+            this.getCount();
         },
         created() {
             window.scrollTo({
@@ -275,11 +237,26 @@
             });
         },
         methods: {
+            getCount() {
+                this.preloader = true;
+
+                axios.post('/api/getCountFlats', {
+                    'type_jk': this.type,
+                    'options': this.options,
+                    'price': this.price,
+                    'city': this.city,
+                    'plan': this.plan,
+                    'cost': this.type_cost
+                }).then(res => {
+                    this.count = res.data;
+                    this.preloader = false;
+                })
+            },
             visit(id) {
                 router.visit('/catalog?type_jk=' + id);
             },
             check() {
-
+                this.getCount();
             },
             sendOptions() {
 
@@ -292,7 +269,7 @@
                     'cost': this.type_cost
                 })
 
-                router.post('/catalog?type_jk=' + this.type, form);
+                router.post('/catalog?type_jk=' + this.type + '&type_cost=' + this.type_cost, form);
 
             }
         },
@@ -307,9 +284,11 @@
                     min: 0,
                     max: 0,
                 },
-                plan: 0,
+                plan: 5,
                 load: false,
                 loadCount: 20,
+                count: 0,
+                preloader: true
             }
         },
         computed: {
@@ -347,4 +326,17 @@
 </script>
 
 <style scoped>
+    .loader {
+        border: 10px solid #f3f3f3; /* Light grey */
+        border-top: 10px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>

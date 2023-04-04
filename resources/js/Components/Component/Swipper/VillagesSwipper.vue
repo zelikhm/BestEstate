@@ -1,7 +1,7 @@
 <template>
     <div class="kp-bl__cards-item" v-for="item in villages">
         <!-- Swiper -->
-            <swiper class="swiper gallerySwiper" :modules="modules" navigation>
+            <swiper class="swiper gallerySwiper" :modules="modules" navigation style="margin-right: 0">
                 <swiper-slide class="slide" v-for="image in item.images_array"><img :src="image" alt=""></swiper-slide>
             </swiper>
         <div class="kp-bl__cards-content">
@@ -31,8 +31,8 @@
     import { defineComponent } from 'vue'
     import { Navigation } from 'swiper'
     import { Swiper, SwiperSlide } from 'swiper/vue'
-    import 'swiper/css'
-    import 'swiper/css/navigation'
+    // import 'swiper/css'
+    // import 'swiper/css/navigation'
     import { Link } from '@inertiajs/vue3';
 
     export default {

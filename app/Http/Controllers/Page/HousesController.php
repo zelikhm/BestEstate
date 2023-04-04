@@ -21,7 +21,7 @@ class HousesController extends Controller
 
     public function houses(Request $request) {
 
-        $houses = $this->getAllJk(0, 30);
+        $houses = $this->getAllJk(0, 20);
 
         return $this->render($houses);
     }
