@@ -4309,7 +4309,7 @@ label {
   display: flex;
   align-items: center;
   min-height: 53px;
-  padding: 13px 18px;
+  padding: 6px 18px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 7px;
   width: auto;
@@ -4820,10 +4820,13 @@ label {
   /* Range */
   .form-label-range {
     min-height: 46px;
-    padding: 10px 15px;
+    padding: 2px 12px;
   }
   .form-range-group input {
     margin-left: 5px;
+    padding: 4px;
+    font-size: 14px;
+    line-height: 14px;
   }
   /* Select */
   .choices__inner {
@@ -4934,7 +4937,7 @@ label {
   /* Range */
   .form-label-range {
     min-height: 40px;
-    padding: 10px 12px;
+    padding: 2px 12px;
   }
   /* Select */
   .choices__inner {
