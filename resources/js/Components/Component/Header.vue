@@ -36,11 +36,15 @@
                     <i class="icomoon icon-favourites"></i>
                 </Link>
                 <div class="lang">
-                    <div class="lang-btn"><img src="/img/lang/ru.svg" alt="Русский"></div>
+                    <div class="lang-btn">
+                        <img src="/img/lang/ru.svg" v-if="selectLang === 0" alt="Русский">
+                        <img src="/img/lang/en.svg" v-else-if="selectLang === 1" alt="Английский">
+                        <img src="/img/lang/cn.svg" v-else-if="selectLang === 2" alt="Китайский">
+                    </div>
                     <div class="lang-content">
-                        <div class="lang-btn"><img src="/img/lang/ru.svg" alt="Русский"></div>
-                        <div class="lang-btn"><img src="/img/lang/en.svg" alt="Английский"></div>
-                        <div class="lang-btn"><img src="/img/lang/cn.svg" alt="Китайский"></div>
+                        <div class="lang-btn" @click="SelectLangHead('ru')"><img src="/img/lang/ru.svg" alt="Русский"></div>
+                        <div class="lang-btn" @click="SelectLangHead('en')"><img src="/img/lang/en.svg" alt="Английский"></div>
+                        <div class="lang-btn" @click="SelectLangHead('zh')"><img src="/img/lang/cn.svg" alt="Китайский"></div>
                     </div>
                 </div>
                 <a href="#" class="btn-icon" id="search-btn" v-on:click="showSearch === true ? showSearch = false : showSearch = true">
@@ -114,26 +118,61 @@
                   flats: [],
               },
               course: computed(() => usePage().props.course),
+              yatranslate: {
+                  lang: "ru",
+              },
+              selectLang: 0,
           }
         },
         created() {
             if(this.user !== null) {
                 this.auth = true;
             }
+        },
+        setup() {
 
-            console.log(this.course);
         },
         mounted() {
-
+            this.yaTranslateInit();
         },
         methods: {
+
+            SelectLangHead(lang) {
+
+                this.yatranslate.lang = lang
+                this.yaTranslateSetLang(lang);
+                // Перезагружаем страницу
+                window.location.reload();
+            },
+            yaTranslateInit() {
+
+                console.log(localStorage.getItem('yt-widget'))
+
+                if (this.yatranslate.langFirstVisit && !localStorage.getItem('yt-widget')) {
+                    /* Если установлен язык перевода для первого посещения и в localStorage нет yt-widget */
+                    this.yaTranslateSetLang(this.yatranslate.langFirstVisit);
+                }
+
+                // Подключаем виджет yandex translate
+                let script = document.createElement('script');
+                script.src = `https://translate.yandex.net/website-widget/v1/widget.js?widgetId=ytWidget&pageLang=${this.yatranslate.lang}&widgetTheme=light&autoMode=false`;
+                document.getElementsByTagName('head')[0].appendChild(script);
+            },
+            yaTranslateSetLang(lang) {
+                // Записываем выбранный язык в localStorage объект yt-widget
+                localStorage.setItem('yt-widget', JSON.stringify({
+                    "lang": lang,
+                    "active": true
+                }));
+            },
+
             getContent() {
 
                 axios.post('/api/search/get', {
                     title: this.search
                 }).then(res => {
                     this.content = res.data;
-                    console.log(res.data)
+
                 })
 
             },

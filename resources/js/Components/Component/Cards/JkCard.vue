@@ -100,6 +100,7 @@
 
     import {computed} from 'vue'
     import {usePage} from '@inertiajs/vue3'
+    import {Link} from '@inertiajs/vue3'
 
     export default {
         props: ['house', 'sliderStatus', 'user'],
@@ -176,7 +177,8 @@
         components: {
             ImageSwipper,
             Swiper,
-            SwiperSlide
+            SwiperSlide,
+            Link
         },
         setup() {
             return {
