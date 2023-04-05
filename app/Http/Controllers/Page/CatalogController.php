@@ -7,6 +7,7 @@ use App\Http\Traits\Flat;
 use App\Http\Traits\MainInfo;
 use App\Models\Info\BalconyModel;
 use App\Models\Info\BathroomModel;
+use App\Models\Info\CityModel;
 use App\Models\Info\InfrastructureModel;
 use App\Models\Info\PlotModel;
 use App\Models\Info\RepairModel;
@@ -27,6 +28,9 @@ class CatalogController extends Controller
 {
     use MainInfo, Flat;
 
+    private $type_cost;
+    private $city_id;
+
     protected function main($flats, $type, $type_cost)
     {
         $flats = $this->setImages($flats);
@@ -46,6 +50,7 @@ class CatalogController extends Controller
             'options' => $this->getOptions($type),
             'user' => $this->getUser(),
             'method_cost' => $type_cost !== null ? $type_cost : 1,
+            'cities' => CityModel::all(),
         ]);
     }
 
@@ -81,6 +86,9 @@ class CatalogController extends Controller
 
         $type = (int)$request->type_jk;
 
+        $this->type_cost = $request->cost;
+        $this->city_id = (int)$request->city;
+
         $filters = $this->getFiltersFlat($request, $type);
 
         if($type === 1) {
@@ -104,6 +112,9 @@ class CatalogController extends Controller
 
         $type = (int)$request->type_jk;
 
+        $this->type_cost = $request->cost;
+        $this->city_id = (int)$request->city;
+
         $filters = $this->getFiltersFlat($request, $type);
 
         if($type === 1) {
@@ -123,6 +134,7 @@ class CatalogController extends Controller
             'options' => $request->options,
             'user' => $this->getUser(),
             'method_cost' => $request->type_cost,
+            'cities' => CityModel::all(),
         ]);
 
     }
@@ -173,12 +185,14 @@ class CatalogController extends Controller
             }
         }
 
-        foreach ($flats as $key => $flat) {
+        $flats = $flats->filter(function ($value, $key) {
+            return $this->getStatusCost($value);
+        });
 
-            if(!$this->getStatusCost($request, $flat)) {
-                $flats->splice($key, 1);
-                continue;
-            }
+        if($this->city_id !== 0) {
+            $flats = $flats->filter(function ($value, $key) {
+                return $value->jk->city !== null ? $value->jk->city === $this->city_id : false;
+            });
         }
 
         return $flats;
@@ -276,17 +290,17 @@ class CatalogController extends Controller
      * @return bool
      */
 
-    private function getStatusCost($request, $flat) {
+    private function getStatusCost($flat) {
 
-        if($request->cost === 1) {
+        if($this->type_cost === 1) {
             if($flat->price_object->sale === 0) {
                 return false;
             }
-        } else if ($request->cost === 2) {
+        } else if ($this->type_cost === 2) {
             if($flat->price_object->rent === 0) {
                 return false;
             }
-        } else if ($request->cost === 3) {
+        } else if ($this->type_cost === 3) {
             if($flat->price_object->days === 0) {
                 return false;
             }

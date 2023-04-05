@@ -8,6 +8,7 @@ use App\Http\Traits\MainInfo;
 use App\Models\Contact\ContactModel;
 use App\Models\Contact\InfoModel;
 use App\Models\Contact\SocialModel;
+use App\Models\Info\CityModel;
 use App\Models\Info\ServiceModel;
 use App\Models\Info\WorkinModel;
 use App\Models\Jk\SupportModel;
@@ -45,6 +46,7 @@ class MainController extends Controller
             'support' => SupportModel::where('active', 1)->get(),
             'working' => WorkinModel::all(),
             'options' => $options,
+            'cities' => CityModel::all(),
         ]);
 
     }

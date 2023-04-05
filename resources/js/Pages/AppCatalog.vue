@@ -121,9 +121,11 @@
                                       </label>
                                     </div> -->
                                     <div class="filter-col">
-                                        <label for="" class="form-label form-label--location">
-                                            <input type="text" name="" id="" class="form-input"
-                                                   placeholder="Город, адрес, район, ЖК">
+                                        <label class="form-label form-label--location">
+                                            <select class="form-input" v-model="selected">
+                                                <option disabled value="">Выберите один из вариантов</option>
+                                                <option v-on:click="city_select = city.id, getCount()" v-for="city in cities">{{ city.city_name }}</option>
+                                            </select>
                                         </label>
                                     </div>
                                 </div>
@@ -215,7 +217,8 @@
             'type',
             'user',
             'options',
-            'method_cost'
+            'method_cost',
+            'cities'
         ],
         components: {
             Form2
@@ -244,7 +247,7 @@
                     'type_jk': this.type,
                     'options': this.options,
                     'price': this.price,
-                    'city': this.city,
+                    'city': this.city_select,
                     'plan': this.plan,
                     'cost': this.type_cost
                 }).then(res => {
@@ -288,7 +291,8 @@
                 load: false,
                 loadCount: 20,
                 count: 0,
-                preloader: true
+                preloader: true,
+                city_select: 0,
             }
         },
         computed: {

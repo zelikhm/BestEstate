@@ -32,6 +32,7 @@
                 </div>
             </nav>
             <div class="nav__btns">
+                <div id="ytWidget" style="display: none;"></div>
                 <Link href="/favorites" class="btn-icon" v-if="auth === true">
                     <i class="icomoon icon-favourites"></i>
                 </Link>
@@ -146,11 +147,17 @@
             },
             yaTranslateInit() {
 
-                console.log(localStorage.getItem('yt-widget'))
-
                 if (this.yatranslate.langFirstVisit && !localStorage.getItem('yt-widget')) {
                     /* Если установлен язык перевода для первого посещения и в localStorage нет yt-widget */
                     this.yaTranslateSetLang(this.yatranslate.langFirstVisit);
+                }
+
+                if(JSON.parse(localStorage.getItem('yt-widget')).lang == 'ru') {
+                    this.selectLang = 0;
+                } else if (JSON.parse(localStorage.getItem('yt-widget')).lang == 'en') {
+                    this.selectLang = 1;
+                } else if (JSON.parse(localStorage.getItem('yt-widget')).lang == 'zh') {
+                    this.selectLang = 2;
                 }
 
                 // Подключаем виджет yandex translate
