@@ -113,9 +113,11 @@
                             </div>
                         </div>
                         <div class="filter-col">
-                            <label for="" class="form-label form-label--location">
-                                <input type="text" name="" id="" class="form-input"
-                                       placeholder="Город, адрес, район, ЖК">
+                            <label class="form-label form-label--location">
+                                <select class="form-input" v-model="selected">
+                                    <option disabled value="">Выберите один из вариантов</option>
+                                    <option v-on:click="city_select = city.id, getCountHouse()" v-for="city in cities">{{ city.city_name }}</option>
+                                </select>
                             </label>
                         </div>
                         <div class="filter-hide" v-show="show">
@@ -168,7 +170,7 @@
     import {router, useForm} from "@inertiajs/vue3";
 
     export default {
-        props:['options'],
+        props:['options', 'cities'],
         name: "Hero",
         data() {
             return {
@@ -182,12 +184,15 @@
                     max: 0,
                 },
                 count: 0,
-                preloader: true
+                preloader: true,
+
+                city_select: 0,
+
             }
         },
         watch: {
             type_jk(item) {
-                this.option_array = this.options.find(item => item.type === this.type_jk).options;
+                this.option_array = this.opt.find(item => item.type === this.type_jk).opt;
 
                 this.getCountHouse();
             },
@@ -212,7 +217,7 @@
                     'type_jk': this.type_jk,
                     'options': this.option_array,
                     'price': this.price,
-                    'city': this.city,
+                    'city': this.city_select,
                     'plan': this.plan,
                     'cost': this.type
                 }).then(res => {
@@ -227,7 +232,7 @@
                     'type_jk': this.type_jk,
                     'options': this.option_array,
                     'price': this.price,
-                    'city': this.city,
+                    'city': this.city_select,
                     'plan': this.plan,
                     'cost': this.type
                 })

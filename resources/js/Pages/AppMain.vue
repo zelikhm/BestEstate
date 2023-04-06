@@ -41,7 +41,7 @@
 
         <main class="page-home">
 
-            <Hero :options="options"></Hero>
+            <Hero :cities="cities" :options="options"></Hero>
 
             <Special></Special>
 
@@ -363,7 +363,21 @@
     import {router} from '@inertiajs/vue3'
 
     export default {
-        props: ['page', 'sale_jk', 'services', 'jk', 'user', 'villages', 'villa', 'shale', 'ecom', 'support', 'working', 'options'],
+        props: [
+            'page',
+            'sale_jk',
+            'services',
+            'jk',
+            'user',
+            'villages',
+            'villa',
+            'shale',
+            'ecom',
+            'support',
+            'working',
+            'options',
+            'cities'
+        ],
         provide() {
             return {
                 'page': this.page,
