@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('manager')->group(function () {
    Route::post('/send', ['App\Http\Controllers\Manager\SendController', 'send']);
+   Route::post('/order', ['App\Http\Controllers\Manager\SendController', 'order']);
 });
 
 Route::prefix('search')->group(function () {

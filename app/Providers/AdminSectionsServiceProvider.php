@@ -26,6 +26,7 @@ use App\Models\Jk\JkModel;
 use App\Models\Jk\RenderModel;
 use App\Models\Jk\SupportModel;
 use App\Models\JkFlatModel;
+use App\Models\Manager\ContactFormModel;
 use App\Models\Manager\SendModel;
 use App\Models\NewModel;
 use App\Models\User;
@@ -74,6 +75,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
 //        PlanModel::class => 'App\Http\Controllers\Admin\Flat\Plan',
         //Orders
         SendModel::class => 'App\Http\Controllers\Admin\Order\SupportOrder',
+        ContactFormModel::class => 'App\Http\Controllers\Admin\Order\ContactForm',
         User::class => 'App\Http\Controllers\Admin\Users',
     ];
 

@@ -25,7 +25,9 @@ Route::middleware('FavoriteCookie')->group(function () {
     Route::get('/flat', ['App\Http\Controllers\Page\MainController', 'flat'])->name('flat');
 
     Route::get('/catalog', ['App\Http\Controllers\Page\CatalogController', 'render'])->name('catalog');
+    Route::get('/map', ['App\Http\Controllers\Page\CatalogController', 'renderMap'])->name('map');
     Route::post('/catalog', ['App\Http\Controllers\Page\CatalogController', 'filtered'])->name('catalog');
+    Route::post('/map', ['App\Http\Controllers\Page\CatalogController', 'renderMap'])->name('map');
 
     Route::get('/about', ['App\Http\Controllers\Page\MainController', 'about'])->name('about');
     Route::get('/service', ['App\Http\Controllers\Page\MainController', 'service'])->name('service');

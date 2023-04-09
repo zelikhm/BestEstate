@@ -43,7 +43,7 @@
 
             <Hero :cities="cities" :options="options"></Hero>
 
-            <Special></Special>
+            <Special v-if="sale_jk.length > 0"></Special>
 
             <Services></Services>
 

@@ -45,7 +45,7 @@
                             <div class="contacts__group-item-group">
                                 <a href="tel:79670643224" class="btn btn-border btn-md"><i
                                     class="icomoon icon-calling-bold"></i><span>{{ contact.phone }}</span></a>
-                                <a href="#" class="btn btn-md to-state" data-state="connection">Позвоните мне</a>
+                                <a href="#" class="btn btn-md to-state" data-state="connection" v-on:click="activeForm = !activeForm">Позвоните мне</a>
                             </div>
                         </div>
                         <div class="contacts__group-item">
@@ -73,22 +73,23 @@
                     </div>
                 </div>
             </section>
-
         </main>
-
         <Footer></Footer>
     </div>
-
     </body>
+
+    <ContactForm :active="activeForm" @closeForm="activeForm = !activeForm"></ContactForm>
 
 </template>
 
 <script>
     import GoogleMap from "../Components/Component/GoogleMap.vue";
+    import ContactForm from "@/Components/Component/Forms/ContactForm.vue";
 
     export default {
         components: {
-            GoogleMap
+            GoogleMap,
+            ContactForm
         },
         props: ['page', 'contact', 'social', 'info'],
         provide() {
@@ -101,6 +102,7 @@
             return {
                 show_login: false,
                 show_reg: false,
+                activeForm: false,
             }
         },
         name: "AppContact",

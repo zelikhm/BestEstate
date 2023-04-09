@@ -146,7 +146,7 @@
                             </button>
                         </div>
                         <div class="filter-btns-right">
-                            <button class="btn-border btn-lg">
+                            <button class="btn-border btn-lg" v-on:click="getMap()">
                                 <i class="icomoon icon-location-bold"></i>
                                 Смотреть на карте
                             </button>
@@ -210,6 +210,18 @@
 
         },
         methods: {
+            getMap() {
+                const form = useForm({
+                    'type_jk': this.type_jk,
+                    'options': this.option_array,
+                    'price': this.price,
+                    'city': this.city_select,
+                    'plan': this.plan,
+                    'cost': this.type
+                })
+
+                router.post('/map', form);
+            },
             getCountHouse() {
                 this.preloader = true;
 

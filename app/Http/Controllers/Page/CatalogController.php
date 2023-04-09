@@ -103,6 +103,36 @@ class CatalogController extends Controller
 
     }
 
+    public function renderMap(Request $request) {
+
+        $type = (int)$request->type_jk;
+
+        $this->type_cost = $request->cost;
+        $this->city_id = (int)$request->city;
+
+        $flats = $this->setImages($this->filteredFlat($request, $type));
+
+        $jk = collect();
+
+        foreach ($flats as $flat) {
+
+            $jk->push($this->getJk($flat->jk->id));
+
+        }
+
+        foreach ($jk as $item) {
+            $item->minPrice = JkFlatModel::where('jk_id', $item->id)->select('price')->min('price');
+            $item->maxPrice = JkFlatModel::where('jk_id', $item->id)->select('price')->max('price');
+        }
+
+        return Inertia::render('AppMap', [
+            'page' => 0,
+            'objects' => $jk,
+            'user' => $this->getUser(),
+        ]);
+
+    }
+
     /**
      * render page with options
      * @param Request $request
@@ -115,17 +145,7 @@ class CatalogController extends Controller
         $this->type_cost = $request->cost;
         $this->city_id = (int)$request->city;
 
-        $filters = $this->getFiltersFlat($request, $type);
-
-        if($type === 1) {
-            $flats = $this->filteredFirstType($filters, $request);
-        } else if ($type === 2 || $type === 3) {
-            $flats = $this->filteredSecondType($filters, $request, $type);
-        } else if ($type === 4) {
-            $flats = $this->filteredThreeType($filters, $request);
-        }
-
-        $flats = $this->setImages($flats);
+        $flats = $this->setImages($this->filteredFlat($request, $type));
 
         return Inertia::render('AppCatalog', [
             'page' => 2,
@@ -137,6 +157,28 @@ class CatalogController extends Controller
             'cities' => CityModel::all(),
         ]);
 
+    }
+
+    /**
+     * filtered flats
+     * @param $request
+     * @param $type
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|mixed
+     */
+
+    private function filteredFlat($request, $type) {
+
+        $filters = $this->getFiltersFlat($request, $type);
+
+        if($type === 1) {
+            $flats = $this->filteredFirstType($filters, $request);
+        } else if ($type === 2 || $type === 3) {
+            $flats = $this->filteredSecondType($filters, $request, $type);
+        } else if ($type === 4) {
+            $flats = $this->filteredThreeType($filters, $request);
+        }
+
+        return $flats;
     }
 
     /**
