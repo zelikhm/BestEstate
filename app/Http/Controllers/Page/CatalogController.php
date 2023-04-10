@@ -107,10 +107,16 @@ class CatalogController extends Controller
 
         $type = (int)$request->type_jk;
 
-        $this->type_cost = $request->cost;
-        $this->city_id = (int)$request->city;
+        if(count($request->request) === 0) {
 
-        $flats = $this->setImages($this->filteredFlat($request, $type));
+            $flats = $this->getFlatOnCatalog(1, 20);
+
+        } else {
+            $this->type_cost = $request->cost;
+            $this->city_id = (int)$request->city;
+
+            $flats = $this->setImages($this->filteredFlat($request, $type));
+        }
 
         $jk = collect();
 

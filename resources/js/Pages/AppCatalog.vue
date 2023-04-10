@@ -165,7 +165,7 @@
                                 </Link>
                             </div>
                             <div class="filter-btns-right">
-                                <button class="btn-border btn-lg">
+                                <button class="btn-border btn-lg" v-on:click="getMap()">
                                     <i class="icomoon icon-location-bold"></i>
                                     Смотреть на карте
                                 </button>
@@ -240,6 +240,18 @@
             });
         },
         methods: {
+            getMap() {
+                const form = useForm({
+                    'type_jk': this.type,
+                    'options': this.options,
+                    'price': this.price,
+                    'city': this.city,
+                    'plan': this.plan,
+                    'cost': this.type_cost
+                })
+
+                router.post('/map', form);
+            },
             getCount() {
                 this.preloader = true;
 
