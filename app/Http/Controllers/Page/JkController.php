@@ -37,10 +37,21 @@ class JkController extends Controller
 
         JkFlatModel::where('slug', $flat)->increment('view');
 
+        $flats = JkFlatModel::limit(15)->get();
+
+        $flats_array = collect();
+
+        foreach ($flats as $item) {
+            if($item->slug !== $flat) {
+                $flats_array->push($this->getFlatOnId($item->id));
+            }
+        }
+
         return Inertia::render('AppFlat', [
             'flat' => $kv,
             'jk' => $jk,
             'page' => 3,
+            'flats' => $flats_array
         ]);
     }
 }

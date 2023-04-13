@@ -48,7 +48,7 @@ trait Flat
 
         $flat->images_array = count($flat->images) !== 0 ? json_decode($flat->images[0]->image) : [];
 
-//        $flat->image = $flat->images !== null ? $flat->images[0] : null;
+        $flat->image = count($flat->images_array) !== 0 ? $flat->images_array[0] : null;
 
         return $flat;
 
