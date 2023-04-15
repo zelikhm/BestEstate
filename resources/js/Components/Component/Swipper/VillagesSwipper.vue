@@ -12,11 +12,11 @@
                 </div>
                 <div class="specifications-col">
                     <div class="specifications-col-item"><img src="img/jk-bl/rooms.png"
-                                                              alt=""><span>1–8 комнат</span></div>
+                                                              alt=""><span>{{ getMinFlat(item) }}–{{ getMaxFlat(item) }} комнат</span></div>
                     <div class="specifications-col-item"><img src="img/jk-bl/square.png"
-                                                              alt=""><span>от 224 до 411 м²</span>
+                                                              alt=""><span>от {{ getMinSquare(item) }} до {{ getMaxSquare(item) }} м²</span>
                     </div>
-                    <div class="specifications-col-item"><img src="img/jk-bl/cost.png" alt=""><span>от 48 млн. ₽</span>
+                    <div class="specifications-col-item"><img src="img/jk-bl/cost.png" alt=""><span>от {{ getMinPrice(item) }} млн. ₽</span>
                     </div>
                 </div>
             </div>
@@ -50,6 +50,49 @@
         },
         created() {
 
+        },
+        methods: {
+            getMinFlat(item) {
+
+                if (item.flat.length > 0) {
+                    return item.flat.sort((a, b) => a.rooms - b.rooms)[0].rooms;
+                } else {
+                    return 0;
+                }
+
+            },
+            getMaxFlat(item) {
+
+                if (item.flat.length > 0) {
+                    return item.flat.sort((a, b) => b.rooms - a.rooms)[0].rooms;
+                } else {
+                    return 0;
+                }
+
+            },
+            getMinSquare(item) {
+                if (item.flat.length > 0) {
+                    return item.flat.sort((a, b) => a.square_main - b.square_main)[0].square_main;
+                } else {
+                    return 0;
+                }
+            },
+            getMaxSquare(item) {
+                if (item.flat.length > 0) {
+                    return item.flat.sort((a, b) => b.square_main - a.square_main)[0].square_main;
+                } else {
+                    return 0;
+                }
+            },
+            getMinPrice(item) {
+
+                if (item.flat.length > 0) {
+                    return (item.flat.sort((a, b) => a.square_main - b.square_main)[0].price).toLocaleString('ru');
+                } else {
+                    return 0;
+                }
+
+            }
         }
     }
 </script>

@@ -5,7 +5,7 @@
                 src="/img/icons/image.svg" alt=""><span>27 фото</span></a>
             <a v-if="flat.plan_image" style="cursor: pointer" v-bind:class="{'active': type == 1}" v-on:click="type = 1"
                class="btn-w"><img src="/img/icons/plan.svg" alt=""><span>Планировка</span></a>
-            <a style="cursor: pointer" v-bind:class="{'active': type == 2}" v-on:click="type = 2" class="btn-w"><img
+            <a style="cursor: pointer" v-bind:class="{'active': type == 2}" v-if="flat.render" v-on:click="type = 2" class="btn-w"><img
                 src="/img/icons/3d.png" alt=""><span>3D-просмотр</span></a>
             <a style="cursor: pointer" v-bind:class="{'active': type == 3}" v-on:click="type = 3" class="btn-w"><img
                 src="/img/icons/location.svg" alt=""><span>На карте</span></a>
@@ -46,7 +46,9 @@
             </swiper-slide>
         </swiper>
 
-        <iframe v-if="type == 2" src="https://www.theasys.io/viewer/oKoP56r6rso7cFNwVRH0aJPd6nF8FN" allowfullscreen="true" frameborder="0" scrolling="no" allow="vr;gyroscope;accelerometer" width="853" height="480" style="border:none;"></iframe>
+        <div v-html="flat.render" v-if="type == 2">
+
+        </div>
 
         <YandexMap v-if="type == 3" :flat="flat" :jk="jk"></YandexMap>
 

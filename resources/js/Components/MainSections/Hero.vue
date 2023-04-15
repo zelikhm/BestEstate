@@ -225,17 +225,20 @@
             getCountHouse() {
                 this.preloader = true;
 
-                axios.post('/api/getCountFlats', {
-                    'type_jk': this.type_jk,
-                    'options': this.option_array,
-                    'price': this.price,
-                    'city': this.city_select,
-                    'plan': this.plan,
-                    'cost': this.type
-                }).then(res => {
-                    this.count = res.data;
-                    this.preloader = false;
-                })
+                setTimeout(() => {
+                    axios.post('/api/getCountFlats', {
+                        'type_jk': this.type_jk,
+                        'options': this.option_array,
+                        'price': this.price,
+                        'city': this.city_select,
+                        'plan': this.plan,
+                        'cost': this.type
+                    }).then(res => {
+                        this.count = res.data;
+                        this.preloader = false;
+                    })
+                }, 500)
+
 
             },
             sendOptions() {

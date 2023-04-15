@@ -49,6 +49,12 @@ trait HouseInfo {
             $jk->class = 'Элитный';
         }
 
+        if($jk->builder_year === null) {
+            $jk->year = '2023';
+        } else {
+            $jk->year = $jk->builder_year->format('Y');
+        }
+
         $jk->description = DescriptionModel::where('jk_id', $jk->id)->with(['items'])->get();
 
         $jk->images_array = count($jk->images) > 0 ? json_decode($jk->images[0]->image) : null;

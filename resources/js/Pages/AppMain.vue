@@ -73,7 +73,7 @@
 
             <Commerc v-if="ecom.length > 0" :ecom="ecom" ></Commerc>
 
-            <Videos></Videos>
+            <Videos :videos="videos"></Videos>
 
             <Support v-if="support.length > 0" :support="support"></Support>
 
@@ -376,7 +376,8 @@
             'support',
             'working',
             'options',
-            'cities'
+            'cities',
+            'videos'
         ],
         provide() {
             return {

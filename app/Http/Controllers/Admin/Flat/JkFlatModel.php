@@ -130,7 +130,11 @@ class JkFlatModel extends Section implements Initializable
                     1 => '1',
                     2 => '2',
                     3 => '3',
-                    4 => '4+'
+                    4 => '4+',
+                    5 => '5',
+                    6 => '6',
+                    7 => '7',
+                    8 => '8',
                 ])->required(),
                 AdminFormElement::wysiwyg('description', 'Описание квартиры')->required(),
                 AdminFormElement::text('slug', 'название в ссылку (only eng)')->required(),
@@ -246,14 +250,7 @@ class JkFlatModel extends Section implements Initializable
                         return ['path' => '/storage/plan/' . $filename, 'value' => '/storage/plan/' . $filename];
                     }),
 
-                    AdminFormElement::image('render', '3D рендер')->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
-                        return '/storage/render';
-                    })->setSaveCallback(function ($file, $path, $filename, $settings) use ($id) {
-
-                        $file->move(public_path('/storage/render'), $filename);
-
-                        return ['path' => '/storage/v/' . $filename, 'value' => '/storage/render/' . $filename];
-                    }),
+                    AdminFormElement::text('render', '3D render'),
 
                 ]);
 

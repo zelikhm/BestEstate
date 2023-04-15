@@ -10,6 +10,7 @@ use App\Models\Contact\InfoModel;
 use App\Models\Contact\SocialModel;
 use App\Models\Info\CityModel;
 use App\Models\Info\ServiceModel;
+use App\Models\Info\VideoModel;
 use App\Models\Info\WorkinModel;
 use App\Models\Jk\SupportModel;
 use App\Models\NewModel;
@@ -31,8 +32,6 @@ class MainController extends Controller
             ['type' => 4, 'options' => $this->getOptions(4)]
         );
 
-//        dd($this->getFlat(2, 4));
-
         return Inertia::render('AppMain', [
             'page' => 1,
             'sale_jk' => $this->getSalesJk(),
@@ -47,6 +46,7 @@ class MainController extends Controller
             'working' => WorkinModel::all(),
             'options' => $options,
             'cities' => CityModel::all(),
+            'videos' => VideoModel::all(),
         ]);
 
     }

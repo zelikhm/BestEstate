@@ -1,15 +1,15 @@
 <template>
-    <section class="videos">
+    <section class="videos" v-if="videos">
         <div class="container--fluid">
             <div class="heading-row">
                 <h2 class="heading-2">Видео–обзоры</h2>
-                <a href="#" class="btn-second btn-md">Смотреть все</a>
+<!--                <a href="#" class="btn-second btn-md">Смотреть все</a>-->
             </div>
         </div>
         <!-- Swiper -->
         <div class="swiper videosSwiper">
             <div class="swiper-wrapper">
-                <VideosSwiper></VideosSwiper>
+                <VideosSwiper :videos="videos"></VideosSwiper>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -21,6 +21,7 @@
 
     export default {
         name: "Videos",
+        props:['videos'],
         components: {
             VideosSwiper
         }

@@ -89,15 +89,7 @@ class CatalogController extends Controller
         $this->type_cost = $request->cost;
         $this->city_id = (int)$request->city;
 
-        $filters = $this->getFiltersFlat($request, $type);
-
-        if($type === 1) {
-            $flats = $this->filteredFirstType($filters, $request);
-        } else if ($type === 2 || $type === 3) {
-            $flats = $this->filteredSecondType($filters, $request, $type);
-        } else if ($type === 4) {
-            $flats = $this->filteredThreeType($filters, $request);
-        }
+        $flats = $this->setImages($this->filteredFlat($request, $type));
 
         return response()->json(count($flats), 200);
 
@@ -199,9 +191,9 @@ class CatalogController extends Controller
             if($request->plan != 5) {
                 $flats = JkFlatModel::where('type_flat', 1)
                     ->where('rooms', $request->plan)
-                    ->whereIn('balcon', $filters[1])
-                    ->whereIn('repair', $filters[0])
-                    ->whereIn('bathroom', $filters[2])
+                    ->orWhereIn('balcon', $filters[1])
+                    ->orWhereIn('repair', $filters[0])
+                    ->orWhereIn('bathroom', $filters[2])
                     ->where('price', '>', $request->price['min'])
                     ->where('price', '<', $request->price['max'] > 0 ? $request->price['max'] : 1000000000)
                     ->with(['images', 'jk', 'price_object', 'support', 'builder'])

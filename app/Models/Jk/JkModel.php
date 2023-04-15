@@ -36,7 +36,8 @@ class JkModel extends Model
         'sale_date',
         'price',
         'square',
-        'description_page'
+        'description_page',
+        'builder_year'
     ];
 
     protected $hidden = [
@@ -45,7 +46,8 @@ class JkModel extends Model
     ];
 
     protected $casts = [
-        'created_at' => 'datetime:d-m-Y'
+        'created_at' => 'datetime:d-m-Y',
+        'builder_year' => 'datetime:Y'
     ];
 
     public function city_info() {

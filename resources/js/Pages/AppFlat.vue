@@ -11,11 +11,10 @@
             <!-- breadcrumbs -->
             <div class="breadcrumbs">
                 <nav class="container">
-                    <a href="/">Главная</a>
-                    <a href="#">Москва</a>
-                    <a href="#">Купить</a>
-                    <a href="#">Квартира</a>
-                    <span>3-к, Логинова, 19</span>
+                    <Link href="/">Главная</Link>
+                    <Link href="/catalog">Купить</Link>
+                    <Link :href="'/jk/' + jk.slug">{{jk.title}}</Link>
+                    <span>{{ flat.title }}</span>
                 </nav>
             </div>
 
@@ -23,13 +22,13 @@
                 <div class="container">
                     <div class="apart-heading">
                         <div class="heading">
-                            <h1 class="heading-3">3-к, Логинова, 19</h1>
+                            <h1 class="heading-3">{{ flat.title }}</h1>
                             <p class="text-3">{{ jk.address }}</p>
                         </div>
                         <div class="apart-heading-nav">
                             <a href="#" class="btn-ic"><i class="icomoon icon-favourites"></i></a>
-                            <a href="/img/logo-black.png" download="filename" class="btn-ic"><i
-                                class="icomoon icon-download"></i></a>
+<!--                            <a href="/img/logo-black.png" download="filename" class="btn-ic"><i-->
+<!--                                class="icomoon icon-download"></i></a>-->
                         </div>
                     </div>
                     <div class="apart-container">
@@ -81,7 +80,7 @@
                                         </ul>
                                     </div>
                                     <div class="objects-square"><img src="/img/icons/square.png" alt="">{{
-                                        (flat.price_object.price / flat.square_main).toFixed(2) }} ₽/м2
+                                        ((flat.price_object.price / flat.square_main).toFixed(0)).toLocaleString('ru') }} ₽/м2
                                     </div>
                                     <div class="apart-second">
                                         <div class="cards-date">Добавлено: {{ flat.created_at }}</div>

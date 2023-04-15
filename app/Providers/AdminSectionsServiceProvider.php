@@ -17,6 +17,7 @@ use App\Models\Info\ServiceItemModel;
 use App\Models\Info\ServiceModel;
 use App\Models\Info\TypeComModel;
 use App\Models\Info\TypeHouseModel;
+use App\Models\Info\VideoModel;
 use App\Models\Info\WorkinModel;
 use App\Models\Jk\DescriptionItemModel;
 use App\Models\Jk\DescriptionModel;
@@ -69,6 +70,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         RepairModel::class => 'App\Http\Controllers\Admin\Info\Repair',
         TypeComModel::class => 'App\Http\Controllers\Admin\Info\TypeCom',
         TypeHouseModel::class => 'App\Http\Controllers\Admin\Info\TypeHouse',
+        VideoModel::class => 'App\Http\Controllers\Admin\Info\Video',
         //flat
         JkFlatModel::class => 'App\Http\Controllers\Admin\Flat\JkFlatModel',
         ImagesModel::class => 'App\Http\Controllers\Admin\Flat\Images',

@@ -51,35 +51,39 @@
                                 <div class="jk-info-grid">
                                     <div class="jk-info-item">
                                         <div class="jk-info-title">год сдачи</div>
-                                        <div class="jk-info-value">2020</div>
+                                        <div class="jk-info-value">{{ jk.year }}</div>
                                     </div>
                                     <div class="jk-info-item">
                                         <div class="jk-info-title">класс</div>
                                         <div class="jk-info-value">{{ jk.class }}</div>
                                     </div>
-                                    <div class="jk-info-item">
+                                    <div class="jk-info-item" v-if="jk.type_houses === 0">
                                         <div class="jk-info-title">этажность</div>
                                         <div class="jk-info-value">{{ jk.floors }}</div>
                                     </div>
-                                    <div class="jk-info-item">
+                                    <div class="jk-info-item" v-if="jk.type_houses === 0">
                                         <div class="jk-info-title">корпусов</div>
                                         <div class="jk-info-value">{{ getFrames(jk.frames) }}</div>
                                     </div>
-                                    <div class="jk-info-item">
+                                    <div class="jk-info-item" v-if="jk.type_houses === 0">
                                         <div class="jk-info-title">высота потолков</div>
                                         <div class="jk-info-value">{{ jk.height }} м</div>
                                     </div>
-                                    <div class="jk-info-item">
+                                    <div class="jk-info-item" v-if="jk.type_houses === 0">
                                         <div class="jk-info-title">варианты отделки</div>
                                         <div class="jk-info-value">{{ jk.variable }}</div>
                                     </div>
-                                    <div class="jk-info-item">
+                                    <div class="jk-info-item" v-if="jk.type_houses === 0">
                                         <div class="jk-info-title">парковка</div>
                                         <div class="jk-info-value">{{ jk.parking }}</div>
                                     </div>
-                                    <div class="jk-info-item">
+                                    <div class="jk-info-item" v-if="jk.type_houses === 0">
                                         <div class="jk-info-title">тип дома</div>
                                         <div class="jk-info-value">Монолитно-кирпичный</div>
+                                    </div>
+                                    <div class="jk-info-item" v-if="jk.type_houses === 1">
+                                        <div class="jk-info-title">кол-во обьектов</div>
+                                        <div class="jk-info-value">{{ jk.flat.length }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -248,9 +252,11 @@
                         <!------ tabs ------>
                         <div id="charact-tabs">
                             <!-- Кнопки -->
-                            <ul class="tabs-nav">
+                            <ul class="tabs-nav" v-if="jk.type_houses === 0">
                                 <li><a style="cursor: pointer" v-on:click="flat_filter = 0"
                                        v-bind:class="{ 'active': flat_filter == 0 }">Все планировки</a></li>
+                                <li><a style="cursor: pointer" v-on:click="flat_filter = 5"
+                                       v-bind:class="{ 'active': flat_filter == 5 }">Студия</a></li>
                                 <li><a style="cursor: pointer" v-on:click="flat_filter = 1"
                                        v-bind:class="{ 'active': flat_filter == 1 }">1–комнатная</a></li>
                                 <li><a style="cursor: pointer" v-on:click="flat_filter = 2"
@@ -476,12 +482,20 @@
         computed: {
             getFlat() {
 
-                if (this.flat_filter === 0) {
+                console.log(this.jk.flat)
+
+                if(this.jk.type_houses === 0) {
+                    if (this.flat_filter === 0) {
+                        return this.jk.flat;
+                    } else if (this.flat_filter > 0 && this.flat_filter < 5) {
+                        return this.jk.flat.filter((item) => item.rooms === this.flat_filter);
+                    } else if (this.flat_filter === 5) {
+                        return this.jk.flat.filter((item) => item.rooms === 0);
+                    }
+                } else {
                     return this.jk.flat;
-                } else if (this.flat_filter !== 0) {
-                    // console.log(this.jk.flat.filter((item) => item.rooms === this.flat_filter));
-                    return this.jk.flat.filter((item) => item.rooms === this.flat_filter);
                 }
+
             }
         }
     }

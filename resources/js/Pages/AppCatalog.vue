@@ -136,7 +136,7 @@
                                             <div class="radio-group">
                                                 <label :for="'block' + idx + 'id' + index" class="checkbox"
                                                        v-for="(option, index) in item.opt" :key="option.id">
-                                                    <input v-on:click="check()" v-model="options[idx].opt[index].active"
+                                                    <input v-on:click="getCount()" v-model="options[idx].opt[index].active"
                                                            type="checkbox" :id="'block' + idx + 'id' + index"
                                                            name="uslovia"
                                                            class="radio__input">
@@ -255,17 +255,20 @@
             getCount() {
                 this.preloader = true;
 
-                axios.post('/api/getCountFlats', {
-                    'type_jk': this.type,
-                    'options': this.options,
-                    'price': this.price,
-                    'city': this.city_select,
-                    'plan': this.plan,
-                    'cost': this.type_cost
-                }).then(res => {
-                    this.count = res.data;
-                    this.preloader = false;
-                })
+                setTimeout(() => {
+                    axios.post('/api/getCountFlats', {
+                        'type_jk': this.type,
+                        'options': this.options,
+                        'price': this.price,
+                        'city': this.city_select,
+                        'plan': this.plan,
+                        'cost': this.type_cost
+                    }).then(res => {
+                        this.count = res.data;
+                        this.preloader = false;
+                    })
+                }, 500)
+
             },
             visit(id) {
                 router.visit('/catalog?type_jk=' + id);

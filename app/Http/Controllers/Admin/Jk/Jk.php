@@ -119,6 +119,7 @@ class Jk extends Section implements Initializable
                 AdminFormElement::textarea('description', 'Описание')->required(),
                 AdminFormElement::text('slug', 'название в ссылку (only eng)')->required(),
                 AdminFormElement::date('sale_date', 'Окончание акции'),
+                AdminFormElement::date('builder_year', 'Дата постройки'),
             ]);
 
             $tabs[] = AdminDisplay::tab($form)->setLabel("Основная информация")
