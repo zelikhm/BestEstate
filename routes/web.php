@@ -37,6 +37,8 @@ Route::middleware('FavoriteCookie')->group(function () {
 
     Route::get('/houses', ['App\Http\Controllers\Page\HousesController', 'houses']);
     Route::get('/villages', ['App\Http\Controllers\Page\HousesController', 'villages']);
+
+    Route::get('/test', ['App\Http\Controllers\Course\CourseController', 'reloadCourse']);
 });
 
 require __DIR__.'/auth.php';

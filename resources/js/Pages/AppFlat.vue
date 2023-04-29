@@ -11,8 +11,8 @@
             <!-- breadcrumbs -->
             <div class="breadcrumbs">
                 <nav class="container">
-                    <Link href="/">Главная</Link>
-                    <Link href="/catalog">Купить</Link>
+                    <Link :href="'/'">Главная</Link>
+                    <Link :href="'/catalog'">Купить</Link>
                     <Link :href="'/jk/' + jk.slug">{{jk.title}}</Link>
                     <span>{{ flat.title }}</span>
                 </nav>
@@ -110,7 +110,7 @@
                                     <form action="#" class="form expert-form">
                                         <div class="row">
                                             <label for="" class="form-label">
-                                                <input type="number" name="" id="" class="form-input"
+                                                <input type="number" name="" class="form-input"
                                                        placeholder="Ваш номер телефона">
                                             </label>
                                             <button class="btn btn-md">Перезвоните мне</button>
@@ -181,13 +181,13 @@
                         </div>
                         <form action="#" class="form">
                             <label for="" class="form-label">
-                                <input type="number" name="" id="" class="form-input form-input--big"
+                                <input type="number" name="" class="form-input form-input--big"
                                        placeholder="Ваш номер телефона">
                             </label>
                             <div class="col">
                                 <button class="btn btn-xl">Оставить заявку</button>
                                 <label class="accept checkbox">
-                                    <input type="checkbox" id="">
+                                    <input type="checkbox">
                                     <span>Даю согласие на обработку <a href="#">персональных данных</a></span>
                                 </label>
                             </div>

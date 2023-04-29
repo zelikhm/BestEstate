@@ -22,7 +22,7 @@
                     <li class="nav__item"><Link :href="route('contact')" class="nav__link" v-bind:class="{ 'nav__link-active': page === 7 }">контакты</Link></li>
                 </ul>
                 <ul class="course__list">
-                    <li class="course__item" v-for="(item, index) in course">
+                    <li class="course__item" v-for="(item, index) in course_array">
                         <div class="course__item-name">{{ item.name }}</div>
                         <div class="course__item-rate green-color">{{ item.price }} {{ index < 2 ? '$' : '₽' }}</div>
                     </li>
@@ -123,6 +123,7 @@
                   lang: "ru",
               },
               selectLang: 0,
+              course_array: [],
           }
         },
         created() {
@@ -134,6 +135,29 @@
 
         },
         mounted() {
+            this.course_array = [
+                {
+                    name: 'BTC',
+                    price: this.course.BTC,
+                },
+                {
+                    name: 'ETH',
+                    price: this.course.ETH,
+                },
+                {
+                    name: 'USD',
+                    price: this.course.USD,
+                },
+                {
+                    name: 'EUR',
+                    price: this.course.EUR,
+                },
+                {
+                    name: 'CYN',
+                    price: this.course.CYN,
+                },
+            ];
+
             this.yaTranslateInit();
         },
         methods: {

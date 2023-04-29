@@ -71,13 +71,13 @@
                 </div>
             </section>
 
-            <Commerc v-if="ecom.length > 0" :ecom="ecom" ></Commerc>
+            <Commerc v-if="ecom.length > 0" :ecom="ecom"></Commerc>
 
             <Videos :videos="videos"></Videos>
 
             <Support v-if="support.length > 0" :support="support"></Support>
 
-            <Working v-if="working.length > 0" :working="working" ></Working>
+            <Working v-if="working.length > 0" :working="working"></Working>
 
             <section class="about-bl">
                 <div class="container--fluid">
@@ -193,25 +193,25 @@
                     <div class="form-group">
                         <span class="form-group-title">Имя</span>
                         <label for="" class="form-label">
-                            <input type="text" name="" id="" class="form-input" placeholder="">
+                            <input type="text" name="" class="form-input" placeholder="">
                         </label>
                     </div>
                     <div class="form-group">
                         <span class="form-group-title">Телефон</span>
                         <label for="" class="form-label">
-                            <input type="number" name="" id="" class="form-input" placeholder="">
+                            <input type="number" name="" class="form-input" placeholder="">
                         </label>
                     </div>
                     <div class="form-group">
                         <span class="form-group-title">Электронная почта</span>
                         <label for="" class="form-label">
-                            <input type="email" name="" id="" class="form-input" placeholder="">
+                            <input type="email" name="" class="form-input" placeholder="">
                         </label>
                     </div>
                     <div class="form-group">
                         <span class="form-group-title">Сообщение</span>
                         <label for="" class="form-label">
-                            <textarea name="" id="" cols="30" rows="5" class="form-input"></textarea>
+                            <textarea name="" cols="30" rows="5" class="form-input"></textarea>
                         </label>
                     </div>
                     <label class="accept checkbox">
